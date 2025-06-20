@@ -8,6 +8,16 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const path = require('path');
+
+// Раздача всех статических файлов из корня проекта (включая .html, .css, .js)
+app.use(express.static(path.join(__dirname, '..')));
+
+// Явная обработка корневого запроса
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../index.html'));
+});
+
 // Подключение к MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB подключен'))
