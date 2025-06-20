@@ -152,7 +152,6 @@
         "forgot-email": "Email"
     },
     "profile": {
-        "welcomeUser": "Welcome, {username}!",
         "usernameLabel": "Username:",
         "countryLabel": "Country:",
         "birthdayLabel": "Birthday:"

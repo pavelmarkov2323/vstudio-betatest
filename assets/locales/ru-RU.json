@@ -152,7 +152,6 @@
         "forgot-email": "Электронная почта"
     },
     "profile": {
-        "welcomeUser": "Добро пожаловать, {username}!",
         "usernameLabel": "Имя пользователя:",
         "countryLabel": "Страна:",
         "birthdayLabel": "День рождения:"
