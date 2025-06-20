@@ -85,9 +85,15 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then(user => {
       if (user.username) {
-        document.querySelector('.user-fullname').textContent = `${user.firstName} ${user.lastName}`;
-        document.querySelector('.user-id').textContent = user.userId;
+        // Вставляем username в заголовок
         document.querySelector('.user-username').textContent = user.username;
+
+        // Вставляем полное имя
+        document.querySelector('.user-fullname').textContent = `${user.firstName} ${user.lastName}`;
+
+        // ID и дублирующий username
+        document.querySelector('.user-id').textContent = user.userId;
+        document.querySelector('.user-username-inline').textContent = user.username;
       } else {
         document.body.innerHTML = '<p>Пользователь не найден</p>';
       }
