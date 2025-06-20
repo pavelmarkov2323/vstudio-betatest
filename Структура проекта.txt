@@ -5,6 +5,7 @@
 │   ├── /images         # Изображения    
 │   ├── /sounds         # Звуки  
 │   ├── /locales        # Локализация  
+│
 │── /css  
 │   │── styles.css         # Базовые стили + импорт всех других файлов
 │   │── themes.css         # Цветовые переменные для светлой/тёмной темы
@@ -12,9 +13,15 @@
 │   │── typography.css     # Шрифты и стилизация текста
 │   │── layout.css         # Расположение элементов (сетки, flexbox, отступы)
 │   │── animations.css     # Анимации и плавные эффекты 
+│
 │── /js  
 │   ├── theme-toggle.js 	# Логика переключения темы,   
 │   ├── (Так-же остальные скрипты .js)
+│
+│── /server 
+│   ├── server.js         # Логика подключения сервера   
+│   ├── index.js          # Пустой файл
+│   /node_modules          # Папка с модулями
 │
 │── /downloads 
 │   ├── pixelfps.rar     # Файл актуальной моей программы, скачивается с сайта.
@@ -26,5 +33,10 @@
 │── profile.html
 │── auth.html
 │── reset-password.html
-│── favicon.ico 	     # Иконка сайта 
-│── README.md           # Описание проекта  
+│── favicon.ico 	      # Иконка сайта 
+│── README.md            # Описание проекта 
+│── .env
+│── .gitignore
+│── package.json
+│── package-lock.json
+ 

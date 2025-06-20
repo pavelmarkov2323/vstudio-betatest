@@ -1,4 +1,13 @@
-server/node_modules/
-server/.env
+# Игнорируем папки с модулями
 node_modules/
+server/node_modules/
+
+# Файлы окружения
 .env
+
+# Логи
+*.log
+
+# Системные файлы
+.DS_Store
+Thumbs.db
