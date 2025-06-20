@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Список доступных треков
     const tracks = [
-        "assets/sound/startup_01.mp3",
-        "assets/sound/startup_02.mp3"
+        "/assets/sound/startup_01.mp3",
+        "/assets/sound/startup_02.mp3"
     ];
 
     // Выбираем случайный трек
@@ -51,11 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Меняем иконку в зависимости от громкости
         if (volume == 0) {
-            volumeIcon.src = "assets/icons/player/volume-mute.svg";
+            volumeIcon.src = "/assets/icons/player/volume-mute.svg";
         } else if (volume < 80) {
-            volumeIcon.src = "assets/icons/player/volume-down.svg";
+            volumeIcon.src = "/assets/icons/player/volume-down.svg";
         } else {
-            volumeIcon.src = "assets/icons/player/volume.svg";
+            volumeIcon.src = "/assets/icons/player/volume.svg";
         }
 
         // Обновляем активный фон

@@ -43,20 +43,20 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem('language', language);
 
         const flags = {
-            'en-US': ['EN', 'assets/icons/flag/usa.png'],
-            'ru-RU': ['RU', 'assets/icons/flag/russia.png'],
-            'uk-UA': ['UA', 'assets/icons/flag/ukraine.png'],
-            'be-BY': ['BY', 'assets/icons/flag/belarus.png'],
-            'kk-KZ': ['KZ', 'assets/icons/flag/kazakhstan.png'],
-            'kr-TR': ['TR', 'assets/icons/flag/crimea_tatar.png'],
-            'ka-GE': ['GE', 'assets/icons/flag/georgia.png'],
-            'pl-PL': ['PL', 'assets/icons/flag/poland.png'],
-            'de-DE': ['DE', 'assets/icons/flag/germany.png'],
-            'es-ES': ['ES', 'assets/icons/flag/spanish.png'],
-            'fr-FR': ['FR', 'assets/icons/flag/france.png'],
-            'fi-FI': ['FI', 'assets/icons/flag/finland.png'],
-            'ko-KR': ['KR', 'assets/icons/flag/south_korea.png'],
-            'zh-CN': ['CN', 'assets/icons/flag/china.png']
+            'en-US': ['EN', '/assets/icons/flag/usa.png'],
+            'ru-RU': ['RU', '/assets/icons/flag/russia.png'],
+            'uk-UA': ['UA', '/assets/icons/flag/ukraine.png'],
+            'be-BY': ['BY', '/assets/icons/flag/belarus.png'],
+            'kk-KZ': ['KZ', '/assets/icons/flag/kazakhstan.png'],
+            'kr-TR': ['TR', '/assets/icons/flag/crimea_tatar.png'],
+            'ka-GE': ['GE', '/assets/icons/flag/georgia.png'],
+            'pl-PL': ['PL', '/assets/icons/flag/poland.png'],
+            'de-DE': ['DE', '/assets/icons/flag/germany.png'],
+            'es-ES': ['ES', '/assets/icons/flag/spanish.png'],
+            'fr-FR': ['FR', '/assets/icons/flag/france.png'],
+            'fi-FI': ['FI', '/assets/icons/flag/finland.png'],
+            'ko-KR': ['KR', '/assets/icons/flag/south_korea.png'],
+            'zh-CN': ['CN', '/assets/icons/flag/china.png']
         };
 
         const [languageLabel, flagSrc] = flags[language] || flags['en-US'];
