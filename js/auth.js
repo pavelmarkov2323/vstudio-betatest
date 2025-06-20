@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     backButton.addEventListener('click', showLogin);
   }
 
+  // Логика логина и сохранение данных
   document.querySelector('#loginForm').addEventListener('submit', async e => {
     e.preventDefault();
 
@@ -72,7 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (response.ok) {
         alert('Вход успешен!');
-        // Здесь можно сохранить токен или просто перейти на страницу профиля
+        // Сохраняем username в localStorage для контроля авторизации
+        localStorage.setItem('loggedUser', JSON.stringify({
+          username: result.username,
+          userId: result.userId
+        }));
         window.location.href = `/profile/${result.username}`;
       } else {
         alert(result.message || 'Ошибка входа');

@@ -42,12 +42,4 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-
-    // Меню действий и кликов
-    const goToProfile = document.getElementById('menuProfile');
-    if (goToProfile) {
-        goToProfile.addEventListener('click', () => {
-            window.location.href = 'profile.html';
-        });
-    }
 });
