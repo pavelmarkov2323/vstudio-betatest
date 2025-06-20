@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
+
   // Profile animation system
   const profileContainer = document.querySelector('.profile-container');
 
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const editAvatarIcon = document.querySelector('.edit-avatar');
 
   // Плавная анимация появления профиля
-    if (profileContainer) {
+  if (profileContainer) {
     // Немного задержки для плавности (можно убрать)
     setTimeout(() => {
       profileContainer.classList.add('visible');
@@ -75,5 +75,28 @@ document.addEventListener("DOMContentLoaded", () => {
       avatarImage.src = e.target.result;
     };
     reader.readAsDataURL(file);
+  });
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    // Извлечём username из URL
+    const pathParts = window.location.pathname.split('/');
+    const username = pathParts[pathParts.length - 1];
+
+    try {
+      const res = await fetch(`/api/profile/${username}`);
+      if (!res.ok) throw new Error('Пользователь не найден');
+      const user = await res.json();
+
+      // Вставляем данные в элементы страницы
+      document.querySelector('.profile-heading').textContent = `Welcome, ${user.username}`;
+      document.querySelector('.user-fullname').textContent = `${user.firstName} ${user.lastName}`;
+      document.querySelector('.label-id').textContent = `ID: ${user.userId}`;
+      document.querySelector('.label-username').textContent = `Username: ${user.username}`;
+
+    } catch (err) {
+      console.error(err);
+      // Можно показать сообщение или редиректить
+      document.body.innerHTML = '<h2>User not found</h2>';
+    }
   });
 });

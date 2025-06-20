@@ -134,6 +134,17 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+// API для получения данных пользователя по username
+app.get('/api/profile/:username', async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username }).select('-password -__v');
+    if (!user) return res.status(404).json({ message: 'Пользователь не найден' });
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: 'Ошибка сервера' });
+  }
+});
+
 // Запуск сервера на порту из .env или 3000 по умолчанию
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Сервер запущен на порту: ${PORT}`));
