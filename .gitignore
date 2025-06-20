@@ -1,6 +1,5 @@
 # Игнорируем папки с модулями
 node_modules/
-server/node_modules/
 
 # Файлы окружения
 .env

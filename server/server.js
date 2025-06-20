@@ -10,6 +10,11 @@ app.use(cors());
 
 // Подключение к MongoDB
 mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB подключен'))
+  .catch(err => {
+    console.error('Ошибка подключения к MongoDB:', err);
+    process.exit(1); // Завершаем процесс, если база не подключилась
+  });
 
 // Схема пользователя
 const userSchema = new mongoose.Schema({
