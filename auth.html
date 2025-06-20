@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ValeyevStudio - Authorization</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/forgotpassword.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+</head>
+
+<body>
+
+  <div class="auth-wrapper">
+    <!-- Баннер -->
+    <a class="auth-banner" href="https://www.change.org/p/free-pavel-durov-freedurov?ysclid=mc0l1l6c4p964523900"
+      target="_blank">
+      <img src="assets/images/banner/freedurov.jpeg" alt="FreeDurov">
+    </a>
+
+    <!-- Форма авторизации -->
+    <div class="login-container fade-in">
+      <form class="login-form" id="loginForm">
+        <h2 class="auth-title theme-text">Authorization</h2>
+
+        <div class="input-icon">
+          <img src="assets/icons/username.svg" class="theme-icon" alt="User" />
+          <input type="text" placeholder="Username or Email" data-placeholder="login-username" required />
+        </div>
+
+        <div class="input-icon">
+          <img src="assets/icons/lock.svg" class="theme-icon" alt="Password" />
+          <input type="password" placeholder="Password" data-placeholder="login-password" required />
+        </div>
+
+        <button type="submit" class="login-button">Login</button>
+
+        <p class="auth-switch">
+          <span class="no-account-text">Don’t have an account? </span>
+          <a href="#" onclick="showRegistration()" class="sign-up-link">Sign up</a>
+        </p>
+
+        <p class="forgot-link">
+          <a href="#" id="open-forgot-modal">Forgot password?</a>
+        </p>
+      </form>
+    </div>
+    
+    <!-- Форма регистрации -->
+    <div class="registration-container" style="display:none;">
+      <form class="registration-form" id="registrationForm">
+        <h2 class="registration-title theme-text">Create an account</h2>
+        <button type="button" class="back-button">
+          <img class="back-icon" src="assets/icons/angle-double-left.svg" alt="back Icon">
+        </button>
+
+        <div class="name-fields">
+          <input type="text" placeholder="First name" data-placeholder="register-first-name" required />
+          <input type="text" placeholder="Last name" data-placeholder="register-last-name" required />
+        </div>
+
+        <div class="input-icon">
+          <img src="assets/icons/username.svg" class="theme-icon" alt="User" />
+          <input type="text" placeholder="Username" data-placeholder="register-username" required />
+        </div>
+
+        <div class="input-icon">
+          <img src="assets/icons/mail.svg" class="theme-icon" alt="Email" />
+          <input type="email" placeholder="Email" data-placeholder="register-email" required />
+        </div>
+
+        <div class="input-icon">
+          <img src="assets/icons/lock.svg" class="theme-icon" alt="Password" />
+          <input type="password" placeholder="Password" data-placeholder="register-password" required />
+        </div>
+
+        <!-- Шкала надёжности пароля -->
+        <div class="password-strength">
+          <div class="strength-bar"></div>
+          <p class="strength-text">Enter the password</p>
+        </div>
+
+        <!-- Ошибка пароля -->
+        <div class="password-error" style="display:none;"></div>
+
+        <!-- Подсказка -->
+        <div class="password-hint theme-text"> The password must contain at least 6 characters and special characters (! “ # $ % ‘
+          ()
+          *)
+        </div>
+
+        <button type="submit" class="registration-button">Register</button>
+
+        <p class="agreement-note"></p>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Затемняющий фон -->
+  <div class="modal-overlay"></div>
+  <!-- Модальное окно: Восстановления пароля -->
+  <div class="modal-forgot-password">
+    <div class="modal-content">
+      <h2 class="ForgotPasswordTitle theme-text">Forgot Password</h2>
+      <p class="modal-forgotpassword-description gray-text">
+        Please enter your email address associated with your account. We will email instructions on how to reset your
+        password.
+      </p>
+
+      <div class="input-wrapper">
+        <img src="assets/icons/mail.svg" alt="Mail" class="input-icon2 theme-icon">
+        <input type="email" id="forgot-email" placeholder="Email address" data-placeholder="forgot-email" class="input-email-reset">
+        <div class="input-underline"></div>
+      </div>
+
+      <div class="input-email-error" style="display: none;">Invalid email address</div>
+      <div class="input-forgotpassword-success theme-text" style="display: none;">If a user account exists with the entered email, we will send an
+        email with further instructions to reset the password.</div>
+
+      <div class="modal-actions">
+        <button class="modal-cancel theme-text">CANCEL</button>
+        <button class="modal-submit theme-text">SUBMIT</button>
+        <div class="loading-spinner" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Нижний копирайтер -->
+  <footer class="footer line">
+    <div class="footer-content">
+      <span class="footer-copyright">© 2025 Project of the ValeyevPrograms company.</span>
+      <a href="about.html#user-agreement" class="footer-link nav-user-agreement">User Agreement</a>
+    </div>
+    <div class="footer-social">
+      <span class="social-platforms">Social:</span>
+      <a href="https://vk.com/nikitavaleyev" target="_blank">
+        <img src="assets/icons/social/vk.svg" alt="VK" class="theme-icon">
+      </a>
+      <a href="https://www.youtube.com/channel/@NikitaValeyev" target="_blank">
+        <img src="assets/icons/social/youtube.svg" alt="YouTube" class="theme-icon">
+      </a>
+      <a href="https://t.me/nikitavaleyev_musician" target="_blank">
+        <img src="assets/icons/social/telegram.svg" alt="Telegram" class="theme-icon">
+      </a>
+      <a href="https://instagram.com/nikitavaleyev" target="_blank">
+        <img src="assets/icons/social/instagram.svg" alt="Instagram" class="theme-icon">
+      </a>
+    </div>
+  </footer>
+
+  <!-- Для частиц (фича) -->
+  <div id="gooey"></div>
+  <div id="particle-container"></div>
+
+  <!-- Подключенные скрипты -->
+  <script src="js/registration.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/forgotpassword.js"></script>
+  <script src="js/translate-language.js"></script>
+  <script src="js/themeswitch.js"></script>
+</body>
+
+</html>

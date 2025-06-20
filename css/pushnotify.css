@@ -1,0 +1,85 @@
+.push-notify {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    height: 120px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.push-notify.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.push-content,
+.push-content2 {
+    position: relative;
+    display: none; /* Скрываем оба блока по умолчанию */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    padding: 5px;
+}
+
+.push-content.show,
+.push-content2.show {
+    display: block;
+    opacity: 1;
+}
+
+.push-content strong,
+.push-content2 strong {
+    font-size: 15px;
+    font-weight: 700;
+    color: black;
+    display: block;
+}
+
+.push-content p,
+.push-content2 p {
+    font-size: 12px;
+    font-weight: 500;
+    color: #C4C4C4;
+    margin-top: 5px;
+}
+
+.push-button {
+    display: block;
+    width: 50%;
+    background: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    margin: 10px auto 0;
+    border: none;
+}
+
+.push-button:hover {
+    background: #007BFF;
+    box-shadow: 0 0 15px rgba(90, 121, 205, 0.8);
+    transform: scale(1.05);
+}
+
+.push-close {
+    position: absolute;
+    top: -14px;
+    right: -6px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #888;
+}
+
+.push-close:hover {
+    color: black;
+}

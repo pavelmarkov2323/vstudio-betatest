@@ -1,0 +1,272 @@
+/* Плавная анимация для фона и текста */
+body {
+    transition: background-color 0.9s ease, color 0.9s ease;
+}
+
+/* Когда темная тема активна */
+body.dark-theme {
+    background-color: #0d0d0d;
+}
+
+body.dark-theme .footer {
+    background-color: #0d0d0d;
+}
+
+/* Text Style */
+body.dark-theme .theme-text {
+    color: #ffffff !important; /* Белый текст */
+}
+
+body.dark-theme .gray-text {
+    color: #aaa; /* Светло-серый текст */
+}
+
+body.dark-theme .red-text {
+    color: #c71f1f; /* Красный текст */
+}
+
+/* SVG Icons Style */
+body.dark-theme .theme-icon {
+    filter: brightness(0) invert(1) !important; /* Делаем белыми */
+}
+
+/* Others Style */
+body.dark-theme .line {
+    border-top: 1px solid #333333 !important; /* Темно-серая граница, линия (Line) */
+}
+
+/* Header (Menu) */
+
+/* Когда темная тема активна для хедера */
+body.dark-theme .header {
+    background-color: #171717;
+    color: white;
+}
+
+/* Текстовые кнопки в главном меню */
+body.dark-theme .nav a {
+    color: #ddd; /* Все ссылки серые */
+}
+
+body.dark-theme .nav a.active {
+    color: white; /* Белый для активной ссылки */ 
+}
+
+/* Плавный переход для переключателя темы */
+body .theme-toggle input {
+    transition: transform 0.3s ease;
+}
+
+/* Dropdowns */
+
+/* Темная тема активна для выпадающего списка Language (Языка) Localization */
+body.dark-theme .language-switch {
+    border: 2px solid #333333 !important; /* Меняем границу на #333333 */
+}
+
+body.dark-theme .language-switch .dropdown-item:hover {
+    background-color: #292929 !important; /* Темно-серый цвет */
+}
+
+/* Когда темная тема активна для выпадающего списка */
+body.dark-theme .language-switch .dropdown-menu {
+    border: 2px solid #333333 !important; /* Меняем границу на #333333 */
+    background-color: #171717 !important; /* Цвет фона выпадающего списка */
+}
+
+/* Когда темная тема активна для текста кода страны */
+body.dark-theme .language-switch .language-code {
+    color: white !important; /* Белый текст для кода страны (например, EN) */
+}
+
+/* Цвет текста в выпадающем списке в темной теме */
+body.dark-theme .language-switch .dropdown-item span {
+    color: white !important; /* Белый текст в выпадающем списке */
+}
+
+/* Стилизация скроллбара в темной теме */
+body.dark-theme .dropdown-menu {
+    scrollbar-width: thin; /* Для Firefox */
+    scrollbar-color: #333333 #171717; /* Цвет скролла и фона */
+}
+
+/* Для Chrome, Edge и Safari */
+body.dark-theme .dropdown-menu::-webkit-scrollbar {
+    width: 8px; /* Ширина скроллбара */
+}
+
+body.dark-theme .dropdown-menu::-webkit-scrollbar-thumb {
+    background-color: #333333; /* Цвет ползунка */
+    border-radius: 4px; /* Закругление */
+}
+
+body.dark-theme .dropdown-menu::-webkit-scrollbar-track {
+    background: #171717; /* Цвет фона */
+}
+/* Для выпадающего меню профиля (Profile) */
+
+body.dark-theme .dropdown-panel {
+    background: #171717; /* Цвет фона */
+    border: 1px solid #333333;
+}
+
+body.dark-theme .dropdown-item:hover {
+    background: #333333; /* Цвет наведения */
+}
+
+/* Контент внутри модального окна для темной темы */
+body.dark-theme .captcha-content {
+    background-color: #171717; /* Темный фон для модального окна */
+    border-radius: 20px;
+    width: 320px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Более выраженная тень для темной темы */
+}
+
+/* FAQ - Вопросы / Ответы */
+
+/* Фон панели вопросов FAQ*/
+body.dark-theme .faq-question {
+    background: #171717;
+}
+
+/* Фон открытой панели ответа FAQ*/
+body.dark-theme .faq-answer {
+    background: #171717;
+}
+
+/* Для раскрытого вопроса FAQ */
+body.dark-theme .faq-item.active .faq-question {
+    background: #292929;
+}
+
+/* Для наведения FAQ */
+body.dark-theme .faq-question:hover {
+    background: #272727;
+}
+
+body.dark-theme .tooltip {
+    background: #272727;
+}
+
+body.dark-theme .tooltip::after {
+    border-bottom-color: #272727;
+}
+
+/* Для наведения dropdown меню Мои продукты*/
+
+body.dark-theme .dropdown-menu-item {
+    background: #171717;
+}
+
+body.dark-theme .product-item {
+    background: #303030;
+}
+
+/* Для дизайна About page О компании */
+body.dark-theme .aboutcompany-block {
+    background: #171717;
+}
+
+/* Для дизайна About page Моя команда */
+body.dark-theme .about-block{
+    background: #171717;
+}
+
+body.dark-theme .about-block img{
+    border: 4px solid #4d4d4d;
+}
+
+body.dark-theme .dot {
+    background-color: rgb(26, 26, 26);
+}
+
+body.dark-theme .dot.active {
+    background-color: #303030;
+}
+
+/* Для дизайна About page Лицензии и Пользовательское соглашение */
+body.dark-theme .legal-item {
+    background-color: #303030;
+}
+
+/* Для дизайна Push уведомления */
+body.dark-theme .push-notify {
+    background-color: #303030;
+}
+
+/* Для дизайна Profile page */
+body.dark-theme .avatar-card {
+    background: #171717;
+}
+body.dark-theme .bio-card {
+    background: #171717;
+}
+body.dark-theme .data-card {
+    background: #171717;
+}
+
+body.dark-theme .bio-input {
+    background: #171717;
+}
+
+body.dark-theme .bio-hint {
+    background: #202020;
+}
+/* Для дизайна Auth page */
+body.dark-theme .login-container {
+    background: #202020;
+}
+
+body.dark-theme .registration-container {
+    background: #202020;
+}
+
+body.dark-theme .modal-forgot-password {
+    background: #202020;
+}
+
+body.dark-theme .password-hint {
+    background: #303030;
+}
+
+body.dark-theme .registration-form input {
+    background: #303030;
+    border: solid 1px #4d4d4d;
+}
+body.dark-theme .login-form input {
+    background: #303030;
+    border: solid 1px #4d4d4d;
+}
+
+body.dark-theme .password-strength {
+    background: #4d4d4d
+}
+
+body.dark-theme .input-email-reset {
+    background: #303030;
+    border: solid 1px #4d4d4d;
+}
+
+/* Для дизайна reset password page */
+
+body.dark-theme .reset-container {
+    background: #202020;
+}
+body.dark-theme .password-toggle-wrapper {
+    background: #303030;
+    border: solid 1px #4d4d4d;
+}
+
+body.dark-theme .password-toogle {
+    background: #303030;
+    border: solid 1px #4d4d4d;
+}
+
+body.dark-theme .password-reset-hint {
+    background: #303030;
+}
+body.dark-theme .tooltip-status{
+    background: #303030;
+}

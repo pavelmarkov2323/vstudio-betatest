@@ -1,0 +1,39 @@
+.has-tooltip {
+    position: relative; /* Чтобы tooltip позиционировался относительно родителя */
+}
+
+.tooltip {
+    position: absolute;
+    background: #f0f0f0;
+    color: #333;
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    opacity: 0;
+    top: 155%; /* Чуть ниже родителя */
+    left: 50%; /* Центрируем по родителю */
+    transform: translateX(-50%);
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: -6px; /* Поднимаем носик выше */
+    left: 50%; /* Центрируем носик */
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #f0f0f0;
+}
+
+.has-tooltip:hover .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}

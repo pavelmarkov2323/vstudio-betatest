@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #EDEEF0;
+    font-family: 'MiSans', sans-serif;
+    padding-top: 80px; /* Отступ сверху для меню */
+    padding-bottom: 50px; /* Добавляем отступ снизу, чтобы был зазор до футера */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Стили для основного заголовка */
+.main-title {
+    font-family: 'MiSans-Medium', sans-serif;
+    color: black;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+/* Стили для описания */
+.description {
+    font-family: 'MiSans', sans-serif;
+    font-weight: normal;
+    color: #C4C4C4;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Основной контент */
+.intro {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* Стиль для футера (Сorpyright) Нижний копирайтер*/
+.footer {
+    background-color: #EDEEF0;
+    width: 80%;
+    padding: 14px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #9CA2AE;
+    border-top: 1px solid #E0E4EB; /* Линия (Line) сверху */
+    z-index: 2;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.footer-link {
+    color: #9CA2AE;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: #6A5ACD;
+}
+
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer-social img {
+    width: 25px;
+    height: 25px;
+    transition: opacity 0.3s;
+}
+
+.footer-social img:hover {
+    opacity: 0.7;
+}

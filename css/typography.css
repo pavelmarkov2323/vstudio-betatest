@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'MiSans';
+    src: url('../assets/fonts/MiSans-Normal.ttf') format('truetype'); 
+    font-weight: 400; /* Обычный (Normal) */
+}
+
+@font-face {
+    font-family: 'MiSans';
+    src: url('../assets/fonts/MiSans-Regular.ttf') format('truetype');
+    font-weight: 500; /* Чуть четче (Regular) */
+}
+
+@font-face {
+    font-family: 'MiSans';
+    src: url('../assets/fonts/MiSans-Medium.ttf') format('truetype');
+    font-weight: 700; /* Жирный (Medium) */
+}

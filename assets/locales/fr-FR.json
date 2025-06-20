@@ -1,0 +1,54 @@
+{
+    "mainTitle": "ValeyevStudio — un nouveau pas vers l'avenir !",
+    "description": "Les nouveaux programmes innovants de ValeyevPrograms représentent une combinaison harmonieuse de technologies avancées, <br> d'optimisation maximale et de convivialité. Chaque application est développée selon les plus hauts standards, <br> offrant aux utilisateurs une interface intuitive. Nous nous efforçons de faire en sorte que la fonctionnalité de nos programmes <br> soit parfaitement adaptée aux besoins des utilisateurs, tout en garantissant une haute performance et une économie de ressources. <br> <br> ValeyevPrograms — l'avenir des logiciels aujourd'hui.",
+    "subscribe-btn": "S'abonner",
+    "download-btn": "Télécharger",
+    "team-heading": "Notre équipe",
+    "push-suggestions-title": "Vous avez des suggestions d'amélioration ?",
+    "push-suggestions-text": "Écrivez-nous, nous prendrons en compte vos avis et suggestions pour améliorer ou ajouter de nouvelles fonctionnalités.",
+    "push-suggestions-button": "Proposer",
+    "push-donation-title": "Fonds de dons",
+    "push-donation-text": "Pour ceux qui souhaitent soutenir l'auteur pour son travail accompli. Les fonds seront utilisés pour le développement de l'écosystème du projet.",
+    "push-donation-button": "Soutenir",
+    "nav": {
+        "home": "Page d'accueil",
+        "our-products": "Nos produits",
+        "about-us": "À propos de nous"
+    },
+    "footer": {
+        "copyright": "© 2025 Projet de ValeyevPrograms.",
+        "user-agreement": "Accord utilisateur"
+    },
+    "footer-social": {
+        "social-platforms": "Réseaux sociaux :"
+    },
+    "captcha-content": {
+        "captcha-title": "Confirmez que vous n'êtes pas un robot",
+        "captcha-text-container": "Je ne suis pas un robot",
+        "captcha-footer": "Nouvelle technologie de vérification 2.0"
+    },
+    "faq": {
+        "faq-title": "Questions fréquemment posées",
+        "questions": {
+            "q1": {
+                "question": "Pourquoi nous choisir ?",
+                "answer": "Nous sommes une équipe de développeurs intéressés par la fourniture de notre produit au plus grand nombre de personnes possible, afin que chacun puisse essayer notre produit. Tout cela est totalement gratuit !"
+            },
+            "q2": {
+                "question": "Comment commencer à utiliser le programme ?",
+                "answer": "Pour télécharger notre logiciel, allez dans la section correspondante du site et cliquez sur le bouton Télécharger.<br><br>Rappelez-vous qu'en téléchargeant notre logiciel, vous acceptez l'accord utilisateur et la politique de notre entreprise — Valeyev Studio."
+            },
+            "q3": {
+                "question": "Quel est le coût de l'abonnement payant ?",
+                "answer": "Le prix de l'abonnement payant est de 0,99 USD. L'abonnement, une fois activé, est valable pendant 1 mois calendaire à partir de l'activation.<br><br>L'abonnement permet de supprimer la bannière intrusive dans les paramètres et d'accéder à d'autres fonctionnalités."
+            }
+        }
+    },
+    "tooltip": {
+        "music-volume": "Volume de la musique",
+        "select-language": "Choisir la langue",
+        "switch-themes": "Changer de thème",
+        "purchase-subscription": "S'abonner",
+        "download-description": "Télécharger la dernière version"
+    }
+}

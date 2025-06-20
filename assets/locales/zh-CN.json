@@ -1,0 +1,54 @@
+{
+    "mainTitle": "ValeyevStudio — 迈向未来的新一步！",
+    "description": "ValeyevPrograms 的新创新程序代表了先进技术、<br> 最大化优化和用户友好性的和谐结合。每个应用程序都根据最高标准开发，<br> 提供直观的用户界面。我们努力确保我们的程序功能 <br> 最大程度地适应用户需求，同时确保高性能和资源节省。<br> <br> ValeyevPrograms — 今天的软件的未来。",
+    "subscribe-btn": "订阅",
+    "download-btn": "下载",
+    "team-heading": "我们的团队",
+    "push-suggestions-title": "有改进建议吗？",
+    "push-suggestions-text": "请写信给我们，我们会考虑您的反馈和建议，以便改进或添加新功能。",
+    "push-suggestions-button": "提出建议",
+    "push-donation-title": "慈善基金",
+    "push-donation-text": "支持作者的工作。资金将用于项目生态系统的开发。",
+    "push-donation-button": "支持",
+    "nav": {
+        "home": "首页",
+        "our-products": "我们的产品",
+        "about-us": "关于我们"
+    },
+    "footer": {
+        "copyright": "© 2025 ValeyevPrograms 项目。",
+        "user-agreement": "用户协议"
+    },
+    "footer-social": {
+        "social-platforms": "社交平台："
+    },
+    "captcha-content": {
+        "captcha-title": "确认你不是机器人",
+        "captcha-text-container": "我不是机器人",
+        "captcha-footer": "新验证技术 2.0"
+    },
+    "faq": {
+        "faq-title": "常见问题",
+        "questions": {
+            "q1": {
+                "question": "为什么是我们？",
+                "answer": "我们是一支开发者团队，致力于将我们的产品提供给尽可能多的人，让每个人都能尝试我们的产品。所有这一切完全免费！"
+            },
+            "q2": {
+                "question": "如何开始使用程序？",
+                "answer": "要下载我们的软件，请转到网站的相应部分并点击“下载”按钮。<br><br>请记住，下载我们的软件即表示您同意我们的用户协议和Valeyev Studio的政策。"
+            },
+            "q3": {
+                "question": "付费订阅的费用是多少？",
+                "answer": "付费订阅的价格是0.99美元。订阅激活后有效期为1个月。<br><br>订阅允许通过设置移除烦人的横幅广告并获得其他功能。"
+            }
+        }
+    },
+    "tooltip": {
+        "music-volume": "音乐音量",
+        "select-language": "选择语言",
+        "switch-themes": "切换主题",
+        "purchase-subscription": "订阅",
+        "download-description": "下载最新版本"
+    }
+}

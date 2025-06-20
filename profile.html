@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValeyevStudio - About</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/menu_dropdown.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <!-- Подключение кастомных стилей -->
+    <link rel="stylesheet" href="css/custom_toggles.css">
+    <link rel="stylesheet" href="css/custom_dropdown.css">
+    <link rel="stylesheet" href="css/captcha.css">
+    <link rel="stylesheet" href="css/player.css">
+    <link rel="stylesheet" href="css/interactivehelp.css">
+    <link rel="stylesheet" href="css/pushnotify.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo theme-text">
+            <img src="assets/icons/logo.svg" alt="Logo" class="logo-img theme-icon">
+            ValeyevStudio
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="home.html" class="nav-home">Home</a></li>
+                <li><a href="products.html" class="nav-our-products">Our Products</a></li>
+                <li><a href="about.html" class="nav-about-us">About us</a></li>
+            </ul>
+        </nav>
+        <div class="actions">
+
+            <!-- Music Playeer -->
+            <div class="player has-tooltip">
+                <span class="tooltip theme-text" data-tooltip="music-volume">Music volume</span>
+                <audio id="bg-music" loop>
+                    <source src="assets/sound/startup_01.mp3" type="audio/mp3">
+                </audio>
+                <div class="volume-control">
+                    <img id="volume-icon" src="assets/icons/player/volume.svg" alt="Volume" class="theme-icon">
+                    <input id="volume-slider" type="range" min="0" max="100" value="100">
+                </div>
+            </div>
+
+            <!-- Выпадающий список для выбора языка -->
+            <div class="language-switch has-tooltip">
+                <span class="tooltip theme-text" data-tooltip="select-language">Select language</span>
+                <!-- Флаг страны и код -->
+                <img src="assets/icons/flag/usa.png" alt="Flag" class="selected-flag">
+                <!-- Отображаем флаг по умолчанию -->
+                <span class="language-code">EN</span>
+                <img src="assets/icons/angle-small-down.svg" alt="Arrow" class="arrow theme-icon">
+                <!-- Выпадающий список -->
+                <div class="dropdown-menu">
+                    <div class="dropdown-item" data-lang="en-US">
+                        <img src="assets/icons/flag/usa.png" alt="USA Flag" class="flag">
+                        <span>EN</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="ru-RU">
+                        <img src="assets/icons/flag/russia.png" alt="Russia Flag" class="flag">
+                        <span>RU</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="uk-UA">
+                        <img src="assets/icons/flag/ukraine.png" alt="Ukraine Flag" class="flag">
+                        <span>UA</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="be-BY">
+                        <img src="assets/icons/flag/belarus.png" alt="Belarus Flag" class="flag">
+                        <span>BY</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="kk-KZ">
+                        <img src="assets/icons/flag/kazakhstan.png" alt="Kazakhstan Flag" class="flag">
+                        <span>KZ</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="kr-TR">
+                        <img src="assets/icons/flag/crimea_tatar.png" alt="Crimean Tatar Flag" class="flag">
+                        <span>TR</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="ka-GE">
+                        <img src="assets/icons/flag/georgia.png" alt="Geogria Flag" class="flag">
+                        <span>GE</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="pl-PL">
+                        <img src="assets/icons/flag/poland.png" alt="Poland Flag" class="flag">
+                        <span>PL</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="de-DE">
+                        <img src="assets/icons/flag/germany.png" alt="Germany Flag" class="flag">
+                        <span>DE</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="es-ES">
+                        <img src="assets/icons/flag/spanish.png" alt="Spanish Flag" class="flag">
+                        <span>ES</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="fr-FR">
+                        <img src="assets/icons/flag/france.png" alt="France Flag" class="flag">
+                        <span>FR</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="fi-FI">
+                        <img src="assets/icons/flag/finland.png" alt="Finland Flag" class="flag">
+                        <span>FI</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="ko-KR">
+                        <img src="assets/icons/flag/south_korea.png" alt="South Korea Flag" class="flag">
+                        <span>KR</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="zh-CN">
+                        <img src="assets/icons/flag/china.png" alt="China Flag" class="flag">
+                        <span>CN</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Тоггл переключатель темы -->
+            <div class="has-tooltip">
+                <label class="theme-toggle">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span class="tooltip theme-text" data-tooltip="switch-themes">Switch themes</span>
+            </div>
+
+            <!-- Кнопка входа (Sign In) -->
+            <div class="has-tooltip">
+                <button class="signin-btn" style="display: none;">
+                    <img class="signin-icon" src="assets/icons/user.svg" alt="User Icon">
+                    <span class="signin-text">Sign In</span>
+                </button>
+                <span class="tooltip theme-text" data-tooltip="sign-in">Sign in to your account</span>
+            </div>
+
+            <!-- Аватар с выпадающим меню -->
+            <div class="user-menu">
+                <div class="user-avatar" id="avatarToggle">
+                    <img src="assets/images/avatar/user.png" alt="User Avatar" class="avatar-img theme-icon">
+                    <img src="assets/icons/angle-small-down.svg" alt="Dropdown Icon" class="dropdown-icon theme-icon">
+                </div>
+
+                <div class="dropdown-panel" id="userDropdown">
+                    <div class="dropdown-item" id="menuProfile">
+                        <img src="assets/icons/user.svg" class="item-icon theme-icon" alt="">
+                        <span class="menu-profile-text theme-text">My profile</span>
+                    </div>
+                    <div class="dropdown-item" id="menuSettings">
+                        <img src="assets/icons/settings.svg" class="item-icon theme-icon" alt="">
+                        <span class="menu-settings-text theme-text">Settings</span>
+                    </div>
+                    <div class="dropdown-item" id="menuSupport">
+                        <img src="assets/icons/help.svg" class="item-icon theme-icon" alt="">
+                        <span class="menu-support-text theme-text">Support</span>
+                    </div>
+                    <div class="dropdown-item" id="menuLogout">
+                        <img src="assets/icons/user-logout.svg" class="item-icon theme-icon" alt="">
+                        <span class="menu-logout-text theme-text">Logout</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Выпадающий список продуктов из наведении на кнопку Наши продукты -->
+    <div class="overlay"></div>
+    <div class="dropdown-menu-item" id="productsMenu">
+        <div class="product-item">
+            <img src="assets/images/PixelFPS.png" alt="Product 1">
+            <p class="theme-text">PixelFPS</p>
+            <div class="has-tooltip">
+                <button id="downloadBtn" class="download-btn">
+                    <span class="button-text">Download</span> <!-- Текст кнопки -->
+                    <img class="download-icon theme-icon" src="assets/icons/download.svg" alt="Download Icon" />
+                    <!-- Иконка -->
+                </button>
+                <span class="tooltip theme-text" data-tooltip="download-description">Download the latest version</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно проверки: Я не робот. -->
+    <div id="captchaModal" class="captcha-modal" style="display: none;">
+        <div class="captcha-content">
+            <!-- Иконка в центре -->
+            <img src="assets/icons/robot.png" alt="Icon" class="captcha-icon">
+            <!-- Заголовок -->
+            <p class="captcha-title theme-text">Confirm that you are not a robot</p>
+            <!-- Чекбокс с текстом -->
+            <label for="robotCheck" class="captcha-label">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="robotCheck" onclick="validateCaptcha()">
+                </div>
+                <div class="captcha-text-container theme-text">I'm not a robot</div>
+            </label>
+            <!-- Спиннер загрузки -->
+            <div class="loader-container" style="display: none;">
+                <span class="loader"></span>
+            </div>
+            <!-- Нижний текст -->
+            <p class="captcha-footer gray-text">New verification technology 2.0</p>
+        </div>
+    </div>
+
+    <!-- Push Уведомления -->
+    <div class="push-notify" id="pushNotify">
+        <div class="push-content" id="pushContent1">
+            <strong class="push-title-suggestions theme-text">Have improvement suggestions?</strong>
+            <p class="push-text-suggestions">Write to us, we will definitely consider your feedback and suggestions to
+                improve or add new features.</p>
+            <button id="emailButton" class="push-button push-btn-suggestions">Suggest</button>
+            <span class="push-close">&times;</span>
+        </div>
+        <div class="push-content2" id="pushContent2">
+            <strong class="push-title-donation theme-text">Charity Fund</strong>
+            <p class="push-text-donation">For those who want to support the author for the work done. The funds will go
+                to the development of the project ecosystem.</p>
+            <button id="donateButton" class="push-button push-btn-donation">Support</button>
+            <span class="push-close">&times;</span>
+        </div>
+    </div>
+
+    <!-- Заголовок "Добро пожаловать, пользователь (username)" -->
+    <h1 class="profile-heading theme-text">Welcome, valeyevboss!</h1>
+
+    <div class="profile-container">
+        <!-- Правая колонка блок с аватаркой -->
+        <div class="left-wrapper">
+            <div class="avatar-card">
+                <div class="avatar-wrapper">
+                    <img src="assets/images/avatar/test.jpg" alt="User Avatar" class="profile-avatar">
+                    <img src="assets/icons/add-image.svg" alt="Edit avatar" class="edit-avatar theme-icon">
+                    <input type="file" accept="image/*" id="avatar-upload" style="display: none;">
+                </div>
+                <div class="user-fullname-wrapper">
+                    <div class="user-fullname theme-text">Nikita Valeyev</div>
+                    <div class="tooltip-status-wrapper">
+                        <img src="assets/icons/status/verified.gif" alt="Verified" class="user-status-icon" />
+                        <div class="tooltip-status">
+                            <div class="tooltip-status-title">Верифицированная страница</div>
+                            <div class="tooltip-status-text theme-text">
+                                Страница username подтверждена. Узнайте больше о <a
+                                    href="verification.html">верификации</a>.
+                            </div>
+                            <div class="tooltip-status-arrow"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="info-row">
+                    <img src="assets/icons/id-badge.svg" class="info-icon theme-icon" alt="ID">
+                    <span class="label-id theme-text">ID: 230748936</span>
+                </div>
+
+                <div class="info-row">
+                    <img src="assets/icons/user.svg" class="info-icon theme-icon" alt="Username">
+                    <span class="label-username theme-text" data-i18n="profile.usernameLabel2">Username:
+                        valeyevboss</span>
+                </div>
+            </div>
+
+            <!-- Блок с данными пользователя -->
+            <div class="data-card">
+                <div class="data-title .gray-text">You details</div>
+                <div class="data-item theme-text">
+                    <img src="assets/icons/country.svg" class="data-icon theme-icon" alt="Country">
+                    <span class="label-country theme-text" data-i18n="profile.countryLabel">Country:</span>Ukraine
+                </div>
+                <div class="data-item theme-text">
+                    <img src="assets\icons\birthday.svg" class="data-icon theme-icon" alt="Birthday">
+                    <span class="label-birthday theme-text" data-i18n="profile.birthdayLabel">Birthday:</span>30.01.2003
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка: биография -->
+        <div class="bio-card">
+            <div class="bio-title .gray-text">Biography</div>
+
+            <div class="bio-editable">
+                <p class="bio-text theme-text">Your biography will be here, but you don't have to fill it out.
+                    Everything is according to your choice — it's up to you to decide.,
+                    what your profile will look like.
+                    <img src="assets/icons/pencil.svg" alt="Edit" class="bio-edit-icon theme-icon" />
+                </p>
+
+                <div class="bio-edit-container">
+                    <textarea class="bio-input theme-text"></textarea>
+                    <img src="assets/icons/save.svg" alt="Save" class="bio-save-icon theme-icon" />
+                    <div class="bio-char-count theme-text">0/500</div>
+                </div>
+
+                <div class="bio-hint red-text">The biography should be no more than 500 characters long!</div>
+            </div>
+        </div>
+
+        <footer class="footer line">
+            <div class="footer-content">
+                <span class="footer-copyright">© 2025 Project of the ValeyevPrograms company.</span>
+                <a href="about.html#user-agreement" class="footer-link nav-user-agreement">User Agreement</a>
+            </div>
+            <div class="footer-social">
+                <span class="social-platforms">Social:</span>
+                <a href="https://vk.com/nikitavaleyev" target="_blank">
+                    <img src="assets/icons/social/vk.svg" alt="VK" class="theme-icon">
+                </a>
+                <a href="https://www.youtube.com/channel/@NikitaValeyev" target="_blank">
+                    <img src="assets/icons/social/youtube.svg" alt="YouTube" class="theme-icon">
+                </a>
+                <a href="https://t.me/nikitavaleyev_musician" target="_blank">
+                    <img src="assets/icons/social/telegram.svg" alt="Telegram" class="theme-icon">
+                </a>
+                <a href="https://instagram.com/nikitavaleyev" target="_blank">
+                    <img src="assets/icons/social/instagram.svg" alt="Instagram" class="theme-icon">
+                </a>
+            </div>
+        </footer>
+        <!-- Подключаем JS скрипты -->
+        <script src="js/menu.js"></script>
+        <script src="js/themeswitch.js"></script>
+        <script src="js/translate-language.js"></script>
+        <script src="js/captcha.js"></script>
+        <script src="js/player.js"></script>
+        <script src="js/menu_dropdown.js"></script>
+        <script src="js/download.js"></script>
+        <script src="js/pushnotify.js"></script>
+        <script src="js/profile.js"></script>
+</body>
+
+</html>

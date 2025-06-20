@@ -1,0 +1,54 @@
+{
+    "mainTitle": "ValeyevStudio — uusi askel tulevaisuuteen!",
+    "description": "ValeyevPrograms:in uudet innovatiiviset ohjelmat ovat harmoninen yhdistelmä huipputeknologiaa, <br> maksimaalista optimointia ja käyttömukavuutta. Jokainen sovellus on kehitetty korkeimpien standardien mukaisesti, <br> tarjoten käyttäjille intuitiivisen käyttöliittymän. Pyrimme varmistamaan, että ohjelmiemme toiminnallisuus <br> on maksimaalisesti mukautettu käyttäjien tarpeisiin samalla, kun varmistamme korkean suorituskyvyn ja resurssien säästämisen. <br> <br> ValeyevPrograms — ohjelmistojen tulevaisuus tänään.",
+    "subscribe-btn": "Tilaa",
+    "download-btn": "Lataa",
+    "team-heading": "Meidän tiimi",
+    "push-suggestions-title": "Onko parannusehdotuksia?",
+    "push-suggestions-text": "Kirjoita meille, otamme ehdotuksesi ja palautteesi huomioon parantaaksemme tai lisätäksemme uusia ominaisuuksia.",
+    "push-suggestions-button": "Ehdota",
+    "push-donation-title": "Hyväntekeväisyysrahasto",
+    "push-donation-text": "Niille, jotka haluavat tukea tekijää tehdystä työstä. Varat menevät projektin ekosysteemin kehittämiseen.",
+    "push-donation-button": "Tukea",
+    "nav": {
+        "home": "Etusivu",
+        "our-products": "Tuotteemme",
+        "about-us": "Meistä"
+    },
+    "footer": {
+        "copyright": "© 2025 ValeyevPrograms-projekti.",
+        "user-agreement": "Käyttöehdot"
+    },
+    "footer-social": {
+        "social-platforms": "Sosiaalinen media:"
+    },
+    "captcha-content": {
+        "captcha-title": "Vahvista, että et ole robotti",
+        "captcha-text-container": "En ole robotti",
+        "captcha-footer": "Uusi tarkistusteknologia 2.0"
+    },
+    "faq": {
+        "faq-title": "Usein kysytyt kysymykset",
+        "questions": {
+            "q1": {
+                "question": "Miksi me?",
+                "answer": "Olemme kehittäjätiimi, joka on kiinnostunut tarjoamaan tuotteen mahdollisimman monelle ihmiselle ympäri maailmaa, jotta kaikki voivat kokeilla tuotettamme. Kaikki tämä on täysin ilmaista!"
+            },
+            "q2": {
+                "question": "Miten aloitan ohjelman käytön?",
+                "answer": "Ladataaksesi ohjelmistomme, mene sivuston vastaavaan osioon ja klikkaa Lataa-painiketta.<br><br>Muista, että ladatessasi ohjelmamme hyväksyt käyttäjäsopimuksen ja yrityksemme Valeyev Studio politiikan."
+            },
+            "q3": {
+                "question": "Mikä on maksullisen tilauksen hinta?",
+                "answer": "Maksullisen tilauksen hinta on 0,99 Yhdysvaltain dollaria. Tilaus, aktivoinnin jälkeen, on voimassa 1 kalenterikuukauden ajan aktivoinnista.<br><br>Tilaus mahdollistaa häiritsevän bannerin poistamisen asetuksista ja pääsyn muihin ominaisuuksiin."
+            }
+        }
+    },
+    "tooltip": {
+        "music-volume": "Musiikin äänenvoimakkuus",
+        "select-language": "Valitse kieli",
+        "switch-themes": "Vaihda teema",
+        "purchase-subscription": "Tilaa",
+        "download-description": "Lataa uusin versio"
+    }
+}

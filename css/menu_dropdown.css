@@ -1,0 +1,151 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    z-index: 5;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.dropdown-menu-item {
+    position: absolute;
+    top: 85px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.95);
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 20px; /* Отступ между блоками */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    z-index: 10;
+}
+
+.dropdown-menu-item.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
+}
+
+.product-item {
+    width: 120px; /* Фиксированная ширина */
+    height: 160px; /* Фиксированная высота */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #f5f5f5; /* Легкий фон для видимости границ */
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-item img {
+    width: 100px; 
+    height: 100px;
+    object-fit: contain; /* Чтобы картинка не деформировалась */
+    border-radius: 8px;
+}
+
+.product-item p {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Стили для кнопки */
+.download-btn {
+    background: #7b2ff7; /* Фиолетовый цвет */
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -7px;
+    position: relative;
+    transition: all 0.4s ease-in-out;
+    overflow: hidden;
+}
+
+/* Скрываем иконку по умолчанию */
+.download-icon {
+    width: 11px; /* Размер иконки */
+    height: 11px;
+    display: none; /* Иконка скрыта по умолчанию */
+    transition: all 0.3s ease; /* Плавный переход */
+}
+
+/* Стили для текста */
+.button-text {
+    display: block; /* Показываем текст по умолчанию */
+}
+
+/* Анимация при наведении */
+.download-btn:hover {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    padding: 0;
+    color: transparent; /* Убираем текст */
+}
+
+/* Показываем иконку при наведении */
+.download-btn:hover .download-icon {
+    display: block;
+    z-index: 2;
+    width: 18px;  /* Увеличиваем размер иконки при наведении */
+    height: 18px; 
+}
+
+/* Показываем только иконку при наведении (скрываем текст) */
+.download-btn:hover .button-text {
+    display: none;
+}
+
+/* Полоса-анимация */
+.download-btn::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 4px solid white;
+    border-radius: 50%;
+    border-color: white transparent transparent transparent; /* Дуга */
+    animation: rotateAnimation 1s linear infinite;
+    opacity: 0;
+}
+
+/* Запускаем анимацию при наведении */
+.download-btn:hover::after {
+    opacity: 1;
+}
+
+/* Бесконечное вращение */
+@keyframes rotateAnimation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

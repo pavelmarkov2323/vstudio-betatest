@@ -1,0 +1,54 @@
+{
+    "mainTitle": "ValeyevStudio — ¡Un nuevo paso hacia el futuro!",
+    "description": "Los nuevos programas innovadores de ValeyevPrograms representan una combinación armónica de tecnologías avanzadas, <br> máxima optimización y facilidad de uso. Cada aplicación se desarrolla siguiendo los más altos estándares, <br> brindando a los usuarios una interfaz intuitiva. Nos esforzamos por asegurar que la funcionalidad de nuestros programas <br> se adapte lo más posible a las necesidades de los usuarios, a la vez que proporcionamos un alto rendimiento y ahorro de recursos. <br> <br> ValeyevPrograms — el futuro del software, hoy.",
+    "subscribe-btn": "Suscribirse",
+    "download-btn": "Descargar",
+    "team-heading": "Nuestro equipo",
+    "push-suggestions-title": "¿Tienes sugerencias de mejora?",
+    "push-suggestions-text": "Escríbenos, seguro que tomaremos en cuenta tus comentarios y sugerencias para mejorar o agregar nuevas funciones.",
+    "push-suggestions-button": "Sugerir",
+    "push-donation-title": "Fondo de donaciones",
+    "push-donation-text": "Para quienes deseen apoyar al autor por su trabajo realizado. Los fondos se destinarán al desarrollo del ecosistema del proyecto.",
+    "push-donation-button": "Apoyar",
+    "nav": {
+        "home": "Página principal",
+        "our-products": "Nuestros productos",
+        "about-us": "Sobre nosotros"
+    },
+    "footer": {
+        "copyright": "© 2025 Proyecto de ValeyevPrograms.",
+        "user-agreement": "Acuerdo de usuario"
+    },
+    "footer-social": {
+        "social-platforms": "Redes sociales:"
+    },
+    "captcha-content": {
+        "captcha-title": "Confirma que no eres un robot",
+        "captcha-text-container": "No soy un robot",
+        "captcha-footer": "Nueva tecnología de verificación 2.0"
+    },
+    "faq": {
+        "faq-title": "Preguntas frecuentes",
+        "questions": {
+            "q1": {
+                "question": "¿Por qué nosotros?",
+                "answer": "Somos un equipo de desarrolladores interesados en ofrecer el producto a la mayor cantidad de personas posible en el mundo para que todos puedan probar nuestro producto. ¡Todo esto es completamente gratis!"
+            },
+            "q2": {
+                "question": "¿Cómo empezar a usar el programa?",
+                "answer": "Para descargar nuestro software, ve a la sección correspondiente del sitio web y haz clic en el botón Descargar.<br><br>Recuerda que al descargar nuestro software, aceptas el acuerdo de usuario y la política de nuestra empresa, Valeyev Studio."
+            },
+            "q3": {
+                "question": "¿Cuál es el costo de la suscripción paga?",
+                "answer": "El costo de la suscripción paga es de 0,99 dólares estadounidenses. La suscripción, una vez activada, es válida durante 1 mes calendario a partir de la activación.<br><br>La suscripción permite eliminar el banner molesto en la configuración y acceder a otras funciones."
+            }
+        }
+    },
+    "tooltip": {
+        "music-volume": "Volumen de la música",
+        "select-language": "Seleccionar idioma",
+        "switch-themes": "Cambiar tema",
+        "purchase-subscription": "Suscribirse",
+        "download-description": "Descargar la última versión"
+    }
+}

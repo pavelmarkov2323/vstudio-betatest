@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValeyevStudio - About</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/menu_dropdown.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <!-- Подключение кастомных стилей -->
+    <link rel="stylesheet" href="css/custom_toggles.css">
+    <link rel="stylesheet" href="css/custom_dropdown.css">
+    <link rel="stylesheet" href="css/captcha.css">
+    <link rel="stylesheet" href="css/player.css">
+    <link rel="stylesheet" href="css/interactivehelp.css">
+    <link rel="stylesheet" href="css/pushnotify.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo theme-text">
+            <img src="assets/icons/logo.svg" alt="Logo" class="logo-img theme-icon">
+            ValeyevStudio
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="home.html" class="nav-home">Home</a></li>
+                <li><a href="products.html" class="nav-our-products">Our Products</a></li>
+                <li><a href="about.html" class="nav-about-us active">About us</a></li>
+            </ul>
+        </nav>
+        <div class="actions">
+
+            <!-- Music Playeer -->
+            <div class="player has-tooltip">
+                <span class="tooltip theme-text" data-tooltip="music-volume">Music volume</span>
+                <audio id="bg-music" loop>
+                    <source src="assets/sound/startup_01.mp3" type="audio/mp3">
+                </audio>
+                <div class="volume-control">
+                    <img id="volume-icon" src="assets/icons/player/volume.svg" alt="Volume" class="theme-icon">
+                    <input id="volume-slider" type="range" min="0" max="100" value="100">
+                </div>
+            </div>
+
+            <!-- Выпадающий список для выбора языка -->
+            <div class="language-switch has-tooltip">
+                <span class="tooltip theme-text" data-tooltip="select-language">Select language</span>
+                <!-- Флаг страны и код -->
+                <img src="assets/icons/flag/usa.png" alt="Flag" class="selected-flag">
+                <!-- Отображаем флаг по умолчанию -->
+                <span class="language-code">EN</span>
+                <img src="assets/icons/angle-small-down.svg" alt="Arrow" class="arrow theme-icon">
+                <!-- Выпадающий список -->
+                <div class="dropdown-menu">
+                    <div class="dropdown-item" data-lang="en-US">
+                        <img src="assets/icons/flag/usa.png" alt="USA Flag" class="flag">
+                        <span>EN</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="ru-RU">
+                        <img src="assets/icons/flag/russia.png" alt="Russia Flag" class="flag">
+                        <span>RU</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="uk-UA">
+                        <img src="assets/icons/flag/ukraine.png" alt="Ukraine Flag" class="flag">
+                        <span>UA</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="be-BY">
+                        <img src="assets/icons/flag/belarus.png" alt="Belarus Flag" class="flag">
+                        <span>BY</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="kk-KZ">
+                        <img src="assets/icons/flag/kazakhstan.png" alt="Kazakhstan Flag" class="flag">
+                        <span>KZ</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="kr-TR">
+                        <img src="assets/icons/flag/crimea_tatar.png" alt="Crimean Tatar Flag" class="flag">
+                        <span>TR</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="ka-GE">
+                        <img src="assets/icons/flag/georgia.png" alt="Geogria Flag" class="flag">
+                        <span>GE</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="pl-PL">
+                        <img src="assets/icons/flag/poland.png" alt="Poland Flag" class="flag">
+                        <span>PL</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="de-DE">
+                        <img src="assets/icons/flag/germany.png" alt="Germany Flag" class="flag">
+                        <span>DE</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="es-ES">
+                        <img src="assets/icons/flag/spanish.png" alt="Spanish Flag" class="flag">
+                        <span>ES</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="fr-FR">
+                        <img src="assets/icons/flag/france.png" alt="France Flag" class="flag">
+                        <span>FR</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="fi-FI">
+                        <img src="assets/icons/flag/finland.png" alt="Finland Flag" class="flag">
+                        <span>FI</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="ko-KR">
+                        <img src="assets/icons/flag/south_korea.png" alt="South Korea Flag" class="flag">
+                        <span>KR</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="zh-CN">
+                        <img src="assets/icons/flag/china.png" alt="China Flag" class="flag">
+                        <span>CN</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Тоггл переключатель темы -->
+            <div class="has-tooltip">
+                <label class="theme-toggle">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span class="tooltip theme-text" data-tooltip="switch-themes">Switch themes</span>
+            </div>
+            
+            <!-- Кнопка входа (Sign In) -->
+            <div class="has-tooltip">
+                <button class="signin-btn">
+                    <img class="signin-icon" src="assets/icons/user.svg" alt="User Icon">
+                    <span class="signin-text">Sign In</span>
+                </button>
+                <span class="tooltip theme-text" data-tooltip="sign-in">Sign in to your account</span>
+            </div>
+
+            <!-- Аватар с выпадающим меню -->
+            <div class="user-menu" style="display: none;">
+                <div class="user-avatar" id="avatarToggle">
+                    <img src="assets/images/avatar/user.png" alt="User Avatar" class="avatar-img theme-icon">
+                    <img src="assets/icons/angle-small-down.svg" alt="Dropdown Icon" class="dropdown-icon theme-icon">
+                </div>
+
+                <div class="dropdown-panel" id="userDropdown">
+                    <div class="dropdown-item" id="menuProfile">
+                        <img src="assets/icons/user.svg" class="item-icon theme-icon" alt="">
+                        <span class="menu-profile-text theme-text">My profile</span>
+                    </div>
+                    <div class="dropdown-item" id="menuSettings">
+                        <img src="assets/icons/settings.svg" class="item-icon theme-icon" alt="">
+                        <span class="menu-settings-text theme-text">Settings</span>
+                    </div>
+                    <div class="dropdown-item" id="menuSupport">
+                        <img src="assets/icons/help.svg" class="item-icon theme-icon" alt="">
+                        <span class="menu-support-text theme-text">Support</span>
+                    </div>
+                    <div class="dropdown-item" id="menuLogout">
+                        <img src="assets/icons/user-logout.svg" class="item-icon theme-icon" alt="">
+                        <span class="menu-logout-text theme-text">Logout</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Выпадающий список продуктов из наведении на кнопку Наши продукты -->
+    <div class="overlay"></div>
+    <div class="dropdown-menu-item" id="productsMenu">
+        <div class="product-item">
+            <img src="assets/images/PixelFPS.png" alt="Product 1">
+            <p class="theme-text">PixelFPS</p>
+            <div class="has-tooltip">
+                <button id="downloadBtn" class="download-btn">
+                    <span class="button-text">Download</span> <!-- Текст кнопки -->
+                    <img class="download-icon theme-icon" src="assets/icons/download.svg" alt="Download Icon" />
+                    <!-- Иконка -->
+                </button>
+                <span class="tooltip theme-text" data-tooltip="download-description">Download the latest version</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно проверки: Я не робот. -->
+    <div id="captchaModal" class="captcha-modal" style="display: none;">
+        <div class="captcha-content">
+            <!-- Иконка в центре -->
+            <img src="assets/icons/robot.png" alt="Icon" class="captcha-icon">
+            <!-- Заголовок -->
+            <p class="captcha-title theme-text">Confirm that you are not a robot</p>
+            <!-- Чекбокс с текстом -->
+            <label for="robotCheck" class="captcha-label">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="robotCheck" onclick="validateCaptcha()">
+                </div>
+                <div class="captcha-text-container theme-text">I'm not a robot</div>
+            </label>
+            <!-- Спиннер загрузки -->
+            <div class="loader-container" style="display: none;">
+                <span class="loader"></span>
+            </div>
+            <!-- Нижний текст -->
+            <p class="captcha-footer gray-text">New verification technology 2.0</p>
+        </div>
+    </div>
+
+    <!-- Push Уведомления -->
+    <div class="push-notify" id="pushNotify">
+        <div class="push-content" id="pushContent1">
+            <strong class="push-title-suggestions theme-text">Have improvement suggestions?</strong>
+            <p class="push-text-suggestions">Write to us, we will definitely consider your feedback and suggestions to
+                improve or add new features.</p>
+            <button id="emailButton" class="push-button push-btn-suggestions">Suggest</button>
+            <span class="push-close">&times;</span>
+        </div>
+        <div class="push-content2" id="pushContent2">
+            <strong class="push-title-donation theme-text">Charity Fund</strong>
+            <p class="push-text-donation">For those who want to support the author for the work done. The funds will go
+                to the development of the project ecosystem.</p>
+            <button id="donateButton" class="push-button push-btn-donation">Support</button>
+            <span class="push-close">&times;</span>
+        </div>
+    </div>
+
+    <!-- Заголовок "О компании" -->
+    <h1 class="aboutcompany-heading theme-text">About ValeyevStudio</h1>
+    <div class="aboutcompany-block two-column">
+        <div class="aboutcompany-image">
+            <img src="assets/icons/logo-chromo.png" alt="ValeyevStudio" />
+        </div>
+        <div class="aboutcompany-text theme-text">
+            <p>
+                ValeyevStudio is more than just a software development company — it's a vision of a smarter, more
+                efficient digital future.
+                <br><br>
+                We specialize in creating high-performance, user-friendly applications under the
+                <strong>ValeyevPrograms</strong> brand.
+                Every product we release is focused on simplicity, speed, and innovation — putting user experience above
+                all else.
+                <br><br>
+                Our team is driven by curiosity, creativity, and a constant desire to improve.
+                We don’t just build software — we shape the future of digital tools.
+            </p>
+        </div>
+    </div>
+
+    <!-- Блок наши создатели. -->
+    <div class="container">
+        <!-- Заголовок "Наша команда" -->
+        <h1 class="team-heading theme-text">Our team</h1>
+
+        <div class="about-block active">
+            <img src="assets/images/nikitavaleyev.png" alt="Photo">
+            <div class="name theme-text">Nikita Valeyev</div>
+            <div class="badge">Creator</div>
+            <div class="badge">Designer</div>
+        </div>
+
+        <div class="about-block">
+            <img src="assets/images/kristy_support.jpg" alt="Photo">
+            <div class="name theme-text">Kristy Support</div>
+            <div class="badge">Support</div>
+            <div class="badge">Tech support</div>
+        </div>
+
+        <!-- Панель управления -->
+        <div class="controls">
+            <div class="dot active" onclick="showBlock(0)"></div>
+            <div class="dot" onclick="showBlock(1)"></div>
+            <!-- Вторая, если нужно добавить третью и следующие указываем 2,3,4 -->
+        </div>
+    </div>
+
+    <!-- Соглашение пользователей и лицензия с политикой конфидициальностью -->
+    <div class="legal-section" id="user-agreement">
+        <h1 class="license-heading theme-text">User Agreement and Privacy Policy</h1>
+        <p class="legal-subheading">
+            This agreement regulates the use of the software developed by ValeyevStudio (hereinafter referred to as
+            "Nikita Valeyev"). By installing and using PixelFPS, PixelKey, and other ValeyevStudio products, you agree
+            to the terms of this agreement. </p>
+        <div class="legal-item">
+            <button class="legal-toggle theme-text" id="user-agreement-btn">
+                User agreement
+                <img class="arrow theme-icon" src="assets/icons/angle-small-down.svg" alt="arrow">
+            </button>
+            <div class="legal-content theme-text">
+                <div class="textlicense-data theme-text">
+                    <p class="effective-date"><strong>Effective date:</strong> 01.01.2026</p>
+                    <p class="last-updated"><strong>Last updated:</strong> 01.01.2026</p>
+                </div>
+
+                <p class="legal-intro">This agreement regulates the use of software developed by ValeyevStudio.</p>
+
+                <h4 class="section1-title">1. License to Use</h4>
+                <p class="section1-1">1.1. The user receives a limited, non-exclusive, non-transferable right to use the
+                    software.</p>
+                <p class="section1-2">1.2. The software is provided \"as is\" without any warranties.</p>
+                <hr class="separator"> <!-- Полоса -->
+
+                <h4 class="section2-title">2. Prohibited Actions</h4>
+                <p class="section2-1">2.1. The user is prohibited from:</p>
+                <ul class="section2-1-list">
+                    <li>Selling, distributing, or modifying the software without permission from ValeyevStudio.</li>
+                    <li>Publishing the software under another name.</li>
+                    <li>Hacking or altering protective mechanisms.</li>
+                </ul>
+                <p class="section2-2">2.2. When posted on third-party sites — only the original version with author
+                    attribution.</p>
+                <hr class="separator"> <!-- Полоса -->
+
+                <h4 class="section3-title">3. Updates and Support</h4>
+                <p class="section3-1">3.1. The developer may change functionality and release updates.</p>
+                <p class="section3-2">3.2. The developer is not responsible for failures.</p>
+                <hr class="separator"> <!-- Полоса -->
+
+                <h4 class="section4-title">4. Liability</h4>
+                <p class="section4-1">4.1. Use the software at your own risk.</p>
+                <hr class="separator"> <!-- Полоса -->
+
+                <h4 class="section5-title">5. Changes to Terms</h4>
+                <p class="section5-1">5.1. The agreement may be changed, the current version is on the official website.
+                </p>
+            </div>
+        </div>
+
+        <div class="legal-item">
+            <button class="legal-toggle theme-text" id="privacy-policy-btn">
+                Privacy policy
+                <img class="arrow theme-icon" src="assets/icons/angle-small-down.svg" alt="arrow">
+            </button>
+            <div class="legal-content theme-text">
+                <div class="textlicense-data theme-text">
+                    <p class="effective-date"><strong>Effective date:</strong> 01.01.2026</p>
+                    <p class="last-updated"><strong>Last updated:</strong> 01.01.2026</p>
+                </div>
+
+                <h4 class="privacy-title1">1. What data do we collect?</h4>
+                <ul class="privacy-data-list">
+                    <li>Account data: login, password, subscription status.</li>
+                    <li>Personal data: full name, date of birth, region, city.</li>
+                </ul>
+                <hr class="separator"> <!-- Полоса -->
+
+                <h4 class="privacy-title2">2. How is the data used?</h4>
+                <ul class="privacy-usage-list">
+                    <li>For authorization, personalization, and access to premium features.</li>
+                </ul>
+                <hr class="separator"> <!-- Полоса -->
+
+                <h4 class="privacy-title3">3. Data Protection</h4>
+                <p class="privacy-3-1">3.1. We use modern protection methods, including encryption.</p>
+                <p class="privacy-3-2">3.2. Access is only available to ValeyevStudio employees.</p>
+                <hr class="separator"> <!-- Полоса -->
+
+                <h4 class="privacy-title4">4. Sharing with third parties</h4>
+                <p class="privacy-4-1">4.1. Мы не передаём данные третьим лицам без вашего согласия.</p>
+                <hr class="separator"> <!-- Полоса -->
+
+                <h4 class="privacy-title5">5. Data deletion</h4>
+                <p class="privacy-5-1">Send a request for deletion to: <a
+                        href="mailto:valeyevstudio@gmail.com">valeyevstudio@gmail.com</a>.</p>
+                <hr class="separator"> <!-- Полоса -->
+
+                <h4 class="privacy-title6">6. Changes</h4>
+                <p class="privacy-6-1">6.1. We may change the policy and notify users about it.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer line">
+        <div class="footer-content">
+            <span class="footer-copyright">© 2025 Project of the ValeyevPrograms company.</span>
+            <a href="about.html#user-agreement" class="footer-link nav-user-agreement">User Agreement</a>
+        </div>
+        <div class="footer-social">
+            <span class="social-platforms">Social:</span>
+            <a href="https://vk.com/nikitavaleyev" target="_blank">
+                <img src="assets/icons/social/vk.svg" alt="VK" class="theme-icon">
+            </a>
+            <a href="https://www.youtube.com/channel/@NikitaValeyev" target="_blank">
+                <img src="assets/icons/social/youtube.svg" alt="YouTube" class="theme-icon">
+            </a>
+            <a href="https://t.me/nikitavaleyev_musician" target="_blank">
+                <img src="assets/icons/social/telegram.svg" alt="Telegram" class="theme-icon">
+            </a>
+            <a href="https://instagram.com/nikitavaleyev" target="_blank">
+                <img src="assets/icons/social/instagram.svg" alt="Instagram" class="theme-icon">
+            </a>
+        </div>
+    </footer>
+    <!-- Подключаем JS скрипты -->
+    <script src="js/menu.js"></script>
+    <script src="js/themeswitch.js"></script>
+    <script src="js/translate-language.js"></script>
+    <script src="js/captcha.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/menu_dropdown.js"></script>
+    <script src="js/download.js"></script>
+    <script src="js/pushnotify.js"></script>
+
+    <!-- Контроллеры -->
+    <script src="js/about_controller.js"></script>
+    <script src="js/license_controller.js"></script>
+</body>
+
+</html>

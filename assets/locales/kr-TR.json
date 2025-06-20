@@ -1,0 +1,56 @@
+{
+    "mainTitle": "ValeyevStudio — yaŋı adım geleceğe!",
+    "description": "ValeyevPrograms'ın yaŋı inovatif proqramları ileri teknoloji, <br> en yüksek optimizasyon ve kullanışlılık ile mükemmel bir uyum sağlıyor. Her bir uygulama en yüksek standartlara göre tasarlanmış, <br> kullanıcılara sezgisel bir arayüz sunuyor. Programlarımızın fonksiyonlarının <br> kullanıcı ihtiyaçlarına mümkün olduğunca uyarlanmasını sağlarken, yüksek performans ve kaynak tasarrufu sunmaya çalışıyoruz. <br> <br> ValeyevPrograms — bugünün yazılım geleceği.",
+    "subscribe-btn": "Abone Ol",
+    "download-btn": "İndir",
+    "team-heading": "Ekibimiz",
+
+    "push-suggestions-title": "Geliştirme önerileriniz var mı?",
+    "push-suggestions-text": "Bize yazın, geri bildirimlerinizi ve isteklerinizi mutlaka dikkate alacağız, yeni özellikler geliştirmek veya eklemek için çalışacağız.",
+    "push-suggestions-button": "Öner",
+
+    "push-donation-title": "Bağış Fonu",
+    "push-donation-text": "Yapılan işe destek olmak isteyenler için. Bağışlar proje ekosisteminin gelişmesine gidecek.",
+    "push-donation-button": "Destekle",
+    "nav": {
+        "home": "Ana Sayfa",
+        "our-products": "Ürünlerimiz",
+        "about-us": "Hakkımızda"
+    },
+    "footer": {
+        "copyright": "© 2025 ValeyevPrograms projesi.",
+        "user-agreement": "Kullanıcı Sözleşmesi"
+    },
+    "footer-social": {
+        "social-platforms": "Sosyal Medya:"
+    },
+    "captcha-content": {
+        "captcha-title": "Robot olmadığınızı doğrulayın",
+        "captcha-text-container": "Ben robot değilim",
+        "captcha-footer": "Yeni Doğrulama Teknolojisi 2.0"
+    },
+    "faq": {
+        "faq-title": "Sıkça Sorulan Sorular",
+        "questions": {
+            "q1": {
+                "question": "Neden biz?",
+                "answer": "Biz — ürünümüzü mümkün olduğunca çok kişiye sunmayı ve herkesin bu ürünü ücretsiz denemesi için çalışıyoruz."
+            },
+            "q2": {
+                "question": "Programı nasıl kullanmaya başlarım?",
+                "answer": "Özel yazılımımızı indirmek için siteyi ilgili bölümüne gidin ve Download butonuna tıklayın.<br><br>Yazılımımızı indirerek, Valeyev Studio şirketinin kullanıcı sözleşmesini ve politikasını kabul ettiğinizi unutmayın."
+            },
+            "q3": {
+                "question": "Ücretli abonelik maliyeti nedir?",
+                "answer": "Ücretli aboneliğin ücreti 0,99 Amerikan dolarıdır. Abonelik, etkinleştirildikten sonra 1 takvim ayı süresince geçerlidir.<br><br>Abonelik, ayarları değiştirmek için rahatsız edici bannerı kaldırmanıza ve diğer özelliklere erişmenizi sağlar."
+            }
+        }
+    },
+    "tooltip": {
+        "music-volume": "Müzik ses seviyesi",
+        "select-language": "Dil seçin",
+        "switch-themes": "Tema değiştirmek",
+        "purchase-subscription": "Abone Ol",
+        "download-description": "Son sürümü indir"
+    }
+}
