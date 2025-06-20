@@ -222,8 +222,9 @@
     </div>
 
     <!-- Заголовок "Добро пожаловать, пользователь (username)" -->
-    <h1 class="profile-heading theme-text">Welcome, <span class="value-username-heading"></span></h1>
-
+    <h1 class="profile-heading theme-text">
+    Welcome, <span class="user-fullname theme-text"></span>
+    </h1>
     <div class="profile-container">
         <!-- Правая колонка блок с аватаркой -->
         <div class="left-wrapper">
@@ -250,85 +251,85 @@
 
                 <div class="divider"></div>
 
+                <!-- Отображение ID -->
                 <div class="info-row">
-                    <img src="assets/icons/id-badge.svg" class="info-icon theme-icon" alt="ID">
-                    <span class="label-id theme-text">ID:</span>
-                    <span class="value-id theme-text"></span>
+                <img src="assets/icons/id-badge.svg" class="info-icon theme-icon" alt="ID">
+                <span class="label-id theme-text">ID: <span class="user-id"></span></span>
                 </div>
 
+                <!-- Отображение Username -->
                 <div class="info-row">
-                    <img src="assets/icons/user.svg" class="info-icon theme-icon" alt="Username">
-                    <span class="label-username theme-text" data-i18n="profile.usernameLabel2">Username:</span>
-                    <span class="value-username theme-text"></span>
-                </div>
-
-                <!-- Блок с данными пользователя -->
-                <div class="data-card">
-                    <div class="data-title gray-text">You details</div>
-                    <div class="data-item theme-text">
-                        <img src="assets/icons/country.svg" class="data-icon theme-icon" alt="Country">
-                        <span class="label-country theme-text" data-i18n="profile.countryLabel">Country:</span>страна
-                    </div>
-                    <div class="data-item theme-text">
-                        <img src="assets\icons\birthday.svg" class="data-icon theme-icon" alt="Birthday">
-                        <span class="label-birthday theme-text" data-i18n="profile.birthdayLabel">Birthday:</span>дата
-                        рождения
-                    </div>
+                <img src="assets/icons/user.svg" class="info-icon theme-icon" alt="Username">
+                <span class="label-username theme-text">Username: <span class="user-username"></span></span>
                 </div>
             </div>
 
-            <!-- Правая колонка: биография -->
-            <div class="bio-card">
-                <div class="bio-title gray-text">Biography</div>
-
-                <div class="bio-editable">
-                    <p class="bio-text theme-text">Your biography will be here, but you don't have to fill it out.
-                        Everything is according to your choice — it's up to you to decide.,
-                        what your profile will look like.
-                        <img src="assets/icons/pencil.svg" alt="Edit" class="bio-edit-icon theme-icon" />
-                    </p>
-
-                    <div class="bio-edit-container">
-                        <textarea class="bio-input theme-text"></textarea>
-                        <img src="assets/icons/save.svg" alt="Save" class="bio-save-icon theme-icon" />
-                        <div class="bio-char-count theme-text">0/500</div>
-                    </div>
-
-                    <div class="bio-hint red-text">The biography should be no more than 500 characters long!</div>
+            <!-- Блок с данными пользователя -->
+            <div class="data-card">
+                <div class="data-title gray-text">You details</div>
+                <div class="data-item theme-text">
+                    <img src="assets/icons/country.svg" class="data-icon theme-icon" alt="Country">
+                    <span class="label-country theme-text" data-i18n="profile.countryLabel">Country:</span>страна
+                </div>
+                <div class="data-item theme-text">
+                    <img src="assets\icons\birthday.svg" class="data-icon theme-icon" alt="Birthday">
+                    <span class="label-birthday theme-text" data-i18n="profile.birthdayLabel">Birthday:</span>дата рождения
                 </div>
             </div>
+        </div>
 
-            <footer class="footer line">
-                <div class="footer-content">
-                    <span class="footer-copyright">© 2025 Project of the ValeyevPrograms company.</span>
-                    <a href="about.html#user-agreement" class="footer-link nav-user-agreement">User Agreement</a>
+        <!-- Правая колонка: биография -->
+        <div class="bio-card">
+            <div class="bio-title gray-text">Biography</div>
+
+            <div class="bio-editable">
+                <p class="bio-text theme-text">Your biography will be here, but you don't have to fill it out.
+                    Everything is according to your choice — it's up to you to decide.,
+                    what your profile will look like.
+                    <img src="assets/icons/pencil.svg" alt="Edit" class="bio-edit-icon theme-icon" />
+                </p>
+
+                <div class="bio-edit-container">
+                    <textarea class="bio-input theme-text"></textarea>
+                    <img src="assets/icons/save.svg" alt="Save" class="bio-save-icon theme-icon" />
+                    <div class="bio-char-count theme-text">0/500</div>
                 </div>
-                <div class="footer-social">
-                    <span class="social-platforms">Social:</span>
-                    <a href="https://vk.com/nikitavaleyev" target="_blank">
-                        <img src="assets/icons/social/vk.svg" alt="VK" class="theme-icon">
-                    </a>
-                    <a href="https://www.youtube.com/channel/@NikitaValeyev" target="_blank">
-                        <img src="assets/icons/social/youtube.svg" alt="YouTube" class="theme-icon">
-                    </a>
-                    <a href="https://t.me/nikitavaleyev_musician" target="_blank">
-                        <img src="assets/icons/social/telegram.svg" alt="Telegram" class="theme-icon">
-                    </a>
-                    <a href="https://instagram.com/nikitavaleyev" target="_blank">
-                        <img src="assets/icons/social/instagram.svg" alt="Instagram" class="theme-icon">
-                    </a>
-                </div>
-            </footer>
-            <!-- Подключаем JS скрипты -->
-            <script src="/js/menu.js"></script>
-            <script src="/js/themeswitch.js"></script>
-            <script src="/js/translate-language.js"></script>
-            <script src="/js/captcha.js"></script>
-            <script src="/js/player.js"></script>
-            <script src="/js/menu_dropdown.js"></script>
-            <script src="/js/download.js"></script>
-            <script src="/js/pushnotify.js"></script>
-            <script src="/js/profile.js"></script>
+
+                <div class="bio-hint red-text">The biography should be no more than 500 characters long!</div>
+            </div>
+        </div>
+
+        <footer class="footer line">
+            <div class="footer-content">
+                <span class="footer-copyright">© 2025 Project of the ValeyevPrograms company.</span>
+                <a href="about.html#user-agreement" class="footer-link nav-user-agreement">User Agreement</a>
+            </div>
+            <div class="footer-social">
+                <span class="social-platforms">Social:</span>
+                <a href="https://vk.com/nikitavaleyev" target="_blank">
+                    <img src="assets/icons/social/vk.svg" alt="VK" class="theme-icon">
+                </a>
+                <a href="https://www.youtube.com/channel/@NikitaValeyev" target="_blank">
+                    <img src="assets/icons/social/youtube.svg" alt="YouTube" class="theme-icon">
+                </a>
+                <a href="https://t.me/nikitavaleyev_musician" target="_blank">
+                    <img src="assets/icons/social/telegram.svg" alt="Telegram" class="theme-icon">
+                </a>
+                <a href="https://instagram.com/nikitavaleyev" target="_blank">
+                    <img src="assets/icons/social/instagram.svg" alt="Instagram" class="theme-icon">
+                </a>
+            </div>
+        </footer>
+        <!-- Подключаем JS скрипты -->
+        <script src="/js/menu.js"></script>
+        <script src="/js/themeswitch.js"></script>
+        <script src="/js/translate-language.js"></script>
+        <script src="/js/captcha.js"></script>
+        <script src="/js/player.js"></script>
+        <script src="/js/menu_dropdown.js"></script>
+        <script src="/js/download.js"></script>
+        <script src="/js/pushnotify.js"></script>
+        <script src="/js/profile.js"></script>
 </body>
 
 </html>

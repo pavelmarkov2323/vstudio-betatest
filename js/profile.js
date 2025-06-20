@@ -77,24 +77,23 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsDataURL(file);
   });
 
-  document.addEventListener('DOMContentLoaded', async () => {
-    const pathParts = window.location.pathname.split('/');
-    const username = pathParts[pathParts.length - 1];
+  // Получаем username из URL
+  const urlParts = window.location.pathname.split('/');
+  const username = urlParts[urlParts.length - 1];
 
-    try {
-      const res = await fetch(`/api/profile/${username}`);
-      if (!res.ok) throw new Error('Пользователь не найден');
-      const user = await res.json();
-
-      // Обновление DOM
-      document.querySelector('.value-username-heading').textContent = user.username;
-      document.querySelector('.user-fullname').textContent = `${user.firstName} ${user.lastName}`;
-      document.querySelector('.value-id').textContent = user.userId;
-      document.querySelector('.value-username').textContent = user.username;
-
-    } catch (err) {
-      console.error(err);
-      document.body.innerHTML = '<h2>User not found</h2>';
-    }
-  });
+  fetch(`/api/profile/${username}`)
+    .then(response => response.json())
+    .then(user => {
+      if (user.username) {
+        document.querySelector('.user-fullname').textContent = `${user.firstName} ${user.lastName}`;
+        document.querySelector('.user-id').textContent = user.userId;
+        document.querySelector('.user-username').textContent = user.username;
+      } else {
+        document.body.innerHTML = '<p>Пользователь не найден</p>';
+      }
+    })
+    .catch(error => {
+      console.error('Ошибка при загрузке профиля:', error);
+      document.body.innerHTML = '<p>Ошибка загрузки данных профиля</p>';
+    });
 });
