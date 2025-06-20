@@ -4,10 +4,23 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const path = require('path');
-
 const app = express();
+
 app.use(express.json());
 app.use(cors());
+
+// Сессионная система с шифрованием
+const session = require('express-session');
+
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'secret_key',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24, // 1 день
+    httpOnly: true,
+  }
+}));
 
 // Раздача статических файлов (html, css, js) из корня проекта
 app.use(express.static(path.join(__dirname, '..')));
@@ -21,7 +34,6 @@ app.get('/', (req, res) => {
 app.get('/profile/:username', (req, res) => {
   res.sendFile(path.join(__dirname, '../profile.html'));
 });
-
 
 // Подключение к MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -71,7 +83,7 @@ userSchema.pre('save', async function(next) {
 
 const User = mongoose.model('User', userSchema);
 
-// 📥 Регистрация нового пользователя
+// Регистрация нового пользователя
 app.post('/api/register', async (req, res) => {
   const { firstName, lastName, username, email, password } = req.body;
 
@@ -107,6 +119,7 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
+
 // POST /api/login — авторизация
 app.post('/api/login', async (req, res) => {
   const { usernameOrEmail, password } = req.body;
@@ -140,16 +153,68 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+
 // API для получения данных пользователя по username
-app.get('/api/profile/:username', async (req, res) => {
+app.post('/api/login', async (req, res) => {
+  const { usernameOrEmail, password } = req.body;
+
+  if (!usernameOrEmail || !password) {
+    return res.status(400).json({ message: 'Заполните все поля' });
+  }
+
   try {
-    const user = await User.findOne({ username: req.params.username }).select('-password -__v');
-    if (!user) return res.status(404).json({ message: 'Пользователь не найден' });
-    res.json(user);
+    const user = await User.findOne({
+      $or: [{ username: usernameOrEmail }, { email: usernameOrEmail }]
+    });
+
+    if (!user) {
+      return res.status(401).json({ message: 'Пользователь не найден' });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: 'Неверный пароль' });
+    }
+
+    // Сохраняем данные пользователя в сессии
+    req.session.userId = user.userId;
+    req.session.username = user.username;
+
+    res.json({ message: 'Успешный вход', userId: user.userId, username: user.username });
+
   } catch (err) {
-    res.status(500).json({ message: 'Ошибка сервера' });
+    console.error('Ошибка входа:', err);
+    res.status(500).json({ message: 'Внутренняя ошибка сервера' });
   }
 });
+
+
+// API для получения текущего пользователя по сессии
+app.get('/api/current-user', (req, res) => {
+  if (!req.session.userId) {
+    return res.status(401).json({ message: 'Не авторизован' });
+  }
+
+  User.findOne({ userId: req.session.userId }).select('-password -__v')
+    .then(user => {
+      if (!user) return res.status(404).json({ message: 'Пользователь не найден' });
+      res.json(user);
+    })
+    .catch(() => res.status(500).json({ message: 'Ошибка сервера' }));
+});
+
+
+// Выход из аккаунта
+app.post('/api/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      return res.status(500).json({ message: 'Ошибка выхода' });
+    }
+    res.clearCookie('connect.sid'); // Очистка cookie сессии
+    res.json({ message: 'Выход успешен' });
+  });
+});
+
 
 // Запуск сервера на порту из .env или 3000 по умолчанию
 const PORT = process.env.PORT || 3000;

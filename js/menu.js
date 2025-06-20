@@ -45,34 +45,34 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Логика показа кнопок на всех страницах
-    const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-    const signinBtn = document.querySelector('.signin-btn');
-    const userMenu = document.querySelector('.user-menu');
-
-    if (loggedUser) {
-        // Пользователь залогинен — показываем меню, скрываем кнопку входа
+    fetch('/api/current-user')
+    .then(res => {
+        if (!res.ok) throw new Error('Не авторизован');
+        return res.json();
+    })
+    .then(user => {
+        // Показываем меню для залогиненного
         if (signinBtn) signinBtn.style.display = 'none';
         if (userMenu) userMenu.style.display = 'block';
 
-        // Обработчик клика по "My Profile"
         const goToProfile = document.getElementById('menuProfile');
         if (goToProfile) {
-            goToProfile.addEventListener('click', () => {
-                window.location.href = `/profile/${loggedUser.username}`;
-            });
+        goToProfile.addEventListener('click', () => {
+            window.location.href = `/profile/${user.username}`;
+        });
         }
 
-        // Обработчик клика по "Logout"
         const logoutBtn = document.getElementById('menuLogout');
         if (logoutBtn) {
-            logoutBtn.addEventListener('click', () => {
-                localStorage.removeItem('loggedUser'); // Удаляем данные из localStorage
-                window.location.href = '/index.html';  // Редирект на главную
-            });
+        logoutBtn.addEventListener('click', async () => {
+            await fetch('/api/logout', { method: 'POST' });
+            window.location.href = '/index.html';
+        });
         }
-    } else {
-        // Пользователь не залогинен — показываем кнопку входа, скрываем меню
-        if (signinBtn) signinBtn.style.display = 'inline-block'; // или 'block'
+    })
+    .catch(() => {
+        // Пользователь не залогинен
+        if (signinBtn) signinBtn.style.display = 'inline-block';
         if (userMenu) userMenu.style.display = 'none';
-    }
+    });
 });

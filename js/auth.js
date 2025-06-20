@@ -73,11 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (response.ok) {
         alert('Вход успешен!');
-        // Сохраняем username в localStorage для контроля авторизации
-        localStorage.setItem('loggedUser', JSON.stringify({
-          username: result.username,
-          userId: result.userId
-        }));
         window.location.href = `/profile/${result.username}`;
       } else {
         alert(result.message || 'Ошибка входа');
