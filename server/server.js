@@ -101,6 +101,39 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
+// POST /api/login — авторизация
+app.post('/api/login', async (req, res) => {
+  const { usernameOrEmail, password } = req.body;
+
+  if (!usernameOrEmail || !password) {
+    return res.status(400).json({ message: 'Заполните все поля' });
+  }
+
+  try {
+    // Ищем пользователя по username или email
+    const user = await User.findOne({
+      $or: [{ username: usernameOrEmail }, { email: usernameOrEmail }]
+    });
+
+    if (!user) {
+      return res.status(401).json({ message: 'Пользователь не найден' });
+    }
+
+    // Проверяем пароль
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: 'Неверный пароль' });
+    }
+
+    // Успешный вход — возвращаем ответ (позже здесь можно добавить JWT)
+    res.json({ message: 'Успешный вход', userId: user.userId, username: user.username });
+
+  } catch (err) {
+    console.error('Ошибка входа:', err);
+    res.status(500).json({ message: 'Внутренняя ошибка сервера' });
+  }
+});
+
 // Запуск сервера на порту из .env или 3000 по умолчанию
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Сервер запущен на порту: ${PORT}`));
