@@ -42,4 +42,37 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+    // Логика показа кнопок на всех страницах
+    document.addEventListener('DOMContentLoaded', () => {
+    const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+    const signinBtn = document.querySelector('.signin-btn');
+    const userMenu = document.querySelector('.user-menu');
+
+    if (loggedUser) {
+      // Пользователь залогинен — показываем меню, скрываем кнопку входа
+      if (signinBtn) signinBtn.style.display = 'none';
+      if (userMenu) userMenu.style.display = 'block';
+
+      // Обработчик клика по "My Profile"
+      const goToProfile = document.getElementById('menuProfile');
+      if (goToProfile) {
+        goToProfile.addEventListener('click', () => {
+          window.location.href = `/profile/${loggedUser.username}`;
+        });
+      }
+
+      // Обработчик клика по "Logout"
+      const logoutBtn = document.getElementById('menuLogout');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          localStorage.removeItem('loggedUser'); // Удаляем данные из localStorage
+          window.location.href = '/index.html';  // Редирект на главную
+        });
+      }
+    } else {
+      // Пользователь не залогинен — показываем кнопку входа, скрываем меню
+      if (signinBtn) signinBtn.style.display = 'inline-block'; // или 'block' — как надо
+      if (userMenu) userMenu.style.display = 'none';
+    }
+  });
 });
