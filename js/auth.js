@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Элементы форм
   const loginContainer = document.querySelector('.login-container');
   const registrationContainer = document.querySelector('.registration-container');
-  
+
   // Для частиц (фича)
   const gooey = document.getElementById('gooey');
   const particleContainer = document.getElementById('particle-container');
@@ -55,43 +55,34 @@ document.addEventListener('DOMContentLoaded', () => {
     backButton.addEventListener('click', showLogin);
   }
 
-  // --- Логика проверки пароля в регистрации ---
-  const passwordInput = registrationContainer.querySelector('input[type="password"]');
-  const strengthBar = registrationContainer.querySelector('.strength-bar');
-  const strengthText = registrationContainer.querySelector('.strength-text');
-  const passwordError = registrationContainer.querySelector('.password-error');
+  document.querySelector('#loginForm').addEventListener('submit', async e => {
+    e.preventDefault();
 
-  const specialChars = /[!"#$%'()*]/;
+    const usernameOrEmail = document.querySelector('input[data-placeholder="login-username"]').value.trim();
+    const password = document.querySelector('input[data-placeholder="login-password"]').value.trim();
 
-  if (passwordInput && strengthBar && strengthText && passwordError) {
-    passwordInput.addEventListener('input', () => {
-      const val = passwordInput.value.trim();
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ usernameOrEmail, password })
+      });
 
-      if (val.length === 0) {
-        strengthBar.style.width = '0%';
-        strengthBar.style.backgroundColor = 'red';
-        strengthText.textContent = 'Введите пароль';
-        passwordError.style.display = 'none';
-      } else if (val.length < 6) {
-        strengthBar.style.width = '33%';
-        strengthBar.style.backgroundColor = 'red';
-        strengthText.textContent = 'Слишком короткий';
-        passwordError.style.display = 'block';
-        passwordError.textContent = window.resetPasswordTranslations.tooShort;
-      } else if (!specialChars.test(val)) {
-        strengthBar.style.width = '66%';
-        strengthBar.style.backgroundColor = 'orange';
-        strengthText.textContent = 'Средний пароль';
-        passwordError.style.display = 'block';
-        passwordError.textContent = window.resetPasswordTranslations.noSpecialChar;
+      const result = await response.json();
+
+      if (response.ok) {
+        alert('Вход успешен!');
+        // Здесь можно сохранить токен или просто перейти на страницу профиля
+        window.location.href = `/profile/${result.username}`;
       } else {
-        strengthBar.style.width = '100%';
-        strengthBar.style.backgroundColor = 'green';
-        strengthText.textContent = 'Надёжный пароль';
-        passwordError.style.display = 'none';
+        alert(result.message || 'Ошибка входа');
       }
-    });
-  }
+    } catch (error) {
+      console.error('Ошибка соединения:', error);
+      alert('Ошибка соединения с сервером');
+    }
+  });
+
 
   // Обработчик движения мыши (частицы и gooey)
   document.addEventListener('mousemove', (e) => {

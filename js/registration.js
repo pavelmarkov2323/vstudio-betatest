@@ -63,7 +63,7 @@ document.querySelector('.registration-form').addEventListener('submit', async (e
 
     if (response.ok) {
       alert('Регистрация прошла успешно!');
-      window.location.href = `/profile/${username}`;
+      window.location.href = `/auth.html`;
     } else {
       alert(result.message || 'Ошибка при регистрации');
     }
