@@ -3,17 +3,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-const path = require('path');
-
-// Раздача всех статических файлов из корня проекта (включая .html, .css, .js)
+// Раздача статических файлов (html, css, js) из корня проекта
 app.use(express.static(path.join(__dirname, '..')));
 
-// Явная обработка корневого запроса
+// Обработка корневого запроса — отдаёт index.html
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
@@ -23,11 +22,19 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB подключен'))
   .catch(err => {
     console.error('Ошибка подключения к MongoDB:', err);
-    process.exit(1); // Завершаем процесс, если база не подключилась
+    process.exit(1); // Выходим, если подключение не удалось
   });
 
-// Схема пользователя
+// Схема-счётчик для генерации userId
+const counterSchema = new mongoose.Schema({
+  _id: String, // Название счётчика, например "userId"
+  seq: { type: Number, default: 0 } // Текущая последовательность
+});
+const Counter = mongoose.model('Counter', counterSchema);
+
+// Схема пользователя с дополнительным полем userId
 const userSchema = new mongoose.Schema({
+  userId: { type: Number, unique: true }, // Наш числовой ID пользователя
   firstName: String,
   lastName: String,
   username: { type: String, unique: true },
@@ -36,9 +43,29 @@ const userSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
+// Перед сохранением нового пользователя увеличиваем счётчик userId
+userSchema.pre('save', async function(next) {
+  if (this.isNew) { // Только для новых документов
+    try {
+      // Находим и увеличиваем счётчик в коллекции Counter
+      const counter = await Counter.findByIdAndUpdate(
+        { _id: 'userId' },
+        { $inc: { seq: 1 } },
+        { new: true, upsert: true } // upsert создаёт запись, если её нет
+      );
+      this.userId = counter.seq; // Присваиваем userId из счётчика
+      next();
+    } catch (err) {
+      next(err); // Передаём ошибку в следующий middleware
+    }
+  } else {
+    next();
+  }
+});
+
 const User = mongoose.model('User', userSchema);
 
-// 📥 POST /api/register
+// 📥 Регистрация нового пользователя
 app.post('/api/register', async (req, res) => {
   const { firstName, lastName, username, email, password } = req.body;
 
@@ -47,13 +74,16 @@ app.post('/api/register', async (req, res) => {
   }
 
   try {
+    // Проверяем, существует ли уже пользователь с таким username или email
     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
     if (existingUser) {
       return res.status(409).json({ message: 'Username или Email уже используется' });
     }
 
+    // Хэшируем пароль для безопасности
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Создаём и сохраняем пользователя в базе
     const newUser = new User({
       firstName,
       lastName,
@@ -63,7 +93,7 @@ app.post('/api/register', async (req, res) => {
     });
 
     await newUser.save();
-    res.status(201).json({ message: 'Пользователь создан' });
+    res.status(201).json({ message: 'Пользователь создан', userId: newUser.userId });
 
   } catch (err) {
     console.error('Ошибка регистрации:', err);
@@ -71,6 +101,6 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
-// Старт сервера
+// Запуск сервера на порту из .env или 3000 по умолчанию
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Сервер запущен на порту: ${PORT}`));
