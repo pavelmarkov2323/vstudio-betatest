@@ -78,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener('DOMContentLoaded', async () => {
-    // Извлечём username из URL
     const pathParts = window.location.pathname.split('/');
     const username = pathParts[pathParts.length - 1];
 
@@ -87,15 +86,14 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!res.ok) throw new Error('Пользователь не найден');
       const user = await res.json();
 
-      // Вставляем данные в элементы страницы
-      document.querySelector('.profile-heading').textContent = `Welcome, ${user.username}`;
+      // Обновление DOM
+      document.querySelector('.value-username-heading').textContent = user.username;
       document.querySelector('.user-fullname').textContent = `${user.firstName} ${user.lastName}`;
-      document.querySelector('.label-id').textContent = `ID: ${user.userId}`;
-      document.querySelector('.label-username').textContent = `Username: ${user.username}`;
+      document.querySelector('.value-id').textContent = user.userId;
+      document.querySelector('.value-username').textContent = user.username;
 
     } catch (err) {
       console.error(err);
-      // Можно показать сообщение или редиректить
       document.body.innerHTML = '<h2>User not found</h2>';
     }
   });
