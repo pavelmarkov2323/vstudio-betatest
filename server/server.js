@@ -17,6 +17,12 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
 
+// Обработка профиля по username — отдаёт профильный HTML файл
+app.get('/profile/:username', (req, res) => {
+  res.sendFile(path.join(__dirname, '../profile.html'));
+});
+
+
 // Подключение к MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB подключен'))
