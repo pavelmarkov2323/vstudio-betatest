@@ -9,16 +9,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",
-    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "mongodb": "^6.17.0",
-    "mongoose": "^8.16.0",
-    "mysql2": "^3.14.1"
+    "mongoose": "^8.16.0"
   },
   "repository": {
     "type": "git",
@@ -27,5 +24,7 @@
   "bugs": {
     "url": "https://github.com/pavelmarkov2323/vstudio-betatest/issues"
   },
-  "homepage": "https://github.com/pavelmarkov2323/vstudio-betatest#readme"
+  "homepage": "https://github.com/pavelmarkov2323/vstudio-betatest#readme",
+  "devDependencies": {},
+  "description": ""
 }
