@@ -54,41 +54,35 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Функция статуса пользователя (user status)
-  function getStatusData(status) {
-    switch (status) {
-      case 1:
-        return {
-          icon: '/assets/status/online.png',
-          title: 'Онлайн',
-          text: 'Пользователь сейчас онлайн'
-        };
-      case 2:
-        return {
-          icon: '/assets/status/away.png',
-          title: 'Отошел',
-          text: 'Пользователь отошел'
-        };
-      case 3:
-        return {
-          icon: '/assets/status/busy.png',
-          title: 'Занят',
-          text: 'Пользователь занят и не хочет отвлекаться'
-        };
-      case 4:
-        return {
-          icon: '/assets/status/offline.png',
-          title: 'Оффлайн',
-          text: 'Пользователь сейчас не в сети'
-        };
-      case 5:
-        return {
-          icon: '/assets/status/do-not-disturb.png',
-          title: 'Не беспокоить',
-          text: 'Пожалуйста, не беспокоить пользователя'
-        };
-      default:
-        return null;
-    }
+  function getStatusData(status, username) {
+    const statusData = {
+      1: {
+        icon: '/assets/icons/status/verified.gif',
+        title: 'Верифицированная страница',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации</a>.`
+      },
+      2: {
+        icon: '/assets/icons/status/sponsor.png',
+        title: 'Страница спонсора',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">спонсорстве</a>.`
+      },
+      3: {
+        icon: '/assets/icons/status/partner.png',
+        title: 'Страница партнёра',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">партнёрке</a>.`
+      },
+      4: {
+        icon: '/assets/icons/status/moderator.png',
+        title: 'Модератор подтверждён',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">модераторстве</a>.`
+      },
+      5: {
+        icon: '/assets/icons/status/admin.png',
+        title: 'Администратор верифицирован',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации администраторов</a>.`
+      }
+    };
+    return statusData[status] || null;
   }
 
   // Переменная для текущего пользователя (авторизованного)
