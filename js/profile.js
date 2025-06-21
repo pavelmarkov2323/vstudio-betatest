@@ -109,6 +109,14 @@ document.addEventListener("DOMContentLoaded", () => {
           document.querySelector('.user-id').textContent = user.userId;
           document.querySelector('.user-username-inline').textContent = user.username;
 
+          // Проверка на приветствие (Welcome, username)
+          const welcomeHeading = document.getElementById('welcomeHeading');
+          if (currentUser && currentUser.username === user.username) {
+            welcomeHeading.style.display = 'block';
+          } else {
+            welcomeHeading.style.display = 'none';
+          }
+
           // Аватар
           const avatarImg = document.querySelector('.profile-avatar');
           avatarImg.src = user.avatar || '/assets/images/avatar/default.png';
