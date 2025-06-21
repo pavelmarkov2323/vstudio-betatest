@@ -35,6 +35,53 @@ app.get('/profile/:username', (req, res) => {
   res.sendFile(path.join(__dirname, '../profile.html'));
 });
 
+
+// API для загрузки аватара, система аватаров
+const multer = require('multer');
+const fs = require('fs');
+
+// Папка для хранения аватаров
+const avatarsDir = path.join(__dirname, '../public/uploads/avatars');
+
+// Создаём папку, если нет
+if (!fs.existsSync(avatarsDir)) {
+  fs.mkdirSync(avatarsDir, { recursive: true });
+}
+
+// Конфиг multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, avatarsDir);
+  },
+  filename: (req, file, cb) => {
+    // Название файла — userId + расширение
+    const ext = path.extname(file.originalname);
+    cb(null, req.session.userId + ext);
+  }
+});
+
+const upload = multer({ storage });
+
+// Защищённый роут для загрузки аватара
+app.post('/api/upload-avatar', upload.single('avatar'), async (req, res) => {
+  if (!req.session.userId) {
+    return res.status(401).json({ message: 'Не авторизован' });
+  }
+
+  if (!req.file) {
+    return res.status(400).json({ message: 'Файл не загружен' });
+  }
+
+  try {
+    const avatarPath = `/uploads/avatars/${req.file.filename}`;
+    await User.updateOne({ userId: req.session.userId }, { avatar: avatarPath });
+    res.json({ message: 'Аватар обновлён', avatar: avatarPath });
+  } catch (err) {
+    console.error('Ошибка загрузки аватара:', err);
+    res.status(500).json({ message: 'Ошибка сервера' });
+  }
+});
+
 // API для получения данных пользователя по username (GET)
 app.get('/api/profile/:username', async (req, res) => {
   try {
@@ -73,6 +120,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, unique: true },
   email: { type: String, unique: true },
   password: String,
+  avatar: { type: String, default: '/assets/images/avatar/default.png' }, // путь к аватару
   createdAt: { type: Date, default: Date.now }
 });
 

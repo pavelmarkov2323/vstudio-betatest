@@ -77,29 +77,88 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsDataURL(file);
   });
 
-  // Получаем username из URL
+  // Пользовательская часть с профилем
   const urlParts = window.location.pathname.split('/');
-  const username = urlParts[urlParts.length - 1];
+  const profileUsername = urlParts[urlParts.length - 1];
 
-  fetch(`/api/profile/${username}`, { credentials: 'include' })
-    .then(response => response.json())
-    .then(user => {
-      if (user.username) {
-        // Вставляем username в заголовок
-        document.querySelector('.user-username').textContent = user.username;
+  let currentUser = null; // текущий пользователь (авторизованный)
 
-        // Вставляем полное имя
-        document.querySelector('.user-fullname').textContent = `${user.firstName} ${user.lastName}`;
-
-        // ID и дублирующий username
-        document.querySelector('.user-id').textContent = user.userId;
-        document.querySelector('.user-username-inline').textContent = user.username;
-      } else {
-        document.body.innerHTML = '<p>Пользователь не найден</p>';
-      }
+  // Получаем текущего пользователя, чтобы сверить с профилем
+  fetch('/api/current-user', { credentials: 'include' })
+    .then(res => {
+      if (!res.ok) throw new Error('Не авторизован');
+      return res.json();
     })
-    .catch(error => {
-      console.error('Ошибка при загрузке профиля:', error);
-      document.body.innerHTML = '<p>Ошибка загрузки данных профиля</p>';
+    .then(user => {
+      currentUser = user;
+    })
+    .catch(() => {
+      currentUser = null;
+    })
+    .finally(() => {
+      loadProfile();
     });
+
+  function loadProfile() {
+    fetch(`/api/profile/${profileUsername}`, { credentials: 'include' })
+      .then(response => response.json())
+      .then(user => {
+        if (user.username) {
+          document.querySelector('.user-username').textContent = user.username;
+          document.querySelector('.user-fullname').textContent = `${user.firstName} ${user.lastName}`;
+          document.querySelector('.user-id').textContent = user.userId;
+          document.querySelector('.user-username-inline').textContent = user.username;
+
+          // Аватар
+          const avatarImg = document.querySelector('.profile-avatar');
+          avatarImg.src = user.avatar || '/assets/images/avatar/default.png';
+
+          // Показываем кнопку редактирования, если это текущий пользователь
+          const editAvatarBtn = document.querySelector('.edit-avatar');
+          if (currentUser && currentUser.username === user.username) {
+            editAvatarBtn.style.display = 'inline-block';
+            setupAvatarUpload(editAvatarBtn, avatarImg);
+          } else {
+            editAvatarBtn.style.display = 'none';
+          }
+        } else {
+          document.body.innerHTML = '<p>Пользователь не найден</p>';
+        }
+      })
+      .catch(error => {
+        console.error('Ошибка при загрузке профиля:', error);
+        document.body.innerHTML = '<p>Ошибка загрузки данных профиля</p>';
+      });
+  }
+
+  function setupAvatarUpload(button, avatarImg) {
+    const fileInput = document.getElementById('avatar-upload');
+
+    button.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+
+      const formData = new FormData();
+      formData.append('avatar', file);
+
+      fetch('/api/upload-avatar', {
+        method: 'POST',
+        credentials: 'include',
+        body: formData
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.avatar) {
+            avatarImg.src = data.avatar + '?t=' + Date.now(); // обновляем с кэш-бастер
+          } else {
+            alert('Ошибка при загрузке аватара');
+          }
+        })
+        .catch(() => alert('Ошибка при загрузке аватара'));
+    });
+  }
 });
