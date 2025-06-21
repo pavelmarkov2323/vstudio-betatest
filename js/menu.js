@@ -45,6 +45,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Логика показа кнопок на всех страницах
+
+    const signinBtn = document.querySelector('.signin-btn');
+    const userMenu = document.querySelector('.user-menu');
+
     fetch('/api/current-user', { credentials: 'include' })
     .then(res => {
         if (!res.ok) throw new Error('Не авторизован');
