@@ -270,3 +270,7 @@ body.dark-theme .password-reset-hint {
 body.dark-theme .tooltip-status{
     background: #303030;
 }
+
+body.dark-theme .tooltip-status-arrow{
+    background: #303030;
+}

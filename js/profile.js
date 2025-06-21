@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="not-found-container">
       <img src="/assets/icons/notfound.png" alt="Not Found" class="not-found-icon">
       <div class="not-found-text">
-        <p class="not-found-title">Пользователь не найден</p>
+        <p class="not-found-title theme-text">Пользователь не найден</p>
         <a href="/home.html" class="home-button">Вернуться обратно</a>
       </div>
     </div>
