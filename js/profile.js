@@ -53,35 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  bioInput.addEventListener('input', () => {
-    const len = bioInput.value.length;
-    if (len > maxLength) {
-      bioInput.value = bioInput.value.slice(0, maxLength);
-    }
-    charCount.textContent = `${bioInput.value.length}/${maxLength}`;
-  });
 
-  // Edit avatar
-  editAvatarIcon.addEventListener('click', () => {
-    avatarInput.click();
-  });
-
-  avatarInput.addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      avatarImage.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-  });
+  // Переменная для текущего пользователя (авторизованного)
+  let currentUser = null;
 
   // Пользовательская часть с профилем
   const urlParts = window.location.pathname.split('/');
   const profileUsername = urlParts[urlParts.length - 1];
-
-  let currentUser = null; // текущий пользователь (авторизованный)
 
   // Получаем текущего пользователя, чтобы сверить с профилем
   fetch('/api/current-user', { credentials: 'include' })
@@ -118,16 +96,75 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           // Аватар
-          const avatarImg = document.querySelector('.profile-avatar');
-          avatarImg.src = user.avatar || '/assets/images/avatar/default.png';
+          avatarImage.src = user.avatar || '/assets/images/avatar/default.png';
+
+          // Биография — показываем или ставим дефолтный текст
+          bioText.childNodes[0].textContent = user.bio && user.bio.trim() !== '' ? user.bio : 
+            'Your biography will be here, but you don\'t have to fill it out. Everything is according to your choice — it\'s up to you to decide what your profile will look like.';
 
           // Показываем кнопку редактирования, если это текущий пользователь
-          const editAvatarBtn = document.querySelector('.edit-avatar');
           if (currentUser && currentUser.username === user.username) {
-            editAvatarBtn.style.display = 'inline-block';
-            setupAvatarUpload(editAvatarBtn, avatarImg);
+            editBtn.style.display = 'inline';
+            saveBtn.style.display = 'none';
+
+            editBtn.addEventListener('click', () => {
+              const textOnly = bioText.childNodes[0].textContent.trim();
+              bioInput.value = textOnly;
+              charCount.textContent = `${textOnly.length}/${maxLength}`;
+
+              bioInput.style.display = 'block';
+              bioHint.style.display = 'block';
+              charCount.style.display = 'block';
+
+              bioText.style.display = 'none';
+              editBtn.style.display = 'none';
+              saveBtn.style.display = 'inline';
+            });
+
+            saveBtn.addEventListener('click', () => {
+              const newText = bioInput.value.trim();
+              if (newText.length <= maxLength) {
+                // Отправляем на сервер
+                fetch('/api/update-bio', {
+                  method: 'POST',
+                  credentials: 'include',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ bio: newText }),
+                })
+                .then(res => res.json())
+                .then(data => {
+                  if (data.message === 'Биография обновлена') {
+                    bioText.childNodes[0].textContent = newText || 'Your biography will be here, but you don\'t have to fill it out. Everything is according to your choice — it\'s up to you to decide what your profile will look like.';
+                    bioInput.style.display = 'none';
+                    bioText.style.display = 'inline';
+                    editBtn.style.display = 'inline';
+                    saveBtn.style.display = 'none';
+                    bioHint.style.display = 'none';
+                    charCount.style.display = 'none';
+                  } else {
+                    alert('Ошибка при сохранении биографии');
+                  }
+                })
+                .catch(() => alert('Ошибка при сохранении биографии'));
+              }
+            });
           } else {
-            editAvatarBtn.style.display = 'none';
+            // Если чужой профиль — скрываем кнопки редактирования
+            editBtn.style.display = 'none';
+            saveBtn.style.display = 'none';
+            bioInput.style.display = 'none';
+            bioHint.style.display = 'none';
+            charCount.style.display = 'none';
+          }
+
+          // Показываем/скрываем кнопку редактирования аватара
+          if (currentUser && currentUser.username === user.username) {
+            editAvatarIcon.style.display = 'inline-block';
+            setupAvatarUpload(editAvatarIcon, avatarImage);
+          } else {
+            editAvatarIcon.style.display = 'none';
           }
         } else {
           document.body.innerHTML = '<p>Пользователь не найден</p>';
@@ -138,6 +175,31 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.innerHTML = '<p>Ошибка загрузки данных профиля</p>';
       });
   }
+
+  // Обработка ввода в textarea биографии
+  bioInput.addEventListener('input', () => {
+    const len = bioInput.value.length;
+    if (len > maxLength) {
+      bioInput.value = bioInput.value.slice(0, maxLength);
+    }
+    charCount.textContent = `${bioInput.value.length}/${maxLength}`;
+  });
+
+  // Аватар
+  editAvatarIcon.addEventListener('click', () => {
+    avatarInput.click();
+  });
+
+  avatarInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      avatarImage.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
 
   function setupAvatarUpload(button, avatarImg) {
     const fileInput = document.getElementById('avatar-upload');
@@ -158,15 +220,15 @@ document.addEventListener("DOMContentLoaded", () => {
         credentials: 'include',
         body: formData
       })
-        .then(res => res.json())
-        .then(data => {
-          if (data.avatar) {
-            avatarImg.src = data.avatar + '?t=' + Date.now(); // обновляем с кэш-бастер
-          } else {
-            alert('Ошибка при загрузке аватара');
-          }
-        })
-        .catch(() => alert('Ошибка при загрузке аватара'));
+      .then(res => res.json())
+      .then(data => {
+        if (data.avatar) {
+          avatarImg.src = data.avatar + '?t=' + Date.now();
+        } else {
+          alert('Ошибка при загрузке аватара');
+        }
+      })
+      .catch(() => alert('Ошибка при загрузке аватара'));
     });
   }
 });
