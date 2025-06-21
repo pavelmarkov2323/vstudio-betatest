@@ -81,4 +81,24 @@ document.addEventListener('DOMContentLoaded', () => {
   function validateEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
+
+  submitBtn.addEventListener('click', async () => {
+    const email = forgotEmailInput.value.trim();
+    if (!email.includes('@')) {
+      errorText.style.display = 'block';
+      return;
+    }
+
+    errorText.style.display = 'none';
+    spinner.style.display = 'inline-block';
+
+    const res = await fetch('/api/request-reset', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+
+    spinner.style.display = 'none';
+    successText.style.display = 'block';
+  });
 });

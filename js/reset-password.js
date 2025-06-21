@@ -53,11 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   confirmInput.addEventListener('input', checkFormValidity);
 
-    container.addEventListener('submit', (e) => {
+  container.addEventListener('submit', (e) => {
     e.preventDefault();
     alert('The password has been successfully changed!');
     window.location.href = 'auth.html'; // перенаправление после закрытия alert
-    });
+  });
 
   // 👁️‍🗨️ Добавляем обработку клика по иконке "глаз"
   const toggleIcon = container.querySelector('.toggle-visibility');
@@ -71,17 +71,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-    const resetContainer = document.querySelector('.reset-container');
+  const resetContainer = document.querySelector('.reset-container');
 
-    document.addEventListener('mousemove', (e) => {
+  document.addEventListener('mousemove', (e) => {
     const { innerWidth, innerHeight } = window;
     const x = (e.clientX / innerWidth - 0.5) * 10;  // -5px to +5px
     const y = (e.clientY / innerHeight - 0.5) * 10;
 
     resetContainer.style.transform = `translate(${x}px, ${y}px)`;
+  });
+
+  document.addEventListener('mouseleave', () => {
+    resetContainer.style.transform = 'translate(0, 0)';
+  });
+
+  container.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+
+    if (!token) {
+      alert('Токен отсутствует или недействителен');
+      return;
+    }
+
+    const password = passwordInput.value.trim();
+
+    const res = await fetch('/api/reset-password', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token, newPassword: password })
     });
 
-    document.addEventListener('mouseleave', () => {
-    resetContainer.style.transform = 'translate(0, 0)';
-    });
+    const data = await res.json();
+
+    if (res.ok) {
+      alert(data.message);
+      window.location.href = 'auth.html';
+    } else {
+      alert(data.message);
+    }
+  });
 });

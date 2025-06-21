@@ -271,6 +271,63 @@ app.post('/api/logout', (req, res) => {
 });
 
 
+
+// Сброс пароля и отправка на почту
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
+
+const resetTokens = {}; // В реальном проекте храни в MongoDB с expiry
+
+// Сброс пароля, смена пароля
+app.post('/api/request-reset', async (req, res) => {
+  const { email } = req.body;
+
+  const user = await User.findOne({ email });
+  if (!user) return res.status(200).json({ message: 'Если такой email есть, отправим ссылку' });
+
+  const token = crypto.randomBytes(32).toString('hex');
+  resetTokens[token] = { userId: user.userId, expires: Date.now() + 1000 * 60 * 30 }; // 30 мин
+
+  const resetLink = `http://localhost:3000/reset-password.html?token=${token}`;
+
+  // Настройка отправки почты
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_FROM,
+      pass: process.env.EMAIL_PASS
+    }
+  });
+
+  await transporter.sendMail({
+    from: process.env.EMAIL_FROM,
+    to: email,
+    subject: 'Reset your password',
+    html: `<p>Click <a href="${resetLink}">here</a> to reset your password. Link expires in 30 minutes.</p>`
+  });
+
+  res.json({ message: 'Письмо отправлено, если email существует' });
+});
+
+// Обработка смены пароля по токену
+app.post('/api/reset-password', async (req, res) => {
+  const { token, newPassword } = req.body;
+
+  const data = resetTokens[token];
+  if (!data || Date.now() > data.expires) {
+    return res.status(400).json({ message: 'Ссылка истекла или недействительна' });
+  }
+
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+  await User.updateOne({ userId: data.userId }, { password: hashedPassword });
+
+  delete resetTokens[token]; // Удаляем использованный токен
+
+  res.json({ message: 'Пароль успешно изменён' });
+});
+
+
+
 // Запуск сервера на порту из .env или 3000 по умолчанию
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Сервер запущен на порту: ${PORT}`));
