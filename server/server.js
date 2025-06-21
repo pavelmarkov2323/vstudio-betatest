@@ -35,6 +35,21 @@ app.get('/profile/:username', (req, res) => {
   res.sendFile(path.join(__dirname, '../profile.html'));
 });
 
+// API для получения данных пользователя по username (GET)
+app.get('/api/profile/:username', async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username }).select('-password -__v');
+    if (!user) {
+      return res.status(404).json({ message: 'Пользователь не найден' });
+    }
+    res.json(user);
+  } catch (err) {
+    console.error('Ошибка получения профиля:', err);
+    res.status(500).json({ message: 'Ошибка сервера' });
+  }
+});
+
+
 // Подключение к MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB подключен'))
@@ -118,41 +133,6 @@ app.post('/api/register', async (req, res) => {
     res.status(500).json({ message: 'Внутренняя ошибка сервера' });
   }
 });
-
-
-// POST /api/login — авторизация
-app.post('/api/login', async (req, res) => {
-  const { usernameOrEmail, password } = req.body;
-
-  if (!usernameOrEmail || !password) {
-    return res.status(400).json({ message: 'Заполните все поля' });
-  }
-
-  try {
-    // Ищем пользователя по username или email
-    const user = await User.findOne({
-      $or: [{ username: usernameOrEmail }, { email: usernameOrEmail }]
-    });
-
-    if (!user) {
-      return res.status(401).json({ message: 'Пользователь не найден' });
-    }
-
-    // Проверяем пароль
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(401).json({ message: 'Неверный пароль' });
-    }
-
-    // Успешный вход — возвращаем ответ (позже здесь можно добавить JWT)
-    res.json({ message: 'Успешный вход', userId: user.userId, username: user.username });
-
-  } catch (err) {
-    console.error('Ошибка входа:', err);
-    res.status(500).json({ message: 'Внутренняя ошибка сервера' });
-  }
-});
-
 
 // API для получения данных пользователя по username
 app.post('/api/login', async (req, res) => {

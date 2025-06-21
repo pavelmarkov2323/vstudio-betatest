@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const urlParts = window.location.pathname.split('/');
   const username = urlParts[urlParts.length - 1];
 
-  fetch(`/api/profile/${username}`)
+  fetch(`/api/profile/${username}`, { credentials: 'include' })
     .then(response => response.json())
     .then(user => {
       if (user.username) {

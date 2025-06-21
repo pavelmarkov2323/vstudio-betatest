@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Логика показа кнопок на всех страницах
-    fetch('/api/current-user')
+    fetch('/api/current-user', { credentials: 'include' })
     .then(res => {
         if (!res.ok) throw new Error('Не авторизован');
         return res.json();
