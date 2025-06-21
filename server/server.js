@@ -288,7 +288,7 @@ app.post('/api/request-reset', async (req, res) => {
   const token = crypto.randomBytes(32).toString('hex');
   resetTokens[token] = { userId: user.userId, expires: Date.now() + 1000 * 60 * 30 }; // 30 мин
 
-  const resetLink = `http://localhost:3000/reset-password.html?token=${token}`;
+  const resetLink = `https://vstudio-betatest-production.up.railway.app/reset-password.html?token=${token}`;
 
   // Настройка отправки почты
   const transporter = nodemailer.createTransport({
@@ -318,6 +318,19 @@ app.post('/api/reset-password', async (req, res) => {
     return res.status(400).json({ message: 'Ссылка истекла или недействительна' });
   }
 
+  // Получаем пользователя из БД
+  const user = await User.findOne({ userId: data.userId });
+  if (!user) {
+    return res.status(400).json({ message: 'Пользователь не найден' });
+  }
+
+  // Проверяем, совпадает ли новый пароль с текущим
+  const isSamePassword = await bcrypt.compare(newPassword, user.password);
+  if (isSamePassword) {
+    return res.status(400).json({ message: 'Новый пароль не должен совпадать со старым' });
+  }
+
+  // Хэшируем новый пароль и обновляем
   const hashedPassword = await bcrypt.hash(newPassword, 10);
   await User.updateOne({ userId: data.userId }, { password: hashedPassword });
 
@@ -325,7 +338,6 @@ app.post('/api/reset-password', async (req, res) => {
 
   res.json({ message: 'Пароль успешно изменён' });
 });
-
 
 
 // Запуск сервера на порту из .env или 3000 по умолчанию

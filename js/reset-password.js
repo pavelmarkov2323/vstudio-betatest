@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
       alert(data.message);
       window.location.href = 'auth.html';
     } else {
-      alert(data.message);
+        alert(data.message); // сюда попадёт ошибка о совпадении нового пароля со старым
     }
   });
 });
