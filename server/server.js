@@ -146,6 +146,7 @@ const userSchema = new mongoose.Schema({
   password: String,
   avatar: { type: String, default: '/assets/images/avatar/default.png' }, // путь к аватару
   bio: { type: String, default: '' },
+  status: { type: Number, default: 0 },
   createdAt: { type: Date, default: Date.now }
 });
 

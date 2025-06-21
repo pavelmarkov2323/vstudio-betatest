@@ -53,6 +53,43 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Функция статуса пользователя (user status)
+  function getStatusData(status) {
+    switch (status) {
+      case 1:
+        return {
+          icon: '/assets/status/online.png',
+          title: 'Онлайн',
+          text: 'Пользователь сейчас онлайн'
+        };
+      case 2:
+        return {
+          icon: '/assets/status/away.png',
+          title: 'Отошел',
+          text: 'Пользователь отошел'
+        };
+      case 3:
+        return {
+          icon: '/assets/status/busy.png',
+          title: 'Занят',
+          text: 'Пользователь занят и не хочет отвлекаться'
+        };
+      case 4:
+        return {
+          icon: '/assets/status/offline.png',
+          title: 'Оффлайн',
+          text: 'Пользователь сейчас не в сети'
+        };
+      case 5:
+        return {
+          icon: '/assets/status/do-not-disturb.png',
+          title: 'Не беспокоить',
+          text: 'Пожалуйста, не беспокоить пользователя'
+        };
+      default:
+        return null;
+    }
+  }
 
   // Переменная для текущего пользователя (авторизованного)
   let currentUser = null;
@@ -95,11 +132,27 @@ document.addEventListener("DOMContentLoaded", () => {
             welcomeHeading.style.display = 'none';
           }
 
+          // Обработка и обновления статуса пользователя
+          const statusData = getStatusData(user.status);
+          const userStatusWrapper = document.getElementById('user-status');
+          const userStatusIcon = document.getElementById('user-status-icon');
+          const tooltipStatusTitle = document.getElementById('tooltip-status-title');
+          const tooltipStatusText = document.getElementById('tooltip-status-text');
+
+          if (statusData && userStatusWrapper && userStatusIcon && tooltipStatusTitle && tooltipStatusText) {
+            userStatusIcon.src = statusData.icon;
+            tooltipStatusTitle.textContent = statusData.title;
+            tooltipStatusText.textContent = statusData.text;
+            userStatusWrapper.style.display = 'block';
+          } else if (userStatusWrapper) {
+            userStatusWrapper.style.display = 'none';
+          }
+
           // Аватар
           avatarImage.src = user.avatar || '/assets/images/avatar/default.png';
 
           // Биография — показываем или ставим дефолтный текст
-          bioText.childNodes[0].textContent = user.bio && user.bio.trim() !== '' ? user.bio : 
+          bioText.childNodes[0].textContent = user.bio && user.bio.trim() !== '' ? user.bio :
             'Your biography will be here, but you don\'t have to fill it out. Everything is according to your choice — it\'s up to you to decide what your profile will look like.';
 
           // Показываем кнопку редактирования, если это текущий пользователь
@@ -133,21 +186,21 @@ document.addEventListener("DOMContentLoaded", () => {
                   },
                   body: JSON.stringify({ bio: newText }),
                 })
-                .then(res => res.json())
-                .then(data => {
-                  if (data.message === 'Биография обновлена') {
-                    bioText.childNodes[0].textContent = newText || 'Your biography will be here, but you don\'t have to fill it out. Everything is according to your choice — it\'s up to you to decide what your profile will look like.';
-                    bioInput.style.display = 'none';
-                    bioText.style.display = 'inline';
-                    editBtn.style.display = 'inline';
-                    saveBtn.style.display = 'none';
-                    bioHint.style.display = 'none';
-                    charCount.style.display = 'none';
-                  } else {
-                    alert('Ошибка при сохранении биографии');
-                  }
-                })
-                .catch(() => alert('Ошибка при сохранении биографии'));
+                  .then(res => res.json())
+                  .then(data => {
+                    if (data.message === 'Биография обновлена') {
+                      bioText.childNodes[0].textContent = newText || 'Your biography will be here, but you don\'t have to fill it out. Everything is according to your choice — it\'s up to you to decide what your profile will look like.';
+                      bioInput.style.display = 'none';
+                      bioText.style.display = 'inline';
+                      editBtn.style.display = 'inline';
+                      saveBtn.style.display = 'none';
+                      bioHint.style.display = 'none';
+                      charCount.style.display = 'none';
+                    } else {
+                      alert('Ошибка при сохранении биографии');
+                    }
+                  })
+                  .catch(() => alert('Ошибка при сохранении биографии'));
               }
             });
           } else {
@@ -220,15 +273,15 @@ document.addEventListener("DOMContentLoaded", () => {
         credentials: 'include',
         body: formData
       })
-      .then(res => res.json())
-      .then(data => {
-        if (data.avatar) {
-          avatarImg.src = data.avatar + '?t=' + Date.now();
-        } else {
-          alert('Ошибка при загрузке аватара');
-        }
-      })
-      .catch(() => alert('Ошибка при загрузке аватара'));
+        .then(res => res.json())
+        .then(data => {
+          if (data.avatar) {
+            avatarImg.src = data.avatar + '?t=' + Date.now();
+          } else {
+            alert('Ошибка при загрузке аватара');
+          }
+        })
+        .catch(() => alert('Ошибка при загрузке аватара'));
     });
   }
 });
