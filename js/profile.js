@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           // Обработка и обновления статуса пользователя
-          const statusData = getStatusData(user.status);
+          const statusData = getStatusData(user.status, user.username);
           const userStatusWrapper = document.getElementById('user-status');
           const userStatusIcon = document.getElementById('user-status-icon');
           const tooltipStatusTitle = document.getElementById('tooltip-status-title');
