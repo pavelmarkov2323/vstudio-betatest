@@ -43,16 +43,16 @@
 }
 
 .bio-card {
-  width: 700px;
+  width: 570px;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  padding: 20px;
+  padding: 18px;
   box-sizing: border-box;
 }
 
 .data-card {
-  height: 120px; /* например, выше других */
+  height: 130px; /* например, выше других */
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
