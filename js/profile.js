@@ -230,9 +230,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.innerHTML = '<p>Ошибка загрузки данных профиля</p>';
       });
   }
-  
-  const currentLang = localStorage.getItem('language') || 'en-US';
-  fetchLocalization(currentLang);
 
   // Обработка ввода в textarea биографии
   bioInput.addEventListener('input', () => {
