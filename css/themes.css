@@ -154,6 +154,15 @@ body.dark-theme .tooltip::after {
     border-bottom-color: #272727;
 }
 
+/* Для наведения status icon tooltip status*/
+body.dark-theme .tooltip-status{
+    background: #303030;
+}
+
+body.dark-theme .tooltip-status-arrow{
+    border-top: #303030; 
+}
+
 /* Для наведения dropdown меню Мои продукты*/
 
 body.dark-theme .dropdown-menu-item {
@@ -265,12 +274,5 @@ body.dark-theme .password-toogle {
 }
 
 body.dark-theme .password-reset-hint {
-    background: #303030;
-}
-body.dark-theme .tooltip-status{
-    background: #303030;
-}
-
-body.dark-theme .tooltip-status-arrow{
     background: #303030;
 }

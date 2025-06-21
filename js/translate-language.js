@@ -104,6 +104,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.menu-settings-text': data.userMenu?.settings,
                     '.menu-support-text': data.userMenu?.support,
                     '.menu-logout-text': data.userMenu?.logout,
+                    '.not-found-title': data["not-found-title"],
+                    '.home-button': data["home-button"],
                     '.signin-btn': data.auth?.signIn,
                     '.auth-title': data.auth?.authorization,
                     '.login-button': data.auth?.login,
