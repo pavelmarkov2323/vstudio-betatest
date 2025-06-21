@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
           document.querySelector('.user-id').textContent = user.userId;
           document.querySelector('.user-username-inline').textContent = user.username;
 
-          // Проверка на приветствие (Welcome, username)
+          // Приветствие
           const welcomeHeading = document.getElementById('welcomeHeading');
           if (currentUser && currentUser.username === user.username) {
             welcomeHeading.style.display = 'block';
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const avatarImg = document.querySelector('.profile-avatar');
           avatarImg.src = user.avatar || '/assets/images/avatar/default.png';
 
-          // Показываем кнопку редактирования, если это текущий пользователь
+          // Кнопка редактирования аватара
           const editAvatarBtn = document.querySelector('.edit-avatar');
           if (currentUser && currentUser.username === user.username) {
             editAvatarBtn.style.display = 'inline-block';
@@ -129,6 +129,62 @@ document.addEventListener("DOMContentLoaded", () => {
           } else {
             editAvatarBtn.style.display = 'none';
           }
+
+          // Биография
+          const bioTextEl = document.querySelector('.bio-text');
+          const bioInputEl = document.querySelector('.bio-input');
+          const editBioBtn = document.querySelector('.bio-edit-icon');
+          const saveBioBtn = document.querySelector('.bio-save-icon');
+          const charCountEl = document.querySelector('.bio-char-count');
+          const hintEl = document.querySelector('.bio-hint');
+
+          bioTextEl.childNodes[0].textContent = user.bio || 'No biography provided.';
+
+          // Проверка прав пользователя
+          if (currentUser && currentUser.username === user.username) {
+            editBioBtn.style.display = 'inline';
+
+            editBioBtn.addEventListener('click', () => {
+              const currentBio = bioTextEl.childNodes[0].textContent.trim();
+              bioInputEl.value = currentBio;
+              charCountEl.textContent = `${currentBio.length}/500`;
+
+              bioInputEl.style.display = 'block';
+              hintEl.style.display = 'block';
+              charCountEl.style.display = 'block';
+
+              bioTextEl.style.display = 'none';
+              editBioBtn.style.display = 'none';
+              saveBioBtn.style.display = 'inline';
+            });
+
+            saveBioBtn.addEventListener('click', () => {
+              const newBio = bioInputEl.value.trim();
+              if (newBio.length > 500) return;
+
+              fetch('/api/update-bio', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({ bio: newBio })
+              })
+                .then(res => res.json())
+                .then(() => {
+                  bioTextEl.childNodes[0].textContent = newBio;
+                  bioInputEl.style.display = 'none';
+                  bioTextEl.style.display = 'inline';
+                  editBioBtn.style.display = 'inline';
+                  saveBioBtn.style.display = 'none';
+                  hintEl.style.display = 'none';
+                  charCountEl.style.display = 'none';
+                });
+            });
+
+          } else {
+            editBioBtn.style.display = 'none';
+            saveBioBtn.style.display = 'none';
+          }
+
         } else {
           document.body.innerHTML = '<p>Пользователь не найден</p>';
         }
@@ -137,36 +193,5 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error('Ошибка при загрузке профиля:', error);
         document.body.innerHTML = '<p>Ошибка загрузки данных профиля</p>';
       });
-  }
-
-  function setupAvatarUpload(button, avatarImg) {
-    const fileInput = document.getElementById('avatar-upload');
-
-    button.addEventListener('click', () => {
-      fileInput.click();
-    });
-
-    fileInput.addEventListener('change', () => {
-      const file = fileInput.files[0];
-      if (!file) return;
-
-      const formData = new FormData();
-      formData.append('avatar', file);
-
-      fetch('/api/upload-avatar', {
-        method: 'POST',
-        credentials: 'include',
-        body: formData
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data.avatar) {
-            avatarImg.src = data.avatar + '?t=' + Date.now(); // обновляем с кэш-бастер
-          } else {
-            alert('Ошибка при загрузке аватара');
-          }
-        })
-        .catch(() => alert('Ошибка при загрузке аватара'));
-    });
   }
 });

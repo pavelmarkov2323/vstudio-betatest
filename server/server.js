@@ -83,6 +83,28 @@ app.post('/api/upload-avatar', upload.single('avatar'), async (req, res) => {
   }
 });
 
+// API для смены биографии
+app.post('/api/update-bio', async (req, res) => {
+  if (!req.session.userId) {
+    return res.status(401).json({ message: 'Не авторизован' });
+  }
+
+  const { bio } = req.body;
+
+  if (typeof bio !== 'string' || bio.length > 500) {
+    return res.status(400).json({ message: 'Неверная биография' });
+  }
+
+  try {
+    await User.updateOne({ userId: req.session.userId }, { bio });
+    res.json({ message: 'Биография обновлена' });
+  } catch (err) {
+    console.error('Ошибка обновления биографии:', err);
+    res.status(500).json({ message: 'Ошибка сервера' });
+  }
+});
+
+
 // API для получения данных пользователя по username (GET)
 app.get('/api/profile/:username', async (req, res) => {
   try {
@@ -96,7 +118,6 @@ app.get('/api/profile/:username', async (req, res) => {
     res.status(500).json({ message: 'Ошибка сервера' });
   }
 });
-
 
 // Подключение к MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -113,6 +134,8 @@ const counterSchema = new mongoose.Schema({
 });
 const Counter = mongoose.model('Counter', counterSchema);
 
+
+
 // Схема пользователя с дополнительным полем userId
 const userSchema = new mongoose.Schema({
   userId: { type: Number, unique: true }, // Наш числовой ID пользователя
@@ -122,8 +145,11 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   password: String,
   avatar: { type: String, default: '/assets/images/avatar/default.png' }, // путь к аватару
+  bio: { type: String, default: '' },
   createdAt: { type: Date, default: Date.now }
 });
+
+
 
 // Перед сохранением нового пользователя увеличиваем счётчик userId
 userSchema.pre('save', async function(next) {
