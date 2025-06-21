@@ -53,12 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   confirmInput.addEventListener('input', checkFormValidity);
 
-  container.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('The password has been successfully changed!');
-    window.location.href = 'auth.html'; // перенаправление после закрытия alert
-  });
-
   // 👁️‍🗨️ Добавляем обработку клика по иконке "глаз"
   const toggleIcon = container.querySelector('.toggle-visibility');
   if (toggleIcon) {
