@@ -42,6 +42,7 @@ const fs = require('fs');
 
 // Папка для хранения аватаров
 const avatarsDir = path.join(__dirname, '../public/uploads/avatars');
+app.use('/uploads/avatars', express.static(avatarsDir)); // Раздаём статические файлы из этой папки по пути /uploads/avatars
 
 // Создаём папку, если нет
 if (!fs.existsSync(avatarsDir)) {
