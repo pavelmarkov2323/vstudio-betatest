@@ -214,7 +214,15 @@ document.addEventListener("DOMContentLoaded", () => {
             editAvatarIcon.style.display = 'none';
           }
         } else {
-          document.body.innerHTML = '<p>Пользователь не найден</p>';
+          document.body.innerHTML = `
+    <div class="not-found-container">
+      <img src="/assets/icons/notfound.png" alt="Not Found" class="not-found-icon">
+      <div class="not-found-text">
+        <p class="not-found-title">Пользователь не найден</p>
+        <a href="home.html" class="home-button">Вернуться обратно</a>
+      </div>
+    </div>
+  `;
         }
       })
       .catch(error => {
