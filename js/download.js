@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     downloadBtn.addEventListener("click", function () {
         const link = document.createElement("a");
-        link.href = "downloads/pixelfps.rar"; // Указываем путь к файлу
+        link.href = "/downloads/pixelfps.rar"; // Указываем путь к файлу
         link.download = "pixelfps.rar"; // Имя файла при скачивании
         document.body.appendChild(link);
         link.click();
