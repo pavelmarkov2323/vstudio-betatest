@@ -162,14 +162,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     const linkText = data.registration['user-agreement-link-text'] || 'user agreement';
                     const linkHtml = `<a href="about.html#user-agreement">${linkText}</a>`;
                     agreementNoteEl.innerHTML = data.registration['agreement-note'].replace('{link}', linkHtml);
-                }  
-
-                // Специальная подстановка имени пользователя
-                const profileHeading = document.querySelector('.profile-heading');
-                const username = "valeyevboss";
-                if (profileHeading && data.profile?.welcomeUser) {
-                    profileHeading.textContent = data.profile.welcomeUser.replace('{username}', username);
                 }
+
+                // Специальная подстановка имени пользователя в Welcome user
+                const profileHeading = document.querySelector('.profile-heading');
+                if (profileHeading && data.profile?.welcomeUser) {
+                    const usernameSpan = profileHeading.querySelector('.user-username');
+                    const username = usernameSpan?.textContent.trim() || '';
+
+                    // Удаляем всё внутри, а затем заново вставляем с переводом и span
+                    profileHeading.innerHTML = `${data.profile.welcomeUser.replace('{username}', `<span class="user-username theme-text">${username}</span>`)}`;
+                }
+
+
                 // Ваши данные (данные профиля пользователя)
                 if (data.profile) {
                     const profileLabels = document.querySelectorAll('[data-i18n]');

@@ -154,6 +154,7 @@
     "profile": {
         "usernameLabel": "Имя пользователя:",
         "countryLabel": "Страна:",
-        "birthdayLabel": "День рождения:"
+        "birthdayLabel": "День рождения:",
+        "welcomeUser": "Добро пожаловать, {username}"
     }
 }
