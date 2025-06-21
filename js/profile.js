@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (statusData && userStatusWrapper && userStatusIcon && tooltipStatusTitle && tooltipStatusText) {
             userStatusIcon.src = statusData.icon;
             tooltipStatusTitle.textContent = statusData.title;
-            tooltipStatusText.textContent = statusData.text;
+            tooltipStatusText.innerHTML = statusData.text;
             userStatusWrapper.style.display = 'block';
           } else if (userStatusWrapper) {
             userStatusWrapper.style.display = 'none';
