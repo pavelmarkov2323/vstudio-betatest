@@ -223,6 +223,8 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     </div>
   `;
+          const currentLang = localStorage.getItem('language') || 'en-US';
+          fetchLocalization(currentLang);
         }
       })
       .catch(error => {
