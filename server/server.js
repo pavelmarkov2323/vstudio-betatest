@@ -340,40 +340,40 @@ app.post('/api/request-reset', async (req, res) => {
     </div>
   `
   });
-
-  // Обработка смены пароля по токену
-  app.post('/api/reset-password', async (req, res) => {
-    const { token, newPassword } = req.body;
-
-    const data = resetTokens[token];
-    if (!data || Date.now() > data.expires) {
-      return res.status(400).json({ message: 'Ссылка истекла или недействительна' });
-    }
-
-    // Получаем пользователя из БД
-    const user = await User.findOne({ userId: data.userId });
-    if (!user) {
-      return res.status(400).json({ message: 'Пользователь не найден' });
-    }
-
-    // Проверяем, совпадает ли новый пароль с текущим
-    const isSamePassword = await bcrypt.compare(newPassword, user.password);
-    if (isSamePassword) {
-      return res.status(400).json({ message: 'Новый пароль не должен совпадать со старым' });
-    }
-
-    // Хэшируем новый пароль и обновляем
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
-    await User.updateOne({ userId: data.userId }, { password: hashedPassword });
-
-    delete resetTokens[token]; // Удаляем использованный токен
-
-    res.json({ message: 'Пароль успешно изменён' });
-  });
-
-
-  // Запуск сервера на порту из .env или 3000 по умолчанию
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => console.log(`Сервер запущен на порту: ${PORT}`));
-  
+  res.json({ message: 'Письмо отправлено, если email существует' });
 });
+
+// Обработка смены пароля по токену
+app.post('/api/reset-password', async (req, res) => {
+  const { token, newPassword } = req.body;
+
+  const data = resetTokens[token];
+  if (!data || Date.now() > data.expires) {
+    return res.status(400).json({ message: 'Ссылка истекла или недействительна' });
+  }
+
+  // Получаем пользователя из БД
+  const user = await User.findOne({ userId: data.userId });
+  if (!user) {
+    return res.status(400).json({ message: 'Пользователь не найден' });
+  }
+
+  // Проверяем, совпадает ли новый пароль с текущим
+  const isSamePassword = await bcrypt.compare(newPassword, user.password);
+  if (isSamePassword) {
+    return res.status(400).json({ message: 'Новый пароль не должен совпадать со старым' });
+  }
+
+  // Хэшируем новый пароль и обновляем
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+  await User.updateOne({ userId: data.userId }, { password: hashedPassword });
+
+  delete resetTokens[token]; // Удаляем использованный токен
+
+  res.json({ message: 'Пароль успешно изменён' });
+});
+
+
+// Запуск сервера на порту из .env или 3000 по умолчанию
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Сервер запущен на порту: ${PORT}`));
