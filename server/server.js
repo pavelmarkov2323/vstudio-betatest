@@ -153,7 +153,7 @@ const userSchema = new mongoose.Schema({
 
 
 // Перед сохранением нового пользователя увеличиваем счётчик userId
-userSchema.pre('save', async function(next) {
+userSchema.pre('save', async function (next) {
   if (this.isNew) { // Только для новых документов
     try {
       // Находим и увеличиваем счётчик в коллекции Counter
@@ -309,43 +309,71 @@ app.post('/api/request-reset', async (req, res) => {
     from: process.env.EMAIL_FROM,
     to: email,
     subject: 'Reset your password',
-    html: `<p>Click <a href="${resetLink}">here</a> to reset your password. Link expires in 30 minutes.</p>`
+    html: `
+    <div style="font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; color: #333;">
+      <div style="max-width: 600px; margin: auto; background: #fff; border-radius: 10px; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+        <h2 style="color: #333;">🔐 <strong>Password reset</strong></h2>
+        
+        <p style="margin-top: 20px;">
+          You receive this e-mail because you have requested the reinitialization of your account password at the Database of Córdoba Music Group.
+        </p>
+
+        <p>This link will be valid for <strong>30 min</strong>. If the link expires before you have been able to reinitialize your password, you can request a new link using the password recovery form.</p>
+
+        <p>If you did not request a password reset, you can safely ignore this message.</p>
+
+        <p style="margin-top: 30px;">Please click the button below to reset your password:</p>
+
+        <div style="text-align: center; margin: 30px 0;">
+          <a href="${resetLink}" style="display: inline-block; background-color: #1a73e8; color: #fff; padding: 12px 25px; text-decoration: none; border-radius: 8px; font-weight: bold;">
+            Reset Password
+          </a>
+        </div>
+
+        <p>If you have any questions, please contact customer support: <a href="mailto:support@valeyevstudio.com">support@valeyevstudio.com</a></p>
+
+        <p style="margin-top: 40px;">
+          <strong>The ValeyevStudio team</strong><br />
+          <em>be unique with your music!</em>
+        </p>
+      </div>
+    </div>
+  `
   });
 
-  res.json({ message: 'Письмо отправлено, если email существует' });
+  // Обработка смены пароля по токену
+  app.post('/api/reset-password', async (req, res) => {
+    const { token, newPassword } = req.body;
+
+    const data = resetTokens[token];
+    if (!data || Date.now() > data.expires) {
+      return res.status(400).json({ message: 'Ссылка истекла или недействительна' });
+    }
+
+    // Получаем пользователя из БД
+    const user = await User.findOne({ userId: data.userId });
+    if (!user) {
+      return res.status(400).json({ message: 'Пользователь не найден' });
+    }
+
+    // Проверяем, совпадает ли новый пароль с текущим
+    const isSamePassword = await bcrypt.compare(newPassword, user.password);
+    if (isSamePassword) {
+      return res.status(400).json({ message: 'Новый пароль не должен совпадать со старым' });
+    }
+
+    // Хэшируем новый пароль и обновляем
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    await User.updateOne({ userId: data.userId }, { password: hashedPassword });
+
+    delete resetTokens[token]; // Удаляем использованный токен
+
+    res.json({ message: 'Пароль успешно изменён' });
+  });
+
+
+  // Запуск сервера на порту из .env или 3000 по умолчанию
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`Сервер запущен на порту: ${PORT}`));
+  
 });
-
-// Обработка смены пароля по токену
-app.post('/api/reset-password', async (req, res) => {
-  const { token, newPassword } = req.body;
-
-  const data = resetTokens[token];
-  if (!data || Date.now() > data.expires) {
-    return res.status(400).json({ message: 'Ссылка истекла или недействительна' });
-  }
-
-  // Получаем пользователя из БД
-  const user = await User.findOne({ userId: data.userId });
-  if (!user) {
-    return res.status(400).json({ message: 'Пользователь не найден' });
-  }
-
-  // Проверяем, совпадает ли новый пароль с текущим
-  const isSamePassword = await bcrypt.compare(newPassword, user.password);
-  if (isSamePassword) {
-    return res.status(400).json({ message: 'Новый пароль не должен совпадать со старым' });
-  }
-
-  // Хэшируем новый пароль и обновляем
-  const hashedPassword = await bcrypt.hash(newPassword, 10);
-  await User.updateOne({ userId: data.userId }, { password: hashedPassword });
-
-  delete resetTokens[token]; // Удаляем использованный токен
-
-  res.json({ message: 'Пароль успешно изменён' });
-});
-
-
-// Запуск сервера на порту из .env или 3000 по умолчанию
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Сервер запущен на порту: ${PORT}`));
