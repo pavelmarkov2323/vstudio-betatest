@@ -89,7 +89,7 @@ document.querySelector('.registration-form').addEventListener('submit', async (e
 
     if (response.ok) {
       // Успех
-      showModalMessage('Регистрация успешна', 'Вы успешно зарегистрированы, перенаправляем...');
+      showModalMessage('Подтверждение регистрации', 'Вы зарегистрированы, перенаправляем...');
       setTimeout(() => {
         window.location.href = `/auth.html`;
       }, 2000);

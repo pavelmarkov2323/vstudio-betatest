@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const token = urlParams.get('token');
 
     if (!token) {
-      alert('Токен отсутствует или недействителен');
+      showModalMessage('Ошибка', 'Токен отсутствует или недействителен');
       return;
     }
 
@@ -101,10 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = await res.json();
 
     if (res.ok) {
-      alert(data.message);
-      window.location.href = 'auth.html';
+      showModalMessage('Успешно', data.message);
+      setTimeout(() => {
+        window.location.href = 'auth.html';
+      }, 2000);
     } else {
-        alert(data.message); // сюда попадёт ошибка о совпадении нового пароля со старым
+      showModalMessage('Ошибка смены пароля', data.message || 'Что-то пошло не так, попробуйте позже.');
     }
   });
 });
