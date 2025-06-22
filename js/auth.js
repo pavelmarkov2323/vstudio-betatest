@@ -72,14 +72,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const result = await response.json();
 
       if (response.ok) {
-        alert('Вход успешен!');
-        window.location.href = `/profile/${result.username}`;
+        showModalMessage('Успешный вход', 'Вы вошли в свой аккаунт!');
+        setTimeout(() => {
+          window.location.href = `/profile/${result.username}`;
+        }, 2000);
       } else {
-        alert(result.message || 'Ошибка входа');
+        showModalMessage('Ошибка входа', result.message || 'Ошибка входа, попробуйте ещё раз.');
       }
     } catch (error) {
       console.error('Ошибка соединения:', error);
-      alert('Ошибка соединения с сервером');
+      showModalMessage('Ошибка соединения', 'Не удалось подключиться к серверу. Попробуйте позже.');
     }
   });
 

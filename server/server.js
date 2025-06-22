@@ -184,9 +184,14 @@ app.post('/api/register', async (req, res) => {
 
   try {
     // Проверяем, существует ли уже пользователь с таким username или email
-    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
-    if (existingUser) {
-      return res.status(409).json({ message: 'Username или Email уже используется' });
+    const existingUsername = await User.findOne({ username });
+    if (existingUsername) {
+      return res.status(409).json({ message: 'Username уже используется' });
+    }
+
+    const existingEmail = await User.findOne({ email });
+    if (existingEmail) {
+      return res.status(409).json({ message: 'Email уже используется' });
     }
 
     // Хэшируем пароль для безопасности
