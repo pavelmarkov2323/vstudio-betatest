@@ -104,6 +104,30 @@ app.post('/api/update-bio', async (req, res) => {
   }
 });
 
+// API для обновления баланса
+app.post('/api/update-balance', async (req, res) => {
+  if (!req.session.userId) {
+    return res.status(401).json({ message: 'Не авторизован' });
+  }
+
+  const { amount } = req.body;
+  if (typeof amount !== 'number') {
+    return res.status(400).json({ message: 'Неверный формат баланса' });
+  }
+
+  try {
+    const updatedUser = await User.findOneAndUpdate(
+      { userId: req.session.userId },
+      { $set: { balance: amount } },
+      { new: true }
+    ).select('balance');
+
+    res.json({ message: 'Баланс обновлён', balance: updatedUser.balance });
+  } catch (err) {
+    console.error('Ошибка обновления баланса:', err);
+    res.status(500).json({ message: 'Ошибка сервера' });
+  }
+});
 
 // API для получения данных пользователя по username (GET)
 app.get('/api/profile/:username', async (req, res) => {
@@ -147,6 +171,7 @@ const userSchema = new mongoose.Schema({
   avatar: { type: String, default: '/assets/images/avatar/default.png' }, // путь к аватару
   bio: { type: String, default: '' },
   status: { type: Number, default: 0 },
+  balance: { type: Number, default: 0 },
   createdAt: { type: Date, default: Date.now }
 });
 
@@ -296,7 +321,7 @@ app.post('/api/request-reset', async (req, res) => {
 
   const resetLink = `https://vstudio-betatest-production.up.railway.app/reset-password.html?token=${token}`;
 
-  // Настройка отправки почты
+  // Настройка отправки письма с уникальный токеном для восстановления пароля
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {

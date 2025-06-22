@@ -50,33 +50,39 @@ document.addEventListener('DOMContentLoaded', function () {
     const userMenu = document.querySelector('.user-menu');
 
     fetch('/api/current-user', { credentials: 'include' })
-    .then(res => {
-        if (!res.ok) throw new Error('Не авторизован');
-        return res.json();
-    })
-    .then(user => {
-        // Показываем меню для залогиненного
-        if (signinBtn) signinBtn.style.display = 'none';
-        if (userMenu) userMenu.style.display = 'block';
+        .then(res => {
+            if (!res.ok) throw new Error('Не авторизован');
+            return res.json();
+        })
+        .then(user => {
+            // Показываем меню для залогиненного
+            if (signinBtn) signinBtn.style.display = 'none';
+            if (userMenu) userMenu.style.display = 'block';
 
-        const goToProfile = document.getElementById('menuProfile');
-        if (goToProfile) {
-        goToProfile.addEventListener('click', () => {
-            window.location.href = `/profile/${user.username}`;
-        });
-        }
+            const goToProfile = document.getElementById('menuProfile');
+            if (goToProfile) {
+                goToProfile.addEventListener('click', () => {
+                    window.location.href = `/profile/${user.username}`;
+                });
+            }
 
-        const logoutBtn = document.getElementById('menuLogout');
-        if (logoutBtn) {
-        logoutBtn.addEventListener('click', async () => {
-            await fetch('/api/logout', { method: 'POST' });
-            window.location.href = '/index.html';
+            const logoutBtn = document.getElementById('menuLogout');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', async () => {
+                    await fetch('/api/logout', { method: 'POST' });
+                    window.location.href = '/index.html';
+                });
+            }
+            // Отображаем и обновляем баланс пользователя
+            const balanceElem = document.getElementById('balanceAmount');
+            if (balanceElem && typeof user.balance === 'number') {
+                balanceElem.textContent = user.balance.toFixed(2);
+            }
+
+        })
+        .catch(() => {
+            // Пользователь не залогинен
+            if (signinBtn) signinBtn.style.display = 'inline-block';
+            if (userMenu) userMenu.style.display = 'none';
         });
-        }
-    })
-    .catch(() => {
-        // Пользователь не залогинен
-        if (signinBtn) signinBtn.style.display = 'inline-block';
-        if (userMenu) userMenu.style.display = 'none';
-    });
 });
