@@ -180,8 +180,8 @@
 
 .balance-amount {
   font-weight: bold;
-  color: #2e7d32; /* тёмно-зелёный или под твой стиль */
-  margin-left: auto;
+  color: #000000;
+  margin-left: -7;
 }
 
 .balance-divider {
