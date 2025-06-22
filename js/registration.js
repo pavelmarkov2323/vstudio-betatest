@@ -34,6 +34,32 @@ passwordInput.addEventListener('input', () => {
   }
 });
 
+// Модальное окно сообщений
+function showModalMessage(title, message) {
+  // Удалим предыдущую модалку, если она есть
+  const oldModal = document.querySelector('.modal-message-overlay');
+  if (oldModal) oldModal.remove();
+
+  // Создаем HTML модалки
+  const modal = document.createElement('div');
+  modal.className = 'modal-message-overlay';
+  modal.innerHTML = `
+    <div class="modal-message-window">
+      <button class="modal-message-close">&times;</button>
+      <h2 class="modal-message-title">${title}</h2>
+      <p class="modal-message-message">${message}</p>
+    </div>
+  `;
+
+  // Добавляем в DOM
+  document.body.appendChild(modal);
+
+  // Обработчик закрытия
+  modal.querySelector('.modal-message-close').addEventListener('click', () => {
+    modal.remove();
+  });
+}
+
 // Отправка формы регистрации
 document.querySelector('.registration-form').addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -62,13 +88,18 @@ document.querySelector('.registration-form').addEventListener('submit', async (e
     const result = await response.json();
 
     if (response.ok) {
-      alert('Регистрация прошла успешно!');
-      window.location.href = `/auth.html`;
+      // Успех
+      showModalMessage('Регистрация успешна', 'Вы успешно зарегистрированы, перенаправляем...');
+      setTimeout(() => {
+        window.location.href = `/auth.html`;
+      }, 2000);
     } else {
-      alert(result.message || 'Ошибка при регистрации');
+      // Ошибка с сервера
+      showModalMessage('Ошибка регистрации', result.message || 'Произошла ошибка, попробуйте позже.');
     }
+
   } catch (error) {
     console.error('Ошибка:', error);
-    alert('Ошибка соединения с сервером');
+    showModalMessage('Сетевая ошибка', 'Не удалось соединиться с сервером, попробуйте позже.');
   }
 });
