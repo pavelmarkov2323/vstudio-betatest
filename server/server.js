@@ -315,7 +315,7 @@ app.post('/api/request-reset', async (req, res) => {
         <h2 style="color: #333;">🔐 <strong>Password reset</strong></h2>
         
         <p style="margin-top: 20px;">
-          You receive this e-mail because you have requested the reinitialization of your account password at the Database of Córdoba Music Group.
+          You receive this e-mail because you have requested the reinitialization of your account password at the Database of ValeyevStudio.
         </p>
 
         <p>This link will be valid for <strong>30 min</strong>. If the link expires before you have been able to reinitialize your password, you can request a new link using the password recovery form.</p>
