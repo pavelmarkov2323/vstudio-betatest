@@ -46,8 +46,8 @@ function showModalMessage(title, message) {
   modal.innerHTML = `
     <div class="modal-message-window">
       <button class="modal-message-close">&times;</button>
-      <h2 class="modal-message-title">${title}</h2>
-      <p class="modal-message-message">${message}</p>
+      <h2 class="modal-message-title theme-text">${title}</h2>
+      <p class="modal-message-message theme-text">${message}</p>
     </div>
   `;
 

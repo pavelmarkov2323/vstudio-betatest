@@ -124,6 +124,15 @@ body.dark-theme .captcha-content {
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Более выраженная тень для темной темы */
 }
 
+/* Модальное окно Message Push */
+body.dark-theme .modal-message-window {
+    background: #333333;
+}
+
+body.dark-theme .modal-message-close:hover {
+  color: rgb(224, 224, 224);
+}
+
 /* FAQ - Вопросы / Ответы */
 
 /* Фон панели вопросов FAQ*/
