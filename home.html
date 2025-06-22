@@ -143,6 +143,15 @@
                 </div>
 
                 <div class="dropdown-panel" id="userDropdown">
+                    <!-- Блок Баланса -->
+                    <div class="dropdown-balance">
+                        <div class="dropdown-item balance-item" id="userBalance">
+                            <img src="/assets/icons/balance.svg" class="item-icon theme-icon" alt="">
+                            <span class="menu-balance-text theme-text">Balance:</span>
+                            <span class="balance-amount" id="balanceAmount">0</span>
+                        </div>
+                        <div class="balance-divider"></div>
+                    </div>
                     <div class="dropdown-item" id="menuProfile">
                         <img src="assets/icons/user.svg" class="item-icon theme-icon" alt="">
                         <span class="menu-profile-text theme-text">My profile</span>
@@ -208,13 +217,15 @@
     <div class="push-notify" id="pushNotify">
         <div class="push-content" id="pushContent1">
             <strong class="push-title-suggestions theme-text">Have improvement suggestions?</strong>
-            <p class="push-text-suggestions">Write to us, we will definitely consider your feedback and suggestions to improve or add new features.</p>
+            <p class="push-text-suggestions">Write to us, we will definitely consider your feedback and suggestions to
+                improve or add new features.</p>
             <button id="emailButton" class="push-button push-btn-suggestions">Suggest</button>
             <span class="push-close">&times;</span>
         </div>
         <div class="push-content2" id="pushContent2">
             <strong class="push-title-donation theme-text">Charity Fund</strong>
-            <p class="push-text-donation">For those who want to support the author for the work done. The funds will go to the development of the project ecosystem.</p>
+            <p class="push-text-donation">For those who want to support the author for the work done. The funds will go
+                to the development of the project ecosystem.</p>
             <button id="donateButton" class="push-button push-btn-donation">Support</button>
             <span class="push-close">&times;</span>
         </div>

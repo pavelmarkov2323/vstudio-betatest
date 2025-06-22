@@ -124,7 +124,7 @@
                 </label>
                 <span class="tooltip theme-text" data-tooltip="switch-themes">Switch themes</span>
             </div>
-            
+
             <!-- Кнопка входа (Sign In) -->
             <div class="has-tooltip">
                 <button class="signin-btn">
@@ -142,6 +142,15 @@
                 </div>
 
                 <div class="dropdown-panel" id="userDropdown">
+                    <!-- Блок Баланса -->
+                    <div class="dropdown-balance">
+                        <div class="dropdown-item balance-item" id="userBalance">
+                            <img src="/assets/icons/balance.svg" class="item-icon theme-icon" alt="">
+                            <span class="menu-balance-text theme-text">Balance:</span>
+                            <span class="balance-amount" id="balanceAmount">0</span>
+                        </div>
+                        <div class="balance-divider"></div>
+                    </div>
                     <div class="dropdown-item" id="menuProfile">
                         <img src="assets/icons/user.svg" class="item-icon theme-icon" alt="">
                         <span class="menu-profile-text theme-text">My profile</span>
