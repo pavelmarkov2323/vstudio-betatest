@@ -73,12 +73,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     window.location.href = '/index.html';
                 });
             }
+
             // Отображаем и обновляем баланс пользователя
             const balanceElem = document.getElementById('balanceAmount');
             if (balanceElem && typeof user.balance === 'number') {
-                balanceElem.textContent = user.balance.toFixed(2);
+                const formatter = new Intl.NumberFormat('en-US', {
+                    style: 'decimal',
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                });
+                balanceElem.textContent = formatter.format(user.balance);
             }
-
         })
         .catch(() => {
             // Пользователь не залогинен
