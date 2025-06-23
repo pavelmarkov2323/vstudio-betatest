@@ -94,7 +94,6 @@ router.post('/logout', (req, res) => {
 
 
 // Сброс пароля и отправка на почту
-const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 
 const resetTokens = {}; // В реальном проекте храни в MongoDB с expiry
