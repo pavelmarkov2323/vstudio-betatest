@@ -60,7 +60,7 @@ app.post('/api/upload-avatar', upload.single('avatar'), async (req, res) => {
   }
 
   try {
-    const avatarUrl = req.file.path;
+    const avatarUrl = req.file.secure_url || req.file.path; // fallback
     const updateResult = await User.updateOne({ userId: req.session.userId }, { avatar: avatarUrl });
     console.log('Update Result:', updateResult);
     res.json({ message: 'Аватар обновлён', avatar: avatarUrl });
