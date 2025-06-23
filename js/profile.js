@@ -207,10 +207,10 @@ document.addEventListener("DOMContentLoaded", () => {
                       bioHint.style.display = 'none';
                       charCount.style.display = 'none';
                     } else {
-                      alert('Ошибка при сохранении биографии');
+                      showModalMessage('Ошибка', 'Ошибка при сохранении биографии');
                     }
                   })
-                  .catch(() => alert('Ошибка при сохранении биографии'));
+                  .catch(() => showModalMessage('Ошибка', 'Ошибка при сохранении биографии');
               }
             });
           } else {
@@ -296,10 +296,10 @@ document.addEventListener("DOMContentLoaded", () => {
           if (data.avatar) {
             avatarImg.src = data.avatar + '?t=' + Date.now();
           } else {
-            alert('Ошибка при загрузке аватара');
+            showModalMessage('Ошибка', 'Ошибка при загрузке аватара');
           }
         })
-        .catch(() => alert('Ошибка при загрузке аватара'));
+        .catch(() => showModalMessage('Ошибка', 'Ошибка при загрузке аватара'));
     });
   }
 });
