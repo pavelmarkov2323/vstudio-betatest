@@ -48,6 +48,9 @@ const { storage } = require('./cloudinary'); // путь к твоему cloudin
 const upload = multer({ storage });
 
 app.post('/api/upload-avatar', upload.single('avatar'), async (req, res) => {
+  console.log('SESSION:', req.session);
+  console.log('FILE:', req.file);
+
   if (!req.session.userId) {
     return res.status(401).json({ message: 'Не авторизован' });
   }
@@ -57,8 +60,9 @@ app.post('/api/upload-avatar', upload.single('avatar'), async (req, res) => {
   }
 
   try {
-    const avatarUrl = req.file.path; // Cloudinary возвращает URL в .path
-    await User.updateOne({ userId: req.session.userId }, { avatar: avatarUrl });
+    const avatarUrl = req.file.path;
+    const updateResult = await User.updateOne({ userId: req.session.userId }, { avatar: avatarUrl });
+    console.log('Update Result:', updateResult);
     res.json({ message: 'Аватар обновлён', avatar: avatarUrl });
   } catch (err) {
     console.error('Ошибка загрузки в Cloudinary:', err);
@@ -182,9 +186,9 @@ const counterSchema = new mongoose.Schema({
 });
 const Counter = mongoose.model('Counter', counterSchema);
 
-// Схема пользователя с дополнительным полем userId
+// Схема пользователя
 const userSchema = new mongoose.Schema({
-  userId: { type: Number, unique: true }, // Наш числовой ID пользователя
+  userId: { type: Number, unique: true }, // числовой ID пользователя
   firstName: String,
   lastName: String,
   username: { type: String, unique: true },
