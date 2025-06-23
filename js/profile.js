@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       showModalMessage('Ошибка', 'Ошибка при сохранении биографии');
                     }
                   })
-                  .catch(() => showModalMessage('Ошибка', 'Ошибка при сохранении биографии');
+                  .catch(() => showModalMessage('Ошибка', 'Ошибка при сохранении биографии'));
               }
             });
           } else {
