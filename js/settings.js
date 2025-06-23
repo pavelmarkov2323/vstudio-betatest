@@ -67,18 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!res.ok) throw new Error('Не авторизован');
             currentUser = await res.json();
 
-            firstNameInput.value = user.firstName || '';
-            lastNameInput.value = user.lastName || '';
-            genderSelect.value = user.gender || '';
-            if (user.birth) {
-                birthDay.value = user.birth.day || 'Day';
-                birthMonth.value = user.birth.month || 'Month';
-                birthYear.value = user.birth.year || 'Year';
+            firstNameInput.value = currentUser.firstName || '';
+            lastNameInput.value = currentUser.lastName || '';
+            genderSelect.value = currentUser.gender || '';
+            if (currentUser.birth) {
+                birthDay.value = currentUser.birth.day || 'Day';
+                birthMonth.value = currentUser.birth.month || 'Month';
+                birthYear.value = currentUser.birth.year || 'Year';
             }
-            countrySelect.value = user.country || '';
+            countrySelect.value = currentUser.country || '';
         } catch (err) {
             console.error(err);
-            // Можно показать сообщение или редирект на логин
         }
     }
 
