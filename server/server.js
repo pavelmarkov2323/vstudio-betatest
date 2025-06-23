@@ -12,6 +12,7 @@ app.use(cors());
 // Защищённый роут для загрузки аватара
 const multer = require('multer');
 const { storage } = require('./cloudinary');
+
 const upload = multer({ storage });
 
 // Сессионная система с шифрованием
