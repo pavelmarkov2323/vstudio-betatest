@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    let currentUser = null;
+
     const firstNameInput = document.getElementById('firstNameInput');
     const lastNameInput = document.getElementById('lastNameInput');
     const genderSelect = document.getElementById('genderSelect');
@@ -63,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const res = await fetch('/api/current-user');
             if (!res.ok) throw new Error('Не авторизован');
-            const user = await res.json();
+            currentUser = await res.json();
 
             firstNameInput.value = user.firstName || '';
             lastNameInput.value = user.lastName || '';
@@ -81,23 +83,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     loadUserData();
-
     saveButton.addEventListener('click', async () => {
         // Проверим, что выбраны все поля
         if (!firstNameInput.value.trim() || !lastNameInput.value.trim()) {
-            showModalMessage('Ошибка', 'Введите имя и фамилию');
+            showModalMessage('Error', 'Enter your first and last name');
             return;
         }
         if (!['Male', 'Female'].includes(genderSelect.value)) {
-            showModalMessage('Ошибка', 'Выберите пол');
+            showModalMessage('Error', 'Choose a gender');
             return;
         }
         if (!birthDay.value || !birthMonth.value || !birthYear.value) {
-            showModalMessage('Ошибка', 'Выберите дату рождения');
+            showModalMessage('Error', 'Select the date of birth');
             return;
         }
         if (!countrySelect.value) {
-            showModalMessage('Ошибка', 'Выберите страну');
+            showModalMessage('Error', 'Select a country');
             return;
         }
 
@@ -122,16 +123,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await res.json();
 
             if (res.ok) {
-                showModalMessage('Успех', 'Профиль сохранён');
+                showModalMessage('Profile Update', 'Your settings have been saved successfully.');
                 // Через небольшой таймаут перенаправим на страницу профиля
                 setTimeout(() => {
-                    window.location.href = `/profile/${user.username}`;
+                    window.location.href = `/profile/${currentUser.username}`;
                 }, 1500);
             } else {
-                showModalMessage('Ошибка', result.message || 'Ошибка');
+                showModalMessage('Error', result.message || 'Error');
             }
         } catch (err) {
-            showModalMessage('Ошибка', 'Ошибка сети');
+            showModalMessage('Error', 'Network error');
             console.error(err);
         }
     });
