@@ -151,8 +151,11 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           if (birthdayElem) {
-            // Можно форматировать дату если нужно
-            birthdayElem.textContent = user.birth || 'Не указано';
+            if (user.birth && user.birth.day && user.birth.month && user.birth.year) {
+              birthdayElem.textContent = `${user.birth.day} ${user.birth.month} ${user.birth.year}`;
+            } else {
+              birthdayElem.textContent = 'Не указано';
+            }
           }
 
           // Аватар
