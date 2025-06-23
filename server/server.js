@@ -129,6 +129,37 @@ app.post('/api/update-balance', async (req, res) => {
   }
 });
 
+// Обновление данных профиля и настройки
+app.post('/api/update-profile', async (req, res) => {
+  if (!req.session.userId) {
+    return res.status(401).json({ message: 'Не авторизован' });
+  }
+
+  const { firstName, lastName, gender, birth, country } = req.body;
+
+  // Валидация (можно добавить свою, я пример простой)
+  if (typeof firstName !== 'string' || typeof lastName !== 'string' || 
+      !['Male', 'Female', ''].includes(gender) ||
+      typeof birth !== 'object' ||
+      !birth.day || !birth.month || !birth.year ||
+      typeof country !== 'string') {
+    return res.status(400).json({ message: 'Неверные данные' });
+  }
+
+  try {
+    await User.updateOne(
+      { userId: req.session.userId },
+      { firstName, lastName, gender, birth, country }
+    );
+
+    res.json({ message: 'Профиль обновлён' });
+  } catch (err) {
+    console.error('Ошибка обновления профиля:', err);
+    res.status(500).json({ message: 'Ошибка сервера' });
+  }
+});
+
+
 // API для получения данных пользователя по username (GET)
 app.get('/api/profile/:username', async (req, res) => {
   try {
