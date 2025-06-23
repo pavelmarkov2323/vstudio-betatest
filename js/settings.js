@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showModalMessage('Успех', 'Профиль сохранён');
                 // Через небольшой таймаут перенаправим на страницу профиля
                 setTimeout(() => {
-                    window.location.href = `/profile/${result.username}`;
+                    window.location.href = `/profile/${user.username}`;
                 }, 1500);
             } else {
                 showModalMessage('Ошибка', result.message || 'Ошибка');
