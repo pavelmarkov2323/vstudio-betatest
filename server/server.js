@@ -11,16 +11,23 @@ app.use(cors());
 
 // Сессионная система с шифрованием
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'secret_key',
   resave: false,
   saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URI,
+    collectionName: 'sessions',
+    ttl: 60 * 60 * 24 // 1 день
+  }),
   cookie: {
     maxAge: 1000 * 60 * 60 * 24, // 1 день
     httpOnly: true,
   }
 }));
+
 
 // Раздача статических файлов (html, css, js) из корня проекта
 app.use(express.static(path.join(__dirname, '..')));
@@ -35,50 +42,26 @@ app.get('/profile/:username', (req, res) => {
   res.sendFile(path.join(__dirname, '../profile.html'));
 });
 
-
-// API для загрузки аватара, система аватаров
+// Защищённый роут для загрузки аватара
 const multer = require('multer');
-const fs = require('fs');
-
-// Папка для хранения аватаров
-const avatarsDir = path.join(__dirname, '../public/uploads/avatars');
-app.use('/uploads/avatars', express.static(avatarsDir)); // Раздаём статические файлы из этой папки по пути /uploads/avatars
-
-// Создаём папку, если нет
-if (!fs.existsSync(avatarsDir)) {
-  fs.mkdirSync(avatarsDir, { recursive: true });
-}
-
-// Конфиг multer
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, avatarsDir);
-  },
-  filename: (req, file, cb) => {
-    // Название файла — userId + расширение
-    const ext = path.extname(file.originalname);
-    cb(null, req.session.userId + ext);
-  }
-});
-
+const { storage } = require('./cloudinary'); // путь к твоему cloudinary.js
 const upload = multer({ storage });
 
-// Защищённый роут для загрузки аватара
 app.post('/api/upload-avatar', upload.single('avatar'), async (req, res) => {
   if (!req.session.userId) {
     return res.status(401).json({ message: 'Не авторизован' });
   }
 
-  if (!req.file) {
+  if (!req.file || !req.file.path) {
     return res.status(400).json({ message: 'Файл не загружен' });
   }
 
   try {
-    const avatarPath = `/uploads/avatars/${req.file.filename}`;
-    await User.updateOne({ userId: req.session.userId }, { avatar: avatarPath });
-    res.json({ message: 'Аватар обновлён', avatar: avatarPath });
+    const avatarUrl = req.file.path; // Cloudinary возвращает URL в .path
+    await User.updateOne({ userId: req.session.userId }, { avatar: avatarUrl });
+    res.json({ message: 'Аватар обновлён', avatar: avatarUrl });
   } catch (err) {
-    console.error('Ошибка загрузки аватара:', err);
+    console.error('Ошибка загрузки в Cloudinary:', err);
     res.status(500).json({ message: 'Ошибка сервера' });
   }
 });
