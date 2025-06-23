@@ -159,7 +159,9 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           // Аватар
-          avatarImage.src = user.avatar || '/assets/images/avatar/default.png';
+          avatarImage.src = user.avatar?.startsWith('http')
+            ? user.avatar
+            : 'https://res.cloudinary.com/dqceexk1h/image/upload/v1750689301/default.png';
 
           // Биография — показываем или ставим дефолтный текст
           bioText.childNodes[0].textContent = user.bio && user.bio.trim() !== '' ? user.bio :

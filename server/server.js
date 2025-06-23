@@ -44,31 +44,27 @@ app.get('/profile/:username', (req, res) => {
 
 // Защищённый роут для загрузки аватара
 const multer = require('multer');
-const { storage } = require('./cloudinary'); // путь к твоему cloudinary.js
+const { storage } = require('./cloudinary');
 const upload = multer({ storage });
 
 app.post('/api/upload-avatar', upload.single('avatar'), async (req, res) => {
-  console.log('SESSION:', req.session);
-  console.log('FILE:', req.file);
-
-  if (!req.session.userId) {
-    return res.status(401).json({ message: 'Не авторизован' });
-  }
-
-  if (!req.file || !req.file.path) {
-    return res.status(400).json({ message: 'Файл не загружен' });
-  }
-
   try {
-    const avatarUrl = req.file.secure_url || req.file.path; // fallback
-    const updateResult = await User.updateOne({ userId: req.session.userId }, { avatar: avatarUrl });
-    console.log('Update Result:', updateResult);
-    res.json({ message: 'Аватар обновлён', avatar: avatarUrl });
-  } catch (err) {
-    console.error('Ошибка загрузки в Cloudinary:', err);
+    const userId = req.session.userId;
+    if (!userId) return res.status(401).json({ message: 'Не авторизован' });
+
+    const user = await User.findOne({ userId });
+    if (!user) return res.status(404).json({ message: 'Пользователь не найден' });
+
+    user.avatar = req.file.path; // Cloudinary URL
+    await user.save();
+
+    res.json({ avatar: user.avatar });
+  } catch (error) {
+    console.error('Ошибка загрузки аватара:', error);
     res.status(500).json({ message: 'Ошибка сервера' });
   }
 });
+
 
 // API для смены биографии
 app.post('/api/update-bio', async (req, res) => {
@@ -194,7 +190,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, unique: true },
   email: { type: String, unique: true },
   password: String,
-  avatar: { type: String, default: '/assets/images/avatar/default.png' }, // путь к аватару
+  avatar: { type: String, default: 'https://res.cloudinary.com/dqceexk1h/image/upload/v1750689301/default.png' }, // путь к аватару
   bio: { type: String, default: '' },
   status: { type: Number, default: 0 },
   balance: { type: Number, default: 0 },
