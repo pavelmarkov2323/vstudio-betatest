@@ -176,7 +176,10 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(res => res.json())
         .then(data => {
           if (data.message === 'Биография обновлена') {
-            bioText.textContent = setDefaultBio(newText);
+            // Только если у элемента уже есть текстовый узел
+            if (bioText.firstChild && bioText.firstChild.nodeType === Node.TEXT_NODE) {
+              bioText.firstChild.textContent = setDefaultBio(newText);
+            }
             bioInput.style.display = 'none';
             bioText.style.display = 'inline';
             editBtn.style.display = 'inline';
