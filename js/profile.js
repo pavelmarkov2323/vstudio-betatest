@@ -141,6 +141,18 @@ document.addEventListener("DOMContentLoaded", () => {
           } else if (userStatusWrapper) {
             userStatusWrapper.style.display = 'none';
           }
+          // Обработка данных пользователя из блока Details
+          const countryElem = document.querySelector('.user-country');
+          const birthdayElem = document.querySelector('.user-birthday');
+
+          if (countryElem) {
+            countryElem.textContent = user.country || 'Не указано';
+          }
+
+          if (birthdayElem) {
+            // Можно форматировать дату если нужно
+            birthdayElem.textContent = user.birthday || 'Не указана';
+          }
 
           // Аватар
           avatarImage.src = user.avatar || '/assets/images/avatar/default.png';
