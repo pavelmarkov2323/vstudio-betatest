@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ValeyevStudio - Settings</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+
+  <div class="settings-card">
+    <h2 class="theme-text">General settings</h2>
+    <div class="section-underline"></div>
+    <div class="row">
+      <div class="column">
+        <label>First Name</label>
+        <input type="text" id="firstNameInput" />
+      </div>
+      <div class="column">
+        <label>Last Name</label>
+        <input type="text" id="lastNameInput" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column right">
+        <label class="theme-text">Gender</label>
+        <div class="select-wrapper">
+          <select id="genderSelect">
+            <option selected disabled>Select a gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="column right">
+        <label class="theme-text">Date of birth</label>
+        <div class="birth-row">
+          <select id="birthDay">
+            <option selected disabled>Day</option>
+          </select>
+          <select id="birthMonth">
+            <option selected disabled>Month</option>
+          </select>
+          <select id="birthYear">
+            <option selected disabled>Year</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column">
+        <label class="theme-text">Country</label>
+        <div class="select-wrapper">
+          <select id="countrySelect">
+            <option selected disabled>Select a country</option>
+            <!-- Страны подгрузим отдельно -->
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <button class="save-button">Save</button>
+  </div>
+
+  
+  <!-- Подключенные скрипты -->
+  <script src="js/translate-language.js"></script>
+  <script src="js/themeswitch.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

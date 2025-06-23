@@ -285,3 +285,8 @@ body.dark-theme .password-toogle {
 body.dark-theme .password-reset-hint {
     background: #303030;
 }
+
+/* Для дизайна general settings */
+body.dark-theme .settings-card{ 
+    background: #303030;
+}

@@ -66,6 +66,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
 
+            const goToSettings = document.getElementById('menuSettings');
+            if (goToSettings) {
+                goToSettings.addEventListener('click', () => {
+                    window.location.href = `/settings.html`;
+                });
+            }
+
             const logoutBtn = document.getElementById('menuLogout');
             if (logoutBtn) {
                 logoutBtn.addEventListener('click', async () => {

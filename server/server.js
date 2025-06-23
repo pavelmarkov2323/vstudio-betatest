@@ -172,6 +172,13 @@ const userSchema = new mongoose.Schema({
   bio: { type: String, default: '' },
   status: { type: Number, default: 0 },
   balance: { type: Number, default: 0 },
+   gender: { type: String, enum: ['Male', 'Female'], default: '' }, // ♂️♀️
+  birth: {
+    day: Number,
+    month: String, // January – December
+    year: Number
+  },
+  country: { type: String, default: '' },
   createdAt: { type: Date, default: Date.now }
 });
 
