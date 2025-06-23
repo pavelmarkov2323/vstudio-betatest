@@ -12,7 +12,7 @@ const storage = new CloudinaryStorage({
   params: {
     folder: 'avatars',
     allowed_formats: ['jpg', 'jpeg', 'png', 'gif'],
-    public_id: (req, file) => `user_${req.session.userId}`, // Название файла
+    //public_id: (req, file) => `user_${req.session.userId}`, // Название файла
   },
 });
 

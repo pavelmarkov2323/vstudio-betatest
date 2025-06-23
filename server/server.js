@@ -9,6 +9,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// Защищённый роут для загрузки аватара
+const multer = require('multer');
+const { storage } = require('./cloudinary');
+const upload = multer({ storage });
+
 // Сессионная система с шифрованием
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -42,20 +47,23 @@ app.get('/profile/:username', (req, res) => {
   res.sendFile(path.join(__dirname, '../profile.html'));
 });
 
-// Защищённый роут для загрузки аватара
-const multer = require('multer');
-const { storage } = require('./cloudinary');
-const upload = multer({ storage });
 
+// API для смены фотографии профиля
 app.post('/api/upload-avatar', upload.single('avatar'), async (req, res) => {
   try {
     const userId = req.session.userId;
     if (!userId) return res.status(401).json({ message: 'Не авторизован' });
 
+    console.log('req.file:', req.file);
+
+    if (!req.file) {
+      return res.status(400).json({ message: 'Файл не загружен' });
+    }
+
     const user = await User.findOne({ userId });
     if (!user) return res.status(404).json({ message: 'Пользователь не найден' });
 
-    user.avatar = req.file.path; // Cloudinary URL
+    user.avatar = req.file.path;
     await user.save();
 
     res.json({ avatar: user.avatar });
