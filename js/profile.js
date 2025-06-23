@@ -141,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
           } else if (userStatusWrapper) {
             userStatusWrapper.style.display = 'none';
           }
+          
           // Обработка данных пользователя из блока Details
           const countryElem = document.querySelector('.user-country');
           const birthdayElem = document.querySelector('.user-birthday');

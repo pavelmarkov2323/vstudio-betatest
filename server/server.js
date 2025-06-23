@@ -129,6 +129,20 @@ app.post('/api/update-balance', async (req, res) => {
   }
 });
 
+// API для получения данных пользователя по username (GET)
+app.get('/api/profile/:username', async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username }).select('-password -__v');
+    if (!user) {
+      return res.status(404).json({ message: 'Пользователь не найден' });
+    }
+    res.json(user);
+  } catch (err) {
+    console.error('Ошибка получения профиля:', err);
+    res.status(500).json({ message: 'Ошибка сервера' });
+  }
+});
+
 // Обновление данных профиля и настройки
 app.post('/api/update-profile', async (req, res) => {
   if (!req.session.userId) {
@@ -160,19 +174,6 @@ app.post('/api/update-profile', async (req, res) => {
 });
 
 
-// API для получения данных пользователя по username (GET)
-app.get('/api/profile/:username', async (req, res) => {
-  try {
-    const user = await User.findOne({ username: req.params.username }).select('-password -__v');
-    if (!user) {
-      return res.status(404).json({ message: 'Пользователь не найден' });
-    }
-    res.json(user);
-  } catch (err) {
-    console.error('Ошибка получения профиля:', err);
-    res.status(500).json({ message: 'Ошибка сервера' });
-  }
-});
 
 // Подключение к MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -188,8 +189,6 @@ const counterSchema = new mongoose.Schema({
   seq: { type: Number, default: 0 } // Текущая последовательность
 });
 const Counter = mongoose.model('Counter', counterSchema);
-
-
 
 // Схема пользователя с дополнительным полем userId
 const userSchema = new mongoose.Schema({
