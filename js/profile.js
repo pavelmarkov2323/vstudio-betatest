@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateProfileUI(user) {
+    console.log('Profile user:', user.username, 'Current user:', currentUser ? currentUser.username : null);
     if (!user.username) {
       document.body.innerHTML = `
         <div class="not-found-container">
@@ -138,9 +139,11 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(user => {
       currentUser = user;
+      console.log('currentUser:', currentUser);
     })
     .catch(() => {
       currentUser = null;
+      console.log('currentUser not logged in');
     })
     .finally(() => {
       loadProfile();
