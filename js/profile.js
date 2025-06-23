@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
           } else if (userStatusWrapper) {
             userStatusWrapper.style.display = 'none';
           }
-          
+
           // Обработка данных пользователя из блока Details
           const countryElem = document.querySelector('.user-country');
           const birthdayElem = document.querySelector('.user-birthday');
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (birthdayElem) {
             // Можно форматировать дату если нужно
-            birthdayElem.textContent = user.birthday || 'Не указана';
+            birthdayElem.textContent = user.birth || 'Не указано';
           }
 
           // Аватар

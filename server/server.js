@@ -151,7 +151,7 @@ app.post('/api/update-profile', async (req, res) => {
 
   const { firstName, lastName, gender, birth, country } = req.body;
 
-  // Валидация (можно добавить свою, я пример простой)
+  // Валидация (можно расширить)
   if (typeof firstName !== 'string' || typeof lastName !== 'string' || 
       !['Male', 'Female', ''].includes(gender) ||
       typeof birth !== 'object' ||
@@ -160,10 +160,19 @@ app.post('/api/update-profile', async (req, res) => {
     return res.status(400).json({ message: 'Неверные данные' });
   }
 
+  // Безопасная подготовка данных (нормализация gender)
+  const updateData = {
+    firstName,
+    lastName,
+    gender: ['Male', 'Female'].includes(gender) ? gender : '', // нормализуем
+    birth,
+    country
+  };
+
   try {
     await User.updateOne(
       { userId: req.session.userId },
-      { firstName, lastName, gender, birth, country }
+      updateData
     );
 
     res.json({ message: 'Профиль обновлён' });
@@ -202,7 +211,7 @@ const userSchema = new mongoose.Schema({
   bio: { type: String, default: '' },
   status: { type: Number, default: 0 },
   balance: { type: Number, default: 0 },
-   gender: { type: String, enum: ['Male', 'Female'], default: '' }, // ♂️♀️
+  gender: { type: String, enum: ['Male', 'Female', ''], default: '' },
   birth: {
     day: Number,
     month: String, // January – December
