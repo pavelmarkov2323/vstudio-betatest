@@ -133,6 +133,15 @@ body.dark-theme .modal-message-close:hover {
   color: rgb(224, 224, 224);
 }
 
+/* RoadMap - Дорожная карта */
+body.dark-theme .roadmap-section {
+  background: #141414;
+}
+
+body.dark-theme .roadmap-container {
+  background: #1a1a1a;
+}
+
 /* FAQ - Вопросы / Ответы */
 
 /* Фон панели вопросов FAQ*/

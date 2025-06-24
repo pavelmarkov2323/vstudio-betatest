@@ -158,5 +158,21 @@
         "birthdayLabel": "Birthday:",
         "not-found-title": "The user was not found",
         "home-button": "Return back"
+    },
+    "roadmap": {
+    "roadmap-heading": "Roadmap 2025–2026",
+    "roadmap-title": "Our Plans",
+    "stage-1": "Optimization of Website and Software",
+    "stage-discription1": "We will continue to improve the stability, loading speed, and user experience of both the website and the main software.",
+    "stage-2": "Migration to Modern Servers and Database Upgrade",
+    "stage-discription2": "We plan to migrate to a more powerful server infrastructure with a new data management and storage interface.",
+    "stage-3": "Announcement and Launch of PixelKey Product",
+    "stage-discription3": "Announcement and release of an innovative tool for music producers and beatmakers — the PixelKey platform focused on creativity and ease of use.",
+    "stage-4": "Collaboration with Media and Bloggers",
+    "stage-discription4": "Active work on PR: press releases, interviews, articles, and collaborations with relevant media and bloggers.",
+    "stage-5": "Audience Expansion and Monetization",
+    "stage-discription5": "Launching ad campaigns, integrating payment systems, and developing monetization models.",
+    "stage-6": "Attracting Sponsors and Investors",
+    "stage-discription6": "Building a sustainable ecosystem supported by partners, investors, and strategic allies."
     }
 }

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/menu_dropdown.css">
     <link rel="stylesheet" href="css/themes.css">
     <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/home.css">
     <!-- Подключение кастомных стилей -->
     <link rel="stylesheet" href="css/custom_toggles.css">
     <link rel="stylesheet" href="css/custom_dropdown.css">
@@ -248,6 +249,88 @@
         </section>
     </main>
 
+    <section class="roadmap-section">
+        <h3 class="roadmap-heading theme-text">Дорожная карта 2025–2026</h3>
+        <div class="roadmap-container">
+            <h2 class="roadmap-title theme-text">Наши планы</h2>
+            <div class="roadmap-timeline">
+
+                <!-- Этап 1 -->
+                <div class="roadmap-item completed">
+                    <div class="roadmap-dot-line"></div>
+                    <button class="roadmap-toggle">
+                        <span class="stage-1 theme-text">Оптимизация сайта и программного обеспечения</span>
+                        <img src="assets\icons\angle-small-down.svg" alt="toggle" class="arrow-icon theme-icon">
+                    </button>
+                    <div class="roadmap-content stage-discription1 theme-text">
+                        Продолжим улучшать стабильность, скорость загрузки и удобство использования как веб-сайта, так и основного ПО.
+                    </div>
+                </div>
+
+                <!-- Этап 2 -->
+                <div class="roadmap-item active">
+                    <div class="roadmap-dot-line"></div>
+                    <button class="roadmap-toggle">
+                        <span class="stage-2 theme-text">Переход на современные серверы и обновление базы данных</span>
+                        <img src="assets\icons\angle-small-down.svg" alt="toggle" class="arrow-icon theme-icon">
+                    </button>
+                    <div class="roadmap-content stage-discription2 theme-text">
+                        Планируется миграция на более производительную серверную инфраструктуру с новым интерфейсом управления и хранения данных.
+                    </div>
+                </div>
+
+                <!-- Этап 3 -->
+                <div class="roadmap-item upcoming">
+                    <div class="roadmap-dot-line"></div>
+                    <button class="roadmap-toggle">
+                        <span class="stage-3 theme-text">Анонс и запуск нового продукта PixelKey</span>
+                        <img src="assets\icons\angle-small-down.svg" alt="toggle" class="arrow-icon theme-icon">
+                    </button>
+                    <div class="roadmap-content stage-discription3 theme-text">
+                        Анонс и выход инновационного инструмента для музыкальных продюсеров и битмейкеров — платформа PixelKey с фокусом на удобство и креативность.
+                    </div>
+                </div>
+
+                <!-- Этап 4 -->
+                <div class="roadmap-item upcoming">
+                    <div class="roadmap-dot-line"></div>
+                    <button class="roadmap-toggle">
+                        <span class="stage-4 theme-text">Сотрудничество со СМИ и блогерами</span>
+                        <img src="assets\icons\angle-small-down.svg" alt="toggle" class="arrow-icon theme-icon">
+                    </button>
+                    <div class="roadmap-content stage-discription4 theme-text">
+                        Активная работа над PR-направлением: пресс-релизы, интервью, статьи и коллаборации с профильными изданиями и блогами.
+                    </div>
+                </div>
+
+                <!-- Этап 5 -->
+                <div class="roadmap-item upcoming">
+                    <div class="roadmap-dot-line"></div>
+                    <button class="roadmap-toggle">
+                        <span class="stage-5 theme-text">Расширение аудитории и монетизация</span>
+                        <img src="assets\icons\angle-small-down.svg" alt="toggle" class="arrow-icon theme-icon">
+                    </button>
+                    <div class="roadmap-content stage-discription5 theme-text">
+                        Запуск рекламных кампаний, подключение платёжных систем и развитие моделей монетизации.
+                    </div>
+                </div>
+                <!-- Этап 6 -->
+                <div class="roadmap-item upcoming">
+                    <div class="roadmap-dot-line"></div>
+                    <button class="roadmap-toggle">
+                        <span class="stage-6 theme-text">Привлечение спонсоров и инвесторов</span>
+                        <img src="assets\icons\angle-small-down.svg" alt="toggle" class="arrow-icon theme-icon">
+                    </button>
+                    <div class="roadmap-content stage-discription6 theme-text">
+                        Формирование устойчивой экосистемы с поддержкой партнёров, инвесторов и стратегических союзников.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
     <!-- FAQ - Вопрос = Ответ. -->
     <div class="faq-container theme-text">
         <p class="faq-title theme-text">FAQ</p>
@@ -293,7 +376,7 @@
 
     <footer class="footer line">
         <div class="footer-content">
-            <span class="footer-copyright">© 2025 Project of the ValeyevPrograms company.</span>
+            <span class="footer-copyright">© 2025 Project of the ValeyevStudio company.</span>
             <a href="about.html#user-agreement" class="footer-link nav-user-agreement">User Agreement</a>
         </div>
         <div class="footer-social">
@@ -323,6 +406,7 @@
     <script src="js/menu_dropdown.js"></script>
     <script src="js/download.js"></script>
     <script src="js/pushnotify.js"></script>
+    <script src="js/roadmap-toggle.js" defer></script>
 </body>
 
 </html>

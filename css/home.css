@@ -1,0 +1,100 @@
+/* Roadmap - Дорожная карта */
+.roadmap-section {
+  background: #f8f9fa;
+  padding: 4rem 1rem;
+}
+
+.roadmap-heading {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+.roadmap-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  padding: 2rem;
+}
+
+.roadmap-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.roadmap-timeline {
+  position: relative;
+  padding-left: 32px;
+  border-left: 3px solid #ccc;
+}
+
+.roadmap-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.roadmap-dot-line::before {
+  content: "";
+  position: absolute;
+  left: -41px;
+  top: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: gray;
+  z-index: 1;
+}
+
+.roadmap-item.completed .roadmap-dot-line::before {
+  background: #4caf50;
+}
+
+.roadmap-item.active .roadmap-dot-line::before {
+  background: #ffc107;
+}
+
+.roadmap-item.upcoming .roadmap-dot-line::before {
+  background: #9e9e9e;
+}
+
+.roadmap-toggle {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.roadmap-toggle .arrow-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.roadmap-item.open .arrow-icon {
+  transform: rotate(180deg);
+}
+
+.roadmap-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+  padding-left: 0.5rem;
+}
+
+.roadmap-item.open .roadmap-content {
+  max-height: 300px;
+  opacity: 1;
+  margin-top: 0.5rem;
+}
