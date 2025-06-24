@@ -202,7 +202,7 @@ body.dark-theme {
   filter: var(--icon-filter);
 }
 
-.roadmap-toggle {
+.roadmap-toggle { 
   background: none;
   border: none;
   font-size: 1.1rem;
@@ -226,17 +226,16 @@ body.dark-theme {
 }
 
 .roadmap-content {
-  max-height: 0;
+  height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
   opacity: 0;
+  transition: height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
   padding-left: 0.5rem;
+  margin-top: 0;
 }
 
 .roadmap-item.open .roadmap-content {
-  max-height: 300px;
   opacity: 1;
-  margin-top: 0.5rem;
 }
 
 /* FAQ - Вопросы / Ответы */
