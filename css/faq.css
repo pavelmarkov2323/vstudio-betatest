@@ -15,10 +15,17 @@
 }
 
 /* FAQ - Вопросы / Ответы */
-
 .faq-container {
     width: 25%;
     margin: 20px auto;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.faq-container.animate-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .faq-title {
