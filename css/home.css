@@ -257,27 +257,6 @@ body.dark-theme {
   opacity: 1;
 }
 
-/* Roadmap-item finish (Завершено) */
-.roadmap-item.finish::before {
-  background: none;
-}
-
-.roadmap-item.finish::after {
-  content: "";
-  position: absolute;
-  left: -43px;
-  top: -14px;
-  width: 25px;
-  height: 25px;
-  background-image: url("../assets/icons/finish.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  z-index: 3;
-  pointer-events: none;
-  filter: var(--icon-filter);
-}
-
 /* FAQ - Вопросы / Ответы */
 .faq-container {
     width: 25%;
