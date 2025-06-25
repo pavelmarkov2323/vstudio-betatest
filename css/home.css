@@ -30,10 +30,20 @@
 }
 
 .roadmap-title {
+  margin-top: 1rem; /* или -2rem, подбирай по вкусу */
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 2rem;
+}
+
+.roadmap-divider {
+  width: 90px;             /* длина линии */
+  height: 2px;             /* толщина */
+  background-color: #ccc;  /* светло-серый */
+  border-radius: 999px;    /* полностью скруглённая */
+  margin: 0 auto 2rem;     /* центрировать и отступ вниз */
+  margin-top: -1rem; /* или -2rem, подбирай по вкусу */
 }
 
 .roadmap-timeline {
@@ -43,8 +53,17 @@
 }
 
 .roadmap-item {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  transition: box-shadow 0.3s ease;
   position: relative;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.roadmap-item:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .roadmap-dot-line::before {
