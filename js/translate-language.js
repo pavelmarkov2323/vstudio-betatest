@@ -104,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.stage-6': data.roadmap['stage-6'],
                     '.stage-discription6': data.roadmap['stage-discription6'],
                     '.advertisement-banner-text': data.advertisement['advertisement-banner-text'],
-                    '.advertisement-banner-description': data.advertisement['advertisement-banner-description'],
                     '.advertisement-banner-note': data.advertisement['advertisement-banner-note'],
                     '.advertisement-banner-button': data.advertisement['advertisement-banner-button'],
                     '.footer-copyright': data.footer.copyright,
