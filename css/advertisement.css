@@ -26,7 +26,7 @@
 
 .advertisement-banner-right {
   width: 40%;
-  background-image: url('../assets/images/PixelFPS.png');
+  background-image: url('/assets/images/PixelFPS.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
