@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.advertisement-banner-text': data.advertisement['advertisement-banner-text'],
                     '.advertisement-banner-note': data.advertisement['advertisement-banner-note'],
                     '.advertisement-banner-button': data.advertisement['advertisement-banner-button'],
-                    '.advertisement-banner-description': data.advertisement['advertisement-banner-description'],
+                    '.advertisement-banner-description': data["advertisement-banner-description"],
                     '.footer-copyright': data.footer.copyright,
                     '.forgot-link a': data.auth?.forgotPassword,
                     '.nav-user-agreement': data.footer['user-agreement'],
