@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const el = document.querySelector(selector);
                     if (el && value !== undefined) {
                         // Если нужно разрешить HTML только для описания, можно добавить условие
-                        if (selector === '.advertisement-banner-description') {
+                        if (selector === '.advertisement' || selector === '.advertisement-banner-description') {
                             el.innerHTML = value;
                         } else {
                             el.textContent = value;
