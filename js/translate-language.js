@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const el = document.querySelector(selector);
                     if (el && value !== undefined) {
                         if (selector === '.advertisement-banner-description') {
-                            el.innerHTML = value;
+                            el.textContent = value.replace(/<br\s*\/?>/gi, ' ');
                         } else {
                             el.textContent = value;
                         }
