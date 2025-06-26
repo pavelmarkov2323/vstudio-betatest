@@ -154,6 +154,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 Object.entries(elementsMap).forEach(([selector, value]) => {
                     const el = document.querySelector(selector);
                     if (el && value !== undefined) {
+                        // Если нужно разрешить HTML только для описания, можно добавить условие
+                        if (selector === '.advertisement-banner-description') {
+                            el.innerHTML = value;
+                        } else {
+                            el.textContent = value;
+                        }
+                    }
+                });
+
+                Object.entries(elementsMap).forEach(([selector, value]) => {
+                    const el = document.querySelector(selector);
+                    if (el && value !== undefined) {
                         if (selector === '.description' || selector === '.aboutcompany-text') {
                             el.innerHTML = value; // разрешаем HTML для описания
                         } else {
