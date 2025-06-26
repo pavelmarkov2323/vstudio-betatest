@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // --- Обновляем язык интерфейса сразу ---
     updateLanguage(savedLanguage);
-    console.log("Устанавливаем язык:", language);
 
     // --- Если все элементы переключателя языка есть, навешиваем обработчики ---
     if (languageSwitch && languageCodeElement && selectedFlag && dropdownMenu && arrow) {
