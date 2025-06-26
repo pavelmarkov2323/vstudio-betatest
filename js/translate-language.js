@@ -6,21 +6,37 @@ document.addEventListener("DOMContentLoaded", function () {
     const dropdownMenu = document.querySelector('.dropdown-menu');
     const languageItems = document.querySelectorAll('.language-switch .dropdown-item');
     const arrow = document.querySelector('.arrow');
-
+    
     // --- Установка языка из localStorage или браузера ---
     let savedLanguage = localStorage.getItem('language');
     if (!savedLanguage) {
-        const browserLanguage = navigator.language || navigator.userLanguage;
-        const availableLanguages = [
-            'en-US', 'ru-RU', 'uk-UA', 'be-BY', 'kk-KZ', 'kr-TR',
-            'ka-GE', 'pl-PL', 'de-DE', 'es-ES', 'fr-FR', 'fi-FI', 'ko-KR', 'zh-CN'
-        ];
-        savedLanguage = availableLanguages.includes(browserLanguage) ? browserLanguage : 'en-US';
+        const languageMap = {
+            'en': 'en-US',
+            'ru': 'ru-RU',
+            'uk': 'uk-UA',
+            'be': 'be-BY',
+            'kk': 'kk-KZ',
+            'kr': 'kr-TR',
+            'ka': 'ka-GE',
+            'pl': 'pl-PL',
+            'de': 'de-DE',
+            'es': 'es-ES',
+            'fr': 'fr-FR',
+            'fi': 'fi-FI',
+            'ko': 'ko-KR',
+            'zh': 'zh-CN'
+        };
+
+        // Берём первые два символа языка браузера (например, 'ru' из 'ru-RU')
+        const browserLangShort = (navigator.language || navigator.userLanguage).slice(0, 2).toLowerCase();
+
+        savedLanguage = languageMap[browserLangShort] || 'en-US';
         localStorage.setItem('language', savedLanguage);
     }
 
     // --- Обновляем язык интерфейса сразу ---
     updateLanguage(savedLanguage);
+    console.log("Устанавливаем язык:", language);
 
     // --- Если все элементы переключателя языка есть, навешиваем обработчики ---
     if (languageSwitch && languageCodeElement && selectedFlag && dropdownMenu && arrow) {
@@ -66,107 +82,108 @@ document.addEventListener("DOMContentLoaded", function () {
         if (languageSwitch) languageSwitch.classList.remove('open');
 
         fetchLocalization(language);
+        console.log("Загружаем локализацию из:", `/assets/locales/${language}.json`);
     }
 
-        // --- Загрузка и обновление локализации ---
-        function fetchLocalization(language) {
-            fetch(`/assets/locales/${language}.json`)
-                .then(response => {
-                    if (!response.ok) throw new Error('Ошибка сети');
-                    return response.json();
-                })
-                .then(data => {
-                    // Обновляем тексты на странице
-                    const elementsMap = {
-                        '.main-title': data.mainTitle,
-                        '.description': data.description,
-                        '.subscribe-btn': data['subscribe-btn'],
-                        '.team-heading': data["team-heading"],
-                        '.aboutcompany-heading': data["aboutcompany-heading"],
-                        '.license-heading': data["license-heading"],
-                        '.legal-subheading': data["legal-subheading"],
-                        '#downloadBtn': data["download-btn"],
-                        '.nav-home': data.nav.home,
-                        '.nav-our-products': data.nav['our-products'],
-                        '.nav-about-us': data.nav['about-us'],
-                        '.roadmap-heading': data.roadmap['roadmap-heading'],
-                        '.roadmap-title': data.roadmap['roadmap-title'],
-                        '.stage-1': data.roadmap['stage-1'],
-                        '.stage-discription1': data.roadmap['stage-discription1'],
-                        '.stage-2': data.roadmap['stage-2'],
-                        '.stage-discription2': data.roadmap['stage-discription2'],
-                        '.stage-3': data.roadmap['stage-3'],
-                        '.stage-discription3': data.roadmap['stage-discription3'],
-                        '.stage-4': data.roadmap['stage-4'],
-                        '.stage-discription4': data.roadmap['stage-discription4'],
-                        '.stage-5': data.roadmap['stage-5'],
-                        '.stage-discription5': data.roadmap['stage-discription5'],
-                        '.stage-6': data.roadmap['stage-6'],
-                        '.stage-discription6': data.roadmap['stage-discription6'],
-                        '.advertisement-banner-text': data.advertisement['advertisement-banner-text'],
-                        '.advertisement-banner-note': data.advertisement['advertisement-banner-note'],
-                        '.advertisement-banner-button': data.advertisement['advertisement-banner-button'],
-                        '.advertisement-banner-description': data["advertisement"]["advertisement-banner-description"],
-                        '.footer-copyright': data.footer.copyright,
-                        '.forgot-link a': data.auth?.forgotPassword,
-                        '.nav-user-agreement': data.footer['user-agreement'],
-                        '.social-platforms': data['footer-social']['social-platforms'],
-                        '.captcha-title': data["captcha-content"]["captcha-title"],
-                        '.captcha-text-container': data["captcha-content"]["captcha-text-container"],
-                        '.captcha-footer': data["captcha-content"]["captcha-footer"],
-                        '.faq-title': data["faq"]["faq-title"],
-                        '.bio-title': data.bio?.title,
-                        '.bio-hint': data.bio?.hint,
-                        '.data-title': data.bio?.["data-title"],
-                        '.menu-profile-text': data.userMenu?.profile,
-                        '.menu-settings-text': data.userMenu?.settings,
-                        '.menu-support-text': data.userMenu?.support,
-                        '.menu-logout-text': data.userMenu?.logout,
-                        '.not-found-title': data["not-found-title"],
-                        '.home-button': data["home-button"],
-                        '.signin-btn': data.auth?.signIn,
-                        '.auth-title': data.auth?.authorization,
-                        '.login-button': data.auth?.login,
-                        '.no-account-text': data.auth?.noAccount,
-                        '.sign-up-link': data.auth?.signUp,
-                        '.ForgotPasswordTitle': data.forgotpassword?.ForgotPasswordTitle,
-                        '.modal-forgotpassword-description': data.forgotpassword?.["modal-forgotpassword-description"],
-                        '.resetpassword-title': data.resetpassword?.['resetpassword-title'],
-                        '.reset-btn': data.resetpassword?.['reset-btn'],
-                        '.modal-cancel': data.forgotpassword?.["modal-cancel"],
-                        '.modal-submit': data.forgotpassword?.["modal-submit"],
-                        '.input-email-error': data.forgotpassword?.["input-email-error"],
-                        '.input-forgotpassword-success': data.forgotpassword?.["input-forgotpassword-success"],
-                        '.registration-title': data.registration['registration-title'],
-                        '.password-hint': data.registration['password-hint'],
-                        '.registration-button': data.registration['registration-button'],
-                        '.aboutcompany-text': data["aboutcompany-text"],
-                        '#user-agreement-btn': data["user-agreement-btn"],
-                        '#privacy-policy-btn': data["privacy-policy-btn"],
-                        '.push-title-suggestions': data["push-suggestions-title"],
-                        '.push-text-suggestions': data["push-suggestions-text"],
-                        '.push-btn-suggestions': data["push-suggestions-button"],
-                        '.push-title-donation': data["push-donation-title"],
-                        '.push-text-donation': data["push-donation-text"],
-                        '.push-btn-donation': data["push-donation-button"]
-                    };
+    // --- Загрузка и обновление локализации ---
+    function fetchLocalization(language) {
+        fetch(`/assets/locales/${language}.json`)
+            .then(response => {
+                if (!response.ok) throw new Error('Ошибка сети');
+                return response.json();
+            })
+            .then(data => {
+                // Обновляем тексты на странице
+                const elementsMap = {
+                    '.main-title': data.mainTitle,
+                    '.description': data.description,
+                    '.subscribe-btn': data['subscribe-btn'],
+                    '.team-heading': data["team-heading"],
+                    '.aboutcompany-heading': data["aboutcompany-heading"],
+                    '.license-heading': data["license-heading"],
+                    '.legal-subheading': data["legal-subheading"],
+                    '#downloadBtn': data["download-btn"],
+                    '.nav-home': data.nav.home,
+                    '.nav-our-products': data.nav['our-products'],
+                    '.nav-about-us': data.nav['about-us'],
+                    '.roadmap-heading': data.roadmap['roadmap-heading'],
+                    '.roadmap-title': data.roadmap['roadmap-title'],
+                    '.stage-1': data.roadmap['stage-1'],
+                    '.stage-discription1': data.roadmap['stage-discription1'],
+                    '.stage-2': data.roadmap['stage-2'],
+                    '.stage-discription2': data.roadmap['stage-discription2'],
+                    '.stage-3': data.roadmap['stage-3'],
+                    '.stage-discription3': data.roadmap['stage-discription3'],
+                    '.stage-4': data.roadmap['stage-4'],
+                    '.stage-discription4': data.roadmap['stage-discription4'],
+                    '.stage-5': data.roadmap['stage-5'],
+                    '.stage-discription5': data.roadmap['stage-discription5'],
+                    '.stage-6': data.roadmap['stage-6'],
+                    '.stage-discription6': data.roadmap['stage-discription6'],
+                    '.advertisement-banner-text': data.advertisement['advertisement-banner-text'],
+                    '.advertisement-banner-note': data.advertisement['advertisement-banner-note'],
+                    '.advertisement-banner-button': data.advertisement['advertisement-banner-button'],
+                    '.advertisement-banner-description': data["advertisement"]["advertisement-banner-description"],
+                    '.footer-copyright': data.footer.copyright,
+                    '.forgot-link a': data.auth?.forgotPassword,
+                    '.nav-user-agreement': data.footer['user-agreement'],
+                    '.social-platforms': data['footer-social']['social-platforms'],
+                    '.captcha-title': data["captcha-content"]["captcha-title"],
+                    '.captcha-text-container': data["captcha-content"]["captcha-text-container"],
+                    '.captcha-footer': data["captcha-content"]["captcha-footer"],
+                    '.faq-title': data["faq"]["faq-title"],
+                    '.bio-title': data.bio?.title,
+                    '.bio-hint': data.bio?.hint,
+                    '.data-title': data.bio?.["data-title"],
+                    '.menu-profile-text': data.userMenu?.profile,
+                    '.menu-settings-text': data.userMenu?.settings,
+                    '.menu-support-text': data.userMenu?.support,
+                    '.menu-logout-text': data.userMenu?.logout,
+                    '.not-found-title': data["not-found-title"],
+                    '.home-button': data["home-button"],
+                    '.signin-btn': data.auth?.signIn,
+                    '.auth-title': data.auth?.authorization,
+                    '.login-button': data.auth?.login,
+                    '.no-account-text': data.auth?.noAccount,
+                    '.sign-up-link': data.auth?.signUp,
+                    '.ForgotPasswordTitle': data.forgotpassword?.ForgotPasswordTitle,
+                    '.modal-forgotpassword-description': data.forgotpassword?.["modal-forgotpassword-description"],
+                    '.resetpassword-title': data.resetpassword?.['resetpassword-title'],
+                    '.reset-btn': data.resetpassword?.['reset-btn'],
+                    '.modal-cancel': data.forgotpassword?.["modal-cancel"],
+                    '.modal-submit': data.forgotpassword?.["modal-submit"],
+                    '.input-email-error': data.forgotpassword?.["input-email-error"],
+                    '.input-forgotpassword-success': data.forgotpassword?.["input-forgotpassword-success"],
+                    '.registration-title': data.registration['registration-title'],
+                    '.password-hint': data.registration['password-hint'],
+                    '.registration-button': data.registration['registration-button'],
+                    '.aboutcompany-text': data["aboutcompany-text"],
+                    '#user-agreement-btn': data["user-agreement-btn"],
+                    '#privacy-policy-btn': data["privacy-policy-btn"],
+                    '.push-title-suggestions': data["push-suggestions-title"],
+                    '.push-text-suggestions': data["push-suggestions-text"],
+                    '.push-btn-suggestions': data["push-suggestions-button"],
+                    '.push-title-donation': data["push-donation-title"],
+                    '.push-text-donation': data["push-donation-text"],
+                    '.push-btn-donation': data["push-donation-button"]
+                };
 
-                    const htmlAllowedSelectors = [
-                        '.description',
-                        '.aboutcompany-text',
-                        '.advertisement-banner-description'
-                    ];
+                const htmlAllowedSelectors = [
+                    '.description',
+                    '.aboutcompany-text',
+                    '.advertisement-banner-description'
+                ];
 
-                    Object.entries(elementsMap).forEach(([selector, value]) => {
-                        const el = document.querySelector(selector);
-                        if (el && value !== undefined) {
-                            if (htmlAllowedSelectors.includes(selector)) {
-                                el.innerHTML = value;
-                            } else {
-                                el.textContent = value;
-                            }
+                Object.entries(elementsMap).forEach(([selector, value]) => {
+                    const el = document.querySelector(selector);
+                    if (el && value !== undefined) {
+                        if (htmlAllowedSelectors.includes(selector)) {
+                            el.innerHTML = value;
+                        } else {
+                            el.textContent = value;
                         }
-                    });
+                    }
+                });
 
                 window.resetPasswordTranslations = {
                     tooShort: data.resetpassword?.tooShort || 'You entered less than 6 characters.',
