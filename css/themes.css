@@ -35,6 +35,15 @@ body.dark-theme .line {
     border-top: 1px solid #333333 !important; /* Темно-серая граница, линия (Line) */
 }
 
+/* Button Style */
+body.dark-theme .theme-button {
+    background-color: #171717;
+}
+
+body.dark-theme .theme-button:hover {
+  background-color: #252525;
+}
+
 /* Header (Menu) */
 
 /* Когда темная тема активна для хедера */
@@ -131,6 +140,11 @@ body.dark-theme .modal-message-window {
 
 body.dark-theme .modal-message-close:hover {
   color: rgb(224, 224, 224);
+}
+
+/* Рекламный баннер */
+body.dark-theme .advertisement-banner {
+    background: #1F1F1F;
 }
 
 /* RoadMap - Дорожная карта */

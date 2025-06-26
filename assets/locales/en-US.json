@@ -174,5 +174,11 @@
     "stage-discription5": "Launching ad campaigns, integrating payment systems, and developing monetization models.",
     "stage-6": "Attracting Sponsors and Investors",
     "stage-discription6": "Building a sustainable ecosystem supported by partners, investors, and strategic allies."
+    },
+    "advertisement": {
+        "advertisement-banner-text": "Get access to «Premium»",
+        "advertisement-banner-description": "Support the project and get more:<br><br>🔕 Without ads and banners<br>🎁 Exclusive chips and bonuses<br>💡 Early access to new features<br>❤️ Project development support<br>",
+        "advertisement-banner-note": "PixeFPS remains free, but premium is a way to say «thank you» and get a little more convenience.",
+        "advertisement-banner-button": "Details"
     }
 }

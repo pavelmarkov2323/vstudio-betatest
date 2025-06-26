@@ -1,54 +1,184 @@
 {
-    "mainTitle": "ValeyevStudio — 미래로의 새로운 걸음!",
-    "description": "ValeyevPrograms의 새로운 혁신적인 프로그램은 최신 기술, <br> 최대 최적화 및 사용자 편의성을 결합한 조화로운 제품입니다. 각 애플리케이션은 최고 표준을 준수하여 개발되었으며, <br> 사용자에게 직관적인 인터페이스를 제공합니다. 우리는 프로그램의 기능이 <br> 사용자의 요구에 최대한 맞춰져 있으며 높은 성능과 자원 절약을 보장하도록 노력하고 있습니다. <br> <br> ValeyevPrograms — 오늘날 소프트웨어의 미래입니다.",
-    "subscribe-btn": "구독",
-    "download-btn": "다운로드",
-    "team-heading": "우리 팀",
-    "push-suggestions-title": "개선 사항이 있나요?",
-    "push-suggestions-text": "우리는 귀하의 의견을 받아들여 기능을 개선하거나 추가할 것입니다.",
-    "push-suggestions-button": "제안하기",
-    "push-donation-title": "기부 기금",
-    "push-donation-text": "작업에 대한 저자를 지원하고 싶은 분들을 위한 기부입니다. 기부금은 프로젝트 생태계 개발에 사용됩니다.",
-    "push-donation-button": "지원하기",
-    "nav": {
-        "home": "홈",
-        "our-products": "우리의 제품",
-        "about-us": "우리에 대해"
-    },
-    "footer": {
-        "copyright": "© 2025 ValeyevPrograms 프로젝트.",
-        "user-agreement": "사용자 계약"
-    },
-    "footer-social": {
-        "social-platforms": "소셜 미디어:"
-    },
-    "captcha-content": {
-        "captcha-title": "로봇이 아님을 확인하세요",
-        "captcha-text-container": "저는 로봇이 아닙니다",
-        "captcha-footer": "새로운 검증 기술 2.0"
-    },
-    "faq": {
-        "faq-title": "자주 묻는 질문",
-        "questions": {
-            "q1": {
-                "question": "왜 우리인가요?",
-                "answer": "우리는 전 세계적으로 최대한 많은 사람들이 우리 제품을 사용할 수 있도록 하는 개발자 팀입니다. 모든 것이 완전히 무료입니다!"
-            },
-            "q2": {
-                "question": "프로그램 사용을 시작하려면 어떻게 하나요?",
-                "answer": "우리 소프트웨어를 다운로드하려면 사이트의 해당 섹션으로 가서 '다운로드' 버튼을 클릭하세요.<br><br>소프트웨어를 다운로드하면 사용자 계약 및 우리 회사 Valeyev Studio의 정책에 동의하는 것으로 간주됩니다."
-            },
-            "q3": {
-                "question": "유료 구독 가격은 얼마인가요?",
-                "answer": "유료 구독 가격은 0.99 USD입니다. 구독은 활성화 후 1개월 동안 유효합니다.<br><br>구독을 통해 설정에서 방해되는 배너를 제거하고 다른 기능을 사용할 수 있습니다."
-            }
-        }
-    },
-    "tooltip": {
-        "music-volume": "음악 볼륨",
-        "select-language": "언어 선택",
-        "switch-themes": "테마 전환",
-        "purchase-subscription": "구독하기",
-        "download-description": "최신 버전 다운로드"
+  "mainTitle": "ValeyevStudio — 미래로의 새로운 도약!",
+  "description": "ValeyevPrograms의 혁신적인 신제품들은 최첨단 기술, <br> 최고의 최적화 그리고 사용 편의성을 조화롭게 결합했습니다. 각 애플리케이션은 매우 높은 기준에 따라 개발되어 <br> 직관적인 UI를 제공합니다. 우리는 사용자 맞춤형 기능과 고성능, 자원 효율성을 모두 추구합니다. <br><br> ValeyevPrograms는 오늘날 소프트웨어의 미래입니다.",
+  "subscribe-btn": "구독하기",
+  "download-btn": "다운로드",
+  "team-heading": "우리 팀",
+  "aboutcompany-heading": "ValeyevStudio 소개",
+  "aboutcompany-text": "ValeyevStudio는 단순한 소프트웨어 개발사가 아닙니다. 더 스마트하고 효율적인 디지털 미래를 향한 비전입니다. <br><br> 우리는 고성능, 사용 편의성을 갖춘 앱을 <strong>ValeyevPrograms</strong> 브랜드로 전문 제작합니다. 출시하는 모든 제품은 간결함, 속도, 혁신을 중시하며 사용자 경험을 최우선으로 합니다. <br><br> 호기심, 창의성, 지속적인 개선 의지를 가진 우리 팀은 단순히 소프트웨어를 개발하는 것이 아니라, 디지털 도구의 미래를 만들어갑니다.",
+  "license-heading": "이용 약관 및 개인정보처리방침",
+  "legal-subheading": "이 약관은 ValeyevStudio(이하 Nikita Valeyev)가 개발한 소프트웨어의 사용을 규정합니다. PixelFPS, PixelKey 및 기타 ValeyevStudio 제품을 설치하고 사용함으로써 귀하는 이 약관에 동의하게 됩니다.",
+  "push-suggestions-title": "개선 제안이 있나요?",
+  "push-suggestions-text": "의견이나 제안이 있다면 알려주세요. 새로운 기능 추가나 개선에 꼭 반영하겠습니다.",
+  "push-suggestions-button": "제안하기",
+  "push-donation-title": "기부",
+  "push-donation-text": "작업을 지원하고 싶은 분들을 위한 기부. 기부금은 프로젝트 생태계 발전에 사용됩니다.",
+  "push-donation-button": "후원하기",
+  "nav": {
+    "home": "홈",
+    "our-products": "제품",
+    "about-us": "회사 소개"
+  },
+  "footer": {
+    "copyright": "© 2025 ValeyevPrograms 프로젝트.",
+    "user-agreement": "이용 약관"
+  },
+  "footer-social": {
+    "social-platforms": "소셜 네트워크:"
+  },
+  "captcha-content": {
+    "captcha-title": "로봇이 아닌지 확인하세요",
+    "captcha-text-container": "저는 사람이에요",
+    "captcha-footer": "새로운 인증 기술 2.0"
+  },
+  "faq": {
+    "faq-title": "자주 묻는 질문",
+    "questions": {
+      "q1": {
+        "question": "왜 저희인가요?",
+        "answer": "저희는 가능한 많은 사람이 제품을 사용해볼 수 있도록 무료로 제공하는 개발팀입니다!"
+      },
+      "q2": {
+        "question": "어떻게 프로그램을 시작하나요?",
+        "answer": "공식 웹사이트의 다운로드 섹션으로 이동하여 ‘Download’ 버튼을 클릭하세요.<br><br>다운로드 시 Valeyev Studio의 이용 약관 및 정책에 동의하는 것으로 간주됩니다."
+      },
+      "q3": {
+        "question": "유료 구독 비용은 얼마인가요?",
+        "answer": "유료 구독 가격은 0.99 미국 달러입니다. 활성화 시점부터 1개월간 유효합니다.<br><br>구독을 통해 설정에서 배너를 제거하고 추가 기능을 사용할 수 있습니다."
+      }
     }
+  },
+  "tooltip": {
+    "music-volume": "음악 볼륨",
+    "select-language": "언어 선택",
+    "switch-themes": "테마 전환",
+    "purchase-subscription": "구독하기",
+    "download-description": "최신 버전 다운로드",
+    "sign-in": "로그인"
+  },
+  "user-agreement-btn": "이용 약관",
+  "privacy-policy-btn": "개인정보처리방침",
+  "legal-content": {
+    "effective-date": "시행일: 2026‑01‑01",
+    "last-updated": "최종 수정: 2026‑01‑01",
+    "intro": "이 약관은 ValeyevStudio에서 개발한 소프트웨어의 사용을 규정합니다.",
+    "section1-title": "1. 사용 라이선스",
+    "section1-1": "1.1. 사용자는 제한적이며 비독점적, 양도 불가능한 소프트웨어 사용 권한을 가집니다.",
+    "section1-2": "1.2. 소프트웨어는 '있는 그대로' 제공되며 어떠한 보증도 없습니다.",
+    "section2-title": "2. 금지 행위",
+    "section2-1": "2.1. 사용자는 다음 행위를 금지합니다:",
+    "section2-1-list": [
+      "ValeyevStudio 허가 없이 프로그램을 판매, 배포 또는 수정하는 행위.",
+      "다른 이름으로 프로그램을 배포하는 행위.",
+      "보안 메커니즘을 무단으로 해킹하거나 변경하는 행위."
+    ],
+    "section2-2": "2.2. 외부 사이트에 배포할 경우 원본 버전과 저작자 표기가 필요합니다.",
+    "section3-title": "3. 업데이트 및 지원",
+    "section3-1": "3.1. 개발자는 기능을 변경하고 업데이트를 배포할 권리를 가집니다.",
+    "section3-2": "3.2. 개발자는 시스템 장애에 대해 책임을 지지 않습니다.",
+    "section4-title": "4. 책임",
+    "section4-1": "4.1. 소프트웨어 사용은 전적으로 사용자 책임입니다.",
+    "section5-title": "5. 약관 변경",
+    "section5-1": "5.1. 약관은 변경될 수 있으며 공식 사이트에서 최신 버전을 확인하세요.",
+    "privacy-title1": "1. 수집하는 데이터는 무엇인가요?",
+    "privacy-data-list": [
+      "계정 정보: 로그인, 비밀번호, 구독 상태",
+      "개인 정보: 성명, 생년월일, 지역, 도시"
+    ],
+    "privacy-title2": "2. 데이터 사용 목적",
+    "privacy-usage-list": [
+      "인증, 개인화 및 프리미엄 기능 접근을 위해 사용됩니다."
+    ],
+    "privacy-title3": "3. 데이터 보호",
+    "privacy-3-1": "3.1. 암호화를 포함한 최신 보안 방식을 사용합니다.",
+    "privacy-3-2": "3.2. 데이터 접근은 ValeyevStudio 직원에 한정됩니다.",
+    "privacy-title4": "4. 제3자 제공",
+    "privacy-4-1": "4.1. 사용자의 동의 없이 제3자에게 데이터를 제공하지 않습니다.",
+    "privacy-title5": "5. 데이터 삭제",
+    "privacy-5-1": "삭제를 원하시면 valeyevstudio@gmail.com으로 요청해주세요.",
+    "privacy-title6": "6. 정책 변경",
+    "privacy-6-1": "6.1. 정책은 변경될 수 있으며 변경 시 사용자에게 고지합니다."
+  },
+  "bio": {
+    "title": "전기",
+    "hint": "전기는 500자 이내로 작성하세요!",
+    "data-title": "회원 정보"
+  },
+  "userMenu": {
+    "profile": "내 프로필",
+    "settings": "설정",
+    "support": "지원",
+    "logout": "로그아웃"
+  },
+  "auth": {
+    "signIn": "로그인",
+    "authorization": "인증",
+    "login": "로그인",
+    "noAccount": "계정이 없으신가요?",
+    "signUp": "가입하기",
+    "forgotPassword": "비밀번호 찾기?"
+  },
+  "forgotpassword": {
+    "ForgotPasswordTitle": "비밀번호 변경",
+    "modal-forgotpassword-description": "계정에 연결된 이메일을 입력하세요. 비밀번호 재설정 안내를 이메일로 보내드립니다.",
+    "modal-cancel": "닫기",
+    "modal-submit": "전송",
+    "input-email-error": "잘못된 이메일 주소입니다",
+    "input-forgotpassword-success": "해당 이메일의 계정이 존재하면 재설정 안내 메일이 발송됩니다."
+  },
+  "registration": {
+    "registration-title": "계정 만들기",
+    "password-hint": "비밀번호는 최소 6자, 특수문자 포함(! “ # $ % ‘ () *)",
+    "registration-button": "가입하기",
+    "agreement-note": "가입 버튼을 누르면 {link}에 동의하게 됩니다.",
+    "user-agreement-link-text": "이용 약관"
+  },
+  "resetpassword": {
+    "resetpassword-title": "비밀번호 재설정",
+    "reset-btn": "변경 확인",
+    "tooShort": "6자 미만입니다.",
+    "noSpecialChar": "특수문자를 입력하세요 (! \" # $ % ' () *)"
+  },
+  "placeholder": {
+    "login-username": "사용자 이름 또는 이메일",
+    "login-password": "비밀번호",
+    "register-first-name": "이름",
+    "register-last-name": "성",
+    "register-username": "사용자 이름",
+    "register-email": "이메일",
+    "register-password": "비밀번호",
+    "reset-new-password": "새 비밀번호",
+    "reset-confirm-password": "비밀번호 확인",
+    "forgot-email": "이메일"
+  },
+  "profile": {
+    "welcomeUser": "{username}님, 환영합니다",
+    "usernameLabel": "사용자 이름:",
+    "countryLabel": "국가:",
+    "birthdayLabel": "생년월일:",
+    "not-found-title": "사용자를 찾을 수 없습니다",
+    "home-button": "홈으로 돌아가기"
+  },
+  "roadmap": {
+    "roadmap-heading": "2025–2026 로드맵",
+    "roadmap-title": "우리의 계획",
+    "stage-1": "웹사이트 및 소프트웨어 최적화",
+    "stage-discription1": "웹사이트와 주요 소프트웨어의 안정성, 로딩 속도 및 사용 편의성을 지속적으로 개선합니다.",
+    "stage-2": "현대 서버로 전환 및 DB 업데이트",
+    "stage-discription2": "성능이 향상된 서버 인프라로 마이그레이션하며, 관리 및 저장 UI도 새로 구축합니다.",
+    "stage-3": "새 제품 PixelKey 출시 예고",
+    "stage-discription3": "비트메이커와 음악 프로듀서를 위한 혁신 도구 PixelKey를 출시합니다. 창의성과 편의성에 중점을 둡니다.",
+    "stage-4": "언론 및 블로거 협업",
+    "stage-discription4": "보도자료, 인터뷰, 기사, 블로그 협업 등 PR을 적극 진행합니다.",
+    "stage-5": "사용자 확대 및 수익화",
+    "stage-discription5": "광고 캠페인 시작, 결제 시스템 연동 및 수익 모델 개발.",
+    "stage-6": "후원자 및 투자자 유치",
+    "stage-discription6": "파트너, 투자자 및 전략적 동맹과 함께 지속 가능한 생태계를 구축합니다."
+  },
+  "advertisement": {
+    "advertisement-banner-text": "프리미엄 이용하기",
+    "advertisement-banner-description": "프로젝트를 지지하고 더 많은 기능을 받아보세요:<br><br>🔕 광고 및 배너 없음<br>🎁 독점 기능 & 보너스<br>💡 신규 기능 미리 보기<br>❤️ 프로젝트 발전을 위한 지원<br>",
+    "advertisement-banner-note": "PixeFPS는 계속 무료입니다. 그러나 프리미엄은 감사합니다를 전하고 조금 더 편리함을 드립니다.",
+    "advertisement-banner-button": "자세히 알아보기"
+  }
 }
