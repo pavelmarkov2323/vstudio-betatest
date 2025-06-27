@@ -144,6 +144,9 @@ document.addEventListener('DOMContentLoaded', () => {
         userIdElem.textContent = currentUser.userId || '';
         avatarElem.src = currentUser.avatar || 'https://res.cloudinary.com/dqceexk1h/image/upload/v1750689301/default.png';
 
+        document.querySelector('.user-fullname').textContent = `${user.firstName} ${user.lastName}`;
+        document.querySelector('.user-id').textContent = user.userId;
+
 
         const data = {
             firstName: firstNameInput.value.trim(),
