@@ -76,12 +76,13 @@
 }
 
 .user-status-icon {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
   user-select: none;
   cursor: pointer;
   display: inline-block;
+  margin-top: 5px; /* чуть опускает иконку вниз */
 }
 
 /* Чтобы тултип позиционировался относительно иконки */
@@ -93,7 +94,7 @@
 /* Скрываем тултип по умолчанию */
 .tooltip-status {
   position: absolute;
-  bottom: 100%; /* позиционируем над иконкой */
+  bottom: 120%; /* позиционируем над иконкой */
   left: 50%;
   transform: translateX(-50%) translateY(-8px); /* сдвиг немного меньше, чем было */
   background: #fff;
