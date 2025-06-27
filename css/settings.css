@@ -84,18 +84,18 @@
   display: inline-block;
 }
 
-.label-id {
-  font-size: 14px;
-  color: #777;
-  margin-top: 4px;
+/* Чтобы тултип позиционировался относительно иконки */
+.tooltip-status-wrapper {
+  position: relative;
+  display: inline-block;
 }
 
 /* Скрываем тултип по умолчанию */
 .tooltip-status {
   position: absolute;
-  bottom: 85.50%; /* над иконкой */
-  left: 44.42%;
-  transform: translateX(-50%) translateY(-15px);
+  bottom: 100%; /* позиционируем над иконкой */
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px); /* сдвиг немного меньше, чем было */
   background: #fff;
   border-radius: 8px;
   padding: 12px 18px;
@@ -115,7 +115,7 @@
 .tooltip-status-wrapper:hover .tooltip-status {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%) translateY(0); /* наводим прямо над иконкой */
 }
 
 /* Заголовок синим и чуть жирнее */
@@ -142,6 +142,12 @@
 
 .tooltip-status-text a:hover {
   text-decoration: underline;
+}
+
+.label-id {
+  font-size: 14px;
+  color: #777;
+  margin-top: 4px;
 }
 
 /* Носик тултипа (треугольник) */
