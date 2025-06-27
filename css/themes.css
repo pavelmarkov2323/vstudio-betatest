@@ -63,6 +63,16 @@ body.dark-theme .sidebar-item.active {
   background-color: #252525;
 }
 
+/* Settings-card (Welcome) */
+body.dark-theme .settings-card-welcome {
+  background-color: #171717;
+}
+
+/* Secure-card (Welcome) */
+body.dark-theme .secure-card {
+  background-color: #171717;
+}
+
 /* Header (Menu) */
 /* Когда темная тема активна для хедера */
 body.dark-theme .header {
