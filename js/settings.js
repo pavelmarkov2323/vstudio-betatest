@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 welcomeFullname.textContent = `${currentUser.firstName || ''} ${currentUser.lastName || ''}`.trim() || 'No name';
                 welcomeUserId.textContent = currentUser.userId || '';
                 welcomeAvatar.src = currentUser.avatar || 'https://res.cloudinary.com/dqceexk1h/image/upload/v1750689301/default.png';
+
                 // Обработка значка статуса
                 const statusData = getStatusData(currentUser.status, currentUser.username);
                 const userStatusWrapper = document.getElementById('user-status');
@@ -162,9 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     userStatusIcon.src = statusData.icon;
                     tooltipStatusTitle.textContent = statusData.title;
                     tooltipStatusText.innerHTML = statusData.text;
-                    userStatusWrapper.style.display = 'block';
+                    userStatusWrapper.classList.add('active');
                 } else if (userStatusWrapper) {
-                    userStatusWrapper.style.display = 'none';
+                    userStatusWrapper.classList.remove('active');
                 }
             }
         } catch (err) {

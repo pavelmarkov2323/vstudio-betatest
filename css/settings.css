@@ -63,6 +63,13 @@
   justify-content: center;
 }
 
+.user-fullname-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
 .user-fullname {
   font-weight: 600;
   font-size: 18px;
@@ -102,6 +109,14 @@
   transition: opacity 0.25s ease, transform 0.25s ease;
   z-index: 10;
   user-select: none;
+}
+
+.tooltip-status-wrapper {
+  display: none;
+}
+
+.tooltip-status-wrapper.active {
+  display: flex;
 }
 
 /* Показываем тултип при наведении на иконку */
