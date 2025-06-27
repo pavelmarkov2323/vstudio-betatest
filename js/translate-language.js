@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.settings-card-lastname': data.settings['settings-card-lastname'],
                     '.settings-card-gender': data.settings['settings-card-gender'],
                     '.settings-card-datebirth': data.settings['settings-card-datebirth'],
-                    '.settings-card-title': data.settings['settings-card-country'],
+                    '.settings-card-country': data.settings['settings-card-country'],
                     '.secure-card-title': data.secure['secure-card-title'],
                     '.aboutcompany-text': data["aboutcompany-text"],
                     '#user-agreement-btn': data["user-agreement-btn"],
