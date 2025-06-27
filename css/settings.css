@@ -63,11 +63,10 @@
   justify-content: center;
 }
 
-.user-fullname-wrapper {
+.user-fullname-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  position: relative;
 }
 
 .user-fullname {
@@ -76,22 +75,20 @@
   color: #111;
 }
 
+.user-status-icon {
+  width: 8px;
+  height: 8px;
+  object-fit: contain;
+  user-select: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
 .label-id {
   font-size: 14px;
   color: #777;
   margin-top: 4px;
 }
-
-.user-status-icon {
-  width: 14px;
-  height: 14px;
-  object-fit: contain;
-  user-select: none;
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: middle; /* Это ключевой момент */
-}
-
 
 /* Панель настроек */
 .settings-card {
