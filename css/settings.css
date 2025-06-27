@@ -83,8 +83,8 @@
 }
 
 .user-status-icon {
-  width: 22px;
-  height: 22px;
+  width: 14px;
+  height: 14px;
   object-fit: contain;
   user-select: none;
   cursor: pointer;
