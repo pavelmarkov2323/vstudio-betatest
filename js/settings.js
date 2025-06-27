@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const settingsCard = document.querySelector(".settings-card");
     const secureCard = document.querySelector(".secure-card");
 
+    const welcomeFullname = document.querySelector('.settings-card-welcome .user-fullname');
+    const welcomeUserId = document.querySelector('.settings-card-welcome .user-id');
+    const welcomeAvatar = document.querySelector('.settings-card-welcome .profile-avatar-img');
+
+
     // Изначально скрываем settingsCard
     settingsCard.style.display = "none";
     secureCard.style.display = "none";
@@ -110,6 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 birthYear.value = currentUser.birth.year || 'Year';
             }
             countrySelect.value = currentUser.country || '';
+
+            // Обновляем приветствие
+            if (welcomeFullname && welcomeUserId && welcomeAvatar) {
+                welcomeFullname.textContent = `${currentUser.firstName || ''} ${currentUser.lastName || ''}`.trim() || 'No name';
+                welcomeUserId.textContent = currentUser.userId || '';
+                welcomeAvatar.src = currentUser.avatar || 'https://res.cloudinary.com/dqceexk1h/image/upload/v1750689301/default.png';
+            }
         } catch (err) {
             console.error(err);
         }
@@ -134,19 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
             showModalMessage('Error', 'Select a country');
             return;
         }
-
-        // Обновляем блок приветствия
-        const fullnameElem = document.querySelector('.user-fullname');
-        const userIdElem = document.querySelector('.user-id');
-        const avatarElem = document.querySelector('.profile-avatar-img');
-
-        fullnameElem.textContent = `${currentUser.firstName || ''} ${currentUser.lastName || ''}`.trim();
-        userIdElem.textContent = currentUser.userId || '';
-        avatarElem.src = currentUser.avatar || 'https://res.cloudinary.com/dqceexk1h/image/upload/v1750689301/default.png';
-
-        document.querySelector('.user-fullname').textContent = `${user.firstName} ${user.lastName}`;
-        document.querySelector('.user-id').textContent = user.userId;
-
 
         const data = {
             firstName: firstNameInput.value.trim(),
