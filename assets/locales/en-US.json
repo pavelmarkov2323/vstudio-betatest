@@ -180,5 +180,16 @@
         "advertisement-banner-description": "Support the project and get more:<br><br>🔕 Without ads and banners<br>🎁 Exclusive chips and bonuses<br>💡 Early access to new features<br>❤️ Project development support<br>",
         "advertisement-banner-note": "PixeFPS remains free, but premium is a way to say «thank you» and get a little more convenience.",
         "advertisement-banner-button": "Details"
+    },
+    "settings": {
+        "settings-card-title": "General Setitngs",
+        "settings-card-firstname": "First name",
+        "settings-card-lastname": "Last name",
+        "settings-card-gender": "Gender",
+        "settings-card-datebirth": "Date of birth",
+        "settings-card-country": "Country"
+    },
+    "secure": {
+        "secure-card-title": "Secure"
     }
 }
