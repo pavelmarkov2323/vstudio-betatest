@@ -155,14 +155,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 welcomeAvatar.src = currentUser.avatar || 'https://res.cloudinary.com/dqceexk1h/image/upload/v1750689301/default.png';
 
                 // Теперь обновляем статус
+                const userStatusWrapper = document.getElementById('user-status');
                 const userStatusIcon = document.getElementById('user-status-icon');
+                const tooltipStatusTitle = document.getElementById('tooltip-status-title');
+                const tooltipStatusText = document.getElementById('tooltip-status-text');
+
                 const statusData = getStatusData(currentUser.status, currentUser.username);
 
-                if (statusData && userStatusIcon) {
+                if (statusData && userStatusWrapper && userStatusIcon && tooltipStatusTitle && tooltipStatusText) {
                 userStatusIcon.src = statusData.icon;
-                userStatusIcon.style.display = 'inline-block';
-                } else if (userStatusIcon) {
-                userStatusIcon.style.display = 'none';
+                tooltipStatusTitle.textContent = statusData.title;
+                tooltipStatusText.innerHTML = statusData.text;
+                userStatusWrapper.style.display = 'inline-block';
+                } else if (userStatusWrapper) {
+                userStatusWrapper.style.display = 'none';
                 }
             }
         } catch (err) {

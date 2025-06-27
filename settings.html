@@ -31,11 +31,19 @@
 
   <!-- Панель приветствия пользователя -->
   <div class="settings-card-welcome">
-    <img src="https://res.cloudinary.com/dqceexk1h/image/upload/v1750689301/default.png" alt="User Avatar" class="profile-avatar profile-avatar-img">
+    <img src="https://res.cloudinary.com/dqceexk1h/image/upload/v1750689301/default.png" alt="User Avatar"
+      class="profile-avatar profile-avatar-img">
     <div class="welcome-text">
       <div class="user-fullname-row">
         <div class="user-fullname theme-text"></div>
-        <img id="user-status-icon" class="user-status-icon" style="display:none;" alt="User status" />
+        <div id="user-status" class="tooltip-status-wrapper" style="display:none;">
+          <img id="user-status-icon" class="user-status-icon" alt="User status" />
+          <div class="tooltip-status">
+            <div id="tooltip-status-title" class="tooltip-status-title"></div>
+            <div id="tooltip-status-text" class="tooltip-status-text theme-text"></div>
+            <div class="tooltip-status-arrow"></div>
+          </div>
+        </div>
       </div>
       <span class="label-id theme-text">ID: <span class="user-id"></span></span>
     </div>
