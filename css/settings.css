@@ -93,8 +93,8 @@
 /* Скрываем тултип по умолчанию */
 .tooltip-status {
   position: absolute;
-  bottom: 100%; /* над иконкой */
-  left: 50%;
+  bottom: 85.50%; /* над иконкой */
+  left: 44.42%;
   transform: translateX(-50%) translateY(-15px);
   background: #fff;
   border-radius: 8px;
