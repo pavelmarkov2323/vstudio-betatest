@@ -9,6 +9,9 @@ const { User } = require('./models/user');
 app.use(express.json());
 app.use(cors());
 
+app.set('trust proxy', true);
+
+
 // Сессионная система с шифрованием
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -51,6 +54,7 @@ app.get('/', (req, res) => {
 app.get('/profile/:username', (req, res) => {
   res.sendFile(path.join(__dirname, '../profile.html'));
 });
+
 // API для получения текущего пользователя по сессии
 app.get('/api/current-user', (req, res) => {
   if (!req.session.userId) {

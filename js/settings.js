@@ -10,6 +10,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const countrySelect = document.getElementById('countrySelect');
     const saveButton = document.querySelector('.save-button');
 
+    const sidebarItems = document.querySelectorAll(".settings-sidebar .sidebar-item");
+    const welcomeCard = document.querySelector(".settings-card-welcome");
+    const settingsCard = document.querySelector(".settings-card");
+    const secureCard = document.querySelector(".secure-card");
+
+    // Изначально скрываем settingsCard
+    settingsCard.style.display = "none";
+    secureCard.style.display = "none";
+
+    sidebarItems.forEach((item, index) => {
+        item.addEventListener("click", () => {
+            // Удаляем класс active у всех
+            sidebarItems.forEach(i => i.classList.remove("active"));
+            item.classList.add("active");
+
+            // Переключение контента
+            if (index === 0) {
+                // Главная
+                welcomeCard.style.display = "flex";
+                settingsCard.style.display = "none";
+                secureCard.style.display = "none";
+            } else if (index === 1) {
+                // Данные
+                welcomeCard.style.display = "none";
+                settingsCard.style.display = "block";
+                secureCard.style.display = "none";
+            } else if (index === 2) {
+                secureCard.style.display = "block";
+                welcomeCard.style.display = "none";
+                settingsCard.style.display = "none";
+            }
+        });
+    });
+
     // Массив месяцев
     const months = [
         'January', 'February', 'March', 'April', 'May', 'June',
@@ -100,6 +134,16 @@ document.addEventListener('DOMContentLoaded', () => {
             showModalMessage('Error', 'Select a country');
             return;
         }
+
+        // Обновляем блок приветствия
+        const fullnameElem = document.querySelector('.user-fullname');
+        const userIdElem = document.querySelector('.user-id');
+        const avatarElem = document.querySelector('.profile-avatar-img');
+
+        fullnameElem.textContent = `${currentUser.firstName || ''} ${currentUser.lastName || ''}`.trim();
+        userIdElem.textContent = currentUser.userId || '';
+        avatarElem.src = currentUser.avatar || 'https://res.cloudinary.com/dqceexk1h/image/upload/v1750689301/default.png';
+
 
         const data = {
             firstName: firstNameInput.value.trim(),

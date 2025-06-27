@@ -44,8 +44,26 @@ body.dark-theme .theme-button:hover {
   background-color: #252525;
 }
 
-/* Header (Menu) */
+/* Input field, input background */
+body.dark-theme .theme-input {
+  background-color: #202020;
+  color: #eee;
+  border-radius: 12px;
+  border: none;
+  padding: 10px 36px 10px 12px;
+}
 
+/* Burger menu settings (Боковое меню, интерактивное) */
+body.dark-theme .settings-sidebar{
+    background-color: #202020;
+}
+
+body.dark-theme .sidebar-item:hover,
+body.dark-theme .sidebar-item.active {
+  background-color: #252525;
+}
+
+/* Header (Menu) */
 /* Когда темная тема активна для хедера */
 body.dark-theme .header {
     background-color: #171717;
