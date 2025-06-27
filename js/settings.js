@@ -18,38 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeFullname = document.querySelector('.settings-card-welcome .user-fullname');
     const welcomeUserId = document.querySelector('.settings-card-welcome .user-id');
     const welcomeAvatar = document.querySelector('.settings-card-welcome .profile-avatar-img');
-
-    function getStatusData(status, username) {
-        const statusData = {
-            1: {
-                icon: '/assets/icons/status/verified.gif',
-                title: 'Верифицированная страница',
-                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации</a>.`
-            },
-            2: {
-                icon: '/assets/icons/status/sponsor.png',
-                title: 'Страница спонсора',
-                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">спонсорстве</a>.`
-            },
-            3: {
-                icon: '/assets/icons/status/partner.png',
-                title: 'Страница партнёра',
-                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">партнёрке</a>.`
-            },
-            4: {
-                icon: '/assets/icons/status/moderator.png',
-                title: 'Модератор подтверждён',
-                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">модераторстве</a>.`
-            },
-            5: {
-                icon: '/assets/icons/status/admin.png',
-                title: 'Администратор верифицирован',
-                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации администраторов</a>.`
-            }
-        };
-        return statusData[status] || null;
-    }
-
+    
     // Изначально скрываем settingsCard
     settingsCard.style.display = "none";
     secureCard.style.display = "none";
@@ -129,6 +98,39 @@ document.addEventListener('DOMContentLoaded', () => {
     fillBirthSelectors();
     fillCountries();
 
+    // Статус верификации
+    function getStatusData(status, username) {
+    const statusData = {
+        1: {
+        icon: '/assets/icons/status/verified.gif',
+        title: 'Верифицированная страница',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации</a>.`
+        },
+        2: {
+        icon: '/assets/icons/status/sponsor.png',
+        title: 'Страница спонсора',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">спонсорстве</a>.`
+        },
+        3: {
+        icon: '/assets/icons/status/partner.png',
+        title: 'Страница партнёра',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">партнёрке</a>.`
+        },
+        4: {
+        icon: '/assets/icons/status/moderator.png',
+        title: 'Модератор подтверждён',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">модераторстве</a>.`
+        },
+        5: {
+        icon: '/assets/icons/status/admin.png',
+        title: 'Администратор верифицирован',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации администраторов</a>.`
+        }
+    };
+    return statusData[status] || null;
+    }
+
+
     // Загрузить текущие данные пользователя и подставить
     async function loadUserData() {
         try {
@@ -151,21 +153,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 welcomeFullname.textContent = `${currentUser.firstName || ''} ${currentUser.lastName || ''}`.trim() || 'No name';
                 welcomeUserId.textContent = currentUser.userId || '';
                 welcomeAvatar.src = currentUser.avatar || 'https://res.cloudinary.com/dqceexk1h/image/upload/v1750689301/default.png';
-
-                // Обработка значка статуса
-                const statusData = getStatusData(currentUser.status, currentUser.username);
+                // Теперь обновляем статус
                 const userStatusWrapper = document.getElementById('user-status');
                 const userStatusIcon = document.getElementById('user-status-icon');
                 const tooltipStatusTitle = document.getElementById('tooltip-status-title');
                 const tooltipStatusText = document.getElementById('tooltip-status-text');
 
+                const statusData = getStatusData(currentUser.status, currentUser.username);
+
                 if (statusData && userStatusWrapper && userStatusIcon && tooltipStatusTitle && tooltipStatusText) {
                     userStatusIcon.src = statusData.icon;
                     tooltipStatusTitle.textContent = statusData.title;
                     tooltipStatusText.innerHTML = statusData.text;
-                    userStatusWrapper.classList.add('active');
+                    userStatusWrapper.style.display = 'inline-block'; // показываем иконку
                 } else if (userStatusWrapper) {
-                    userStatusWrapper.classList.remove('active');
+                    userStatusWrapper.style.display = 'none'; // скрываем, если статуса нет
                 }
             }
         } catch (err) {
