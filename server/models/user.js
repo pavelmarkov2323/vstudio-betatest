@@ -29,6 +29,7 @@ const userSchema = new mongoose.Schema({
     year: Number
   },
   country: { type: String, default: '' },
+  ip: { type: String, default: '' },
   createdAt: { type: Date, default: Date.now }
 });
 

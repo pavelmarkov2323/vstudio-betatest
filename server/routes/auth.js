@@ -28,6 +28,7 @@ router.post('/register', async (req, res) => {
 
         // Хэшируем пароль для безопасности
         const hashedPassword = await bcrypt.hash(password, 10);
+        const ip = req.headers['x-forwarded-for']?.split(',').shift() || req.socket.remoteAddress;
 
         // Создаём и сохраняем пользователя в базе
         const newUser = new User({
@@ -35,9 +36,11 @@ router.post('/register', async (req, res) => {
             lastName,
             username,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            ip 
         });
 
+        newUser.ip = ip;
         await newUser.save();
         res.status(201).json({ message: 'Пользователь создан', userId: newUser.userId });
 
@@ -72,6 +75,10 @@ router.post('/login', async (req, res) => {
         // Сохраняем данные пользователя в сессии
         req.session.userId = user.userId;
         req.session.username = user.username;
+        
+        // Обновляем IP при входе
+        const ip = req.headers['x-forwarded-for']?.split(',').shift() || req.socket.remoteAddress;
+        await User.updateOne({ userId: user.userId }, { ip });
 
         res.json({ message: 'Успешный вход', userId: user.userId, username: user.username });
 
