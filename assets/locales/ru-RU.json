@@ -187,7 +187,8 @@
         "settings-card-lastname": "Фамилия",
         "settings-card-gender": "Пол",
         "settings-card-datebirth": "Дата рождения",
-        "settings-card-country": "Страна"
+        "settings-card-country": "Страна",
+        "save-button": "Сохранить"
     },
     "secure": {
         "secure-card-title": "Безопасность"

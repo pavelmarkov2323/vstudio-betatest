@@ -412,7 +412,7 @@ select {
   }
   input,
   select {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   /* Кнопка Save */

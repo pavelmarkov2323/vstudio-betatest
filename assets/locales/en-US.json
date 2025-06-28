@@ -187,7 +187,8 @@
         "settings-card-lastname": "Last name",
         "settings-card-gender": "Gender",
         "settings-card-datebirth": "Date of birth",
-        "settings-card-country": "Country"
+        "settings-card-country": "Country",
+        "save-button": "Save"
     },
     "secure": {
         "secure-card-title": "Secure"
