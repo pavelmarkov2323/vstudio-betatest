@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const translations = window.translations?.["promo-modal"];
-  if (!translations) return;
+  if (!translations) {
+    console.warn("Переводы для promo-modal не найдены");
+    return;
+  }
 
   const modals = [
     {
@@ -29,18 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
 
-  const delay = Math.floor(Math.random() * 7000) + 3000;
+  // вставляем сразу без задержки
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
 
-  setTimeout(() => {
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
+  const backdrop = document.querySelector('.promo-modal-backdrop');
+  requestAnimationFrame(() => backdrop.classList.add('show'));
 
-    const backdrop = document.querySelector('.promo-modal-backdrop');
-    requestAnimationFrame(() => backdrop.classList.add('show'));
-
-    backdrop.querySelector('.promo-close').addEventListener('click', () => {
-      backdrop.classList.remove('show');
-      backdrop.classList.add('hide');
-      setTimeout(() => backdrop.remove(), 400);
-    });
-  }, delay);
+  backdrop.querySelector('.promo-close').addEventListener('click', () => {
+    backdrop.classList.remove('show');
+    backdrop.classList.add('hide');
+    setTimeout(() => backdrop.remove(), 400);
+  });
 });
