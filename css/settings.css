@@ -434,7 +434,7 @@ select {
 }
 
 /* Планшеты — от 481px до 768px, промежуточный вариант */
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 800px) {
   /* Боковое меню: сделаем верхним горизонтальным или скроем */
   .settings-sidebar {
     position: fixed;
@@ -458,7 +458,9 @@ select {
   .settings-card-welcome,
   .settings-card,
   .secure-card {
-    max-width: 640px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 480px;
     margin: 24px auto;
     padding: 24px 24px;
   }
