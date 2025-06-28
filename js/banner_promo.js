@@ -70,10 +70,3 @@ function shouldShowBanner() {
 
   return true;
 }
-
-// Вызывай этот код после загрузки переводов и когда DOM готов:
-document.addEventListener("DOMContentLoaded", () => {
-  if (shouldShowBanner() && window.initPromoBanner) {
-    window.initPromoBanner();
-  }
-});

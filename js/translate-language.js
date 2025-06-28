@@ -95,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Сохраняем переводы в глобальный объект для других скриптов
                 if (!window.translations) window.translations = {};
                 window.translations["promo-modal"] = data["promo-modal"];
-                if (!window.translations) window.translations = {};
                 window.translations["banner"] = data["banner"];
                 // Обновляем тексты на странице
                 const elementsMap = {
@@ -189,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (window.initPromoModal) {
                     window.initPromoModal();
                 }
-                if (window.initPromoBanner) {
+                if (window.initPromoBanner && shouldShowBanner()) {
                     window.initPromoBanner();
                 }
 
