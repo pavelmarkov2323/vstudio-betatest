@@ -386,7 +386,7 @@ select {
   .settings-card {
     box-sizing: border-box;
     width: 100%;
-    max-width: 450px;
+    max-width: 430px;
     margin: 64px auto;
     padding: 20px 16px;
   }
@@ -427,7 +427,7 @@ select {
   .secure-card {
     box-sizing: border-box;
     width: 100%;
-    max-width: 450px;
+    max-width: 430px;
     margin: 64px auto;
     padding: 20px 16px;
   }
