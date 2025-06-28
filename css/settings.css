@@ -357,7 +357,7 @@ select {
     justify-content: center;
     padding: 8px 0;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    z-index: 1000;
+    z-index: 5;
   }
   .sidebar-item {
     padding: 8px 12px;
@@ -384,8 +384,10 @@ select {
 
   /* Основная карточка настроек */
   .settings-card {
+    box-sizing: border-box;
+    width: 100%;
     max-width: 450px;
-    margin: 64px auto; /* учитываем высоту меню */
+    margin: 64px auto;
     padding: 20px 16px;
   }
 
@@ -423,8 +425,10 @@ select {
 
   /* Панель безопасность — адаптивная */
   .secure-card {
+    box-sizing: border-box;
+    width: 100%;
     max-width: 450px;
-    margin: 64px auto; /* учитываем высоту меню */
+    margin: 64px auto;
     padding: 20px 16px;
   }
 }
