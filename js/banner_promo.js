@@ -1,5 +1,5 @@
 window.initPromoBanner = function () {
-  const translations = window.translations?.banner;
+  const translations = window.translations?.["banner"];
   if (!translations) {
     console.warn("Переводы для баннера не найдены");
     return;
