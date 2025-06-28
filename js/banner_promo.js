@@ -19,28 +19,34 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }
 
-  const state = getState();
-
+  let state = getState();
   const now = Date.now();
 
-  // Проверка, нужно ли сбросить по времени
+  // Сначала проверим таймер и сбросим, если прошло 5 минут
   if (state.closed && state.closedAt && (now - state.closedAt) > DELAY_BEFORE_RESHOW) {
     state.closed = false;
     state.count = 0;
     state.closedAt = null;
-    setState(state);
   }
 
-  // Показ баннера
+  // Затем увеличим счётчик, если баннер был закрыт
+  if (state.closed) {
+    state.count = (state.count || 0) + 1;
+  }
+
+  setState(state); // обязательно сохранить новое состояние
+
+  // Показываем баннер, если он открыт или счётчик >= MAX_RELOADS
   if (!state.closed || state.count >= MAX_RELOADS) {
     banner.classList.remove('hidden');
     banner.style.display = '';
   }
 
-  // Обработчик закрытия баннера
+  // Закрытие баннера
   closeBtn.addEventListener('click', () => {
     banner.classList.add('hidden');
     setTimeout(() => banner.style.display = 'none', 300);
+
     const newState = {
       closed: true,
       count: 0,
@@ -48,10 +54,4 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     setState(newState);
   });
-
-  // Увеличиваем счётчик перезагрузок
-  if (state.closed) {
-    state.count = (state.count || 0) + 1;
-    setState(state);
-  }
 });
