@@ -62,7 +62,12 @@ function shouldShowBanner() {
     return false;
   }
 
-  // Сброс состояния для показа
+  // если баннер НЕ был закрыт — значит, можно показывать!
+  if (!state.closed) {
+    return true;
+  }
+
+  // Сброс состояния и разрешение показа
   state.closed = false;
   state.count = 0;
   state.closedAt = null;
