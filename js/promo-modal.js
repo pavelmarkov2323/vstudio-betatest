@@ -20,7 +20,7 @@ window.initPromoModal = function() {
 
   const modalHTML = `
     <div class="promo-modal-backdrop">
-      <div class="promo-modal-card">
+      <div class="promo-modal-card theme-modal">
         <div class="promo-image" style="background-image: url('${selected.image}');"></div>
         <div class="promo-content">
           <h2 class="promo-title theme-text">${translations[`${selected.key}_title`]}</h2>

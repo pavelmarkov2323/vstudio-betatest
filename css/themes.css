@@ -30,11 +30,6 @@ body.dark-theme .theme-icon {
     filter: brightness(0) invert(1) !important; /* Делаем белыми */
 }
 
-/* Others Style */
-body.dark-theme .line {
-    border-top: 1px solid #333333 !important; /* Темно-серая граница, линия (Line) */
-}
-
 /* Button Style */
 body.dark-theme .theme-button {
     background-color: #171717;
@@ -51,6 +46,16 @@ body.dark-theme .theme-input {
   border-radius: 12px;
   border: none;
   padding: 10px 36px 10px 12px;
+}
+
+/* Modal Window Style */
+body.dark-theme .theme-modal {
+  background-color: #252525;
+}
+
+/* Others Style */
+body.dark-theme .line {
+    border-top: 1px solid #333333 !important; /* Темно-серая граница, линия (Line) */
 }
 
 /* Burger menu settings (Боковое меню, интерактивное) */
