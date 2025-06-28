@@ -1,0 +1,103 @@
+.promo-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.61);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.promo-modal-card {
+  width: 95%;
+  max-width: 460px; /* увеличена ширина */
+  height: 440px; /* уменьшена высота */
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.promo-modal-backdrop.show .promo-modal-card {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Плавное исчезновение */
+.promo-modal-backdrop.hide .promo-modal-card {
+  transform: translateX(0);
+  opacity: 0;
+}
+
+/* Верхняя 40% часть — картинка */
+.promo-image {
+  height: 40%;
+  background-image: url('http://maroocorp.com/img/maru/1595336214_4880.png'); /* замени на путь к своему изображению */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Контент */
+.promo-content {
+  padding: 20px 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+}
+
+/* Текст и кнопка */
+.promo-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.promo-description {
+  font-size: 14px;
+  color: #444;
+  text-align: center;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.promo-button {
+  background: #007BFF;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background 0.3s ease;
+}
+
+.promo-button:hover {
+  background: #0056b3;
+}
+
+.promo-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(0, 0, 0, 0.301);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+}

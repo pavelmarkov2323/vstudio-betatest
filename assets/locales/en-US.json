@@ -191,5 +191,10 @@
     },
     "secure": {
         "secure-card-title": "Secure"
+    },
+    "promo-modal": {
+        "promotitle_pixelfps": "More PixelFPS features",
+        "promodiscr_pixelfps": "Disable promo banners, ads, cool experimental features and technologies for users with a premium subscription.",
+        "promo-button_buy": "Purchase"
     }
 }

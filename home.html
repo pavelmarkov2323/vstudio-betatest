@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/interactivehelp.css">
     <link rel="stylesheet" href="css/pushnotify.css">
     <link rel="stylesheet" href="css/advertisement.css">
+    <link rel="stylesheet" href="css/promo-modal.css">
 </head>
 
 <body>
@@ -248,9 +249,25 @@
             </p>
             <button class="advertisement-banner-button theme-button theme-text">Details</button>
         </div>
-            <div class="advertisement-banner-right">
+        <div class="advertisement-banner-right">
         </div>
     </div>
+
+    <!-- Promo modal -->
+    <div class="promo-modal-backdrop show">
+        <div class="promo-modal-card">
+            <div class="promo-image"></div>
+            <div class="promo-content">
+                <h2 class="promo-title promotitle_pixelfps theme-text">More PixelFPS features</h2>
+                <p class="promo-description promodiscr_pixelfps gray-text">
+                    Disable promo banners, ads, cool experimental features and technologies for users with a premium subscription.
+                </p>
+                <button class="promo-button promo-button_buy">Purchase</button>
+            </div>
+            <button class="promo-close">&times;</button>
+        </div>
+    </div>
+
 
     <!-- Main content page -->
     <main>
@@ -443,6 +460,7 @@
     <script src="js/download.js"></script>
     <script src="js/pushnotify.js"></script>
     <script src="js/advertisement.js"></script>
+    <script src="js/promo-modal.js"></script>
 </body>
 
 </html>
