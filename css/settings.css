@@ -340,3 +340,117 @@ select {
   border-radius: 4px;
   margin: 0 auto 24px auto;
 }
+
+/* Мобильные устройства — экраны до 480px */
+@media (max-width: 480px) {
+  /* Боковое меню: сделаем верхним горизонтальным или скроем */
+  .settings-sidebar {
+    position: fixed;
+    top: 15px;
+    left: 0;
+    right: 0;
+    height: 45px;
+    max-width: 350px;
+    width: 100%;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: center;
+    padding: 8px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+  .sidebar-item {
+    padding: 8px 12px;
+  }
+
+  /* Центрируем и уменьшаем приветствие */
+  .settings-card-welcome {
+    max-width: 100%;
+    padding: 12px 16px;
+    margin: 64px 16px 16px; /* учитываем высоту меню */
+    box-sizing: border-box;
+  }
+  .profile-avatar-img {
+    width: 48px;
+    height: 48px;
+    margin-right: 12px;
+  }
+  .user-fullname {
+    font-size: 16px;
+  }
+  .label-id {
+    font-size: 12px;
+  }
+
+  /* Основная карточка настроек */
+  .settings-card {
+    max-width: 450px;
+    margin: 64px auto; /* учитываем высоту меню */
+    padding: 20px 16px;
+  }
+
+  /* Строки .row — меняем на колонку */
+  .row {
+    gap: 12px;
+  }
+
+  /* Убираем фиксированную ширину у country */
+  .country-column {
+    flex: 0 0 180px;
+  }
+
+  /* DOB селекты в колонку */
+  .dob-selects {
+    gap: 8px;
+  }
+
+  /* Уменьшаем шрифты в label и input */
+  label {
+    font-size: 11px;
+  }
+  input,
+  select {
+    font-size: 12px;
+  }
+
+  /* Кнопка Save */
+  .save-button {
+    padding: 12px 18px;
+    font-size: 13px;
+    width: 100%;
+    max-width: 250px;
+  }
+
+  /* Панель безопасность — адаптивная */
+  .secure-card {
+    max-width: 450px;
+    margin: 64px auto; /* учитываем высоту меню */
+    padding: 20px 16px;
+  }
+}
+
+/* Планшеты — от 481px до 768px, промежуточный вариант */
+@media (min-width: 481px) and (max-width: 768px) {
+  .settings-sidebar {
+    top: 64px;
+    left: calc(50% - 320px);
+    width: 56px;
+    flex-direction: column;
+  }
+  .settings-card-welcome,
+  .settings-card,
+  .secure-card {
+    max-width: 640px;
+    margin: 24px auto;
+    padding: 24px 24px;
+  }
+
+  .row {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .dob-selects {
+    gap: 10px;
+  }
+}
