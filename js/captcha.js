@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem('visitCount', visitCount);
 
     // Показываем капчу только при 3-м посещении
-    if (visitCount >= 3) {
+    if (visitCount >= 8) {
         captchaModal.style.display = "flex";
     }
 });
