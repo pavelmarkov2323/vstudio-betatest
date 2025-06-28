@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const htmlAllowedSelectors = [
                     '.description',
                     '.aboutcompany-text',
-                    '.advertisement-banner-description'
+                    '.banner-promo-description'
                 ];
 
                 Object.entries(elementsMap).forEach(([selector, value]) => {
