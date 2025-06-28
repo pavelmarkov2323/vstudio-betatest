@@ -195,6 +195,10 @@
     "promo-modal": {
         "promotitle_pixelfps": "More PixelFPS features",
         "promodiscr_pixelfps": "Disable promo banners, ads, cool experimental features and technologies for users with a premium subscription.",
-        "promo-button_buy": "Purchase"
+        "promo-button_buy": "Purchase",
+
+        "upgrade_title": "Get the most from PixelFPS",
+        "upgrade_descr": "Premium users receive no ads, with a premium subscription: instant updates and access to exclusive and experimental features.",
+        "upgrade_button": "Upgrade Now"
     }
 }

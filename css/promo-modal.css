@@ -38,7 +38,6 @@
 /* Верхняя 40% часть — картинка */
 .promo-image {
   height: 40%;
-  background-image: url('http://maroocorp.com/img/maru/1595336214_4880.png'); /* замени на путь к своему изображению */
   background-size: cover;
   background-position: center;
 }
