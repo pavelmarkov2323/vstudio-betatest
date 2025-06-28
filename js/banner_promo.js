@@ -15,6 +15,43 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }
 
+  window.initPromoBanner = function () {
+    const translations = window.translations?.banner;
+    if (!translations) {
+      console.warn("Переводы для баннера не найдены");
+      return;
+    }
+
+    const bannerHTML = `
+      <div class="banner-promo theme-banner">
+        <button class="close-banner-btn">✕</button>
+        <div class="banner-promo-left">
+          <h2 class="banner-promo-text theme-text">${translations["banner-promo-text"]}</h2>
+          <p class="banner-promo-description theme-text">${translations["banner-promo-description"]}</p>
+          <p class="banner-promo-note gray-text">${translations["banner-promo-note"]}</p>
+          <button class="banner-promo-button theme-button theme-text">${translations["banner-promo-button"]}</button>
+        </div>
+        <div class="banner-promo-right"></div>
+      </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', bannerHTML);
+
+    const banner = document.querySelector('.banner-promo');
+    const closeBtn = banner.querySelector('.close-banner-btn');
+
+    closeBtn.addEventListener('click', () => {
+      banner.classList.add('hidden');
+      setTimeout(() => banner.remove(), 300);
+
+      setState({
+        closed: true,
+        count: 0,
+        closedAt: Date.now()
+      });
+    });
+  };
+
   let state = getState();
   const now = Date.now();
 
@@ -41,42 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setState(state);
 
-  if (shouldShow) {
-    const bannerHTML = `
-      <div class="banner-promo theme-banner">
-        <button class="close-banner-btn">✕</button>
-        <div class="banner-promo-left">
-          <h2 class="banner-promo-text theme-text">Get access to «Premium»</h2>
-          <p class="banner-promo-description theme-text">
-            Support the project and get more:<br><br>
-            🔕 Without ads and banners<br>
-            🎁 Exclusive chips and bonuses<br>
-            💡 Early access to new features<br>
-            ❤️ Project development support<br>
-          </p>
-          <p class="banner-promo-note gray-text">
-            PixeFPS remains free, but premium is a way to say «thank you» and get a little more convenience.
-          </p>
-          <button class="banner-promo-button theme-button theme-text">Details</button>
-        </div>
-        <div class="banner-promo-right"></div>
-      </div>
-    `;
-
-    document.body.insertAdjacentHTML('beforeend', bannerHTML);
-
-    const banner = document.querySelector('.banner-promo');
-    const closeBtn = banner.querySelector('.close-banner-btn');
-
-    closeBtn.addEventListener('click', () => {
-      banner.classList.add('hidden');
-      setTimeout(() => banner.remove(), 300);
-
-      setState({
-        closed: true,
-        count: 0,
-        closedAt: Date.now()
-      });
-    });
+  if (shouldShow && window.initPromoBanner) {
+    window.initPromoBanner();
   }
 });
