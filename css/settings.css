@@ -342,7 +342,7 @@ select {
 }
 
 /* Мобильные устройства — экраны до 480px */
-@media (max-width: 480px) {
+@media (min-width: 390px) and (max-width: 480px) {
   /* Боковое меню: сделаем верхним горизонтальным или скроем */
   .settings-sidebar {
     position: fixed;
@@ -367,7 +367,7 @@ select {
   .settings-card-welcome {
     max-width: 100%;
     padding: 12px 16px;
-    margin: 64px 16px 16px; /* учитываем высоту меню */
+    margin: 64px 16px 16px;
     box-sizing: border-box;
   }
   .profile-avatar-img {
@@ -386,7 +386,7 @@ select {
   .settings-card {
     box-sizing: border-box;
     width: 100%;
-    max-width: 430px;
+    max-width: 380px;
     margin: 64px auto;
     padding: 20px 16px;
   }
@@ -427,7 +427,7 @@ select {
   .secure-card {
     box-sizing: border-box;
     width: 100%;
-    max-width: 430px;
+    max-width: 380px;
     margin: 64px auto;
     padding: 20px 16px;
   }
@@ -435,12 +435,26 @@ select {
 
 /* Планшеты — от 481px до 768px, промежуточный вариант */
 @media (min-width: 481px) and (max-width: 768px) {
+  /* Боковое меню: сделаем верхним горизонтальным или скроем */
   .settings-sidebar {
-    top: 64px;
-    left: calc(50% - 320px);
-    width: 56px;
-    flex-direction: column;
+    position: fixed;
+    top: 15px;
+    left: 0;
+    right: 0;
+    height: 45px;
+    max-width: 350px;
+    width: 100%;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: center;
+    padding: 8px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 5;
   }
+  .sidebar-item {
+    padding: 8px 12px;
+  }
+
   .settings-card-welcome,
   .settings-card,
   .secure-card {
