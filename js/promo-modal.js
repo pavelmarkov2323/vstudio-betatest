@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 👇 Предположим, что объект data уже загружен до этого (например, через fetch или встроен заранее)
   const translations = window.translations?.["promo-modal"];
   if (!translations) return;
 
