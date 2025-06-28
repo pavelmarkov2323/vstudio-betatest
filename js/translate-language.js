@@ -183,6 +183,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.push-btn-donation': data["push-donation-button"]
                 };
 
+                // после загрузки локализации
+                if (window.initPromoModal) {
+                    window.initPromoModal();
+                }
+
                 const htmlAllowedSelectors = [
                     '.description',
                     '.aboutcompany-text',

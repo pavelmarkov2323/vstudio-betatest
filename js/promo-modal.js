@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+window.initPromoModal = function() {
   const translations = window.translations?.["promo-modal"];
   if (!translations) {
     console.warn("Переводы для promo-modal не найдены");
@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
 
-  // вставляем сразу без задержки
   document.body.insertAdjacentHTML('beforeend', modalHTML);
 
   const backdrop = document.querySelector('.promo-modal-backdrop');
@@ -43,4 +42,4 @@ document.addEventListener("DOMContentLoaded", () => {
     backdrop.classList.add('hide');
     setTimeout(() => backdrop.remove(), 400);
   });
-});
+};
