@@ -53,6 +53,11 @@ body.dark-theme .theme-modal {
   background: #252525;
 }
 
+/* Banner background Style */
+body.dark-theme .theme-banner {
+    background: #1F1F1F;
+}
+
 /* Others Style */
 body.dark-theme .line {
     border-top: 1px solid #333333 !important; /* Темно-серая граница, линия (Line) */
@@ -173,11 +178,6 @@ body.dark-theme .modal-message-window {
 
 body.dark-theme .modal-message-close:hover {
   color: rgb(224, 224, 224);
-}
-
-/* Рекламный баннер */
-body.dark-theme .advertisement-banner {
-    background: #1F1F1F;
 }
 
 /* RoadMap - Дорожная карта */
