@@ -32,6 +32,9 @@ window.initPromoModal = function() {
     </div>
   `;
 
+  const delay = Math.floor(Math.random() * 7000) + 3000;
+
+  setTimeout(() => {
   document.body.insertAdjacentHTML('beforeend', modalHTML);
 
   const backdrop = document.querySelector('.promo-modal-backdrop');
@@ -42,4 +45,5 @@ window.initPromoModal = function() {
     backdrop.classList.add('hide');
     setTimeout(() => backdrop.remove(), 400);
   });
+  }, delay);
 };
