@@ -11,29 +11,6 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Стили для основного заголовка */
-.main-title {
-    font-family: 'MiSans-Medium', sans-serif;
-    color: black;
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-/* Стили для описания */
-.description {
-    font-family: 'MiSans', sans-serif;
-    font-weight: normal;
-    color: #C4C4C4;
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-/* Основной контент */
-.intro {
-    padding: 60px 20px;
-    text-align: center;
-}
-
 /* Стиль для футера (Сorpyright) Нижний копирайтер*/
 .footer {
     background-color: #EDEEF0;
@@ -49,7 +26,7 @@ html {
     font-size: 14px;
     color: #9CA2AE;
     border-top: 1px solid #E0E4EB; /* Линия (Line) сверху */
-    z-index: 2;
+    z-index: 1;
 }
 
 .footer-content {
@@ -82,4 +59,10 @@ html {
 
 .footer-social img:hover {
     opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-bottom: 90px; /* Увеличенный отступ под футер */
+  }
 }

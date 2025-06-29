@@ -1,3 +1,26 @@
+/* Основной заголовок */
+.main-title {
+    font-family: 'MiSans-Medium', sans-serif;
+    color: black;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+/* Описание */
+.description {
+    font-family: 'MiSans', sans-serif;
+    font-weight: normal;
+    color: #C4C4C4;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Основной контент */
+.intro {
+    padding: 60px 20px;
+    text-align: center;
+}
+
 /* Roadmap - Дорожная карта */
 .roadmap-section {
   background: #f8f9fa;
