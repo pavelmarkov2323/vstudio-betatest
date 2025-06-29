@@ -1,24 +1,24 @@
 /* Основной контент */
 .intro {
-    padding: 60px 20px;
-    text-align: center;
+  padding: 60px 20px;
+  text-align: center;
 }
 
 /* Основной заголовок */
 .main-title {
-    font-family: 'MiSans-Medium', sans-serif;
-    color: black;
-    font-size: 30px;
-    margin-bottom: 20px;
+  font-family: 'MiSans-Medium', sans-serif;
+  color: black;
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 
 /* Описание */
 .description {
-    font-family: 'MiSans', sans-serif;
-    font-weight: normal;
-    color: #C4C4C4;
-    font-size: 18px;
-    line-height: 1.6;
+  font-family: 'MiSans', sans-serif;
+  font-weight: normal;
+  color: #C4C4C4;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 /* Roadmap - Дорожная карта */
@@ -53,7 +53,8 @@
 }
 
 .roadmap-title {
-  margin-top: 1rem; /* или -2rem, подбирай по вкусу */
+  margin-top: 1rem;
+  /* или -2rem, подбирай по вкусу */
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
@@ -61,12 +62,18 @@
 }
 
 .roadmap-divider {
-  width: 90px;             /* длина линии */
-  height: 2px;             /* толщина */
-  background-color: #ccc;  /* светло-серый */
-  border-radius: 999px;    /* полностью скруглённая */
-  margin: 0 auto 2rem;     /* центрировать и отступ вниз */
-  margin-top: -1rem; /* или -2rem, подбирай по вкусу */
+  width: 90px;
+  /* длина линии */
+  height: 2px;
+  /* толщина */
+  background-color: #ccc;
+  /* светло-серый */
+  border-radius: 999px;
+  /* полностью скруглённая */
+  margin: 0 auto 2rem;
+  /* центрировать и отступ вниз */
+  margin-top: -1rem;
+  /* или -2rem, подбирай по вкусу */
 }
 
 .roadmap-timeline {
@@ -104,7 +111,8 @@
 /* Roadmap-item completed (Заверешено, выполнено) */
 .roadmap-item.completed .roadmap-dot-line::before {
   background: #4caf50;
-  animation: none; /* убираем анимации если есть */
+  animation: none;
+  /* убираем анимации если есть */
 }
 
 /* Галочка */
@@ -136,15 +144,19 @@
   0% {
     box-shadow: 0 0 4px 2px #4caf50;
   }
+
   25% {
     box-shadow: 0 0 8px 4px #4caf50;
   }
+
   50% {
     box-shadow: 0 0 12px 6px #4caf50;
   }
+
   75% {
     box-shadow: 0 0 8px 4px #4caf50;
   }
+
   100% {
     box-shadow: 0 0 4px 2px #4caf50;
   }
@@ -161,7 +173,8 @@ body.dark-theme {
 /* Roadmap-item active (активный) */
 .roadmap-item.active .roadmap-dot-line::before {
   background: #ffc107;
-  animation: none; /* чтобы круг не пульсировал, только волны */
+  animation: none;
+  /* чтобы круг не пульсировал, только волны */
 }
 
 /* Жёлтый круг с анимацией */
@@ -193,7 +206,8 @@ body.dark-theme {
   background-size: contain;
   z-index: 3;
   pointer-events: none;
-  filter: var(--icon-filter); /* поддержка тёмной темы */
+  filter: var(--icon-filter);
+  /* поддержка тёмной темы */
 }
 
 
@@ -202,9 +216,11 @@ body.dark-theme {
   0% {
     box-shadow: 0 0 0 0 #ffc107;
   }
+
   70% {
     box-shadow: 0 0 0 12px rgba(255, 193, 7, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
   }
@@ -215,9 +231,11 @@ body.dark-theme {
   0% {
     box-shadow: 0 0 0 0 #ffc107;
   }
+
   70% {
     box-shadow: 0 0 0 20px rgba(255, 193, 7, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
   }
@@ -244,7 +262,7 @@ body.dark-theme {
   filter: var(--icon-filter);
 }
 
-.roadmap-toggle { 
+.roadmap-toggle {
   background: none;
   border: none;
   font-size: 1.1rem;
@@ -282,11 +300,11 @@ body.dark-theme {
 
 /* FAQ - Вопросы / Ответы */
 .faq-container {
-    width: 25%;
-    margin: 20px auto;
-    opacity: 0;
-    transform: translateY(60px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+  width: 25%;
+  margin: 20px auto;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .faq-container.animate-in {
@@ -295,109 +313,123 @@ body.dark-theme {
 }
 
 .faq-title {
-    font-weight: 700; /* Жирный (Medium) */
-    font-size: 30px;
+  font-weight: 700;
+  /* Жирный (Medium) */
+  font-size: 30px;
 }
 
 .faq-item {
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    position: relative;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  position: relative;
 }
 
 .faq-question {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Добавляем, чтобы стрелка ушла вправо */
-    cursor: pointer;
-    font-weight: 700; /* Жирный (Medium) */
-    font-size: 16px;
-    padding: 10px;
-    background: #ffffff;
-    border-radius: 10px;
-    position: relative;
-    padding-left: 14px; /* Оставляем уменьшенный левый отступ */
-    padding-right: 14px; /* Добавляем отступ справа, чтобы стрелка не прилипала */
-    width: 100%; /* Чтобы flex работал корректно */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Добавляем, чтобы стрелка ушла вправо */
+  cursor: pointer;
+  font-weight: 700;
+  /* Жирный (Medium) */
+  font-size: 16px;
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 10px;
+  position: relative;
+  padding-left: 14px;
+  /* Оставляем уменьшенный левый отступ */
+  padding-right: 14px;
+  /* Добавляем отступ справа, чтобы стрелка не прилипала */
+  width: 100%;
+  /* Чтобы flex работал корректно */
 }
 
 .faq-arrow {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
-    margin-left: auto; /* Отправляем стрелку в крайний правый угол */
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+  margin-left: auto;
+  /* Отправляем стрелку в крайний правый угол */
 }
 
 .faq-dot {
-    width: 10px;
-    height: 10px;
-    background-color: red;
-    border-radius: 50%;
-    position: absolute;
-    left: -15px; /* Сдвигаем точку левее за пределы блока */
-    top: 20px;
-    transform: translateY(-50%);
-    animation: pulse 1.5s infinite;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  left: -15px;
+  /* Сдвигаем точку левее за пределы блока */
+  top: 20px;
+  transform: translateY(-50%);
+  animation: pulse 1.5s infinite;
 }
 
 .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    padding: 12px 20px; /* Отступы со всех сторон */
-    font-weight: 400; /* Обычный (Normal) */
-    font-size: 16px;
-    background: linear-gradient(135deg, #ffffff, #ececec);
-    border-radius: 10px;
-    margin-top: 8px;
-    opacity: 0;
-    transform: scale(0.95);
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out, transform 0.2s ease-out, box-shadow 0.3s ease-out;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Теперь блок ответа равен вопросу */
-    box-sizing: border-box; /* Учитывает padding в общей ширине */
+  max-height: 0;
+  overflow: hidden;
+  padding: 12px 20px;
+  /* Отступы со всех сторон */
+  font-weight: 400;
+  /* Обычный (Normal) */
+  font-size: 16px;
+  background: linear-gradient(135deg, #ffffff, #ececec);
+  border-radius: 10px;
+  margin-top: 8px;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out, transform 0.2s ease-out, box-shadow 0.3s ease-out;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  /* Теперь блок ответа равен вопросу */
+  box-sizing: border-box;
+  /* Учитывает padding в общей ширине */
 }
 
 /* Когда ответ раскрыт */
 .faq-item.active .faq-answer {
-    opacity: 1;
-    transform: scale(1);
-    max-height: 1000px;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transform: scale(1);
+  max-height: 1000px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Для раскрытого вопроса */
 .faq-item.active .faq-question {
-    background: #e0e0e0;
+  background: #e0e0e0;
 }
 
 .faq-question:hover {
-    background: #e1e1e1;
+  background: #e1e1e1;
 }
 
 /* Анимация стрелки при открытии */
 .faq-item.active .faq-arrow {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 /* Прячем точку, если вопрос раскрыт */
 .faq-item.active .faq-dot {
-    display: none;
+  display: none;
 }
 
 /* Анимация пульсации точки */
 @keyframes pulse {
-    0% {
-        transform: translateY(-50%) scale(0.8);
-        opacity: 1;
-    }
-    50% {
-        transform: translateY(-50%) scale(1.2);
-        opacity: 0.7;
-    }
-    100% {
-        transform: translateY(-50%) scale(0.8);
-        opacity: 1;
-    }
+  0% {
+    transform: translateY(-50%) scale(0.8);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-50%) scale(1.2);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(-50%) scale(0.8);
+    opacity: 1;
+  }
 }
 
 /* Мобильные устройства — экраны до 480px */
@@ -422,13 +454,14 @@ body.dark-theme {
   }
 
   /* RoadMap (Дорожная карта)*/
-    .roadmap-heading {
-    font-size: 1.8rem; /* было 3rem */
+  .roadmap-heading {
+    font-size: 1.6rem;
     margin-bottom: 2rem;
   }
 
   .roadmap-title {
-    font-size: 1.3rem; /* было 2rem */
+    font-size: 1.3rem;
+    /* было 2rem */
     margin-bottom: 1.5rem;
   }
 
@@ -439,36 +472,47 @@ body.dark-theme {
   }
 
   .roadmap-toggle {
-    font-size: 1rem; /* было 1.1rem */
+    font-size: 1rem;
+    /* было 1.1rem */
     padding: 0.4rem 0;
   }
 
   .roadmap-timeline {
-    padding-left: 28px; /* немного больше для баланса */
+    padding-left: 28px;
+    /* немного больше для баланса */
     border-left: 2px solid #ccc;
   }
 
   .roadmap-item.completed .roadmap-dot-line::before {
-    width: 14px;         /* чуть больше, чтобы не терялась */
+    width: 14px;
+    /* чуть больше, чтобы не терялась */
     height: 14px;
-    left: -36px;         /* подвинем ближе, но оставим пространство */
-    top: 9px;            /* центрируем по высоте */
+    left: -36px;
+    /* подвинем ближе, но оставим пространство */
+    top: 9px;
+    /* центрируем по высоте */
   }
 
   .roadmap-item.active .roadmap-dot-line::before {
-    width: 14px;         /* чуть больше, чтобы не терялась */
+    width: 14px;
+    /* чуть больше, чтобы не терялась */
     height: 14px;
-    left: -36px;         /* подвинем ближе, но оставим пространство */
-    top: 9px;            /* центрируем по высоте */
+    left: -36px;
+    /* подвинем ближе, но оставим пространство */
+    top: 9px;
+    /* центрируем по высоте */
   }
 
   .roadmap-item.upcoming .roadmap-dot-line::before {
-    width: 14px;         /* чуть больше, чтобы не терялась */
+    width: 14px;
+    /* чуть больше, чтобы не терялась */
     height: 14px;
-    left: -36px;         /* подвинем ближе, но оставим пространство */
-    top: 9px;            /* центрируем по высоте */
+    left: -36px;
+    /* подвинем ближе, но оставим пространство */
+    top: 9px;
+    /* центрируем по высоте */
   }
-  
+
   .roadmap-item.completed .roadmap-dot-line::after,
   .roadmap-item.active .roadmap-dot-line::after,
   .roadmap-item.upcoming .roadmap-dot-line::after {
@@ -484,20 +528,22 @@ body.dark-theme {
   }
 
   .roadmap-divider {
-    width: 60px;  /* меньше линия */
+    width: 60px;
+    /* меньше линия */
     margin-bottom: 1.5rem;
   }
 
   .roadmap-container {
     padding: 1.5rem;
   }
-    .faq-container {
-    width: 90%;
-    padding: 0 10px;
+
+  /* Faq (Вопрос-ответ)*/
+  .faq-container {
+    width: 80%;
+    padding: 0 8px;
     margin: 30px auto;
   }
 
-  /* Faq (Вопрос-ответ)*/
   .faq-title {
     font-size: 24px;
     text-align: center;
