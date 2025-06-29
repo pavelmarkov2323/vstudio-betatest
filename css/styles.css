@@ -66,7 +66,7 @@ html {
 
 @media (max-width: 480px) {
     body {
-        padding-bottom: 90px;
+        padding-bottom: 110px;
         /* Увеличенный отступ под футер */
     }
 
@@ -90,24 +90,24 @@ html {
     }
 
     .footer-copyright {
+        font-size: 13px;
         white-space: normal;
         text-align: center;
         display: block;
     }
 
     .footer-link {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .footer-social {
         justify-content: center;
         gap: 10px;
-        width: 100%;
     }
 
     .footer-social img {
-        width: 20px;
-        height: 20px;
+        width: 26px;
+        height: 26px;
     }
 
     .social-platforms {
