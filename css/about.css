@@ -272,3 +272,80 @@
     width: 740px; /* Ширина полосы */
     margin: 30px auto; /* Центрирование полосы с отступами сверху и снизу */
 }
+
+/* Мобильные устройства — экраны до 480px */
+@media (max-width: 768px) {
+    /* О компании */
+    .aboutcompany-heading {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .aboutcompany-block {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .aboutcompany-image img {
+        max-width: 180px;
+        height: auto;
+        margin-bottom: 12px;
+    }
+
+    .aboutcompany-text {
+        font-size: 14px;
+        line-height: 1.6;
+        padding: 0 10px;
+    }
+
+    /* Наша команда */
+    .team-heading {
+        font-size: 28px;
+        text-align: center;
+        margin-top: -20px;
+    }
+
+    .about-block {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto 20px;
+        text-align: center;
+    }
+
+    .about-block img {
+        width: 120px;
+        height: auto;
+    }
+
+    .name {
+        font-size: 18px;
+    }
+
+    .badge {
+        font-size: 14px;
+    }
+
+    .controls {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    /* Пользовательское соглашение и политика конфиденциальности */
+    .legal-section {
+        padding: 20px 10px;
+        text-align: left;
+    }
+
+    .license-heading {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .legal-subheading {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+}
