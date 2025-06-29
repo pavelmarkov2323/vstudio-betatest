@@ -265,16 +265,18 @@
 
 /* Стилизация серой полосы */
 .separator {
-    border: none; /* Убираем стандартное оформление */
-    height: 2px; /* Толщина полосы */
-    background-color: #ccc; /* Цвет полосы (светло-серый) */
+    border: none;
+    height: 2px;
+    background-color: #ccc;
     border-radius: 30%;
-    width: 740px; /* Ширина полосы */
-    margin: 30px auto; /* Центрирование полосы с отступами сверху и снизу */
+    width: 100%;
+    max-width: 700px; /* ограничим максимум для ПК */
+    margin: 30px auto; /* центрирование */
 }
 
 /* Мобильные устройства — экраны до 480px */
 @media (max-width: 768px) {
+
     /* О компании */
     .aboutcompany-heading {
         font-size: 32px;
@@ -286,6 +288,8 @@
         align-items: center;
         text-align: center;
         padding: 20px;
+        margin: 0 16px; /* добавим отступы слева и справа */
+        box-sizing: border-box; /* чтобы padding и margin правильно учитывались */
     }
 
     .aboutcompany-image img {
@@ -304,7 +308,7 @@
     .team-heading {
         font-size: 28px;
         text-align: center;
-        margin-top: -20px;
+        margin-top: 50px;
     }
 
     .about-block {
@@ -333,6 +337,7 @@
         gap: 10px;
         margin-top: 20px;
     }
+
     /* Пользовательское соглашение и политика конфиденциальности */
     .legal-section {
         padding: 20px 10px;
@@ -347,5 +352,14 @@
     .legal-subheading {
         font-size: 13px;
         line-height: 1.6;
+    }
+
+    .separator {
+        width: calc(100% - 40px); /* отступы слева и справа внутри legal-item */
+        margin: 20px auto;
+    }
+
+    .legal-toggle {
+        font-size: 18px;
     }
 }
