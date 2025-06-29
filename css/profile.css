@@ -379,6 +379,7 @@
   background-color: #0056b3;
 }
 
+/* Мобильные устройства — экраны до 480px */
 @media (max-width: 480px) {
   .profile-heading {
     font-size: 20px;
