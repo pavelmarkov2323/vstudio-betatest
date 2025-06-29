@@ -402,6 +402,8 @@ body.dark-theme {
 
 /* Мобильные устройства — экраны до 480px */
 @media (max-width: 480px) {
+
+  /* Основной контент*/
   .intro {
     padding: 40px 16px;
     text-align: center;
@@ -417,6 +419,113 @@ body.dark-theme {
     font-size: 12px;
     line-height: 1.5;
     color: #AFAFAF;
+  }
+
+  /* RoadMap (Дорожная карта)*/
+    .roadmap-heading {
+    font-size: 1.8rem; /* было 3rem */
+    margin-bottom: 2rem;
+  }
+
+  .roadmap-title {
+    font-size: 1.3rem; /* было 2rem */
+    margin-bottom: 1.5rem;
+  }
+
+  .roadmap-item {
+    padding: 0.75rem;
+    margin-bottom: 0.8rem;
+    border-radius: 12px;
+  }
+
+  .roadmap-toggle {
+    font-size: 1rem; /* было 1.1rem */
+    padding: 0.4rem 0;
+  }
+
+  .roadmap-timeline {
+    padding-left: 28px; /* немного больше для баланса */
+    border-left: 2px solid #ccc;
+  }
+
+  .roadmap-item.completed .roadmap-dot-line::before {
+    width: 14px;         /* чуть больше, чтобы не терялась */
+    height: 14px;
+    left: -36px;         /* подвинем ближе, но оставим пространство */
+    top: 9px;            /* центрируем по высоте */
+  }
+
+  .roadmap-item.active .roadmap-dot-line::before {
+    width: 14px;         /* чуть больше, чтобы не терялась */
+    height: 14px;
+    left: -36px;         /* подвинем ближе, но оставим пространство */
+    top: 9px;            /* центрируем по высоте */
+  }
+
+  .roadmap-item.upcoming .roadmap-dot-line::before {
+    width: 14px;         /* чуть больше, чтобы не терялась */
+    height: 14px;
+    left: -36px;         /* подвинем ближе, но оставим пространство */
+    top: 9px;            /* центрируем по высоте */
+  }
+  
+  .roadmap-item.completed .roadmap-dot-line::after,
+  .roadmap-item.active .roadmap-dot-line::after,
+  .roadmap-item.upcoming .roadmap-dot-line::after {
+    width: 9px;
+    height: 9px;
+    left: -33.5px;
+    top: 11px;
+  }
+
+  .roadmap-content {
+    font-size: 0.9rem;
+    padding-left: 0.25rem;
+  }
+
+  .roadmap-divider {
+    width: 60px;  /* меньше линия */
+    margin-bottom: 1.5rem;
+  }
+
+  .roadmap-container {
+    padding: 1.5rem;
+  }
+    .faq-container {
+    width: 90%;
+    padding: 0 10px;
+    margin: 30px auto;
+  }
+
+  /* Faq (Вопрос-ответ)*/
+  .faq-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .faq-question {
+    font-size: 14px;
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .faq-arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  .faq-dot {
+    width: 8px;
+    height: 8px;
+    left: -12px;
+    top: 22px;
+  }
+
+  .faq-answer {
+    font-size: 14px;
+    padding: 10px 14px;
+    border-radius: 8px;
   }
 }
 
