@@ -354,6 +354,27 @@
         line-height: 1.6;
     }
 
+    .textlicense-data {
+        font-size: 13px;
+    }
+
+    .textlicense-data p {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .textlicense-data .effective-date {
+        margin-right: 15px; /* Отступ между датами */
+    }
+
+    .legal-content {
+        display: none;
+        padding-top: 12px;
+        color: #333;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
     .separator {
         width: calc(100% - 40px); /* отступы слева и справа внутри legal-item */
         margin: 20px auto;
