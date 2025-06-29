@@ -73,6 +73,239 @@
     position: relative; /* Чтобы элементы не перекрывались */
 }
 
+
+/* Музыкальный мини-плеер */
+.player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+}
+
+#volume-icon {
+    width: 20px;
+    height: 20px;
+}
+
+#volume-slider {
+    appearance: none;
+    -webkit-appearance: none; /* Для Safari и Chrome */
+    -moz-appearance: none; /* Для Firefox */
+    width: 60px;
+    height: 5px;
+    border-radius: 5px;
+    outline: none;
+    background: linear-gradient(to right, #447BBA 100%, #d3d9de 0%);
+    transition: background 0.2s ease-in-out;
+}
+
+#volume-slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+}
+
+/* Ползунок по центру и скрыт по умолчанию */
+#volume-slider::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none; /* Для Safari и Chrome */
+    -moz-appearance: none; /* Для Firefox */
+    width: 14px;
+    height: 14px;
+    background: #447BBA;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -3px; /* Смещаем thumb вверх, чтобы он был ровно по центру */
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Ползунок появляется при наведении */
+#volume-slider:hover::-webkit-slider-thumb {
+    opacity: 1;
+}
+
+
+/* Выпадающий список выбора языка */
+.language-switch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 2px 9px;
+    border: 2px solid #EAEAEA;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    justify-content: space-between;
+    width: 75px; /* Уменьшаем ширину, если необходимо */
+}
+
+/* Стиль для флага и кода */
+.language-switch .selected-flag {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px; /* Фиксированное расстояние между флагом и кодом языка */
+}
+
+.language-switch .language-code {
+    margin-right: 30px; /* Фиксированное расстояние между кодом языка и стрелкой */
+    font-weight: 500; /* Чуть четче (Regular) */
+    color: black;
+}
+
+/* Стрелка (одна стрелка для вверх/вниз) */
+.language-switch .arrow {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+    right: 10px; /* Отступ для стрелки */
+}
+
+/* Выпадающий список */
+.language-switch .dropdown-menu {
+    display: block; /* Делаем блок, чтобы управлять видимостью через opacity */
+    position: absolute;
+    top: 100%; /* Сдвигаем вниз от родительского элемента */
+    left: 0;
+    width: 100%; /* Делаем ширину выпадающего списка такой же, как у родителя */
+    background: white;
+    border: 2px solid #EAEAEA;
+    border-radius: 12px;
+    margin-top: 5px;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 180px; /* Ограничиваем высоту, чтобы отображалось только 4 элемента */
+    overflow-y: auto;
+    opacity: 0; /* Изначально невидимый */
+    visibility: hidden; /* Невидим в DOM */
+    transform: translateY(-10px); /* Начальное положение, чуть выше */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s; /* Плавное появление */
+    scrollbar-width: thin; /* Тонкий скролл для Firefox */
+    scrollbar-color: #ccc transparent; /* Цвет скролла */
+}
+
+/* Стилизация скроллбара для WebKit (Chrome, Edge, Safari) */
+.language-switch .dropdown-menu::-webkit-scrollbar {
+    width: 6px; /* Ширина скроллбара */
+    border-radius: 4px;
+}
+
+.language-switch .dropdown-menu::-webkit-scrollbar-track {
+    background: transparent; /* Прозрачный фон дорожки */
+}
+
+.language-switch .dropdown-menu::-webkit-scrollbar-thumb {
+    background: #ccc; /* Цвет ползунка */
+    border-radius: 4px;
+}
+
+.language-switch .dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: #999; /* Цвет при наведении */
+}
+
+/* Когда меню открыто */
+.language-switch.open .dropdown-menu {
+    opacity: 1;
+    visibility: visible; /* Становится видимым */
+    transform: translateY(0); /* Возвращается в нормальное положение */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Плавное появление */
+}
+
+/* Когда меню открыто — поворачиваем стрелку */
+.language-switch.open .arrow {
+    transform: translateY(-50%) rotate(180deg); /* Переворачиваем стрелку */
+}
+
+/* Стиль для каждого пункта в выпадающем списке */
+.language-switch .dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.language-switch .dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Позиция флага и текста в списке */
+.language-switch .dropdown-item .flag {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.language-switch .dropdown-item span {
+    font-weight: 500; /* Чуть четче (Regular) */
+    color: black;
+}
+
+
+/* Переключатель со светлой темы на ночную */
+.theme-toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+}
+
+/* Скрытие стандартного input */
+.theme-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Слайдер (фон переключателя) */
+.theme-toggle .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 50px;
+}
+
+/* Круглая кнопка переключателя */
+.theme-toggle .slider:before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: 17px;
+    height: 17px;
+    background-color: white;
+    border-radius: 50px;
+    transition: 0.4s;
+}
+
+/* Когда переключатель включен (input:checked) */
+.theme-toggle input:checked + .slider {
+    background-color: #6A5ACD; /* Цвет фона в активном состоянии */
+}
+
+.theme-toggle input:checked + .slider:before {
+    transform: translateX(25px); /* Сдвигаем кнопку на правую сторону */
+}
+
+/* Псевдоклассы при наведении */
+.theme-toggle .slider:hover {
+    background-color: #999;
+}
+
+
 /* Кнопка войти (авторизация) */
 .signin-btn {
     position: relative;
