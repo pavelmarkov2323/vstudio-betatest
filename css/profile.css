@@ -378,3 +378,66 @@
 .home-button:hover {
   background-color: #0056b3;
 }
+
+@media (max-width: 480px) {
+  .profile-heading {
+    font-size: 24px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+
+  .profile-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 16px;
+  }
+
+  .left-wrapper {
+    width: 100%;
+    gap: 16px;
+  }
+
+  .avatar-card,
+  .data-card,
+  .bio-card {
+    width: 100%;
+    height: auto;
+  }
+
+  .data-card {
+    padding-bottom: 24px; /* чуть больше пространства */
+  }
+
+  .bio-card {
+    padding-bottom: 32px; /* чтобы влезал весь текст */
+  }
+
+  .bio-text {
+    font-size: 14px;
+  }
+
+  .user-fullname {
+    font-size: 16px;
+  }
+
+  .label-id,
+  .label-username {
+    font-size: 13px;
+  }
+
+  .data-title {
+    font-size: 13px;
+  }
+
+  .data-item {
+    font-size: 13px;
+  }
+
+  .bio-title {
+    font-size: 14px;
+  }
+
+  .bio-char-count {
+    font-size: 11px;
+  }
+}
