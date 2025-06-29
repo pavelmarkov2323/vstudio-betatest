@@ -17,13 +17,27 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeOut {
-  from { opacity: 1; transform: translateY(0); }
-  to { opacity: 0; transform: translateY(20px); }
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 }
 
 /* Рекламный баннер */
@@ -31,13 +45,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px; /* увеличен отступ между баннером и формой */
-  margin-bottom: 70px; /* если нужно немного поднять всю обёртку вверх */
+  gap: 20px;
+  /* увеличен отступ между баннером и формой */
+  margin-bottom: 70px;
+  /* если нужно немного поднять всю обёртку вверх */
 }
 
 .auth-banner {
   display: block;
-  max-width: 470px; /* увеличен максимальный размер */
+  max-width: 470px;
+  /* увеличен максимальный размер */
   width: 100%;
   border-radius: 14px;
   overflow: hidden;
@@ -46,7 +63,8 @@ body {
 }
 
 .auth-banner:hover {
-  transform: scale(1.02); /* лёгкое увеличение */
+  transform: scale(1.02);
+  /* лёгкое увеличение */
 }
 
 .auth-banner img {
@@ -133,7 +151,8 @@ body {
 
 /* Форма регистрации */
 .registration-container {
-  position: relative; /* обязательно! */
+  position: relative;
+  /* обязательно! */
   background-color: white;
   padding: 30px 40px;
   border-radius: 16px;
@@ -181,6 +200,7 @@ body {
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -190,7 +210,8 @@ body {
 /* Пользовательсике соглашения */
 .agreement-note {
   font-size: 12px;
-  color: #777; /* светло-серый текст */
+  color: #777;
+  /* светло-серый текст */
   text-align: center;
   margin-top: 8px;
   line-height: 1.4;
@@ -245,7 +266,8 @@ body {
 }
 
 .name-fields input {
-  width: calc(50% - 6px); /* 6px — это половина от gap: 12px */
+  width: calc(50% - 6px);
+  /* 6px — это половина от gap: 12px */
 }
 
 .input-icon {
@@ -280,7 +302,8 @@ body {
   margin-top: -5px;
   padding: 8px 12px;
   border-radius: 10px;
-  background-color: rgba(255, 0, 0, 0.548); /* мягкий красный с прозрачностью */
+  background-color: rgba(255, 0, 0, 0.548);
+  /* мягкий красный с прозрачностью */
   color: white;
   font-size: 13px;
   font-weight: 600;
@@ -290,7 +313,8 @@ body {
   position: absolute;
   top: 12px;
   left: 13px;
-  background-color: rgba(0, 119, 255, 0.08); /* полупрозрачный акцентный синий */
+  background-color: rgba(0, 119, 255, 0.08);
+  /* полупрозрачный акцентный синий */
   border: none;
   padding: 6px 10px;
   border-radius: 15px;
@@ -319,7 +343,8 @@ body {
   pointer-events: none;
   width: 120px;
   height: 120px;
-  background: rgba(0, 140, 255, 0.9); /* почти сплошной желтый */
+  background: rgba(0, 140, 255, 0.9);
+  /* почти сплошной желтый */
   border-radius: 50%;
   filter: blur(12px);
   mix-blend-mode: screen;
@@ -331,13 +356,15 @@ body {
 
 #particle-container {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   pointer-events: none;
   overflow: visible;
   z-index: -1;
 }
+
 .particle {
   position: absolute;
   width: 6px;
@@ -349,4 +376,146 @@ body {
   pointer-events: none;
   opacity: 1;
   will-change: transform, opacity;
+}
+
+/* Мобильные устройства — до 480px */
+@media (max-width: 480px) {
+
+  /* Баннер */
+  .auth-wrapper {
+    padding: 0 16px;
+    gap: 16px;
+    margin-bottom: 60px;
+  }
+
+  .auth-banner {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .auth-banner:hover {
+    transform: none;
+  }
+
+  /* Форма авторизации */
+  .login-container {
+    max-width: calc(100% - 16px);
+    /* экран минус 16px с каждой стороны */
+    padding: 20px 30px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .login-form h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .input-icon input {
+    font-size: 13px;
+    padding-left: 36px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .input-icon img {
+    width: 16px;
+    height: 16px;
+    left: 10px;
+  }
+
+  .login-button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .auth-switch,
+  .forgot-link a {
+    font-size: 12px;
+  }
+
+  /* Форма регистрации */
+  .registration-container {
+    max-width: calc(100% - 10px);
+    padding: 20px 30px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .registration-form h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .registration-form input {
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+
+  .input-icon input {
+    padding-left: 36px;
+    padding-right: 12px;
+    font-size: 13px;
+  }
+
+  .input-icon img {
+    width: 16px;
+    height: 16px;
+    left: 10px;
+  }
+
+  .registration-button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .name-fields {
+    gap: 10px;
+  }
+
+  .name-fields input {
+    width: 100%;
+  }
+
+  .password-hint,
+  .strength-text,
+  .agreement-note,
+  .password-error {
+    font-size: 12px;
+  }
+
+  .back-button {
+    top: 10px;
+    left: 10px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .back-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Планшеты — от 481px до 800px */
+@media (min-width: 481px) and (max-width: 800px) {
+  .auth-wrapper {
+    padding: 0 24px;
+    gap: 18px;
+    margin-bottom: 65px;
+  }
+
+  .auth-banner {
+    max-width: 450px;
+    /* чуть меньше, чем на десктопе */
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .auth-banner:hover {
+    transform: scale(1.02);
+  }
 }
