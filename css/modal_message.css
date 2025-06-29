@@ -52,3 +52,25 @@
 .modal-message-close:hover {
   color: black;
 }
+
+/* Мобильные устройства — до 480px */
+@media (max-width: 480px) {
+  .modal-message-window {
+    width: calc(100% - 40px); /* отступы по 20px с каждой стороны */
+    padding: 20px 16px;
+  }
+
+  .modal-message-title {
+    font-size: 17px;
+  }
+
+  .modal-message-message {
+    font-size: 14px;
+  }
+
+  .modal-message-close {
+    top: 8px;
+    right: 10px;
+    font-size: 22px;
+  }
+}

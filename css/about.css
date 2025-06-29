@@ -384,3 +384,108 @@
         font-size: 18px;
     }
 }
+
+/* Планшеты — экраны от 481px до 800px */
+@media (min-width: 481px) and (max-width: 800px) {
+    .aboutcompany-block {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        margin: 0 16px;
+        box-sizing: border-box;
+    }
+
+    .aboutcompany-image img {
+        max-width: 200px;
+        height: auto;
+        margin-bottom: 12px;
+    }
+
+    .aboutcompany-text {
+        font-size: 15px;
+        line-height: 1.6;
+        padding: 0 10px;
+    }
+
+    .team-heading {
+        font-size: 30px;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .about-block {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto 20px;
+        text-align: center;
+    }
+
+    .about-block img {
+        width: 130px;
+        height: auto;
+    }
+
+    .name {
+        font-size: 19px;
+    }
+
+    .badge {
+        font-size: 15px;
+    }
+
+    .controls {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .legal-section {
+        padding: 20px 10px;
+        text-align: left;
+    }
+
+    .license-heading {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .legal-subheading {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .textlicense-data {
+        font-size: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .textlicense-data p {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .textlicense-data .effective-date {
+        margin-right: 12px;
+    }
+
+    .legal-content {
+        display: none;
+        padding-top: 12px;
+        color: #333;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .separator {
+        width: calc(100% - 40px);
+        margin: 20px auto;
+    }
+
+    .legal-toggle {
+        font-size: 18px;
+    }
+}
