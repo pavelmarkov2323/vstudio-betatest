@@ -8,7 +8,8 @@
   overflow: hidden;
   position: relative;
   margin: 23px auto;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* ← добавили тень */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  /* ← добавили тень */
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -47,7 +48,8 @@
 }
 
 .banner-promo-note {
-  color: #777; /* мягкий серый цвет */
+  color: #777;
+  /* мягкий серый цвет */
   margin-top: 1.1rem;
   font-size: 0.8rem;
   line-height: 1.2;
@@ -92,48 +94,64 @@
 /* Мобильные устройства — экраны до 480px */
 @media (max-width: 480px) {
   .banner-promo {
-    width: calc(100% - 32px); /* 16px отступ слева и справа */
+    width: calc(100% - 32px);
     max-width: 740px;
+    min-width: 280px;
+    /* минимальная ширина баннера */
     height: 270px;
     margin: 16px auto;
+    display: flex;
+    background-color: #f5f5f5;
+    border-radius: 16px;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
   .banner-promo-left {
-    padding: 16px;
+    padding: clamp(8px, 2vw, 16px);
+    width: 60%;
+    box-sizing: border-box;
   }
 
   .banner-promo-right {
-    width: 40%;             /* важна ширина, чтобы фон показывался */
+    width: 40%;
+    background-image: url('/assets/images/PixelFPS.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
   }
 
   .banner-promo-text {
-    font-size: 0.9rem;
+    font-size: clamp(1rem, 2vw, 0.9rem);
     margin-bottom: 0.3rem;
   }
 
   .banner-promo-description {
-    font-size: 0.75rem;
+    font-size: clamp(0.7rem, 1.5vw, 0.75rem);
     line-height: 1.4;
     margin-bottom: 0.3rem;
   }
 
   .banner-promo-note {
-    font-size: 0.65rem;
-    margin-top: 0.4rem;
-    margin-bottom: 0.6rem;
+    font-size: clamp(0.60rem, 1vw, 0.65rem);
+    margin-top: 1rem;
+    margin-bottom: 0.7rem;
   }
 
   .banner-promo-button {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+    font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+    padding: clamp(6px, 1.5vw, 8px) clamp(12px, 3vw, 16px);
+    max-width: 100%;
+    box-sizing: border-box;
   }
 }
-
 
 /* Планшеты устройства — экраны от 481 до 800px */
 @media (min-width: 481px) and (max-width: 800px) {
   .banner-promo {
-    width: calc(100% - 32px); /* 16px отступ слева и справа */
+    width: calc(100% - 32px);
+    /* 16px отступ слева и справа */
     max-width: 740px;
     height: 270px;
     margin: 16px auto;
