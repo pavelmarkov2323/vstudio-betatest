@@ -5,8 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Список доступных треков
     const tracks = [
-        "/assets/sound/startup_01.mp3",
-        "/assets/sound/startup_02.mp3"
+        "/assets/sound/startup_01.mp3"
     ];
 
     // Выбираем случайный трек
