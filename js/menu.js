@@ -3,18 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let lastScrollTop = 0;
     const header = document.querySelector('.header');
 
-    const burger = document.getElementById('burger-btn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const closeBtn = document.getElementById('closeMenu');
-
-    burger.addEventListener('click', () => {
-        mobileMenu.classList.add('show');
-    });
-
-    closeBtn.addEventListener('click', () => {
-        mobileMenu.classList.remove('show');
-    });
-
     window.addEventListener('scroll', function () {
         let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
@@ -109,4 +97,70 @@ document.addEventListener('DOMContentLoaded', function () {
             if (signinBtn) signinBtn.style.display = 'inline-block';
             if (userMenu) userMenu.style.display = 'none';
         });
+
+    const burger = document.getElementById('burger-btn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('closeMenu');
+
+    // Анимационные элементы
+    const themeToggle = document.querySelector('.mobile-theme-toggle');
+    const closeButton = document.querySelector('.mobile-menu_close');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const mobileLogo = document.querySelector('.mobile-logo');
+
+
+    if (burger && closeBtn && mobileMenu && themeToggle && closeButton && mobileNav) {
+        burger.addEventListener('click', () => {
+            mobileMenu.classList.add('show');
+
+            // Явно сбрасываем стили, чтобы анимация срабатывала при каждом открытии
+            requestAnimationFrame(() => {
+                themeToggle.style.transition = '';
+                closeButton.style.transition = '';
+                mobileNav.style.transition = '';
+                mobileLogo.style.transition = '';
+
+                themeToggle.style.opacity = '1';
+                themeToggle.style.visibility = 'visible';
+
+                closeButton.style.opacity = '1';
+                closeButton.style.visibility = 'visible';
+
+                mobileNav.style.opacity = '1';
+                mobileNav.style.visibility = 'visible';
+
+                // Задержка появления логотипа
+                setTimeout(() => {
+                    mobileLogo.style.opacity = '1';
+                    mobileLogo.style.transform = 'translateX(-50%) translateY(0)';
+                }, 700); // появится через 0.5 сек
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            // Убираем видимость вложенных элементов
+            themeToggle.style.opacity = '0';
+            themeToggle.style.visibility = 'hidden';
+            themeToggle.style.transition = 'opacity 0.3s ease, visibility 0s linear 0.3s';
+
+            closeButton.style.opacity = '0';
+            closeButton.style.visibility = 'hidden';
+            closeButton.style.transition = 'opacity 0.3s ease, visibility 0s linear 0.3s';
+
+            mobileNav.style.opacity = '0';
+            mobileNav.style.visibility = 'hidden';
+            mobileNav.style.transition = 'opacity 0.3s ease, visibility 0s linear 0.3s';
+
+            mobileLogo.style.opacity = '0';
+            mobileLogo.style.transform = 'translateX(-50%) translateY(80px)';
+            mobileLogo.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
+            // Добавляем "анимацию скрытия"
+            mobileMenu.classList.add('hiding');
+
+            setTimeout(() => {
+                mobileMenu.classList.remove('show', 'hiding');
+            }, 400); // Время анимации меню
+        });
+    }
 });

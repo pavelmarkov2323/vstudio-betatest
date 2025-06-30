@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Обработчик для кнопки "Предложить" (открывает email)
     document.getElementById("emailButton").addEventListener("click", () => {
-        window.location.href = "mailto:nvaleyevboss@gmail.com";
+        window.location.href = "mailto:valeyevstudio@gmail.com";
     });
 
     // Обработчик для кнопки "Поддержать" (открывает Donation Alerts)
@@ -83,5 +83,5 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
         const firstId = Math.random() > 0.5 ? 'pushContent1' : 'pushContent2';
         showNotificationById(firstId); // Запускаем первое уведомление
-    }, 10000); // Запускаем первое уведомление через 10 секунд
+    }, 20000); // Запускаем первое уведомление через 20 секунд
 });

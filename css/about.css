@@ -275,7 +275,7 @@
 }
 
 /* Мобильные устройства — экраны до 480px */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
 
     /* О компании */
     .aboutcompany-heading {

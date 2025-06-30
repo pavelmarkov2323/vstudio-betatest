@@ -1,23 +1,27 @@
 // themeswitch.js
-const themeToggle = document.querySelector('.theme-toggle input');
+const themeToggles = document.querySelectorAll('.theme-toggle input');
 const body = document.body;
 
 // Проверяем текущую тему при загрузке страницы
-if (localStorage.getItem('theme') === 'dark') {
+const isDark = localStorage.getItem('theme') === 'dark';
+if (isDark) {
     body.classList.add('dark-theme');
-    themeToggle.checked = true;
 } else {
     body.classList.remove('dark-theme');
-    themeToggle.checked = false;
 }
 
-// Обработчик переключения темы
-themeToggle.addEventListener('change', function() {
-    if (this.checked) {
-        body.classList.add('dark-theme');
-        localStorage.setItem('theme', 'dark'); // Сохраняем тему в localStorage
-    } else {
-        body.classList.remove('dark-theme');
-        localStorage.setItem('theme', 'light'); // Сохраняем тему в localStorage
-    }
+// Устанавливаем состояние всех переключателей
+themeToggles.forEach(toggle => {
+    toggle.checked = isDark;
+
+    toggle.addEventListener('change', function () {
+        const newTheme = this.checked ? 'dark' : 'light';
+        body.classList.toggle('dark-theme', newTheme === 'dark');
+        localStorage.setItem('theme', newTheme);
+
+        // Обновляем все переключатели
+        themeToggles.forEach(t => {
+            if (t !== this) t.checked = this.checked;
+        });
+    });
 });

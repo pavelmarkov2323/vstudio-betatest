@@ -20,6 +20,9 @@
 
 <body>
     <header class="header">
+        <div class="burger theme-icon" id="burger-btn">
+            <img src="assets/icons/menu-burger.svg" alt="Menu" />
+        </div>
         <div class="logo theme-text">
             <img src="assets/icons/logo.svg" alt="Logo" class="logo-img theme-icon">
             ValeyevStudio
@@ -181,6 +184,39 @@
                     <!-- Иконка -->
                 </button>
                 <span class="tooltip theme-text" data-tooltip="download-description">Download the latest version</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu_overlay"></div>
+
+        <!-- Сontent -->
+        <div class="mobile-menu_content">
+
+            <!-- Mobile theme toogle -->
+            <div class="mobile-theme-toggle">
+                <label class="theme-toggle">
+                    <input type="checkbox" id="theme-toggle-mobile">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <!-- Closed mobile menu -->
+            <button class="mobile-menu_close" id="closeMenu">✕</button>
+
+            <!-- Navigation -->
+            <div class="mobile-nav-wrapper">
+                <nav class="mobile-nav">
+                    <a href="/home.html" class="mobile-nav-home active">Home</a>
+                    <a href="/products.html" class="mobile-nav-our-products">Our Products</a>
+                    <a href="/about.html" class="mobile-nav-about-us">About Us</a>
+                </nav>
+            </div>
+
+            <div class="mobile-logo">
+                <img src="/assets/icons/logo-chromo.png" alt="ValeyevStudio Logo">
             </div>
         </div>
     </div>
