@@ -46,3 +46,16 @@ body {
     transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1), transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
     font-family: Arial, sans-serif;
 }
+
+/* Мобильные устройства — экраны до 480px */
+@media (max-width: 480px) {
+    /* Начальный размер логотипа */
+    .logo {
+        width: 90px;
+    }
+
+    /* Текст скрыт и немного дальше от логотипа */
+    .text {
+        font-size: 32px;
+    }
+}
