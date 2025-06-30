@@ -681,6 +681,7 @@
     }
 
     .mobile-theme-toggle {
+        display: block;
         position: absolute;
         top: 3px;
         left: -1px;
@@ -699,6 +700,7 @@
 
 
     .mobile-menu_close {
+        display: block;
         position: absolute;
         top: -5px;
         right: -5px;
@@ -764,6 +766,7 @@
     }
 
     .mobile-logo {
+        display: block;
         position: absolute;
         bottom: 30px;
         left: 50%;
