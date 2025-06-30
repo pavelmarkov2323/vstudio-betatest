@@ -3,6 +3,18 @@ document.addEventListener('DOMContentLoaded', function () {
     let lastScrollTop = 0;
     const header = document.querySelector('.header');
 
+    const burger = document.getElementById('burger-btn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('closeMenu');
+
+    burger.addEventListener('click', () => {
+        mobileMenu.classList.add('show');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('show');
+    });
+
     window.addEventListener('scroll', function () {
         let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 

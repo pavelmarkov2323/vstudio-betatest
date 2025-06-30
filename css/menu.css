@@ -6,26 +6,35 @@
     position: fixed;
     top: 15px;
     left: 50%;
-    transform: translateX(-50%); /* Это центрирует меню по горизонтали */
+    transform: translateX(-50%);
+    /* Это центрирует меню по горизонтали */
     width: 90%;
     max-width: 1200px;
     padding: 15px 40px;
     background: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 16px;
-    transition: transform 0.3s ease-in-out; /* Плавное скрытие/появление */
+    transition: transform 0.3s ease-in-out;
+    /* Плавное скрытие/появление */
     z-index: 10;
 }
 
 /* Скрытие меню при прокрутке */
 .header.hidden {
-    transform: translateY(-200%); /* Скрытие меню вверх на 100% высоты */
+    transform: translateY(-200%);
+    /* Скрытие меню вверх на 100% высоты */
+}
+
+/* По умолчанию скрываем бургер (для мобильного меню) */
+.burger {
+    display: none;
 }
 
 .logo-img {
     height: 31px;
-    width: 31px; 
-    margin-right: -7px; /* Смещаем текстовый логотип влево (отрицательное значение для сдвига) */
+    width: 31px;
+    margin-right: -7px;
+    /* Смещаем текстовый логотип влево (отрицательное значение для сдвига) */
 }
 
 .logo {
@@ -56,13 +65,15 @@
 
 .nav a {
     text-decoration: none;
-    color: gray; /* По умолчанию серый */
+    color: gray;
+    /* По умолчанию серый */
     font-weight: medium;
     transition: color 0.3s ease-in-out;
 }
 
 .nav a.active {
-    color: black; /* Черный цвет для активной страницы */
+    color: black;
+    /* Черный цвет для активной страницы */
     font-weight: medium;
 }
 
@@ -70,7 +81,8 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    position: relative; /* Чтобы элементы не перекрывались */
+    position: relative;
+    /* Чтобы элементы не перекрывались */
 }
 
 
@@ -95,8 +107,10 @@
 
 #volume-slider {
     appearance: none;
-    -webkit-appearance: none; /* Для Safari и Chrome */
-    -moz-appearance: none; /* Для Firefox */
+    -webkit-appearance: none;
+    /* Для Safari и Chrome */
+    -moz-appearance: none;
+    /* Для Firefox */
     width: 60px;
     height: 5px;
     border-radius: 5px;
@@ -114,14 +128,17 @@
 /* Ползунок по центру и скрыт по умолчанию */
 #volume-slider::-webkit-slider-thumb {
     appearance: none;
-    -webkit-appearance: none; /* Для Safari и Chrome */
-    -moz-appearance: none; /* Для Firefox */
+    -webkit-appearance: none;
+    /* Для Safari и Chrome */
+    -moz-appearance: none;
+    /* Для Firefox */
     width: 14px;
     height: 14px;
     background: #447BBA;
     border-radius: 50%;
     cursor: pointer;
-    margin-top: -3px; /* Смещаем thumb вверх, чтобы он был ровно по центру */
+    margin-top: -3px;
+    /* Смещаем thumb вверх, чтобы он был ровно по центру */
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
 }
@@ -143,19 +160,23 @@
     border-radius: 12px;
     transition: all 0.3s ease;
     justify-content: space-between;
-    width: 75px; /* Уменьшаем ширину, если необходимо */
+    width: 75px;
+    /* Уменьшаем ширину, если необходимо */
 }
 
 /* Стиль для флага и кода */
 .language-switch .selected-flag {
     width: 20px;
     height: 20px;
-    margin-right: 10px; /* Фиксированное расстояние между флагом и кодом языка */
+    margin-right: 10px;
+    /* Фиксированное расстояние между флагом и кодом языка */
 }
 
 .language-switch .language-code {
-    margin-right: 30px; /* Фиксированное расстояние между кодом языка и стрелкой */
-    font-weight: 500; /* Чуть четче (Regular) */
+    margin-right: 30px;
+    /* Фиксированное расстояние между кодом языка и стрелкой */
+    font-weight: 500;
+    /* Чуть четче (Regular) */
     color: black;
 }
 
@@ -167,62 +188,81 @@
     top: 50%;
     transform: translateY(-50%);
     transition: transform 0.3s ease;
-    right: 10px; /* Отступ для стрелки */
+    right: 10px;
+    /* Отступ для стрелки */
 }
 
 /* Выпадающий список */
 .language-switch .dropdown-menu {
-    display: block; /* Делаем блок, чтобы управлять видимостью через opacity */
+    display: block;
+    /* Делаем блок, чтобы управлять видимостью через opacity */
     position: absolute;
-    top: 100%; /* Сдвигаем вниз от родительского элемента */
+    top: 100%;
+    /* Сдвигаем вниз от родительского элемента */
     left: 0;
-    width: 100%; /* Делаем ширину выпадающего списка такой же, как у родителя */
+    width: 100%;
+    /* Делаем ширину выпадающего списка такой же, как у родителя */
     background: white;
     border: 2px solid #EAEAEA;
     border-radius: 12px;
     margin-top: 5px;
     z-index: 10;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-height: 180px; /* Ограничиваем высоту, чтобы отображалось только 4 элемента */
+    max-height: 180px;
+    /* Ограничиваем высоту, чтобы отображалось только 4 элемента */
     overflow-y: auto;
-    opacity: 0; /* Изначально невидимый */
-    visibility: hidden; /* Невидим в DOM */
-    transform: translateY(-10px); /* Начальное положение, чуть выше */
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s; /* Плавное появление */
-    scrollbar-width: thin; /* Тонкий скролл для Firefox */
-    scrollbar-color: #ccc transparent; /* Цвет скролла */
+    opacity: 0;
+    /* Изначально невидимый */
+    visibility: hidden;
+    /* Невидим в DOM */
+    transform: translateY(-10px);
+    /* Начальное положение, чуть выше */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
+    /* Плавное появление */
+    scrollbar-width: thin;
+    /* Тонкий скролл для Firefox */
+    scrollbar-color: #ccc transparent;
+    /* Цвет скролла */
 }
 
 /* Стилизация скроллбара для WebKit (Chrome, Edge, Safari) */
 .language-switch .dropdown-menu::-webkit-scrollbar {
-    width: 6px; /* Ширина скроллбара */
+    width: 6px;
+    /* Ширина скроллбара */
     border-radius: 4px;
 }
 
 .language-switch .dropdown-menu::-webkit-scrollbar-track {
-    background: transparent; /* Прозрачный фон дорожки */
+    background: transparent;
+    /* Прозрачный фон дорожки */
 }
 
 .language-switch .dropdown-menu::-webkit-scrollbar-thumb {
-    background: #ccc; /* Цвет ползунка */
+    background: #ccc;
+    /* Цвет ползунка */
     border-radius: 4px;
 }
 
 .language-switch .dropdown-menu::-webkit-scrollbar-thumb:hover {
-    background: #999; /* Цвет при наведении */
+    background: #999;
+    /* Цвет при наведении */
 }
 
 /* Когда меню открыто */
 .language-switch.open .dropdown-menu {
     opacity: 1;
-    visibility: visible; /* Становится видимым */
-    transform: translateY(0); /* Возвращается в нормальное положение */
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Плавное появление */
+    visibility: visible;
+    /* Становится видимым */
+    transform: translateY(0);
+    /* Возвращается в нормальное положение */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* Плавное появление */
 }
 
 /* Когда меню открыто — поворачиваем стрелку */
 .language-switch.open .arrow {
-    transform: translateY(-50%) rotate(180deg); /* Переворачиваем стрелку */
+    transform: translateY(-50%) rotate(180deg);
+    /* Переворачиваем стрелку */
 }
 
 /* Стиль для каждого пункта в выпадающем списке */
@@ -245,7 +285,8 @@
 }
 
 .language-switch .dropdown-item span {
-    font-weight: 500; /* Чуть четче (Regular) */
+    font-weight: 500;
+    /* Чуть четче (Regular) */
     color: black;
 }
 
@@ -292,12 +333,14 @@
 }
 
 /* Когда переключатель включен (input:checked) */
-.theme-toggle input:checked + .slider {
-    background-color: #6A5ACD; /* Цвет фона в активном состоянии */
+.theme-toggle input:checked+.slider {
+    background-color: #6A5ACD;
+    /* Цвет фона в активном состоянии */
 }
 
-.theme-toggle input:checked + .slider:before {
-    transform: translateX(25px); /* Сдвигаем кнопку на правую сторону */
+.theme-toggle input:checked+.slider:before {
+    transform: translateX(25px);
+    /* Сдвигаем кнопку на правую сторону */
 }
 
 /* Псевдоклассы при наведении */
@@ -313,7 +356,8 @@
     align-items: center;
     justify-content: center;
     gap: 4px;
-    background: #007bff; /* Синий */
+    background: #007bff;
+    /* Синий */
     color: white;
     border: none;
     padding: 8px 14px;
@@ -352,17 +396,19 @@
         transform: scale(1);
         opacity: 0.6;
     }
+
     80% {
         transform: scale(1.3);
         opacity: 0;
     }
+
     100% {
         transform: scale(1.3);
         opacity: 0;
     }
 }
 
-.signin-btn > * {
+.signin-btn>* {
     position: relative;
     z-index: 1;
 }
@@ -381,106 +427,286 @@
 
 /* Пользовательское меню, аватарка, выпадающий список меню действий */
 .user-menu {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .user-avatar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
 }
 
 .avatar-img {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #ccc;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
 }
 
 /* Баланс */
 .dropdown-balance {
-  padding-bottom: 8px;
+    padding-bottom: 8px;
 }
 
 .balance-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .balance-item-icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
 }
 
 .balance-amount {
-  font-weight: bold;
-  color: #000000;
-  margin-left: -8px;
+    font-weight: bold;
+    color: #000000;
+    margin-left: -8px;
 }
 
 .balance-divider {
-  height: 1px;
-  background-color: #ccc;
-  margin: 8px 12px 0 12px;
-  border-radius: 4px;
+    height: 1px;
+    background-color: #ccc;
+    margin: 8px 12px 0 12px;
+    border-radius: 4px;
 }
 
 .dropdown-icon {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.3s ease;
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
 }
 
 .dropdown-icon.rotate {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 .dropdown-panel {
-  position: absolute;
-  top: 150%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-10px); /* начальное смещение вверх */
-  background-color: #fff;
-  border: 1px solid #EAEAEA;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  width: 150px;
-  padding: 10px 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 999;
+    position: absolute;
+    top: 150%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    /* начальное смещение вверх */
+    background-color: #fff;
+    border: 1px solid #EAEAEA;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    width: 150px;
+    padding: 10px 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 999;
 }
 
 .dropdown-panel.show {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0); /* плавно опускается */
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+    /* плавно опускается */
 }
 
 .dropdown-item {
-  display: flex;
-  align-items: center;
-  padding: 10px 16px;
-  gap: 10px;
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    gap: 10px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .dropdown-item:hover {
-  background-color: #F5F6F7;
-  border-radius: 6px;
+    background-color: #F5F6F7;
+    border-radius: 6px;
 }
 
 .item-icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+
+    /* Мобильное меню */
+    .header {
+        padding: 12px 20px;
+        border-radius: 12px;
+        top: 10px;
+    }
+
+    .logo {
+        justify-content: center; 
+        font-size: 18px;
+        gap: 10px;
+    }
+
+    .logo::after {
+        height: 25px;
+    }
+
+    .actions {
+        width: 100%;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center; 
+        text-align: center;
+    }
+
+    .language-switch {
+        width: 65px;
+        padding: 2px 8px;
+    }
+
+    .language-switch .language-code {
+        margin-right: 18px;
+        font-size: 14px;
+    }
+
+    .language-switch .arrow {
+        right: 4px;
+    }
+
+    .theme-toggle {
+        width: 48px;
+        height: 24px;
+    }
+
+    .theme-toggle .slider:before {
+        width: 16px;
+        height: 16px;
+    }
+
+    .signin-btn {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .signin-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .user-avatar .avatar-img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .dropdown-panel {
+        width: 140px;
+    }
+
+    .dropdown-item {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
+
+
+    /* Мобильное меню */
+    .nav,
+    .volume-control,
+    .logo-img {
+        display: none;
+    }
+
+    .burger {
+        display: block;
+        position: relative;
+        top: 50%;
+        transform: translateY(5%);
+        margin-right: 15px;
+    }
+
+    .burger img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .mobile-menu {
+        position: fixed;
+        inset: 0;
+        background: #000000e7;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* Центровка по вертикали */
+        align-items: center;
+        /* Центровка по горизонтали */
+        z-index: 1000;
+        padding: 20px;
+        color: white;
+        opacity: 0;
+        transform: translateY(-10%);
+        pointer-events: none;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        z-index: 10;
+    }
+
+    .mobile-menu.show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .mobile-menu__close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 28px;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    .mobile-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        font-size: 22px;
+    }
+
+    .mobile-nav a {
+        color: rgb(212, 212, 212);
+        /* По умолчанию серый */
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .mobile-nav a.active {
+        color: rgb(255, 255, 255);
+        /* Белый цвет для активной страницы */
+        font-weight: medium;
+    }
+
+    .mobile-logo {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        opacity: 0;
+        text-align: center;
+        transition: opacity 1s ease, transform 1s ease;
+        transition-delay: 2s;
+        /* задержка перед началом анимации */
+    }
+
+    .mobile-menu.show .mobile-logo {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .mobile-logo img {
+        max-width: 120px;
+        height: auto;
+        opacity: 1;
+    }
 }
