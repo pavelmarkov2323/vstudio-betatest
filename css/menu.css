@@ -532,6 +532,19 @@
     flex-shrink: 0;
 }
 
+/* Адаптируем меню под мобильные устройства */
+
+/* Глобально скрываем всё мобильное меню */
+.mobile-menu,
+.mobile-theme-toggle,
+.mobile-menu_close,
+.mobile-nav,
+.mobile-logo {
+    display: none;
+}
+
+
+/* Для мобильных экранов до 480px */
 @media (max-width: 480px) {
 
     /* Адаптируем обычное меню под мобильное */
