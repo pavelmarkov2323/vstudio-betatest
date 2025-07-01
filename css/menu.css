@@ -327,19 +327,22 @@
     width: 17px;
     height: 17px;
     background-color: white;
+    background-image: url("/assets/icons/sun.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12px 12px;
     border-radius: 50px;
     transition: 0.4s;
 }
 
 /* Когда переключатель включен (input:checked) */
 .theme-toggle input:checked+.slider {
-    background-color: #6A5ACD;
-    /* Цвет фона в активном состоянии */
+    background-color: #4a4a4a; /* Цвет фона в активном состоянии */
 }
 
 .theme-toggle input:checked+.slider:before {
-    transform: translateX(25px);
-    /* Сдвигаем кнопку на правую сторону */
+    transform: translateX(25px); /* Сдвигаем кнопку на правую сторону */
+    background-image: url("/assets/icons/moon.png");
 }
 
 /* Псевдоклассы при наведении */
