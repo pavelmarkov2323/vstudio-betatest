@@ -350,3 +350,21 @@ body.dark-theme .password-reset-hint {
 body.dark-theme .settings-card { 
     background: #171717;
 }
+
+/* Для дизайна brand page */
+
+body.dark-theme .brand-logoinfo-card { 
+    background: #171717;
+}
+
+body.dark-theme .brand-productinfo-card { 
+    background: #171717;
+}
+
+body.dark-theme .brand-card-color { 
+    background: #171717;
+}
+
+body.dark-theme .brand-partnerinfo-card { 
+    background: #171717;
+}

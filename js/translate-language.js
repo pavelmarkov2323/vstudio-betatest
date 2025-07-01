@@ -127,9 +127,23 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.banner-promo-note': data['banner']['banner-promo-note'],
                     '.banner-promo-button': data['banner']['banner-promo-button'],
                     '.banner-promo-description': data['banner']["banner-promo-description"],
+                    '.brand-logoinfo-title': data['brand']['brand.logoinfo.title'],
+                    '.brand-logoinfo-description': data['brand']['brand.logoinfo.description'],
+                    '.brand-productinfo-title': data['brand']['brand.productinfo.title'],
+                    '.brand.productinfo.description': data['brand']['brand.productinfo.description'],
+                    '.brand-color-title': data['brand']['brand.color.title'],
+                    '.partner-media-description': data['brand']['partner.media.description'],
+                    '.partner-press-title': data['brand']['partner.press.title'],
+                    '.partner-press-description': data['brand']['partner.press.description'],
+                    '.partner-materials-title': data['brand']['partner.materials.title'],
+                    '.partner-materials-description': data['brand']['partner.materials.description'],
+                    '.partner-materials-link': data['brand']['partner.materials.link'],
+                    '.brand-info-iconalt': data['brand']['brand.info.iconAlt'],
+                    '.brand-info-text': data['brand']['brand.info.text'],
                     '.footer-copyright': data.footer.copyright,
                     '.forgot-link a': data.auth?.forgotPassword,
                     '.nav-user-agreement': data.footer['user-agreement'],
+                    '.nav-partners': data.footer['partners'],
                     '.social-platforms': data['footer-social']['social-platforms'],
                     '.captcha-title': data["captcha-content"]["captcha-title"],
                     '.captcha-text-container': data["captcha-content"]["captcha-text-container"],
@@ -196,7 +210,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 const htmlAllowedSelectors = [
                     '.description',
                     '.aboutcompany-text',
-                    '.banner-promo-description'
+                    '.banner-promo-description',
+                    '.brand.logoinfo.description',
+                    '.brand.productinfo.description',
                 ];
 
                 Object.entries(elementsMap).forEach(([selector, value]) => {

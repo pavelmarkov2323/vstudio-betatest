@@ -3,10 +3,8 @@ body {
     padding: 0;
     background-color: #EDEEF0;
     font-family: 'MiSans', sans-serif;
-    padding-top: 80px;
-    /* Отступ сверху для меню */
-    padding-bottom: 50px;
-    /* Добавляем отступ снизу, чтобы был зазор до футера */
+    padding-top: 80px; /* Отступ сверху для меню */
+    padding-bottom: 50px; /* Добавляем отступ снизу, чтобы был зазор до футера */
 }
 
 html {
