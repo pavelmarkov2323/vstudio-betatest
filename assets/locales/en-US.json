@@ -203,18 +203,19 @@
         "upgrade_button": "Upgrade Now"
     },
     "brand": {
+        "brand.materials.description": "Download our official materials and read the rules for their use. <a href=\"about.html#rules-material\" class=\"brand-rules-link\">Read the rules</a>",
         "brand.logoinfo.title": "Logo",
         "brand.logoinfo.description": "The ValeyevStudio logo is the unique and main symbol of our studio. It comes in two versions: the full version includes both the icon and the text, while the compact version features only the icon.<br><br>The icon consists of a square shape with rounded corners and the text \"VS\" representing ValeyevStudio. The text uses the custom Mi Sans font.",
         "brand.productinfo.title": "Our Products",
         "brand.productinfo.description": "The main products of our studio have a branded design and their own logo. Each logo contains an icon and a text part.<br><br>The icon consists of a unique product mark on a square shape with rounded corners. The text uses the custom Mi Sans font.",
         "brand.color.title": "Colors",
+        "partner.meida.title": "For media",
         "partner.media.description": "For media partnership inquiries and special projects.",
         "partner.press.title": "For Press Representatives",
         "partner.press.description": "Press office contact for media inquiries.",
         "partner.materials.title": "ValeyevStudio Materials",
         "partner.materials.description": "Main products and materials of our studio.",
         "partner.materials.link": "Learn More",
-        "brand.info.text": "We are happy to provide our services, technologies, and materials as widely as possible in the global market.",
-        "brand.materials.description": "Download our official materials and read the rules for their use. <a href=\"about.html#rules-material\" class=\"brand-rules-link\">Read the rules</a>"
+        "brand.info.text": "We are happy to provide our services, technologies, and materials as widely as possible in the global market."
     }
 }
