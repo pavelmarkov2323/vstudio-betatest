@@ -127,8 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.banner-promo-note': data['banner']['banner-promo-note'],
                     '.banner-promo-button': data['banner']['banner-promo-button'],
                     '.banner-promo-description': data['banner']["banner-promo-description"],
-
-                    '.brand-title': data['brand']['brand.head.title'],
+                    '.brand-head-title': data['brand']['brand.head.title'],
                     '.brand-description': data['brand']['brand.materials.description'],
                     '.brand-logoinfo-title': data['brand']['brand.logoinfo.title'],
                     '.brand-logoinfo-description': data['brand']['brand.logoinfo.description'],
