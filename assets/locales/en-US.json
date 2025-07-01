@@ -215,6 +215,7 @@
         "partner.materials.description": "Main products and materials of our studio.",
         "partner.materials.link": "Learn More",
         "brand.info.iconAlt": "Information Icon",
-        "brand.info.text": "We are happy to provide our services, technologies, and materials as widely as possible in the global market."
+        "brand.info.text": "We are happy to provide our services, technologies, and materials as widely as possible in the global market.",
+        "brand.materials.description": "Download our official materials and read the rules for their use. <a href=\"about.html#rules-material\" class=\"brand-rules-link\">Read the rules</a>"
     }
 }

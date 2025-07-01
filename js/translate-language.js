@@ -127,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.banner-promo-note': data['banner']['banner-promo-note'],
                     '.banner-promo-button': data['banner']['banner-promo-button'],
                     '.banner-promo-description': data['banner']["banner-promo-description"],
+                    '.brand-description': data['brand']['brand.materials.description'],
                     '.brand-logoinfo-title': data['brand']['brand.logoinfo.title'],
                     '.brand-logoinfo-description': data['brand']['brand.logoinfo.description'],
                     '.brand-productinfo-title': data['brand']['brand.productinfo.title'],
@@ -213,6 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.banner-promo-description',
                     '.brand.logoinfo.description',
                     '.brand.productinfo.description',
+                    '.brand-description',
                 ];
 
                 Object.entries(elementsMap).forEach(([selector, value]) => {
