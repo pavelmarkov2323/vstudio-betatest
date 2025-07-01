@@ -203,6 +203,7 @@
         "upgrade_button": "Обновиться сейчас"
     },
     "brand": {
+        "brand.head.title": "Материал бренда ValeyevStudio",
         "brand.materials.description": "Загружайте фирменные наши материалы и ознакомьтесь с правилами их использования. <a href=\"about.html#rules-material\" class=\"brand-rules-link\">Читать правила</a>",
         "brand.logoinfo.title": "Логотип",
         "brand.logoinfo.description": "Логотип ValeyevStudio — единственный и главный символ нашей студии. Он представлен в двух версиях: полная содержит в себе иконку и текст, компактная — только иконку.<br><br> Иконка состоит из квадратной формы с закруглёнными краями и текста VS расшифровка ValeyevStudio. Для текста используется фирменный шрифт Mi Sans.",

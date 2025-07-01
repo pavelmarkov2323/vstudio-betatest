@@ -203,6 +203,7 @@
         "upgrade_button": "Upgrade Now"
     },
     "brand": {
+        "brand.head.title": "ValeyevStudio brand material",
         "brand.materials.description": "Download our official materials and read the rules for their use. <a href=\"about.html#rules-material\" class=\"brand-rules-link\">Read the rules</a>",
         "brand.logoinfo.title": "Logo",
         "brand.logoinfo.description": "The ValeyevStudio logo is the unique and main symbol of our studio. It comes in two versions: the full version includes both the icon and the text, while the compact version features only the icon.<br><br>The icon consists of a square shape with rounded corners and the text \"VS\" representing ValeyevStudio. The text uses the custom Mi Sans font.",
