@@ -214,8 +214,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.description',
                     '.aboutcompany-text',
                     '.banner-promo-description',
-                    '.brand.logoinfo.description',
-                    '.brand.productinfo.description',
+                    '.brand-logoinfo-description',
+                    '.brand-productinfo-description',
                     '.brand-description',
                 ];
 
