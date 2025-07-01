@@ -489,8 +489,7 @@
     position: absolute;
     top: 150%;
     left: 50%;
-    transform: translateX(-50%) translateY(-10px);
-    /* начальное смещение вверх */
+    transform: translateX(-50%) translateY(-10px); /* начальное смещение вверх */
     background-color: #fff;
     border: 1px solid #EAEAEA;
     border-radius: 12px;
@@ -506,8 +505,7 @@
 .dropdown-panel.show {
     opacity: 1;
     pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
-    /* плавно опускается */
+    transform: translateX(-50%) translateY(0); /* плавно опускается */
 }
 
 .dropdown-item {
@@ -530,6 +528,10 @@
     width: 18px;
     height: 18px;
     flex-shrink: 0;
+}
+
+.menu-logout-text {
+    color: red;
 }
 
 /* Адаптируем меню под мобильные устройства */
@@ -612,7 +614,13 @@
     }
 
     .dropdown-panel {
-        width: 130px;
+        left: auto;
+        right: -20px;
+        transform: translateY(-10px); /* убираем translateX */
+    }
+
+    .dropdown-panel.show {
+        transform: translateY(0); /* плавное появление вниз */
     }
 
     .dropdown-item {
