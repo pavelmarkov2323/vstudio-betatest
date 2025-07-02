@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.brand-productinfo-title': data['brand']['brand.productinfo.title'],
                     '.brand-productinfo-description': data['brand']['brand.productinfo.description'],
                     '.brand-color-title': data['brand']['brand.color.title'],
-                    '.partner-media-title': data['brand']['partner.media.title'],
+                    '.media-partner-title': data['brand']['partner.media.title'],
                     '.partner-media-description': data['brand']['partner.media.description'],
                     '.partner-press-title': data['brand']['partner.press.title'],
                     '.partner-press-description': data['brand']['partner.press.description'],
