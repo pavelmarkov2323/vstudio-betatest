@@ -142,7 +142,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.partner-materials-discription': data['brand']['partner.materials.description'],
                     '.partner-material-link': data['brand']['partner.materials.link'],
                     '.brand-info-text': data['brand']['brand.info.text'],
-
                     '.footer-copyright': data.footer.copyright,
                     '.forgot-link a': data.auth?.forgotPassword,
                     '.nav-user-agreement': data.footer['user-agreement'],
