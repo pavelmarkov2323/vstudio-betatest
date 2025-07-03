@@ -656,7 +656,9 @@
     .mobile-menu {
         position: fixed;
         inset: 0;
-        background: #000000e7;
+        background: rgba(0, 0, 0, 0.753); /* полупрозрачный фон */
+        backdrop-filter: blur(10px);    /* размытие заднего фона */
+        -webkit-backdrop-filter: blur(10px); /* поддержка Safari */
         display: flex;
         flex-direction: column;
         justify-content: center; /* Центровка по вертикали */
@@ -696,6 +698,18 @@
         position: absolute;
         top: 3px;
         left: -1px;
+    }
+
+    .mobile-theme-toggle button {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .mobile-theme-toggle img {
+        width: 24px;
+        height: 24px;
     }
 
     .mobile-menu .theme-toggle {
@@ -764,15 +778,13 @@
 
 
     .mobile-nav a {
-        color: rgb(212, 212, 212);
-        /* По умолчанию серый */
+        color: rgb(212, 212, 212); /* По умолчанию серый */
         text-decoration: none;
         font-weight: bold;
     }
 
     .mobile-nav a.active {
-        color: rgb(255, 255, 255);
-        /* Белый цвет для активной страницы */
+        color: rgb(255, 255, 255); /* Белый цвет для активной страницы */
         font-weight: medium;
     }
 
@@ -781,7 +793,7 @@
         position: absolute;
         bottom: 30px;
         left: 50%;
-        transform: translateX(-120%) translateY(80px);
+        transform: translateX(-50%) translateY(80px);
         opacity: 0;
         text-align: center;
         transition: opacity 1s ease, transform 1s ease;
@@ -790,7 +802,7 @@
 
     .mobile-menu.show .mobile-logo {
         opacity: 1;
-        transform: translateX(-120%) translateY(0);
+        transform: translateX(-50%) translateY(0);
     }
 
     .mobile-logo img {

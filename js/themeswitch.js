@@ -1,4 +1,3 @@
-// themeswitch.js
 const themeToggles = document.querySelectorAll('.theme-toggle input');
 const body = document.body;
 
@@ -23,5 +22,38 @@ themeToggles.forEach(toggle => {
         themeToggles.forEach(t => {
             if (t !== this) t.checked = this.checked;
         });
+        // Мобильный переключатель
+        updateMobileIcon(newTheme);
     });
 });
+
+const mobileThemeBtn = document.getElementById('mobileThemeBtn');
+const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+
+// Функция для установки иконки в зависимости от темы
+function updateMobileIcon(theme) {
+    if (mobileThemeIcon) {
+        // Если текущая тема темная — показываем солнце, чтобы предложить светлую
+        mobileThemeIcon.src = theme === 'dark' ? '/assets/icons/sun.png' : '/assets/icons/moon.png';
+    }
+}
+
+// При загрузке — установить иконку
+updateMobileIcon(isDark ? 'dark' : 'light');
+
+// При клике на иконку
+if (mobileThemeBtn) {
+    mobileThemeBtn.addEventListener('click', () => {
+        const newTheme = body.classList.contains('dark-theme') ? 'light' : 'dark';
+        body.classList.toggle('dark-theme', newTheme === 'dark');
+        localStorage.setItem('theme', newTheme);
+
+        // Обновить иконку
+        updateMobileIcon(newTheme);
+
+        // Синхронизировать с чекбоксами
+        themeToggles.forEach(t => {
+            t.checked = newTheme === 'dark';
+        });
+    });
+}
