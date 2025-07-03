@@ -106,9 +106,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.license-heading': data["license-heading"],
                     '.legal-subheading': data["legal-subheading"],
                     '#downloadBtn': data["download-btn"],
+
                     '.nav-home': data.nav.home,
                     '.nav-our-products': data.nav['our-products'],
                     '.nav-about-us': data.nav['about-us'],
+
+                    '.mobile-nav-home': data.mobile-nav.mobile-nav-home,
+                    '.mobile-nav-our-products': data.mobile-nav['mobile-nav-our-products'],
+                    '.mobile-nav-about-us': data.mobile-nav['mobile-nav-about-us'],
+                    
                     '.roadmap-heading': data.roadmap['roadmap-heading'],
                     '.roadmap-title': data.roadmap['roadmap-title'],
                     '.stage-1': data.roadmap['stage-1'],
