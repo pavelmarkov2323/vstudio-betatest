@@ -19,6 +19,11 @@
         "our-products": "Our Products",
         "about-us": "About us"
     },
+    "mobile-nav": {
+        "mobile-nav-home": "Home",
+        "mobile-nav-our-products": "Our Products",
+        "mobile-nav-about-us": "About us"
+    },
     "footer": {
         "copyright": "© 2025 Project of the ValeyevStudio company.",
         "user-agreement": "User Agreement",
