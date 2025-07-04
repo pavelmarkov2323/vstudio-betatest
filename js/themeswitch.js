@@ -34,7 +34,7 @@ const mobileThemeIcon = document.getElementById('mobileThemeIcon');
 function updateMobileIcon(theme) {
     if (mobileThemeIcon) {
         // Если текущая тема темная — показываем солнце, чтобы предложить светлую
-        mobileThemeIcon.src = theme === 'dark' ? '/assets/icons/sun.png' : '/assets/icons/moon.png';
+        mobileThemeIcon.src = theme === 'dark' ? '/assets/icons/sun.svg' : '/assets/icons/moon-stars.svg';
     }
 }
 

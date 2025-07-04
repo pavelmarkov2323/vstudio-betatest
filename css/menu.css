@@ -696,20 +696,26 @@
     .mobile-theme-toggle {
         display: block;
         position: absolute;
-        top: 3px;
+        top: 2px;
         left: -1px;
     }
 
     .mobile-theme-toggle button {
-        background: none;
+        width: 30px;
+        height: 30px;
+        background-color: #ffffffe8;
         border: none;
-        padding: 0;
+        padding: 2px;
+        border-radius: 50%; /* круглая форма */
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .mobile-theme-toggle img {
-        width: 24px;
-        height: 24px;
+        width: 19px;
+        height: 19px;
     }
 
     .mobile-menu .theme-toggle {
@@ -731,7 +737,7 @@
         right: -5px;
         background: none;
         border: none;
-        font-size: 28px;
+        font-size: 29px;
         color: #ffffff;
         cursor: pointer;
     }
