@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/captcha.css">
     <link rel="stylesheet" href="css/interactivehelp.css">
     <link rel="stylesheet" href="css/pushnotify.css">
+    <link rel="stylesheet" href="css/deposit.css">
 </head>
 
 <body>
@@ -142,32 +143,38 @@
                 </div>
 
                 <div class="dropdown-panel" id="userDropdown">
+
                     <!-- Блок Баланса -->
                     <div class="dropdown-balance">
                         <div class="dropdown-item balance-item" id="userBalance">
                             <img src="/assets/icons/wallet.svg" class="item-icon theme-icon" alt="">
                             <span class="balance-amount theme-text" id="balanceAmount">0</span>
                         </div>
-                        <div class="balance-divider"></div>
+                        <button class="deposit_wallet" title="Пополнить">
+                            <img src="/assets/icons/add.svg" alt="add" />
+                        </button>
                     </div>
-                    <div class="dropdown-item" id="menuProfile">
-                        <img src="/assets/icons/user.svg" class="item-icon theme-icon" alt="">
-                        <span class="menu-profile-text theme-text">My profile</span>
-                    </div>
-                    <div class="dropdown-item" id="menuSettings">
-                        <img src="/assets/icons/settings.svg" class="item-icon theme-icon" alt="">
-                        <span class="menu-settings-text theme-text">Settings</span>
-                    </div>
-                    <div class="dropdown-item" id="menuSupport">
-                        <img src="/assets/icons/help.svg" class="item-icon theme-icon" alt="">
-                        <span class="menu-support-text theme-text">Support</span>
-                    </div>
-                    <div class="dropdown-item" id="menuLogout">
-                        <img src="/assets/icons/user-logout.svg" class="item-icon theme-icon" alt="">
-                        <span class="menu-logout-text theme-text">Logout</span>
-                    </div>
+                    <div class="balance-divider"></div>
+                </div>
+
+                <div class="dropdown-item" id="menuProfile">
+                    <img src="/assets/icons/user.svg" class="item-icon theme-icon" alt="">
+                    <span class="menu-profile-text theme-text">My profile</span>
+                </div>
+                <div class="dropdown-item" id="menuSettings">
+                    <img src="/assets/icons/settings.svg" class="item-icon theme-icon" alt="">
+                    <span class="menu-settings-text theme-text">Settings</span>
+                </div>
+                <div class="dropdown-item" id="menuSupport">
+                    <img src="/assets/icons/help.svg" class="item-icon theme-icon" alt="">
+                    <span class="menu-support-text theme-text">Support</span>
+                </div>
+                <div class="dropdown-item" id="menuLogout">
+                    <img src="/assets/icons/user-logout.svg" class="item-icon theme-icon" alt="">
+                    <span class="menu-logout-text theme-text">Logout</span>
                 </div>
             </div>
+        </div>
         </div>
     </header>
 
@@ -216,6 +223,31 @@
 
             <div class="mobile-logo">
                 <img src="/assets/icons/logo-chromo.png" alt="ValeyevStudio Logo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно: Deposit & Promo -->
+    <div class="modal" id="depositModal">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <div class="switcher">
+                <button class="switch active" data-target="deposit">Deposit</button>
+                <button class="switch" data-target="promo">Promo</button>
+            </div>
+
+            <div class="modal-body" id="deposit">
+                <p class="in-progress">В разработке</p>
+            </div>
+
+            <div class="modal-body hidden" id="promo">
+                <h2>Активация промокода</h2>
+                <p class="description">
+                    Введите промокод и получите деньги, которые можно потратить на покупку подписки, кода и подарки
+                    другу. Промокод состоит из 16 символов.
+                </p>
+                <input type="text" id="promoInput" maxlength="19" placeholder="XXXX-XXXX-XXXX-XXXX" />
+                <button id="activatePromo" disabled>Активировать</button>
             </div>
         </div>
     </div>
@@ -385,7 +417,7 @@
                 <ul class="privacy-usage-list">
                     <li>For authorization, personalization, and access to premium features.</li>
                 </ul>
-                <hr class="separator"> 
+                <hr class="separator">
 
                 <h4 class="privacy-title3">3. Data Protection</h4>
                 <p class="privacy-3-1">3.1. We use modern protection methods, including encryption.</p>
@@ -440,6 +472,7 @@
     <script src="js/menu_dropdown.js"></script>
     <script src="js/download.js"></script>
     <script src="js/pushnotify.js"></script>
+    <script src="js/modal_deposit.js" defer></script>
 </body>
 
 </html>

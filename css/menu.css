@@ -471,6 +471,21 @@
     margin-left: -8px;
 }
 
+.deposit_wallet {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.deposit_wallet img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) saturate(100%) invert(0); /* Подгон под тему, при необходимости */
+}
+
 .balance-divider {
     height: 1px;
     background-color: #ccc;
