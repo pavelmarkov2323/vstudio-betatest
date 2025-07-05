@@ -468,7 +468,7 @@
 .balance-amount {
     font-weight: bold;
     color: #000000;
-    margin-left: -8px;
+    margin-right: 100px;
 }
 
 .deposit_wallet {
@@ -476,6 +476,7 @@
   border: none;
   padding: 0;
   cursor: pointer;
+  margin-left: -8px;
   display: flex;
   align-items: center;
 }
@@ -483,7 +484,6 @@
 .deposit_wallet img {
   width: 18px;
   height: 18px;
-  filter: brightness(0) saturate(100%) invert(0); /* Подгон под тему, при необходимости */
 }
 
 .balance-divider {
