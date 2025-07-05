@@ -149,7 +149,7 @@
                             <img src="/assets/icons/wallet.svg" class="item-icon theme-icon" alt="">
                             <span class="balance-amount theme-text" id="balanceAmount">0</span>
                             <button class="deposit_wallet">
-                                <img src="/assets/icons/add.svg" alt="add" />
+                                <img src="/assets/icons/add.svg" alt="add" class="theme-icon" />
                             </button>
                         </div>
                         <div class="balance-divider"></div>
@@ -225,26 +225,26 @@
     </div>
 
     <!-- Модальное окно: Deposit & Promo -->
-    <div class="modal" id="depositModal">
-        <div class="modal-content">
+    <div class="modal-deposit" id="depositModal">
+        <div class="modal-content .theme-modal">
             <button class="close-btn">&times;</button>
             <div class="switcher">
-                <button class="switch active" data-target="deposit">Deposit</button>
-                <button class="switch" data-target="promo">Promo</button>
+                <button class="switch active theme-text" data-target="deposit">Deposit</button>
+                <button class="switch theme-text" data-target="promo">Promo</button>
             </div>
 
             <div class="modal-body" id="deposit">
-                <p class="in-progress">В разработке</p>
+                <p class="in-progress theme-text">В разработке</p>
             </div>
 
             <div class="modal-body hidden" id="promo">
-                <h2>Активация промокода</h2>
-                <p class="description">
+                <h2 class="theme-text">Активация промокода</h2>
+                <p class="description-promocode theme-text">
                     Введите промокод и получите деньги, которые можно потратить на покупку подписки, кода и подарки
                     другу. Промокод состоит из 16 символов.
                 </p>
                 <input type="text" id="promoInput" maxlength="19" placeholder="XXXX-XXXX-XXXX-XXXX" />
-                <button id="activatePromo" disabled>Активировать</button>
+                <button id="activatePromo" disabled class="theme-text">Активировать</button>
             </div>
         </div>
     </div>

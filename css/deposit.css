@@ -1,5 +1,5 @@
 /* Модалка */
-.modal {
+.modal-deposit {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
@@ -10,7 +10,7 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
-.modal.show {
+.modal-deposit.show {
   display: flex;
 }
 
@@ -19,7 +19,7 @@
   border-radius: 20px;
   padding: 30px;
   width: 100%;
-  max-width: 400px;
+  max-width: 800px;
   position: relative;
   transform: translateY(-20px);
   opacity: 0;
@@ -93,7 +93,7 @@
   font-weight: bold;
 }
 
-#promo .description {
+#promo .description-promocode {
   margin-bottom: 20px;
   color: #555;
 }
