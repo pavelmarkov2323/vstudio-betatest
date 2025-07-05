@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Убедимся, что всё скрыто при старте
+    // Устанавливаем начальные стили (высота 0)
     document.querySelectorAll('.legal-content').forEach(content => {
-        content.style.display = 'none';
+        content.style.height = '0px';
+        content.style.opacity = '0';
     });
 
     // ====== Controller about | Our team ======
@@ -47,13 +48,25 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('.legal-toggle').forEach(button => {
     button.addEventListener('click', function () {
         const parent = this.closest('.legal-item');
-        parent.classList.toggle('open');
-
         const content = parent.querySelector('.legal-content');
-        if (parent.classList.contains('open')) {
-            content.style.display = 'block';
+        const isOpen = parent.classList.contains('open');
+
+        if (isOpen) {
+            // Закрытие
+            const contentHeight = content.scrollHeight;
+            content.style.height = contentHeight + 'px'; // зафиксируем высоту
+            content.offsetHeight; // принудительный reflow
+            content.style.height = '0px';
+            content.style.opacity = '0';
+            content.style.marginTop = '0';
+            parent.classList.remove('open');
         } else {
-            content.style.display = 'none';
+            // Открытие
+            const contentHeight = content.scrollHeight;
+            content.style.height = contentHeight + 'px';
+            content.style.opacity = '1';
+            content.style.marginTop = '10px';
+            parent.classList.add('open');
         }
     });
 });

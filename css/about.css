@@ -169,8 +169,7 @@
 }
 
 /* Стрелка (уменьшаем размер стрелки и добавляем плавную анимацию поворота) */
-/* Стрелка с плавной анимацией поворота */
-.legal-toggle .arrow {
+.legal-toggle .arrow-icon {
     width: 22px;
     height: 22px;
     transition: transform 0.3s ease;
@@ -215,20 +214,20 @@
 }
 
 .legal-content {
-    display: none;
-    padding-top: 10px;
-    color: #333;
-    font-size: 16px;
-    line-height: 1.6;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+    padding-top: 0;
+    margin-top: 0;
 }
 
-/* Когда контент открыт */
 .legal-item.open .legal-content {
-    display: block;
-    max-height: 2500px; /* Максимальная высота для раскрытого контента */
+    opacity: 1;
+    margin-top: 10px;
 }
 
-.legal-item.open .arrow {
+.legal-item.open .arrow-icon {
     transform: rotate(180deg);
 }
 
@@ -345,22 +344,22 @@
     }
 
     .license-heading {
-        font-size: 24px;
+        font-size: 20px;
         text-align: center;
     }
 
     .legal-subheading {
-        font-size: 13px;
+        font-size: 12px;
         line-height: 1.6;
     }
 
     .textlicense-data {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .textlicense-data p {
         padding: 6px 12px;
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .textlicense-data .effective-date {
@@ -368,10 +367,9 @@
     }
 
     .legal-content {
-        display: none;
         padding-top: 12px;
         color: #333;
-        font-size: 13px;
+        font-size: 12px;
         line-height: 1.6;
     }
 
