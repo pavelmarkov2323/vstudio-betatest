@@ -1,11 +1,12 @@
 /* Заголовок "О компании" */
-.aboutcompany-heading { 
+.aboutcompany-heading {
     font-size: 36px;
     font-weight: 700;
     color: black;
     text-align: center;
     margin-bottom: 30px;
-    margin-top: 80px; /* чтобы отделить от предыдущих блоков */
+    margin-top: 80px;
+    /* чтобы отделить от предыдущих блоков */
 }
 
 .aboutcompany-block {
@@ -29,7 +30,8 @@
     justify-content: space-between;
     gap: 30px;
     text-align: left;
-    flex-wrap: wrap; /* Адаптивность на мобилках */
+    flex-wrap: wrap;
+    /* Адаптивность на мобилках */
 }
 
 .aboutcompany-image {
@@ -44,11 +46,13 @@
     border-radius: 16px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
     object-fit: cover;
-    transition: transform 0.35s ease; /* плавный переход */
+    transition: transform 0.35s ease;
+    /* плавный переход */
 }
 
 .aboutcompany-image img:hover {
-    transform: scale(1.05); /* немного увеличиваем */
+    transform: scale(1.05);
+    /* немного увеличиваем */
 }
 
 
@@ -63,11 +67,16 @@
 
 /* Заголовок "Наша команда" */
 .team-heading {
-    font-size: 36px; /* Размер шрифта */
-    font-weight: 700; /* Жирный (Medium) */
-    color: black; /* Черный цвет */
-    text-align: center; /* По центру */
-    margin-bottom: 60px; /* Отступ снизу, чтобы не сливался с блоками */
+    font-size: 36px;
+    /* Размер шрифта */
+    font-weight: 700;
+    /* Жирный (Medium) */
+    color: black;
+    /* Черный цвет */
+    text-align: center;
+    /* По центру */
+    margin-bottom: 60px;
+    /* Отступ снизу, чтобы не сливался с блоками */
 }
 
 .container {
@@ -85,14 +94,19 @@
     padding: 60px 20px 20px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    display: none;  /* Блоки скрыты по умолчанию */
-    opacity: 0;     /* Начальная непрозрачность 0 */
-    transition: opacity 0.5s ease-in-out; /* Плавная анимация */
+    display: none;
+    /* Блоки скрыты по умолчанию */
+    opacity: 0;
+    /* Начальная непрозрачность 0 */
+    transition: opacity 0.5s ease-in-out;
+    /* Плавная анимация */
 }
 
 .about-block.active {
-    display: block;   /* Показываем активный блок */
-    opacity: 1;       /* Он становится видимым */
+    display: block;
+    /* Показываем активный блок */
+    opacity: 1;
+    /* Он становится видимым */
 }
 
 .about-block img {
@@ -117,7 +131,8 @@
     background-color: #0077FF;
     color: white;
     font-size: 14px;
-    font-weight: 500; /* Чуть четче (Regular) */
+    font-weight: 500;
+    /* Чуть четче (Regular) */
     padding: 4px 12px;
     border-radius: 12px;
     margin-top: 8px;
@@ -143,20 +158,25 @@
 }
 
 /* Privacy police and license agrements. */
-.license-heading { 
-    font-size: 36px; 
-    font-weight: 700; 
-    color: black; 
-    text-align: center; 
-    margin-bottom: 20px; 
+.license-heading {
+    font-size: 36px;
+    font-weight: 700;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .legal-subheading {
-    font-size: 16px; /* Размер шрифта */
-    color: #777; /* Серый цвет текста */
-    text-align: center; /* Центрирование текста */
-    margin-top: -15px; /* Отступ сверху, чтобы текст не сливался с заголовком */
-    line-height: 1.6; /* Высота строки для улучшения читаемости */
+    font-size: 16px;
+    /* Размер шрифта */
+    color: #777;
+    /* Серый цвет текста */
+    text-align: center;
+    /* Центрирование текста */
+    margin-top: -15px;
+    /* Отступ сверху, чтобы текст не сливался с заголовком */
+    line-height: 1.6;
+    /* Высота строки для улучшения читаемости */
 }
 
 .legal-section {
@@ -186,7 +206,6 @@
     transition: box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
 .legal-item:hover {
@@ -232,18 +251,24 @@
 }
 
 /* Стили для пунктов с серым фоном */
-.legal-content p, 
+.legal-content p,
 .legal-content ul {
-    background-color: rgba(204, 204, 204, 0.2); /* Светлый серый фон с прозрачностью */
-    border-radius: 10px; /* Скругленные углы */
-    padding: 10px 20px; /* Отступы внутри */
-    margin-bottom: 15px; /* Отступ снизу */
+    background-color: rgba(204, 204, 204, 0.2);
+    /* Светлый серый фон с прозрачностью */
+    border-radius: 10px;
+    /* Скругленные углы */
+    padding: 10px 20px;
+    /* Отступы внутри */
+    margin-bottom: 15px;
+    /* Отступ снизу */
 }
 
 /* Дополнительно можно стилизовать списки */
 .legal-content ul {
-    list-style-type: disc; /* Использование маркированного списка */
-    padding-left: 20px; /* Отступ слева для маркера */
+    list-style-type: disc;
+    /* Использование маркированного списка */
+    padding-left: 20px;
+    /* Отступ слева для маркера */
 }
 
 /* Стилизация пунктов списка (li) */
@@ -269,8 +294,10 @@
     background-color: #ccc;
     border-radius: 30%;
     width: 100%;
-    max-width: 700px; /* ограничим максимум для ПК */
-    margin: 30px auto; /* центрирование */
+    max-width: 700px;
+    /* ограничим максимум для ПК */
+    margin: 30px auto;
+    /* центрирование */
 }
 
 /* Мобильные устройства — экраны до 480px */
@@ -287,8 +314,10 @@
         align-items: center;
         text-align: center;
         padding: 20px;
-        margin: 0 16px; /* добавим отступы слева и справа */
-        box-sizing: border-box; /* чтобы padding и margin правильно учитывались */
+        margin: 0 16px;
+        /* добавим отступы слева и справа */
+        box-sizing: border-box;
+        /* чтобы padding и margin правильно учитывались */
     }
 
     .aboutcompany-image img {
@@ -363,23 +392,27 @@
     }
 
     .textlicense-data .effective-date {
-        margin-right: 15px; /* Отступ между датами */
+        margin-right: 15px;
     }
 
     .legal-content {
-        padding-top: 12px;
         color: #333;
         font-size: 12px;
         line-height: 1.6;
     }
 
     .separator {
-        width: calc(100% - 40px); /* отступы слева и справа внутри legal-item */
+        width: calc(100% - 40px);
         margin: 20px auto;
     }
 
     .legal-toggle {
-        font-size: 18px;
+        font-size: 17px;
+    }
+
+    .legal-toggle .arrow-icon {
+        width: 20px;
+        height: 20px;
     }
 }
 
@@ -471,8 +504,6 @@
     }
 
     .legal-content {
-        display: none;
-        padding-top: 12px;
         color: #333;
         font-size: 14px;
         line-height: 1.6;
@@ -484,6 +515,6 @@
     }
 
     .legal-toggle {
-        font-size: 18px;
+        font-size: 20px;
     }
 }

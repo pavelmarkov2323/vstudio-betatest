@@ -54,7 +54,6 @@
 
 .roadmap-title {
   margin-top: 1rem;
-  /* или -2rem, подбирай по вкусу */
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
@@ -209,7 +208,6 @@ body.dark-theme {
   filter: var(--icon-filter);
   /* поддержка тёмной темы */
 }
-
 
 /* Анимация */
 @keyframes pulse1 {
