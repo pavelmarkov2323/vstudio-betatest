@@ -94,15 +94,19 @@
 }
 
 /* Промо-контент */
-#promo h2 {
-  margin-bottom: 10px;
-  font-weight: bold;
+#promo.hidden {
+  display: none !important;
 }
 
-#promo {
+#promo-content {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#promo h2 {
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 #promo .description-promocode {
