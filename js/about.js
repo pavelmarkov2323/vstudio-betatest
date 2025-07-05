@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Убедимся, что всё скрыто при старте
+    document.querySelectorAll('.legal-content').forEach(content => {
+        content.style.display = 'none';
+    });
+
     // ====== Controller about | Our team ======
     let currentIndex = 0;
     let blocks = document.querySelectorAll('.about-block');
@@ -43,5 +48,12 @@ document.querySelectorAll('.legal-toggle').forEach(button => {
     button.addEventListener('click', function () {
         const parent = this.closest('.legal-item');
         parent.classList.toggle('open');
+
+        const content = parent.querySelector('.legal-content');
+        if (parent.classList.contains('open')) {
+            content.style.display = 'block';
+        } else {
+            content.style.display = 'none';
+        }
     });
 });
