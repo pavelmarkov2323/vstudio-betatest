@@ -44,32 +44,33 @@
 }
 
 .close-btn {
+  color: gray;
   position: absolute;
   top: 5px;
   right: 12px;
-  background: transparent;
+  background: #ffffff00;
   border: none;
   font-size: 24px;
   cursor: pointer;
 }
 
-/* Switcher */
 .switcher {
   display: flex;
-  background: #f0f0f0;
-  border-radius: 30px;
-  overflow: hidden;
+  justify-content: center;
+  gap: 10px;
+  background: transparent; /* Убираем общий фон */
   margin-bottom: 20px;
 }
 
 .switcher .switch {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  background: transparent;
+  padding: 10px 24px;
+  border-radius: 20px;
+  background: #f0f0f0;
   font-weight: bold;
+  border: none;
   cursor: pointer;
   transition: background 0.3s;
+  min-width: 100px;
 }
 
 .switcher .switch.active {
@@ -98,23 +99,34 @@
   font-weight: bold;
 }
 
+#promo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #promo .description-promocode {
   margin-bottom: 20px;
   color: #555;
 }
 
+/* Поле ввода */
 #promoInput {
   width: 100%;
-  padding: 10px;
+  max-width: 400px;
+  padding: 10px 16px;
   font-size: 16px;
   border-radius: 12px;
   border: 1px solid #ccc;
   margin-bottom: 15px;
   box-sizing: border-box;
+  text-align: center;
 }
 
+
+/* Кнопка активации */
 #activatePromo {
-  width: 100%;
+  width: 180px;
   padding: 12px;
   font-weight: bold;
   border: none;
