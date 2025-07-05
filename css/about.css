@@ -169,17 +169,13 @@
 }
 
 /* Стрелка (уменьшаем размер стрелки и добавляем плавную анимацию поворота) */
+/* Стрелка с плавной анимацией поворота */
 .legal-toggle .arrow {
-    width: 22px; /* Уменьшаем размер стрелки */
+    width: 22px;
     height: 22px;
-    transition: transform 0.3s ease; /* Плавная анимация поворота */
-    margin-left: auto; /* Выравниваем стрелку по правому краю */
-    margin-top: 2px; /* Чтобы стрелка не была смещена по вертикали */
-}
-
-/* Поворот стрелки при открытии контента */
-.legal-item.open .arrow {
-    transform: rotate(180deg); /* Поворот стрелки на 180 градусов */
+    transition: transform 0.3s ease;
+    margin-left: auto;
+    margin-top: 2px;
 }
 
 /* Обработка кликов */
@@ -228,7 +224,12 @@
 
 /* Когда контент открыт */
 .legal-item.open .legal-content {
+    display: block;
     max-height: 2500px; /* Максимальная высота для раскрытого контента */
+}
+
+.legal-item.open .arrow {
+    transform: rotate(180deg);
 }
 
 /* Стили для пунктов с серым фоном */
