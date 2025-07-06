@@ -23,6 +23,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  function showPromoMessage(type, title, message) {
+    const container = document.getElementById('promoMessageContainer');
+    container.innerHTML = ''; // очищаем предыдущее
+
+    const box = document.createElement('div');
+    box.className = `promo-message ${type}`;
+
+    const strong = document.createElement('strong');
+    strong.textContent = title;
+    box.appendChild(strong);
+
+    if (message) {
+      const p = document.createElement('p');
+      p.textContent = message;
+      box.appendChild(p);
+    }
+
+    container.appendChild(box);
+
+    // Убираем сообщение через 5 сек
+    setTimeout(() => {
+      container.innerHTML = '';
+    }, 5000);
+  }
+
+
   promoInput.addEventListener('input', () => {
     const val = promoInput.value.replace(/[^A-Z0-9]/g, '').toUpperCase();
     let formatted = val.match(/.{1,4}/g)?.join('-') ?? '';
@@ -51,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const result = await res.json();
 
       if (result.success) {
-        alert(result.message);
+        showPromoMessage('success', 'Промокод активирован', result.message);
         promoInput.value = '';
         activateBtn.classList.remove('active');
 
@@ -59,10 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = await fetch('/api/current-user').then(res => res.json());
         document.getElementById('balanceAmount').textContent = `${user.balance}`;
       } else {
-        alert(`Ошибка: ${result.message}`);
+        showPromoMessage('error', 'Ошибка', result.message);
       }
     } catch (err) {
-      alert('Произошла ошибка при активации промокода.');
+      showPromoMessage('error', 'Ошибка', 'Произошла ошибка при активации промокода.');
     }
   });
 });
