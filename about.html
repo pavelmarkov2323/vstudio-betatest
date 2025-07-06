@@ -228,24 +228,30 @@
     <div class="modal-deposit" id="depositModal">
         <div class="modal-content theme-modal">
             <button class="close-btn">&times;</button>
+
             <div class="switcher">
-                <button class="switch active theme-text" data-target="deposit">Deposit</button>
-                <button class="switch theme-text" data-target="promo">Promo</button>
+                <div class="switch-wrapper theme-button-switcher">
+                    <div class="switch-indicator"></div>
+                    <button class="switch active switch_title_deposit theme-text" data-target="deposit">Deposit</button>
+                    <button class="switch switch_title_promo theme-text" data-target="promo">Promo</button>
+                </div>
             </div>
 
             <div class="modal-body" id="deposit">
-                <p class="in-progress theme-text">В разработке</p>
+                <p class="in-progress theme-text">The section is under development.</p>
             </div>
 
             <div class="modal-body hidden" id="promo">
                 <div id="promo-content">
-                    <h2 class="theme-text">Активация промокода</h2>
+                    <h2 class="promocode-title theme-text">Promo code activation</h2>
                     <p class="description-promocode theme-text">
-                        Введите промокод и получите деньги, которые можно потратить на покупку подписки, кода и подарки
-                        другу. Промокод состоит из 16 символов.
+                        Enter a promo code and receive money that can be spent on buying a subscription, a code, and
+                        gifts for a friend. The promo code consists of 16 characters.
                     </p>
-                    <input type="text" id="promoInput" maxlength="19" placeholder="XXXX-XXXX-XXXX-XXXX" />
-                    <button id="activatePromo" disabled class="theme-text">Активировать</button>
+                    <input class="theme-input" type="text" id="promoInput" maxlength="19" placeholder="XXXX-XXXX-XXXX-XXXX" />
+                    <button id="activatePromo" disabled
+                        class="button-promocode-activate theme-text">Activate</button>
+                    <div id="promoMessageContainer"></div>
                 </div>
             </div>
         </div>
