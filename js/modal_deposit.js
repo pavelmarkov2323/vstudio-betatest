@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const result = await res.json();
 
       if (result.success) {
+        alert(result.message);
         promoInput.value = '';
         activateBtn.classList.remove('active');
 
@@ -58,10 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = await fetch('/api/current-user').then(res => res.json());
         document.getElementById('balanceAmount').textContent = `${user.balance}`;
       } else {
-        showModalMessage('Ошибка сервера', 'Произошла ошибка при активации промокода.');
+        alert(`Ошибка: ${result.message}`);
       }
     } catch (err) {
-      showModalMessage('Ошибка сервера', 'Произошла ошибка при активации промокода.');
+      alert('Произошла ошибка при активации промокода.');
     }
   });
 });
