@@ -45,13 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const res = await fetch('/api/promo/activate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code }) // 🔒 userId не нужен
+        body: JSON.stringify({ code })
       });
 
       const result = await res.json();
 
       if (result.success) {
-        alert(result.message);
         promoInput.value = '';
         activateBtn.classList.remove('active');
 
@@ -59,10 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = await fetch('/api/current-user').then(res => res.json());
         document.getElementById('balanceAmount').textContent = `${user.balance}`;
       } else {
-        alert(`Ошибка: ${result.message}`);
+        showModalMessage('Ошибка сервера', 'Произошла ошибка при активации промокода.');
       }
     } catch (err) {
-      alert('Произошла ошибка при активации промокода.');
+      showModalMessage('Ошибка сервера', 'Произошла ошибка при активации промокода.');
     }
   });
 });

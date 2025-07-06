@@ -43,7 +43,7 @@ router.post('/activate', async (req, res) => {
         promo.activatedBy.push(user._id);
         await promo.save();
 
-        return res.json({ success: true, message: `Промокод успешно активирован. Начислено ${promo.reward}₽` });
+        return res.json({ success: true, message: `Промокод успешно активирован. Начислено ${promo.reward}` });
     } catch (err) {
         console.error(err);
         res.status(500).json({ success: false, message: 'Ошибка сервера' });
