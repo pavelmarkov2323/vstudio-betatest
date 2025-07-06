@@ -128,7 +128,6 @@
   text-align: center;
 }
 
-
 /* Кнопка активации */
 #activatePromo {
   width: 180px;
@@ -142,6 +141,10 @@
   opacity: 0.6;
   pointer-events: none;
   transition: opacity 0.3s;
+}
+
+#activatePromo:hover {
+  background: #1060b6;
 }
 
 #activatePromo.active {
