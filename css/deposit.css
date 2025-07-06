@@ -188,3 +188,22 @@
   color: #821b1d;
   border: 1px solid #e0b4b4;
 }
+
+/* Мобильные устройства — экраны до 480px */
+@media (max-width: 480px) {
+  #promo-content {
+    padding: 0 16px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  #promoInput,
+  #promoMessageContainer {
+    max-width: 100%;
+  }
+
+  #activatePromo {
+    width: 100%;
+    max-width: 280px;
+  }
+}
