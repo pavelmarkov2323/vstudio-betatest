@@ -102,6 +102,10 @@
 #volume-icon {
     width: 20px;
     height: 20px;
+    border-radius: 50px;
+}
+#volume-icon:hover {
+    background: #dfdfdf;
 }
 
 #volume-slider {
@@ -649,7 +653,6 @@
     /* Мобильное меню */
     .nav,
     .logo-img,
-    .volume-control,
     .theme-toggle {
         display: none;
     }
