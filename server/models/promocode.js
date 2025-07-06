@@ -9,6 +9,6 @@ const promoCodeSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-const PromoCode = mongoose.model('PromoCode', promoCodeSchema);
+const PromoCode = mongoose.model('promocode', promoCodeSchema);
 
 module.exports = PromoCode;
