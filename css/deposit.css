@@ -191,19 +191,35 @@
 
 /* Мобильные устройства — экраны до 480px */
 @media (max-width: 480px) {
+  .modal-content {
+    margin: 0 16px;
+    padding: 20px;
+    border-radius: 16px;
+    width: auto;
+    max-width: 100%;
+  }
+
   #promo-content {
-    padding: 0 16px;
-    box-sizing: border-box;
-    width: 100%;
+    padding: 0;
   }
 
   #promoInput,
   #promoMessageContainer {
     max-width: 100%;
+    width: 100%;
   }
 
   #activatePromo {
     width: 100%;
-    max-width: 280px;
+    max-width: 100%;
+  }
+
+  .promo-message {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+
+  .promo-message strong {
+    font-size: 15px;
   }
 }
