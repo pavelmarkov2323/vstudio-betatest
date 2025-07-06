@@ -58,7 +58,8 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  background: transparent; /* Убираем общий фон */
+  background: transparent;
+  /* Убираем общий фон */
   margin-bottom: 20px;
 }
 
@@ -166,7 +167,7 @@
   margin: 0 auto;
   font-size: 14px;
   font-weight: normal;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: opacity 0.3s ease;
 }
 
@@ -199,6 +200,21 @@
     max-width: 100%;
   }
 
+  /* Оплата */
+  #deposit {
+    padding: 0 16px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .in-progress {
+    font-size: 14px;
+    padding: 8px 12px;
+    line-height: 1.4;
+    word-break: break-word;
+  }
+
+  /* Промокод */
   #promo-content {
     padding: 0;
   }
