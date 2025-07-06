@@ -35,11 +35,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  activateBtn.addEventListener('click', () => {
+  activateBtn.addEventListener('click', async () => {
     const code = promoInput.value;
     if (!code || code.length !== 19) return;
 
-    alert(`Пытаемся активировать: ${code}`);
-    // Здесь будет логика отправки запроса на сервер
+    try {
+      const res = await fetch('/api/promo/activate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code }) // 🔒 userId не нужен
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        alert(result.message);
+        promoInput.value = '';
+        activateBtn.classList.remove('active');
+
+        // Получаем текущего пользователя и обновляем баланс на странице
+        const user = await fetch('/api/current-user').then(res => res.json());
+        document.getElementById('balanceAmount').textContent = `${user.balance}`;
+      } else {
+        alert(`Ошибка: ${result.message}`);
+      }
+    } catch (err) {
+      alert('Произошла ошибка при активации промокода.');
+    }
   });
 });

@@ -41,6 +41,10 @@ app.use('/api', profileRouter);
 const balanceRouter = require('./routes/balance');
 app.use('/api', balanceRouter);
 
+const promoRoutes = require('./routes/promo');
+app.use('/api/promo', promoRoutes);
+
+
 
 // Раздача статических файлов (html, css, js) из корня проекта
 app.use(express.static(path.join(__dirname, '..')));
