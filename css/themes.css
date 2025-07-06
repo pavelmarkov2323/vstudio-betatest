@@ -35,6 +35,11 @@ body.dark-theme .theme-button {
     background-color: #171717;
 }
 
+/* Button Switcher */
+body.dark-theme .theme-button-switcher {
+    background: #171717;
+}
+
 body.dark-theme .theme-button:hover {
   background-color: #252525;
 }
