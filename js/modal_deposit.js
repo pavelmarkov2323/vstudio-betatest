@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('depositModal');
   const closeBtn = modal.querySelector('.close-btn');
   const switches = modal.querySelectorAll('.switch');
+  const switchIndicator = modal.querySelector('.switch-indicator');
   const bodies = modal.querySelectorAll('.modal-body');
   const promoInput = document.getElementById('promoInput');
   const activateBtn = document.getElementById('activatePromo');
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   openBtn.addEventListener('click', () => modal.classList.add('show'));
   closeBtn.addEventListener('click', () => modal.classList.remove('show'));
 
-  switches.forEach(sw => {
+  switches.forEach((sw, index) => {
     sw.addEventListener('click', () => {
       switches.forEach(btn => btn.classList.remove('active'));
       sw.classList.add('active');
@@ -20,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       document.getElementById(sw.dataset.target).classList.remove('hidden');
+
+      switchIndicator.style.transform = `translateX(${index * 100}%)`;
     });
   });
 

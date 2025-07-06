@@ -57,26 +57,48 @@
 .switcher {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  background: transparent;
-  /* Убираем общий фон */
   margin-bottom: 20px;
 }
 
-.switcher .switch {
-  padding: 10px 24px;
-  border-radius: 20px;
+.switch-wrapper {
+  position: relative;
+  display: flex;
   background: #f0f0f0;
+  border-radius: 20px;
+  padding: 4px;
+  gap: 0;
+}
+
+.switch-wrapper .switch {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  padding: 10px 24px;
+  border-radius: 16px;
+  background: transparent;
   font-weight: bold;
   border: none;
   cursor: pointer;
-  transition: background 0.3s;
   min-width: 100px;
+  transition: color 0.3s ease;
+  color: #333;
+  white-space: nowrap;
 }
 
-.switcher .switch.active {
-  background: #007bff;
+.switch-wrapper .switch.active {
   color: white;
+}
+
+.switch-indicator {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 8px);
+  background: #007bff;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+  z-index: 0;
 }
 
 /* Контенты */
