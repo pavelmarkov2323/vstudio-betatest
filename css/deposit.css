@@ -200,6 +200,17 @@
     max-width: 100%;
   }
 
+  .close-btn {
+    color: gray;
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    background: #ffffff00;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+  }
+
   /* Оплата */
   #deposit {
     padding: 0 16px;
