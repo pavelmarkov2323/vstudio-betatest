@@ -157,6 +157,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.bio-title': data.bio?.title,
                     '.bio-hint': data.bio?.hint,
                     '.data-title': data.bio?.["data-title"],
+
+
+                    '.switch_title_deposit': data['modal-deposit']['switch_title_deposit'],
+                    '.switch_title_promo': data['modal-deposit']['switch_title_promo'],
+                    '.promocode-title': data['modal-deposit']['promocode-title'],
+                    '.description-promocode': data['modal-deposit']['description-promocode'],
+                    '.button-promocode-activate': data['modal-deposit']['button-promocode-activate'],
+                    '.in-progress': data['modal-deposit']['in-progress'],
+
                     '.menu-profile-text': data.userMenu?.profile,
                     '.menu-settings-text': data.userMenu?.settings,
                     '.menu-support-text': data.userMenu?.support,
@@ -219,6 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.brand-logoinfo-description',
                     '.brand-productinfo-description',
                     '.brand-description',
+                    '.description-promocode',
                 ];
 
                 Object.entries(elementsMap).forEach(([selector, value]) => {
