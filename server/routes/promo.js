@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const PromoCode = require('./models/promocode');
-const { User } = require('./models/user');
+const PromoCode = require('../models/promocode');
+const { User } = require('../models/user');
 
 // POST /api/promo/activate
 router.post('/activate', async (req, res) => {
