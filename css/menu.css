@@ -85,64 +85,6 @@
     /* Чтобы элементы не перекрывались */
 }
 
-
-/* Музыкальный мини-плеер */
-.player {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.volume-control {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    position: relative;
-}
-
-#volume-icon {
-    width: 20px;
-    height: 20px;
-}
-
-#volume-slider {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 60px;
-    height: 5px;
-    border-radius: 5px;
-    outline: none;
-    background: linear-gradient(to right, #3390EC 100%, #d3d9de 0%);
-    transition: background 0.2s ease-in-out;
-}
-
-#volume-slider::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 8px;
-    border-radius: 5px;
-}
-
-/* Ползунок по центру и скрыт по умолчанию */
-#volume-slider::-webkit-slider-thumb {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 14px;
-    height: 14px;
-    background: #3390EC;
-    border-radius: 50%;
-    cursor: pointer;
-    margin-top: -3px;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-}
-
-/* Ползунок появляется при наведении */
-#volume-slider:hover::-webkit-slider-thumb {
-    opacity: 1;
-}
-
 /* Выпадающий список выбора языка */
 .language-switch {
     position: relative;
@@ -598,93 +540,6 @@
         text-align: center;
     }
 
-    /* Скрываем мобильный слайдер по умолчанию */
-    #mobile-volume-panel {
-        position: fixed;
-        top: 60%;
-        left: 50%;
-        transform: translate(-70%, -60%) scale(0);
-        background: #f0f0f0;
-        border-radius: 12px;
-        padding: 2px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease, opacity 0.3s ease;
-        opacity: 0;
-        z-index: 9999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        height: 140px;
-        pointer-events: none;
-    }
-
-    /* Активный класс - панель показывается */
-    #mobile-volume-panel.active {
-        transform: translate(-80%, 20%) scale(1);
-        opacity: 1;
-        pointer-events: auto;
-    }
-
-    /* Вертикальный слайдер */
-    #mobile-volume-slider {
-        appearance: slider-vertical;
-        -webkit-appearance: slider-vertical;
-        -moz-appearance: slider-vertical;
-        writing-mode: bt-lr;
-        width: 20px;
-        height: 120px;
-        background: linear-gradient(to top, #3390EC 100%, #ddd 0%);
-        border-radius: 10px;
-        cursor: pointer;
-        outline: none;
-        margin: 0 auto;
-    }
-
-    /* Стили для ползунка */
-    /* MOBILE: WebKit (iOS, Android Chrome) */
-    #mobile-volume-slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 16px;
-        height: 16px;
-        background: #3390EC;
-        border-radius: 50%;
-        cursor: pointer;
-        margin-top: 0;
-        border: none;
-        box-shadow: none;
-    }
-
-    #mobile-volume-slider::-webkit-slider-runnable-track {
-        background: transparent;
-        border-radius: 10px;
-    }
-
-    /* Firefox */
-    #mobile-volume-slider::-moz-range-thumb {
-        width: 16px;
-        height: 16px;
-        background: #3390EC;
-        border-radius: 50%;
-        cursor: pointer;
-        border: none;
-    }
-
-    #mobile-volume-slider::-moz-range-track {
-        background: transparent;
-        border-radius: 10px;
-    }
-
-    /* Optional: Edge/IE (вдруг кто-то живёт в прошлом) */
-    #mobile-volume-slider::-ms-thumb {
-        background: #3390EC;
-    }
-
-    #mobile-volume-slider::-ms-track {
-        background: transparent;
-    }
-
     .language-switch {
         width: 65px;
         padding: 2px 8px;
@@ -744,8 +599,7 @@
     /* Мобильное меню */
     .nav,
     .logo-img,
-    .theme-toggle,
-    .volume-control input#volume-slider {
+    .theme-toggle {
         display: none;
     }
 
