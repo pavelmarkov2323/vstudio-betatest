@@ -30,8 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (formatted.length === 19) {
       activateBtn.classList.add('active');
+      activateBtn.disabled = false;
     } else {
       activateBtn.classList.remove('active');
+      activateBtn.disabled = true;
     }
   });
 
