@@ -49,6 +49,9 @@
                     <img id="volume-icon" src="assets/icons/player/volume.svg" alt="Volume" class="theme-icon">
                     <input id="volume-slider" type="range" min="0" max="100" value="100">
                 </div>
+                <div id="mobile-volume-panel">
+                    <input id="mobile-volume-slider" type="range" min="0" max="100" value="100" orient="vertical" />
+                </div>
             </div>
 
             <!-- Выпадающий список для выбора языка -->
@@ -251,7 +254,8 @@
                         Enter a promo code and receive money that can be spent on buying a subscription, a code, and
                         gifts for a friend. The promo code consists of 16 characters.
                     </p>
-                    <input class="promocode-input theme-input" type="text" placeholder="XXXX-XXXX-XXXX-XXXX" id="promoInput" maxlength="19" />
+                    <input class="promocode-input theme-input" type="text" placeholder="XXXX-XXXX-XXXX-XXXX"
+                        id="promoInput" maxlength="19" />
                     <button class="button-promocode-activate theme-text" id="activatePromo" disabled>Activate</button>
                     <div id="promoMessageContainer"></div>
                 </div>

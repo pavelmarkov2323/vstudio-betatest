@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const slider = document.getElementById("volume-slider");
     const volumeIcon = document.getElementById("volume-icon");
 
+    const mobileSlider = document.getElementById("mobile-volume-slider");
+    const mobilePanel = document.getElementById("mobile-volume-panel");
+
     const tracks = [
         "/assets/sound/startup_01.mp3"
     ];
@@ -29,12 +32,31 @@ document.addEventListener("DOMContentLoaded", () => {
         audio.volume = 1;
     }
 
+    // Синхронизация мобильного слайдера с основным при загрузке
+    if (mobileSlider) {
+        mobileSlider.value = slider.value;
+    }
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 480 && mobilePanel) {
+            mobilePanel.classList.remove("active");
+        }
+    });
+
     updateVolumeIcon();
 
     function updateSliderBackground() {
         const percent = slider.value;
-        slider.style.background = `linear-gradient(to right, #447BBA ${percent}%, #ddd ${percent}%)`;
+        // Горизонтальная заливка для десктопа
+        slider.style.background = `linear-gradient(to right, #3390EC ${percent}%, #ddd ${percent}%)`;
+
+        if (mobileSlider) {
+            const mobilePercent = mobileSlider.value;
+            // Вертикальная заливка для мобилки — заливаем СНИЗУ ВВЕРХ
+            mobileSlider.style.background = `linear-gradient(to top, #3390EC ${mobilePercent}%, #ddd ${mobilePercent}%)`;
+        }
     }
+
 
     updateSliderBackground();
     audio.load();
@@ -46,41 +68,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener("click", startMusic);
 
-    // Клик по иконке — mute / unmute
-    volumeIcon.addEventListener("click", () => {
-        const currentVolume = Number(slider.value);
-
-        if (currentVolume > 0) {
-            // Запоминаем и ставим 0
-            lastVolume = currentVolume;
-            slider.value = 0;
-            audio.volume = 0;
-        } else {
-            // Восстанавливаем
-            slider.value = lastVolume;
-            audio.volume = lastVolume / 100;
+    // Функция синхронизации громкости между слайдерами и аудио
+    function syncVolume(value) {
+        slider.value = value;
+        audio.volume = value / 100;
+        if (mobileSlider) {
+            mobileSlider.value = value;
         }
-
-        // Обновить отображение
-        updateVolumeIcon();
-        updateSliderBackground();
-        localStorage.setItem("volume", slider.value);
-    });
-
-    // Слушаем изменение слайдера
-    slider.addEventListener("input", (event) => {
-        const volume = Number(event.target.value);
-        audio.volume = volume / 100;
-        localStorage.setItem("volume", volume);
-
-        if (volume > 0) {
-            lastVolume = volume;
+        localStorage.setItem("volume", value);
+        if (value > 0) {
+            lastVolume = value;
             localStorage.setItem("lastVolume", lastVolume);
         }
-
         updateVolumeIcon();
         updateSliderBackground();
+    }
+
+    // Клик по иконке — для мобилки показываем/скрываем панель, для ПК — mute/unmute
+    volumeIcon.addEventListener("click", () => {
+        const isMobile = window.innerWidth <= 480;
+
+        if (isMobile && mobilePanel) {
+            mobilePanel.classList.toggle("active");
+        } else {
+            const currentVolume = Number(slider.value);
+            if (currentVolume > 0) {
+                lastVolume = currentVolume;
+                syncVolume(0);
+            } else {
+                syncVolume(lastVolume);
+            }
+        }
     });
+
+    // Слушаем изменение основного слайдера
+    slider.addEventListener("input", (event) => {
+        const volume = Number(event.target.value);
+        syncVolume(volume);
+    });
+
+    // Слушаем изменение мобильного слайдера
+    if (mobileSlider) {
+        mobileSlider.addEventListener("input", (event) => {
+            const volume = Number(event.target.value);
+            syncVolume(volume);
+        });
+    }
 
     function updateVolumeIcon() {
         const volume = Number(slider.value);

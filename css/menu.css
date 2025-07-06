@@ -14,7 +14,8 @@
     background: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 16px;
-    transition: transform 0.3s ease-in-out; /* Плавное скрытие/появление */
+    transition: transform 0.3s ease-in-out;
+    /* Плавное скрытие/появление */
     z-index: 10;
 }
 
@@ -102,23 +103,17 @@
 #volume-icon {
     width: 20px;
     height: 20px;
-    border-radius: 50px;
-}
-#volume-icon:hover {
-    background: #dfdfdf;
 }
 
 #volume-slider {
     appearance: none;
     -webkit-appearance: none;
-    /* Для Safari и Chrome */
     -moz-appearance: none;
-    /* Для Firefox */
     width: 60px;
     height: 5px;
     border-radius: 5px;
     outline: none;
-    background: linear-gradient(to right, #447BBA 100%, #d3d9de 0%);
+    background: linear-gradient(to right, #3390EC 100%, #d3d9de 0%);
     transition: background 0.2s ease-in-out;
 }
 
@@ -132,16 +127,13 @@
 #volume-slider::-webkit-slider-thumb {
     appearance: none;
     -webkit-appearance: none;
-    /* Для Safari и Chrome */
     -moz-appearance: none;
-    /* Для Firefox */
     width: 14px;
     height: 14px;
-    background: #447BBA;
+    background: #3390EC;
     border-radius: 50%;
     cursor: pointer;
     margin-top: -3px;
-    /* Смещаем thumb вверх, чтобы он был ровно по центру */
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
 }
@@ -150,7 +142,6 @@
 #volume-slider:hover::-webkit-slider-thumb {
     opacity: 1;
 }
-
 
 /* Выпадающий список выбора языка */
 .language-switch {
@@ -341,11 +332,13 @@
 
 /* Когда переключатель включен (input:checked) */
 .theme-toggle input:checked+.slider {
-    background-color: #4a4a4a; /* Цвет фона в активном состоянии */
+    background-color: #4a4a4a;
+    /* Цвет фона в активном состоянии */
 }
 
 .theme-toggle input:checked+.slider:before {
-    transform: translateX(25px); /* Сдвигаем кнопку на правую сторону */
+    transform: translateX(25px);
+    /* Сдвигаем кнопку на правую сторону */
     background-image: url("/assets/icons/moon.png");
 }
 
@@ -475,18 +468,18 @@
 }
 
 .deposit_wallet {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  margin-left: -8px;
-  display: flex;
-  align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-left: -8px;
+    display: flex;
+    align-items: center;
 }
 
 .deposit_wallet img {
-  width: 18px;
-  height: 18px;
+    width: 18px;
+    height: 18px;
 }
 
 .balance-divider {
@@ -510,7 +503,8 @@
     position: absolute;
     top: 150%;
     left: 50%;
-    transform: translateX(-50%) translateY(-10px); /* начальное смещение вверх */
+    transform: translateX(-50%) translateY(-10px);
+    /* начальное смещение вверх */
     background-color: #fff;
     border: 1px solid #EAEAEA;
     border-radius: 12px;
@@ -526,7 +520,8 @@
 .dropdown-panel.show {
     opacity: 1;
     pointer-events: auto;
-    transform: translateX(-50%) translateY(0); /* плавно опускается */
+    transform: translateX(-50%) translateY(0);
+    /* плавно опускается */
 }
 
 .dropdown-item {
@@ -567,6 +562,14 @@
 }
 
 
+/* Панель показывается только на мобильных */
+@media (min-width: 481px) {
+    #mobile-volume-panel {
+        display: none !important;
+    }
+}
+
+
 /* Мобильные устройства — экраны до 480px */
 @media (max-width: 480px) {
 
@@ -578,7 +581,7 @@
     }
 
     .logo {
-        justify-content: center; 
+        justify-content: center;
         font-size: 15px;
         gap: 10px;
     }
@@ -591,8 +594,95 @@
         width: 100%;
         gap: 10px;
         flex-wrap: wrap;
-        justify-content: center; 
+        justify-content: center;
         text-align: center;
+    }
+
+    /* Скрываем мобильный слайдер по умолчанию */
+    #mobile-volume-panel {
+        position: fixed;
+        top: 60%;
+        left: 50%;
+        transform: translate(-70%, -60%) scale(0);
+        background: #f0f0f0;
+        border-radius: 12px;
+        padding: 2px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 140px;
+        pointer-events: none;
+    }
+
+    /* Активный класс - панель показывается */
+    #mobile-volume-panel.active {
+        transform: translate(-80%, 20%) scale(1);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Вертикальный слайдер */
+    #mobile-volume-slider {
+        appearance: slider-vertical;
+        -webkit-appearance: slider-vertical;
+        -moz-appearance: slider-vertical;
+        writing-mode: bt-lr;
+        width: 20px;
+        height: 120px;
+        background: linear-gradient(to top, #3390EC 100%, #ddd 0%);
+        border-radius: 10px;
+        cursor: pointer;
+        outline: none;
+        margin: 0 auto;
+    }
+
+    /* Стили для ползунка */
+    /* MOBILE: WebKit (iOS, Android Chrome) */
+    #mobile-volume-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        background: #3390EC;
+        border-radius: 50%;
+        cursor: pointer;
+        margin-top: 0;
+        border: none;
+        box-shadow: none;
+    }
+
+    #mobile-volume-slider::-webkit-slider-runnable-track {
+        background: transparent;
+        border-radius: 10px;
+    }
+
+    /* Firefox */
+    #mobile-volume-slider::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        background: #3390EC;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+    }
+
+    #mobile-volume-slider::-moz-range-track {
+        background: transparent;
+        border-radius: 10px;
+    }
+
+    /* Optional: Edge/IE (вдруг кто-то живёт в прошлом) */
+    #mobile-volume-slider::-ms-thumb {
+        background: #3390EC;
+    }
+
+    #mobile-volume-slider::-ms-track {
+        background: transparent;
     }
 
     .language-switch {
@@ -637,11 +727,13 @@
     .dropdown-panel {
         left: auto;
         right: -20px;
-        transform: translateY(-10px); /* убираем translateX */
+        transform: translateY(-10px);
+        /* убираем translateX */
     }
 
     .dropdown-panel.show {
-        transform: translateY(0); /* плавное появление вниз */
+        transform: translateY(0);
+        /* плавное появление вниз */
     }
 
     .dropdown-item {
@@ -649,11 +741,11 @@
         padding: 8px 14px;
     }
 
-
     /* Мобильное меню */
     .nav,
     .logo-img,
-    .theme-toggle {
+    .theme-toggle,
+    .volume-control input#volume-slider {
         display: none;
     }
 
@@ -673,13 +765,18 @@
     .mobile-menu {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.753); /* полупрозрачный фон */
-        backdrop-filter: blur(10px);    /* размытие заднего фона */
-        -webkit-backdrop-filter: blur(10px); /* поддержка Safari */
+        background: rgba(0, 0, 0, 0.753);
+        /* полупрозрачный фон */
+        backdrop-filter: blur(10px);
+        /* размытие заднего фона */
+        -webkit-backdrop-filter: blur(10px);
+        /* поддержка Safari */
         display: flex;
         flex-direction: column;
-        justify-content: center; /* Центровка по вертикали */
-        align-items: center; /* Центровка по горизонтали */
+        justify-content: center;
+        /* Центровка по вертикали */
+        align-items: center;
+        /* Центровка по горизонтали */
         z-index: 1000;
         padding: 20px;
         color: white;
@@ -723,7 +820,8 @@
         background-color: #ffffffe8;
         border: none;
         padding: 2px;
-        border-radius: 50%; /* круглая форма */
+        border-radius: 50%;
+        /* круглая форма */
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -801,13 +899,15 @@
 
 
     .mobile-nav a {
-        color: rgb(212, 212, 212); /* По умолчанию серый */
+        color: rgb(212, 212, 212);
+        /* По умолчанию серый */
         text-decoration: none;
         font-weight: bold;
     }
 
     .mobile-nav a.active {
-        color: rgb(255, 255, 255); /* Белый цвет для активной страницы */
+        color: rgb(255, 255, 255);
+        /* Белый цвет для активной страницы */
         font-weight: medium;
     }
 
