@@ -232,6 +232,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.brand-productinfo-description',
                     '.brand-description',
                     '.description-promocode',
+                    '.modal-premium-subscribe-price',
                 ];
 
                 Object.entries(elementsMap).forEach(([selector, value]) => {
