@@ -2,9 +2,17 @@ function openPremiumModal() {
   const modal = document.querySelector('.modal-premium-subscribe-backdrop');
   if (!modal) return;
 
+  // Сначала показываем backdrop
   modal.classList.remove('hide');
-  modal.classList.add('show');
+  modal.style.visibility = 'visible';
+  modal.style.pointerEvents = 'all';
+
+  // Немного позже — добавим класс show, чтобы CSS-анимация сработала
+  setTimeout(() => {
+    modal.classList.add('show');
+  }, 10); // Достаточно 10–20 мс
 }
+
 
 function closePremiumModal() {
   const modal = document.querySelector('.modal-premium-subscribe-backdrop');
@@ -12,7 +20,15 @@ function closePremiumModal() {
 
   modal.classList.remove('show');
   modal.classList.add('hide');
+
+  // Дождаться завершения CSS-перехода перед окончательным скрытием
+  setTimeout(() => {
+    modal.classList.remove('hide');
+    modal.style.visibility = 'hidden';
+    modal.style.pointerEvents = 'none';
+  }, 300); // Время должно совпадать с transition: 0.3s
 }
+
 
 // Обработчик кнопки закрытия
 document.addEventListener('DOMContentLoaded', () => {
@@ -50,9 +66,7 @@ const plans = {
 };
 
 const programs = {
-  pixelfps: 'PixelFPS',
-  superfast: 'SuperFast',
-  // Можно добавить свои варианты программ
+  pixelfps: 'PixelFPS'
 };
 
 document.addEventListener('DOMContentLoaded', () => {

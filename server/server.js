@@ -11,7 +11,6 @@ app.use(cors());
 
 app.set('trust proxy', true);
 
-
 // Сессионная система с шифрованием
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -46,9 +45,6 @@ app.use('/api/promo', promoRoutes);
 
 const subscriptionsRouter = require('./routes/subscriptions');
 app.use('/api/subscriptions', subscriptionsRouter);
-
-
-
 
 // Раздача статических файлов (html, css, js) из корня проекта
 app.use(express.static(path.join(__dirname, '..')));
