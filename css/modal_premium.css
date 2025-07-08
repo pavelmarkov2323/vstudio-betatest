@@ -1,7 +1,7 @@
 .modal-premium-subscribe-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +32,7 @@
   max-width: 420px;
   text-align: center;
   position: relative;
-  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   transform: scale(0.95);
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -92,7 +92,7 @@
   height: 16px;
 }
 
-.modal-premium-subscribe-select.open + .modal-premium-subscribe-icon {
+.modal-premium-subscribe-select.open+.modal-premium-subscribe-icon {
   transform: translateY(-50%) rotate(180deg);
 }
 
@@ -100,7 +100,8 @@
 .modal-premium-subscribe-price-wrapper {
   display: flex;
   align-items: center;
-  justify-content: center; /* выравнивает по центру блока */
+  justify-content: center;
+  /* выравнивает по центру блока */
   gap: 8px;
   margin: 20px 0;
 }
@@ -153,24 +154,52 @@
 /* Для мобильных устройств — экраны до 480px */
 @media (max-width: 480px) {
   .modal-premium-subscribe-container {
-    width: calc(100% - 40px); /* Чтобы не прилипало к краям */
-    padding: 24px 20px;        /* Меньше внутренние отступы */
-    border-radius: 16px;       /* Чуть компактнее радиус */
+    width: calc(100% - 50px);
+    padding: 24px 18px;
+    border-radius: 16px;
   }
 
   .modal-premium-subscribe-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   .modal-premium-subscribe-description {
+    font-size: 0.8rem;
+  }
+
+  .modal-premium-subscribe-field {
+    margin-bottom: 16px;
+    text-align: left;
+  }
+
+  .modal-premium-subscribe-label {
+    display: block;
+    margin-bottom: 6px;
     font-size: 0.9rem;
+  }
+
+  .modal-premium-subscribe-select-wrapper {
+    position: relative;
+  }
+
+  .modal-premium-subscribe-select {
+    width: 100%;
+    padding: 10px 40px 10px 12px;
+    border: none;
+    background-color: #F5F5F5;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .modal-premium-subscribe-icon {
+    width: 16px;
+    height: 16px;
   }
 
   /* Обертка для выравнивания текста и значения в строку */
   .modal-premium-subscribe-price-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* выравнивает по центру блока */
     gap: 8px;
     margin: 20px 0;
   }
@@ -187,6 +216,6 @@
   }
 
   .modal-premium-subscribe-button {
-    width: 100%; /* На мобиле — по ширине контейнера */
+    width: 90%;
   }
 }
