@@ -96,10 +96,19 @@ window.initPromoModal = async function () {
       setTimeout(() => backdrop.remove(), 400);
     });
 
+    const promoButton = backdrop.querySelector('.promo-button');
+
     if (selected.key === 'pixelfps') {
-      backdrop.querySelector('.promo-button')?.addEventListener('click', () => {
-        closePromoModal();     // закрываем текущую промо
-        openPremiumModal();    // открываем премиум
+      promoButton?.addEventListener('click', () => {
+        closePromoModal();     // Закрываем промо
+        openPremiumModal();    // Открываем премиум
+      });
+    }
+
+    if (selected.key === 'upgrade') {
+      promoButton?.addEventListener('click', () => {
+        closePromoModal();     // Закрываем промо
+        window.location.href = '/premium'; // Или другой URL, или любая логика
       });
     }
 
