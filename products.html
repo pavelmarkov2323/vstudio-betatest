@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="css/banner_promo.css">
     <link rel="stylesheet" href="css/modal_promo.css">
     <link rel="stylesheet" href="/css/deposit.css">
-    <link rel="stylesheet" href="css/modal_premium.css"></head>
+    <link rel="stylesheet" href="css/modal_premium.css">
+</head>
 
 <body>
     <header class="header">
@@ -256,7 +257,9 @@
             </p>
 
             <div class="modal-premium-subscribe-field">
-                <label for="programSelect" class="modal-premium-subscribe-label premium-subs-label-typeprogram theme-text">Type of program</label>
+                <label for="programSelect"
+                    class="modal-premium-subscribe-label premium-subs-label-typeprogram theme-text">Type of
+                    program</label>
                 <div class="modal-premium-subscribe-select-wrapper">
                     <select id="programSelect" class="modal-premium-subscribe-select"></select>
                     <img src="assets/icons/angle-small-down.svg" alt="Dropdown Icon"
@@ -265,7 +268,9 @@
             </div>
 
             <div class="modal-premium-subscribe-field">
-                <label for="planSelect" class="modal-premium-subscribe-label premium-subs-label-tariffplan theme-text">Tariff plan program</label>
+                <label for="planSelect"
+                    class="modal-premium-subscribe-label premium-subs-label-tariffplan theme-text">Tariff plan
+                    program</label>
                 <div class="modal-premium-subscribe-select-wrapper">
                     <select id="planSelect" class="modal-premium-subscribe-select"></select>
                     <img src="assets/icons/angle-small-down.svg" alt="Dropdown Icon"
@@ -273,7 +278,10 @@
                 </div>
             </div>
 
-            <p class="modal-premium-subscribe-price theme-text">Amount to be paid:</p> <span id="priceValue">0</span>
+            <div class="modal-premium-subscribe-price-wrapper">
+                <p class="modal-premium-subscribe-price theme-text">Amount to be paid:</p>
+                <span id="priceValue" class="modal-premium-subscribe-price-value theme-text">0</span>
+            </div>
 
             <button id="buyButton" class="modal-premium-subscribe-button" disabled>Purchase</button>
             <button class="modal-premium-subscribe-close">&times;</button>
