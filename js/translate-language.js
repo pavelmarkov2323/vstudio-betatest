@@ -157,15 +157,18 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.bio-title': data.bio?.title,
                     '.bio-hint': data.bio?.hint,
                     '.data-title': data.bio?.["data-title"],
-
-
                     '.switch_title_deposit': data['modal-deposit']['switch_title_deposit'],
                     '.switch_title_promo': data['modal-deposit']['switch_title_promo'],
                     '.promocode-title': data['modal-deposit']['promocode-title'],
                     '.description-promocode': data['modal-deposit']['description-promocode'],
                     '.button-promocode-activate': data['modal-deposit']['button-promocode-activate'],
                     '.in-progress': data['modal-deposit']['in-progress'],
-
+                    '.modal-premium-subscribe-title': data['premium-subscribe-modal']['modal-premium-subscribe-title'],
+                    '.modal-premium-subscribe-description': data['premium-subscribe-modal']['modal-premium-subscribe-description'],
+                    '.premium-subs-label-typeprogram': data['premium-subscribe-modal']['premium-subs-label-typeprogram'],
+                    '.remium-subs-label-tariffplan': data['premium-subscribe-modal']['remium-subs-label-tariffplan'],
+                    '.modal-premium-subscribe-price': data['premium-subscribe-modal']['modal-premium-subscribe-price'],
+                    '.modal-premium-subscribe-button': data['premium-subscribe-modal']['modal-premium-subscribe-button'],
                     '.menu-profile-text': data.userMenu?.profile,
                     '.menu-settings-text': data.userMenu?.settings,
                     '.menu-support-text': data.userMenu?.support,

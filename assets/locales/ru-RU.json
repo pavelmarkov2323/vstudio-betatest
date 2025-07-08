@@ -215,6 +215,14 @@
         "upgrade_descr": "Премиум-пользователи не получают рекламы, с премиум подпиской: мгновенные обновления и доступа к эксклюзивным и эксперементальным функциям.",
         "upgrade_button": "Обновиться сейчас"
     },
+    "premium-subscribe-modal": {
+        "modal-premium-subscribe-title": "Покупка премиум-подписки",
+        "modal-premium-subscribe-description": "Приобретая премиум-подписку, вы получаете доступ к экспериментальным функциям и отключаете рекламу и баннеры.",
+        "premium-subs-label-typeprogram": "Тип программы",
+        "premium-subs-label-tariffplan": "Тарифный план",
+        "modal-premium-subscribe-price": "Сумма к оплате:",
+        "modal-premium-subscribe-button": "Приобрести"
+    },
     "brand": {
         "brand.head.title": "Материал бренда ValeyevStudio",
         "brand.materials.description": "Загружайте фирменные наши материалы и ознакомьтесь с правилами их использования. <a href=\"about.html#rules-material\" class=\"brand-rules-link\">Читать правила</a>",

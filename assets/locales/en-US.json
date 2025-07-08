@@ -215,6 +215,14 @@
         "upgrade_descr": "Premium users receive no ads, with a premium subscription: instant updates and access to exclusive and experimental features.",
         "upgrade_button": "Upgrade Now"
     },
+    "premium-subscribe-modal": {
+        "modal-premium-subscribe-title": "Purchase of a premium subscription",
+        "modal-premium-subscribe-description": "By purchasing a premium subscription, you get access to experimental features and disable ads and banners.",
+        "premium-subs-label-typeprogram": "Type of program",
+        "premium-subs-label-tariffplan": "Tariff plan program",
+        "modal-premium-subscribe-price": "Amount to be paid:",
+        "modal-premium-subscribe-button": "Purchase"
+    },
     "brand": {
         "brand.head.title": "ValeyevStudio brand material",
         "brand.materials.description": "Download our official materials and read the rules for their use. <a href=\"about.html#rules-material\" class=\"brand-rules-link\">Read the rules</a>",

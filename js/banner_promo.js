@@ -22,6 +22,13 @@ window.initPromoBanner = async function () {
         return; // Без информации — тоже не показываем
     }
 
+    // ⛔ Если недавно закрыл баннер — тоже не показываем
+    if (!shouldShowBanner()) {
+        console.log('Баннер не показывается: пользователь его недавно закрыл');
+        return;
+    }
+
+
     if (document.querySelector('.banner-promo')) {
         return;
     }
