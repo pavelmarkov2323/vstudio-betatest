@@ -38,6 +38,32 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// Модальное окно сообщений
+function showModalMessage(title, message) {
+  // Удалим предыдущую модалку, если она есть
+  const oldModal = document.querySelector('.modal-message-overlay');
+  if (oldModal) oldModal.remove();
+
+  // Создаем HTML модалки
+  const modal = document.createElement('div');
+  modal.className = 'modal-message-overlay';
+  modal.innerHTML = 
+    <div class="modal-message-window">
+      <button class="modal-message-close">&times;</button>
+      <h2 class="modal-message-title theme-text">${title}</h2>
+      <p class="modal-message-message theme-text">${message}</p>
+    </div>
+  ;
+
+  // Добавляем в DOM
+  document.body.appendChild(modal);
+
+  // Обработчик закрытия
+  modal.querySelector('.modal-message-close').addEventListener('click', () => {
+    modal.remove();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const selects = document.querySelectorAll('.modal-premium-subscribe-select');
 
