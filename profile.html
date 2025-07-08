@@ -16,7 +16,10 @@
     <link rel="stylesheet" href="/css/captcha.css">
     <link rel="stylesheet" href="/css/interactivehelp.css">
     <link rel="stylesheet" href="/css/pushnotify.css">
+    <link rel="stylesheet" href="css/banner_promo.css">
+    <link rel="stylesheet" href="css/modal_promo.css">
     <link rel="stylesheet" href="/css/deposit.css">
+    <link rel="stylesheet" href="css/modal_premium.css">
 </head>
 
 <body>
@@ -230,18 +233,52 @@
             </div>
 
             <div class="modal-body hidden" id="promo">
-                <div id="promo-content">
+                <div class="promo-content" id="promo-content">
                     <h2 class="promocode-title theme-text">Promo code activation</h2>
                     <p class="description-promocode theme-text">
                         Enter a promo code and receive money that can be spent on buying a subscription, a code, and
                         gifts for a friend. The promo code consists of 16 characters.
                     </p>
-                    <input class="theme-input" type="text" id="promoInput" maxlength="19" placeholder="XXXX-XXXX-XXXX-XXXX" />
-                    <button id="activatePromo" disabled
-                        class="button-promocode-activate theme-text">Activate</button>
+                    <input class="promocode-input theme-input" type="text" placeholder="XXXX-XXXX-XXXX-XXXX"
+                        id="promoInput" maxlength="19" />
+                    <button class="button-promocode-activate theme-text" id="activatePromo" disabled>Activate</button>
                     <div id="promoMessageContainer"></div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно: Premium subscirbe & price - buy -->
+    <div class="modal-premium-subscribe-backdrop">
+        <div class="modal-premium-subscribe-container">
+            <h2 class="modal-premium-subscribe-title">Purchase of a premium subscription</h2>
+            <p class="modal-premium-subscribe-description">
+                By purchasing a premium subscription, you get access to experimental features and disable ads and
+                banners.
+            </p>
+
+            <div class="modal-premium-subscribe-field">
+                <label for="programSelect" class="modal-premium-subscribe-label premium-subs-label-typeprogram theme-text">Type of program</label>
+                <div class="modal-premium-subscribe-select-wrapper">
+                    <select id="programSelect" class="modal-premium-subscribe-select"></select>
+                    <img src="assets/icons/angle-small-down.svg" alt="Dropdown Icon"
+                        class="modal-premium-subscribe-icon" />
+                </div>
+            </div>
+
+            <div class="modal-premium-subscribe-field">
+                <label for="planSelect" class="modal-premium-subscribe-label premium-subs-label-tariffplan theme-text">Tariff plan program</label>
+                <div class="modal-premium-subscribe-select-wrapper">
+                    <select id="planSelect" class="modal-premium-subscribe-select"></select>
+                    <img src="assets/icons/angle-small-down.svg" alt="Dropdown Icon"
+                        class="modal-premium-subscribe-icon" />
+                </div>
+            </div>
+
+            <p class="modal-premium-subscribe-price theme-text">Amount to be paid:</p> <span id="priceValue">0</span>
+
+            <button id="buyButton" class="modal-premium-subscribe-button" disabled>Purchase</button>
+            <button class="modal-premium-subscribe-close">&times;</button>
         </div>
     </div>
 
@@ -296,7 +333,8 @@
         <div class="left-wrapper">
             <div class="avatar-card">
                 <div class="avatar-wrapper">
-                    <img src="https://res.cloudinary.com/dqceexk1h/image/upload/v1750689301/default.png" alt="User Avatar" class="profile-avatar profile-avatar-img">
+                    <img src="https://res.cloudinary.com/dqceexk1h/image/upload/v1750689301/default.png"
+                        alt="User Avatar" class="profile-avatar profile-avatar-img">
                     <img src="/assets/icons/add-image.svg" alt="Edit avatar" class="edit-avatar theme-icon">
                     <input type="file" accept="image/*" id="avatar-upload" style="display: none;">
                 </div>
@@ -395,7 +433,10 @@
         <script src="/js/download.js"></script>
         <script src="/js/pushnotify.js"></script>
         <script src="/js/profile.js"></script>
+        <script src="js/banner_promo.js"></script>
+        <script src="js/modal_promo.js"></script>
         <script src="js/modal_deposit.js" defer></script>
+        <script src="js/modal_premium.js"></script>
 </body>
 
 </html>
