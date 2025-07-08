@@ -5,6 +5,10 @@ window.initPromoBanner = function () {
         return;
     }
 
+    if (document.querySelector('.banner-promo')) {
+        return;
+    }
+
     const bannerHTML = `
     <div class="banner-promo theme-banner">
       <button class="close-banner-btn">✕</button>

@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
   },
   bio: { type: String, default: '' },
   status: { type: Number, default: 0 },
+  isPremium: { type: Boolean, default: false },
   balance: { type: Number, default: 0 },
   gender: { type: String, enum: ['Male', 'Female', ''], default: '' },
   birth: {
