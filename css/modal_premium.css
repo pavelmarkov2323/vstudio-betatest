@@ -166,6 +166,26 @@
     font-size: 0.9rem;
   }
 
+  /* Обертка для выравнивания текста и значения в строку */
+  .modal-premium-subscribe-price-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* выравнивает по центру блока */
+    gap: 8px;
+    margin: 20px 0;
+  }
+
+  /* Текст "Amount to be paid:" */
+  .modal-premium-subscribe-price {
+    font-size: 1.05rem;
+    margin: -5px;
+  }
+
+  /* Сумма */
+  .modal-premium-subscribe-price-value {
+    font-size: 1.05rem;
+  }
+
   .modal-premium-subscribe-button {
     width: 100%; /* На мобиле — по ширине контейнера */
   }

@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Модальное окно сообщений
-function showModalMessage(title, message) {
+function showModalMessage(title, message, autoCloseSeconds = null) {
   // Удалим предыдущую модалку, если она есть
   const oldModal = document.querySelector('.modal-message-overlay');
   if (oldModal) oldModal.remove();
@@ -58,10 +58,17 @@ function showModalMessage(title, message) {
   // Добавляем в DOM
   document.body.appendChild(modal);
 
-  // Обработчик закрытия
+  // Обработчик ручного закрытия
   modal.querySelector('.modal-message-close').addEventListener('click', () => {
     modal.remove();
   });
+
+  // Автоматическое закрытие, если передан параметр
+  if (autoCloseSeconds) {
+    setTimeout(() => {
+      modal.remove();
+    }, autoCloseSeconds * 1000);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -151,14 +158,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const result = await response.json();
 
-    if (response.ok) {
-      showModalMessage('Успешно', 'Подписка успешно оформлена!');
-      closePremiumModal();
-    } else {
-      showModalMessage('Ошибка', result.message || 'Неизвестная ошибка при оформлении подписки.');
-    }
+      if (response.ok) {
+        closePremiumModal();
+        showModalMessage('Успех', 'Вы преобрели, премиум-подписку!', 2); // закроется через 2 сек
+        setTimeout(() => {
+          location.reload(); // перезагрузка страницы
+        }, 2000);
+      } else {
+        showModalMessage('Ошибка', result.message || 'Неизвестная ошибка при оформлении подписки.', 3); // закроется через 3 сек
+      }
     } catch (err) {
-      showModalMessage('Сетевая ошибка', 'Не удалось соединиться с сервером, попробуйте позже.');
+      showModalMessage('Сетевая ошибка', 'Не удалось соединиться с сервером, попробуйте позже.', 3); // закроется через 3 сек
       console.error(err);
     }
   });
