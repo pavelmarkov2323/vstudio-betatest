@@ -108,7 +108,7 @@ window.initPromoModal = async function () {
     if (selected.key === 'upgrade') {
       promoButton?.addEventListener('click', () => {
         closePromoModal();     // Закрываем промо
-        window.location.href = '/premium'; // Или другой URL, или любая логика
+        openPremiumModal();
       });
     }
 
