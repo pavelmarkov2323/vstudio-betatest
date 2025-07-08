@@ -1,8 +1,25 @@
-window.initPromoBanner = function () {
+window.initPromoBanner = async function () {
     const translations = window.translations?.["banner"];
     if (!translations) {
         console.warn("Переводы для баннера не найдены");
         return;
+    }
+
+    // Проверяем, авторизован ли пользователь и есть ли у него премиум
+    let user;
+    try {
+        const response = await fetch('/api/current-user');
+        if (!response.ok) throw new Error('Пользователь не авторизован');
+        user = await response.json();
+
+        // 🛑 Если премиум — баннер не показываем
+        if (user.isPremium) {
+            console.log('Пользователь премиум — промо-баннер не показывается');
+            return;
+        }
+    } catch (e) {
+        console.warn('Не удалось получить пользователя:', e);
+        return; // Без информации — тоже не показываем
     }
 
     if (document.querySelector('.banner-promo')) {

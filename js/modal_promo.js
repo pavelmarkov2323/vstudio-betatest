@@ -17,8 +17,10 @@ window.initPromoModal = async function () {
     return;
   }
 
-  // 🔍 Получаем текущего пользователя
+  // Получаем текущего пользователя
+  
   let user;
+
   try {
     const response = await fetch('/api/current-user');
     if (!response.ok) throw new Error('Пользователь не авторизован');
