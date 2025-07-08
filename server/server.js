@@ -44,6 +44,10 @@ app.use('/api', balanceRouter);
 const promoRoutes = require('./routes/promo');
 app.use('/api/promo', promoRoutes);
 
+const subscriptionsRouter = require('./routes/subscriptions');
+app.use('/api/subscriptions', subscriptionsRouter);
+
+
 
 
 // Раздача статических файлов (html, css, js) из корня проекта
