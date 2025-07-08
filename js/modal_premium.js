@@ -21,3 +21,23 @@ document.addEventListener('DOMContentLoaded', () => {
     closeBtn.addEventListener('click', closePremiumModal);
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const selects = document.querySelectorAll('.modal-premium-subscribe-select');
+
+  selects.forEach(select => {
+    const wrapper = select.closest('.modal-premium-subscribe-select-wrapper');
+    const icon = wrapper.querySelector('.modal-premium-subscribe-icon');
+
+    // Safari и большинство браузеров не имеют события открытия <select>, но можно обойти это:
+    select.addEventListener('focus', () => {
+      select.classList.add('open');
+      icon.classList.add('rotated');
+    });
+
+    select.addEventListener('blur', () => {
+      select.classList.remove('open');
+      icon.classList.remove('rotated');
+    });
+  });
+});
