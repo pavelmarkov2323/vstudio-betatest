@@ -125,14 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const result = await response.json();
 
-      if (response.ok) {
-        alert('Подписка успешно оформлена!');
-        closePremiumModal();
-      } else {
-        alert('Ошибка покупки: ' + result.message);
-      }
+    if (response.ok) {
+      showModalMessage('Успешно', 'Подписка успешно оформлена!');
+      closePremiumModal();
+    } else {
+      showModalMessage('Ошибка', result.message || 'Неизвестная ошибка при оформлении подписки.');
+    }
     } catch (err) {
-      alert('Ошибка сети или сервера');
+      showModalMessage('Сетевая ошибка', 'Не удалось соединиться с сервером, попробуйте позже.');
       console.error(err);
     }
   });
