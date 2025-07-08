@@ -96,7 +96,24 @@ window.initPromoModal = async function () {
       setTimeout(() => backdrop.remove(), 400);
     });
 
+    if (selected.key === 'pixelfps') {
+      backdrop.querySelector('.promo-button')?.addEventListener('click', () => {
+        closePromoModal();     // закрываем текущую промо
+        openPremiumModal();    // открываем премиум
+      });
+    }
+
     // сохраняем, когда показали
     setPromoModalState({ lastShown: Date.now() });
   }, showDelay);
+
+  function closePromoModal() {
+    const backdrop = document.querySelector('.promo-modal-backdrop');
+    if (!backdrop) return;
+
+    backdrop.classList.remove('show');
+    backdrop.classList.add('hide');
+    setTimeout(() => backdrop.remove(), 400);
+  }
+
 };

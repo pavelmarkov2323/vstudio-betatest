@@ -23,6 +23,15 @@ const userSchema = new mongoose.Schema({
   status: { type: Number, default: 0 },
   isPremium: { type: Boolean, default: false },
   balance: { type: Number, default: 0 },
+  subscriptions: [
+    {
+      program: { type: String, required: true }, // например, "pixelfps"
+      plan: { type: String, required: true },    // например, "3m"
+      price: { type: Number, required: true },
+      purchasedAt: { type: Date, default: Date.now },
+      expiresAt: { type: Date, required: true }
+    }
+  ],
   gender: { type: String, enum: ['Male', 'Female', ''], default: '' },
   birth: {
     day: Number,

@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/banner_promo.css">
     <link rel="stylesheet" href="css/modal_promo.css">
     <link rel="stylesheet" href="/css/deposit.css">
+    <link rel="stylesheet" href="css/modal_premium.css">
 </head>
 
 <body>
@@ -247,6 +248,41 @@
             </div>
         </div>
     </div>
+
+    <!-- Модальное окно: Deposit & Promo -->
+    <div class="modal-premium-subscribe-backdrop">
+        <div class="modal-premium-subscribe-container">
+            <h2 class="modal-premium-subscribe-title">Purchase of a premium subscription</h2>
+            <p class="modal-premium-subscribe-description">
+                By purchasing a premium subscription, you get access to experimental features and disable ads and
+                banners.
+            </p>
+
+            <div class="modal-premium-subscribe-field">
+                <label for="programSelect" class="modal-premium-subscribe-label">Type of program</label>
+                <div class="modal-premium-subscribe-select-wrapper">
+                    <select id="programSelect" class="modal-premium-subscribe-select"></select>
+                    <img src="assets/icons/angle-small-down.svg" alt="Dropdown Icon"
+                        class="modal-premium-subscribe-icon" />
+                </div>
+            </div>
+
+            <div class="modal-premium-subscribe-field">
+                <label for="planSelect" class="modal-premium-subscribe-label">Tariff plan program</label>
+                <div class="modal-premium-subscribe-select-wrapper">
+                    <select id="planSelect" class="modal-premium-subscribe-select"></select>
+                    <img src="assets/icons/angle-small-down.svg" alt="Dropdown Icon"
+                        class="modal-premium-subscribe-icon" />
+                </div>
+            </div>
+
+            <p class="modal-premium-subscribe-price">Amount to be paid: <span id="priceValue">0</span></p>
+
+            <button id="buyButton" class="modal-premium-subscribe-button" disabled>Purchase</button>
+            <button class="modal-premium-subscribe-close">&times;</button>
+        </div>
+    </div>
+
 
     <!-- Модальное окно проверки: Я не робот. -->
     <div id="captchaModal" class="captcha-modal" style="display: none;">
@@ -482,6 +518,7 @@
     <script src="js/banner_promo.js"></script>
     <script src="js/modal_promo.js"></script>
     <script src="js/modal_deposit.js" defer></script>
+    <script src="js/modal_premium.js"></script>
 </body>
 
 </html>
