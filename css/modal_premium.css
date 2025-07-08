@@ -114,6 +114,10 @@
   transition: background 0.3s ease;
 }
 
+.modal-premium-subscribe-button:hover {
+  background-color: #006fe6;
+}
+
 .modal-premium-subscribe-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
