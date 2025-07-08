@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.modal-premium-subscribe-title': data['premium-subscribe-modal']['modal-premium-subscribe-title'],
                     '.modal-premium-subscribe-description': data['premium-subscribe-modal']['modal-premium-subscribe-description'],
                     '.premium-subs-label-typeprogram': data['premium-subscribe-modal']['premium-subs-label-typeprogram'],
-                    '.remium-subs-label-tariffplan': data['premium-subscribe-modal']['remium-subs-label-tariffplan'],
+                    '.premium-subs-label-tariffplan': data['premium-subscribe-modal']['premium-subs-label-tariffplan'],
                     '.modal-premium-subscribe-price': data['premium-subscribe-modal']['modal-premium-subscribe-price'],
                     '.modal-premium-subscribe-button': data['premium-subscribe-modal']['modal-premium-subscribe-button'],
                     '.menu-profile-text': data.userMenu?.profile,
