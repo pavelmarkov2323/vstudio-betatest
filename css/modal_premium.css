@@ -133,3 +133,24 @@
   cursor: pointer;
   color: #888;
 }
+
+/* Для мобильных устройств — экраны до 480px */
+@media (max-width: 480px) {
+  .modal-premium-subscribe-container {
+    width: calc(100% - 40px); /* Чтобы не прилипало к краям */
+    padding: 24px 20px;        /* Меньше внутренние отступы */
+    border-radius: 16px;       /* Чуть компактнее радиус */
+  }
+
+  .modal-premium-subscribe-title {
+    font-size: 1.3rem;
+  }
+
+  .modal-premium-subscribe-description {
+    font-size: 0.9rem;
+  }
+
+  .modal-premium-subscribe-button {
+    width: 100%; /* На мобиле — по ширине контейнера */
+  }
+}
