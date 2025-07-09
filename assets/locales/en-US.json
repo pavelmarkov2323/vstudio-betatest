@@ -212,6 +212,9 @@
             "day": "Day",
             "month": "Month",
             "year": "Year"
+        },
+        "country": {
+            "select_country": "Select country"
         }
     },
     "countries": {

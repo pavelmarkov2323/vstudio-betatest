@@ -327,6 +327,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         birthYearSelect.options[0].textContent = data.settings.date.year || "Year";
                     }
                 }
+
+                // Перевод Select country
+                const SelectCountry = document.getElementById('countrySelect');
+
+                if (country.settings?.country) {
+                    if (SelectCountry?.options[0]) {
+                        SelectCountry.options[0].textContent = country.settings.country.select_country || "Select country";
+                    }
+                }
             })
             .catch(error => {
                 console.error('Ошибка загрузки локализации:', error);
