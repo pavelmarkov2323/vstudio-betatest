@@ -389,36 +389,39 @@
             </div>
         </div>
 
-        <!-- Правая колонка: биография -->
-        <div class="bio-card">
-            <div class="bio-title gray-text">Biography</div>
+        <!-- Правая колонка: биография + подписка -->
+        <div class="right-wrapper">
+            <!-- Блок биографии -->
+            <div class="bio-card">
+                <div class="bio-title gray-text">Biography</div>
+                <div class="bio-editable">
+                    <p class="bio-text theme-text">Your biography will be here, but you don't have to fill it out.
+                        Everything is according to your choice — it's up to you to decide.,
+                        what your profile will look like.
+                        <img src="/assets/icons/pencil.svg" alt="Edit" class="bio-edit-icon theme-icon" />
+                    </p>
 
-            <div class="bio-editable">
-                <p class="bio-text theme-text">Your biography will be here, but you don't have to fill it out.
-                    Everything is according to your choice — it's up to you to decide.,
-                    what your profile will look like.
-                    <img src="/assets/icons/pencil.svg" alt="Edit" class="bio-edit-icon theme-icon" />
-                </p>
+                    <div class="bio-edit-container">
+                        <textarea class="bio-input theme-text"></textarea>
+                        <img src="/assets/icons/save.svg" alt="Save" class="bio-save-icon theme-icon" />
+                        <div class="bio-char-count theme-text">0/500</div>
+                    </div>
 
-                <div class="bio-edit-container">
-                    <textarea class="bio-input theme-text"></textarea>
-                    <img src="/assets/icons/save.svg" alt="Save" class="bio-save-icon theme-icon" />
-                    <div class="bio-char-count theme-text">0/500</div>
+                    <div class="bio-hint red-text">The biography should be no more than 500 characters long!</div>
                 </div>
+            </div>
 
-                <div class="bio-hint red-text">The biography should be no more than 500 characters long!</div>
+            <!-- Блок подписки -->
+            <div class="premium-subscribe-card" style="display: none;">
+                <div class="data-title gray-text">Подписка</div>
+                <div class="data-item theme-text">
+                    <img src="/assets/icons/benefit.svg" class="data-icon theme-icon" alt="Premium">
+                    <span class="label-premium theme-text">Статус подписки:</span>
+                    <span class="user-premium-status"></span>
+                </div>
             </div>
         </div>
 
-        <!-- Блок подписки -->
-        <div class="premium-subscribe-card" style="display: none;">
-            <div class="data-title gray-text">Подписка</div>
-            <div class="data-item theme-text">
-                <img src="/assets/icons/premium.svg" class="data-icon theme-icon" alt="Premium">
-                <span class="label-premium theme-text">Статус подписки:</span>
-                <span class="user-premium-status"></span>
-            </div>
-        </div>
 
         <footer class="footer line">
             <div class="footer-content">

@@ -242,6 +242,13 @@
   color: #555;
 }
 
+.right-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 570px;
+}
+
 /* "Биография" */
 .bio-title {
   font-size: 16px;
