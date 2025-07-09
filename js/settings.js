@@ -97,12 +97,13 @@ document.addEventListener('DOMContentLoaded', () => {
         countries.forEach(c => {
             const option = document.createElement('option');
             option.value = c;
-            option.textContent = translateCountry(c);
+            option.textContent = window.translations?.countries?.[c] || c;
             countrySelect.appendChild(option);
         });
     }
 
     fillBirthSelectors();
+    console.log('Переводы стран:', window.translations.countries);
     fillCountries();
 
     // Статус верификации
