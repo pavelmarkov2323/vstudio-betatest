@@ -310,6 +310,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data["legal-content"]) {
                     updateLegalContent(data["legal-content"]);
                 }
+
+                // Перевод Day / Month / Year в select
+                const birthDaySelect = document.getElementById('birthDay');
+                const birthMonthSelect = document.getElementById('birthMonth');
+                const birthYearSelect = document.getElementById('birthYear');
+
+                if (data.settings?.date) {
+                    if (birthDaySelect?.options[0]) {
+                        birthDaySelect.options[0].textContent = data.settings.date.day || "Day";
+                    }
+                    if (birthMonthSelect?.options[0]) {
+                        birthMonthSelect.options[0].textContent = data.settings.date.month || "Month";
+                    }
+                    if (birthYearSelect?.options[0]) {
+                        birthYearSelect.options[0].textContent = data.settings.date.year || "Year";
+                    }
+                }
+
             })
             .catch(error => {
                 console.error('Ошибка загрузки локализации:', error);

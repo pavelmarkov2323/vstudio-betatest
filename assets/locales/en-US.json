@@ -207,6 +207,11 @@
             "gender-select-placeholder": "Select gender",
             "gender-male": "Male",
             "gender-female": "Female"
+        },
+        "date": {
+            "day": "Day",
+            "month": "Month",
+            "year": "Year"
         }
     },
     "countries": {
