@@ -56,7 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Массив стран (пример, нужно добавить больше)
     const countries = [
-        "United States", "Canada", "Russia", "Germany", "France", "China", "Japan", "Brazil", "Australia", "India", "South Korea", "Ukraine"
+        "United States", "Russia", "Ukraine", "Belarus", "Kazakhstan", "George", "Poland", "Germany", "Spanish", "France", "Finland", "South Korea",
+        "China"
         // ...добавьте сюда полный список стран
     ];
 
