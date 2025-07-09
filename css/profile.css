@@ -440,9 +440,15 @@
     gap: 16px;
   }
 
+  .right-wrapper {
+    gap: 16px;
+    width: 100%;
+  }
+
   .avatar-card,
   .data-card,
-  .bio-card {
+  .bio-card,
+  .premium-subscribe-card {
     width: 100%;
     height: auto;
   }
@@ -484,6 +490,20 @@
 
   .bio-char-count {
     font-size: 11px;
+  }
+
+  /* "Блок статуса премиум подписки" */
+  .premium-subscribe-card {
+    padding-bottom: 32px;
+  }
+
+  .premium-subscribe-card .data-item {
+    font-size: 14px;
+  }
+
+  .premium-subscribe-card .data-icon {
+    width: 16px;
+    height: 16px;
   }
 
   /* Пользователь не найден */
