@@ -209,6 +209,21 @@
             "gender-female": "Female"
         }
     },
+    "countries": {
+        "United States": "United States",
+        "Russia": "Russia",
+        "Ukraine": "Ukraine",
+        "Belarus": "Belarus",
+        "Kazakhstan": "Kazakhstan",
+        "Georgia": "Georgia",
+        "Poland": "Poland",
+        "Germany": "Germany",
+        "Spain": "Spain",
+        "France": "France",
+        "Finland": "Finland",
+        "South Korea": "South Korea",
+        "China": "China"
+    },
     "secure": {
         "secure-card-title": "Secure"
     },
