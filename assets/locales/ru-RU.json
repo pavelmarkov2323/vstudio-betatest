@@ -214,7 +214,7 @@
             "year": "Год"
         },
         "country": {
-            "select_country": "Select country"
+            "select_country": "Выберите страну"
         }
     },
     "countries": {
