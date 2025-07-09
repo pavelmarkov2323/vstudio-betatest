@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // После загрузки переводов вызываем fillCountries и loadUserData
                 if (window.fillCountries) window.fillCountries();
                 if (window.loadUserData) window.loadUserData();
+                
                 // Обновляем тексты на странице
                 const elementsMap = {
                     '.main-title': data.mainTitle,
