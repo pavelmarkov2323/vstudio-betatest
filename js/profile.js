@@ -185,7 +185,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (birthdayElem) {
             if (user.birth && user.birth.day && user.birth.month && user.birth.year) {
-              birthdayElem.textContent = `${user.birth.day} ${user.birth.month} ${user.birth.year}`;
+              // Преобразуем к формату DD.MM.YYYY
+              const day = String(user.birth.day).padStart(2, '0');
+              const month = String(user.birth.month).padStart(2, '0');
+              const year = user.birth.year;
+
+              birthdayElem.textContent = `${day}.${month}.${year}`;
             } else {
               birthdayElem.textContent = 'Не указано';
             }
