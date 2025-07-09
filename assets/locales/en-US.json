@@ -202,7 +202,10 @@
         "settings-card-gender": "Gender",
         "settings-card-datebirth": "Birth:",
         "settings-card-country": "Country:",
-        "save-button": "Save"
+        "save-button": "Save",
+        "gender-select-placeholder": "Select gender",
+        "gender-male": "Male",
+        "gender-female": "Female"
     },
     "secure": {
         "secure-card-title": "Secure"

@@ -216,6 +216,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.push-btn-donation': data["push-donation-button"]
                 };
 
+                // Обновляем текст опций genderSelect
+                const genderSelect = document.getElementById('genderSelect');
+                if (genderSelect && data.settings && data.settings.gender) {
+                    genderSelect.options[0].textContent = data.settings.gender.select || "Select gender";
+                    genderSelect.options[1].textContent = data.settings.gender.male || "Male";
+                    genderSelect.options[2].textContent = data.settings.gender.female || "Female";
+                }
+
                 // после загрузки локализации
                 if (window.initPromoModal) {
                     window.initPromoModal();
