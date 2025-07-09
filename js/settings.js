@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeFullname = document.querySelector('.settings-card-welcome .user-fullname');
     const welcomeUserId = document.querySelector('.settings-card-welcome .user-id');
     const welcomeAvatar = document.querySelector('.settings-card-welcome .profile-avatar-img');
-
+    
     // Изначально скрываем settingsCard
     settingsCard.style.display = "none";
     secureCard.style.display = "none";
@@ -48,12 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Глобальная утилита для перевода стран
-    function translateCountry(countryName) {
-        const translation = window.translations?.countries?.[countryName];
-        return translation || countryName;
-    }
-
     // Массив месяцев
     const months = [
         '1', '2', '3', '4', '5', '6',
@@ -66,6 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
         "China"
         // ...добавьте сюда полный список стран
     ];
+
+    // Функция перевода страны с использованием глобального объекта переводов
+    function translateCountry(countryName) {
+        return window.translations?.countries?.[countryName] || countryName;
+    }
 
     // Заполнить селекты дней (1-31), месяцев, годов (например, 1900-2025)
     function fillBirthSelectors() {
@@ -94,47 +93,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Заполнить страны
     function fillCountries() {
+        countrySelect.innerHTML = ''; // очистить перед заполнением
         countries.forEach(c => {
             const option = document.createElement('option');
             option.value = c;
-            option.textContent = window.translations?.countries?.[c] || c;
+            option.textContent = translateCountry(c);
             countrySelect.appendChild(option);
         });
     }
 
-    fillBirthSelectors();
-    console.log('Переводы стран:', window.translations.countries);
-    fillCountries();
+    // Экспортируем функцию для вызова после загрузки локализации
+    window.fillCountries = fillCountries;
+    window.loadUserData = loadUserData;
 
     // Статус верификации
     function getStatusData(status, username) {
-        const statusData = {
-            1: {
-                icon: '/assets/icons/status/verified.gif',
-                title: 'Верифицированная страница',
-                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации</a>.`
-            },
-            2: {
-                icon: '/assets/icons/status/sponsor.png',
-                title: 'Страница спонсора',
-                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">спонсорстве</a>.`
-            },
-            3: {
-                icon: '/assets/icons/status/partner.png',
-                title: 'Страница партнёра',
-                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">партнёрке</a>.`
-            },
-            4: {
-                icon: '/assets/icons/status/moderator.png',
-                title: 'Модератор подтверждён',
-                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">модераторстве</a>.`
-            },
-            5: {
-                icon: '/assets/icons/status/admin.png',
-                title: 'Администратор верифицирован',
-                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации администраторов</a>.`
-            }
-        };
+    const statusData = {
+        1: {
+        icon: '/assets/icons/status/verified.gif',
+        title: 'Верифицированная страница',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации</a>.`
+        },
+        2: {
+        icon: '/assets/icons/status/sponsor.png',
+        title: 'Страница спонсора',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">спонсорстве</a>.`
+        },
+        3: {
+        icon: '/assets/icons/status/partner.png',
+        title: 'Страница партнёра',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">партнёрке</a>.`
+        },
+        4: {
+        icon: '/assets/icons/status/moderator.png',
+        title: 'Модератор подтверждён',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">модераторстве</a>.`
+        },
+        5: {
+        icon: '/assets/icons/status/admin.png',
+        title: 'Администратор верифицирован',
+        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации администраторов</a>.`
+        }
+    };
         return statusData[status] || null;
     }
 
@@ -171,12 +171,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const statusData = getStatusData(currentUser.status, currentUser.username);
 
                 if (statusData && userStatusWrapper && userStatusIcon && tooltipStatusTitle && tooltipStatusText) {
-                    userStatusIcon.src = statusData.icon;
-                    tooltipStatusTitle.textContent = statusData.title;
-                    tooltipStatusText.innerHTML = statusData.text;
-                    userStatusWrapper.style.display = 'inline-block';
+                userStatusIcon.src = statusData.icon;
+                tooltipStatusTitle.textContent = statusData.title;
+                tooltipStatusText.innerHTML = statusData.text;
+                userStatusWrapper.style.display = 'inline-block';
                 } else if (userStatusWrapper) {
-                    userStatusWrapper.style.display = 'none';
+                userStatusWrapper.style.display = 'none';
                 }
             }
         } catch (err) {
@@ -185,7 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     loadUserData();
-
     saveButton.addEventListener('click', async () => {
         // Проверим, что выбраны все поля
         if (!firstNameInput.value.trim() || !lastNameInput.value.trim()) {
