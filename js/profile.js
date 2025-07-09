@@ -79,6 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Глобальная утилита для перевода стран
+  function translateCountry(countryName) {
+    const translation = window.translations?.countries?.[countryName];
+    return translation || countryName;
+  }
+
   // Функция статуса пользователя (user status)
   function getStatusData(status, username) {
     const statusData = {
@@ -173,7 +179,8 @@ document.addEventListener("DOMContentLoaded", () => {
           const birthdayElem = document.querySelector('.user-birthday');
 
           if (countryElem) {
-            countryElem.textContent = user.country || 'Не указано';
+            const country = user.country || 'Не указано';
+            countryElem.textContent = translateCountry(country);
           }
 
           if (birthdayElem) {

@@ -108,7 +108,7 @@
     "bio": {
         "title": "Биография",
         "hint": "Биография должна содержать не более 500 символов!",
-        "data-title": "Ваши данные"
+        "data-title": "Данные"
     },
     "userMenu": {
         "profile": "Мой профиль",
@@ -203,6 +203,21 @@
         "settings-card-datebirth": "Дата рождения",
         "settings-card-country": "Страна",
         "save-button": "Сохранить"
+    },
+    "countries": {
+        "United States": "США",
+        "Russia": "Россия",
+        "Ukraine": "Украина",
+        "Belarus": "Беларусь",
+        "Kazakhstan": "Казахстан",
+        "Georgia": "Грузия",
+        "Poland": "Польша",
+        "Germany": "Германия",
+        "Spain": "Испания",
+        "France": "Франция",
+        "Finland": "Финляндия",
+        "South Korea": "Южная Корея",
+        "China": "Китай"
     },
     "secure": {
         "secure-card-title": "Безопасность"

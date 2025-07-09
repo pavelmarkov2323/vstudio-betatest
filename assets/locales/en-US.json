@@ -108,7 +108,7 @@
     "bio": {
         "title": "Biography",
         "hint": "The biography should be no more than 500 characters long!",
-        "data-title": "Your details"
+        "data-title": "Details"
     },
     "userMenu": {
         "profile": "My profile",
