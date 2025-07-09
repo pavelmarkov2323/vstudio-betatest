@@ -204,14 +204,15 @@ document.addEventListener("DOMContentLoaded", () => {
               premiumStatusElem.textContent = `Активна до ${formattedDate}`;
 
               const planMap = {
-                '1m': '1 месяц',
-                '3m': '3 месяца',
-                '6m': '6 месяцев',
-                '12m': '12 месяцев'
+                '1m': { label: '1 месяц (Basic)', price: 80 },
+                '3m': { label: '3 месяца (Standard)', price: 240 },
+                '6m': { label: '6 месяцев (Pro)', price: 480 },
+                '12m': { label: '12 месяцев (Ultimate)', price: 960 }
               };
 
-              const formattedPlan = planMap[activeSub.plan] || activeSub.plan;
+              const formattedPlan = planMap[activeSub.plan]?.label || activeSub.plan;
               premiumTarifElem.textContent = formattedPlan;
+
 
               premiumCard.style.display = 'block';
             }
