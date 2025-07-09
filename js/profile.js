@@ -207,19 +207,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (activeSub) {
               const expiresDate = new Date(activeSub.expiresAt);
-              const formattedDate = expiresDate.toLocaleDateString('ru-RU', {
+              const formattedDate = expiresDate.toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
               });
 
-              premiumStatusElem.textContent = `Активна до ${formattedDate}`;
+              premiumStatusElem.textContent = `Active until ${formattedDate}`;
 
               const planMap = {
-                '1m': { label: '1 месяц (Basic)', price: 80 },
-                '3m': { label: '3 месяца (Standard)', price: 240 },
-                '6m': { label: '6 месяцев (Pro)', price: 480 },
-                '12m': { label: '12 месяцев (Ultimate)', price: 960 }
+                '1m': { label: '1 month (Basic)', price: 80 },
+                '3m': { label: '3 months (Standard)', price: 240 },
+                '6m': { label: '6 months (Pro)', price: 480 },
+                '12m': { label: '12 months (Ultimate)', price: 960 }
               };
 
               const formattedPlan = planMap[activeSub.plan]?.label || activeSub.plan;
