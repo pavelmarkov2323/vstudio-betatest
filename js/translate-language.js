@@ -96,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!window.translations) window.translations = {};
                 window.translations["promo-modal"] = data["promo-modal"];
                 window.translations["banner"] = data["banner"];
+                window.translations.countries = data.countries || {};
                 // Обновляем тексты на странице
                 const elementsMap = {
                     '.main-title': data.mainTitle,
