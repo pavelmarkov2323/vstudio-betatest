@@ -330,12 +330,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Перевод Select country
                 const SelectCountry = document.getElementById('countrySelect');
-
-                if (country.settings?.country) {
-                    if (SelectCountry?.options[0]) {
-                        SelectCountry.options[0].textContent = country.settings.country.select_country || "Select country";
-                    }
+                
+                const selectCountryLabel = data?.settings?.country?.select_country || 'Select country';
+                if (SelectCountry?.options[0]) {
+                    SelectCountry.options[0].textContent = selectCountryLabel;
                 }
+
             })
             .catch(error => {
                 console.error('Ошибка загрузки локализации:', error);
