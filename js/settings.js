@@ -184,6 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     loadUserData();
+    
     saveButton.addEventListener('click', async () => {
         // Проверим, что выбраны все поля
         if (!firstNameInput.value.trim() || !lastNameInput.value.trim()) {
