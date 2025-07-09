@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const languageItems = document.querySelectorAll('.language-switch .dropdown-item');
     const arrow = document.querySelector('.arrow');
 
+    let translations = {}; // глобальная или доступная переменная
+
     // --- Установка языка из localStorage или браузера ---
     let savedLanguage = localStorage.getItem('language');
     if (!savedLanguage) {
@@ -96,8 +98,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!window.translations) window.translations = {};
                 window.translations["promo-modal"] = data["promo-modal"];
                 window.translations["banner"] = data["banner"];
-
                 window.translations.countries = data.countries || {};
+
+                translations = data;  // сохраняем локализацию
+
+                // Теперь обновляем UI, в том числе страны
+                updateUIWithTranslations();
 
                 // Обновляем тексты на странице
                 const elementsMap = {
@@ -330,7 +336,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Перевод Select country
                 const SelectCountry = document.getElementById('countrySelect');
-                
+
                 const selectCountryLabel = data?.settings?.country?.select_country || 'Select country';
                 if (SelectCountry?.options[0]) {
                     SelectCountry.options[0].textContent = selectCountryLabel;
