@@ -163,7 +163,12 @@
         "countryLabel": "Страна:",
         "birthdayLabel": "Рождение:",
         "not-found-title": "Пользователь не найден",
-        "home-button": "Вернуться обратно"
+        "home-button": "Вернуться обратно",
+        "subscribe-premium-card": {
+            "premium-subscribe-title": "Подписка",
+            "status-subscribe-text": "Статус подписки:",
+            "tarif-plan-text": "Тарифный план:"
+        }
     },
     "modal-deposit": {
         "switch_title_deposit": "Пополнить",

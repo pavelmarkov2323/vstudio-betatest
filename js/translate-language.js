@@ -97,9 +97,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.translations["promo-modal"] = data["promo-modal"];
                 window.translations["banner"] = data["banner"];
                 window.translations = data;
+                
                 document.dispatchEvent(new Event("languageReady"));
                 window.translations.countries = data.countries || {};
-
                 // Обновляем тексты на странице
                 const elementsMap = {
                     '.main-title': data.mainTitle,
@@ -161,6 +161,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.bio-title': data.bio?.title,
                     '.bio-hint': data.bio?.hint,
                     '.data-title': data.bio?.["data-title"],
+                    '.premium-subscribe-title': data.profile?.['subscribe-premium-card']?.['premium-subscribe-title'],
+                    '.status-subscribe-text': data.profile?.['subscribe-premium-card']?.['status-subscribe-text'],
+                    '.tarif-plan-text': data.profile?.['subscribe-premium-card']?.['tarif-plan-text'],
                     '.switch_title_deposit': data['modal-deposit']['switch_title_deposit'],
                     '.switch_title_promo': data['modal-deposit']['switch_title_promo'],
                     '.promocode-title': data['modal-deposit']['promocode-title'],

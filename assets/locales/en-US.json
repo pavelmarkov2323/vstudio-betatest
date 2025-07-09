@@ -163,7 +163,12 @@
         "countryLabel": "Country:",
         "birthdayLabel": "Birthday:",
         "not-found-title": "The user was not found",
-        "home-button": "Return back"
+        "home-button": "Return back",
+        "subscribe-premium-card": {
+            "premium-subscribe-title": "Subscription",
+            "status-subscribe-text": "Subscription status:",
+            "tarif-plan-text": "Tariff plan:"
+        }
     },
     "modal-deposit": {
         "switch_title_deposit": "Deposit",
