@@ -98,8 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.translations["banner"] = data["banner"];
 
                 window.translations.countries = data.countries || {};
-
-                window.localization = data; // Глобально, если нужно другим скриптам
+                
                 // Обновить список стран, если он есть
                 if (typeof fillCountries === 'function') {
                     fillCountries(data);
