@@ -187,6 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // Обработка блока подписки
           const premiumCard = document.querySelector('.premium-subscribe-card');
           const premiumStatusElem = document.querySelector('.user-premium-status');
+          const premiumTarifElem = document.querySelector('.user-premium-tarif-status');
 
           if (user.subscriptions && user.subscriptions.length > 0) {
             const now = new Date();
@@ -201,6 +202,17 @@ document.addEventListener("DOMContentLoaded", () => {
               });
 
               premiumStatusElem.textContent = `Активна до ${formattedDate}`;
+
+              const planMap = {
+                '1m': '1 месяц',
+                '3m': '3 месяца',
+                '6m': '6 месяцев',
+                '12m': '12 месяцев'
+              };
+
+              const formattedPlan = planMap[activeSub.plan] || activeSub.plan;
+              premiumTarifElem.textContent = formattedPlan;
+
               premiumCard.style.display = 'block';
             }
           }
