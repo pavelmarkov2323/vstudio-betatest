@@ -88,17 +88,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Заполнить страны
     function fillCountries() {
-        // Очистим старые опции, кроме первой
-        while (countrySelect.options.length > 1) {
-            countrySelect.remove(1);
-        }
-
-        const translationsCountries = window.translations?.countries || {};
-
         countries.forEach(c => {
             const option = document.createElement('option');
             option.value = c;
-            option.textContent = translationsCountries[c] || c; // используем перевод
+            option.textContent = c;
             countrySelect.appendChild(option);
         });
     }

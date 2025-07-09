@@ -97,10 +97,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.translations["promo-modal"] = data["promo-modal"];
                 window.translations["banner"] = data["banner"];
 
+                window.translations = window.translations || {};
                 window.translations.countries = data.countries || {};
-                // Обновляем страны в select после загрузки переводов
-                if (typeof fillCountries === 'function') {
-                    fillCountries();
+
+                // Здесь нужно обновить профиль, если он загружен
+                if (window.currentProfileUser) {
+                    // Переводим страну
+                    if (typeof updateCountryTranslation === 'function') {
+                    updateCountryTranslation(window.currentProfileUser);
+                    }
                 }
 
                 // Обновляем тексты на странице

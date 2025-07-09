@@ -85,6 +85,14 @@ document.addEventListener("DOMContentLoaded", () => {
     return translation || countryName;
   }
 
+  function updateCountryTranslation(user) {
+    const countryElem = document.querySelector('.user-country');
+    if (countryElem) {
+      const country = user.country || 'Не указано';
+      countryElem.textContent = translateCountry(country);
+    }
+  }
+
   // Функция статуса пользователя (user status)
   function getStatusData(status, username) {
     const statusData = {
@@ -175,13 +183,8 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           // Обработка данных пользователя из блока Details
-          const countryElem = document.querySelector('.user-country');
           const birthdayElem = document.querySelector('.user-birthday');
 
-          if (countryElem) {
-            const country = user.country || 'Не указано';
-            countryElem.textContent = translateCountry(country);
-          }
 
           if (birthdayElem) {
             if (user.birth && user.birth.day && user.birth.month && user.birth.year) {
@@ -318,6 +321,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.innerHTML = '<p>Ошибка загрузки данных профиля</p>';
       });
   }
+
+  window.currentProfileUser = user;
 
   // Обработка ввода в textarea биографии
   bioInput.addEventListener('input', () => {
