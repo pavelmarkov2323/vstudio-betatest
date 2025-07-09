@@ -170,6 +170,17 @@
             "tarif-plan-text": "Тарифный план:"
         }
     },
+    "premium": {
+        "activeUntil": "Активна до {date}",
+        "plans": {
+            "1m": "1 месяц (Базовый)",
+            "3m": "3 месяца (Стандарт)",
+            "6m": "6 месяцев (Про)",
+            "12m": "12 месяцев (Ультимейт)"
+        },
+        "subscriptionStatus": "Статус подписки:",
+        "tariffPlan": "Тарифный план:"
+    },
     "modal-deposit": {
         "switch_title_deposit": "Пополнить",
         "switch_title_promo": "Промокод",

@@ -207,24 +207,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (activeSub) {
               const expiresDate = new Date(activeSub.expiresAt);
-              const formattedDate = expiresDate.toLocaleDateString('en-US', {
+
+              // Берём текущий язык из локализации, или по умолчанию en-US
+              const translations = window.translations?.premium || {
+                activeUntil: "Active until {date}",
+                plans: {
+                  "1m": "1 month (Basic)",
+                  "3m": "3 months (Standard)",
+                  "6m": "6 months (Pro)",
+                  "12m": "12 months (Ultimate)"
+                }
+              };
+
+              const formattedDate = expiresDate.toLocaleDateString(localStorage.getItem('language') || 'en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
               });
 
-              premiumStatusElem.textContent = `Active until ${formattedDate}`;
+              // Заменяем {date} на actual formattedDate
+              premiumStatusElem.textContent = translations.activeUntil.replace("{date}", formattedDate);
 
-              const planMap = {
-                '1m': { label: '1 month (Basic)', price: 80 },
-                '3m': { label: '3 months (Standard)', price: 240 },
-                '6m': { label: '6 months (Pro)', price: 480 },
-                '12m': { label: '12 months (Ultimate)', price: 960 }
-              };
-
-              const formattedPlan = planMap[activeSub.plan]?.label || activeSub.plan;
-              premiumTarifElem.textContent = formattedPlan;
-
+              // Получаем название плана из перевода
+              const planLabel = translations.plans[activeSub.plan] || activeSub.plan;
+              premiumTarifElem.textContent = planLabel;
 
               premiumCard.style.display = 'block';
             }
