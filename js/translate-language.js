@@ -98,10 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.translations["banner"] = data["banner"];
                 window.translations.countries = data.countries || {};
 
-                // После загрузки переводов вызываем fillCountries и loadUserData
-                if (window.fillCountries) window.fillCountries();
-                if (window.loadUserData) window.loadUserData();
-                
                 // Обновляем тексты на странице
                 const elementsMap = {
                     '.main-title': data.mainTitle,
