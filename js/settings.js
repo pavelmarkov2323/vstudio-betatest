@@ -99,7 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     fillBirthSelectors();
-    fillCountries();
+
+    document.addEventListener("languageReady", () => {
+        fillCountries();
+        loadUserData(); // <- тоже можно вызывать тут, чтобы значения точно были подставлены после перевода
+    });
 
     // Статус верификации
     function getStatusData(status, username) {
