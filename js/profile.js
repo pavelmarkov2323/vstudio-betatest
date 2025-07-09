@@ -184,6 +184,27 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           }
 
+          // Обработка блока подписки
+          const premiumCard = document.querySelector('.premium-subscribe-card');
+          const premiumStatusElem = document.querySelector('.user-premium-status');
+
+          if (user.subscriptions && user.subscriptions.length > 0) {
+            const now = new Date();
+            const activeSub = user.subscriptions.find(sub => new Date(sub.expiresAt) > now);
+
+            if (activeSub) {
+              const expiresDate = new Date(activeSub.expiresAt);
+              const formattedDate = expiresDate.toLocaleDateString('ru-RU', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              });
+
+              premiumStatusElem.textContent = `Активна до ${formattedDate}`;
+              premiumCard.style.display = 'block';
+            }
+          }
+
           // Аватар
           avatarImage.src = user.avatar || '/assets/images/avatar/default.png';
 

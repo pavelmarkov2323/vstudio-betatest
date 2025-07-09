@@ -335,6 +335,25 @@
   z-index: 2; /* Добавляем! Поверх textarea */
 }
 
+/* "Блок статуса премиум подписки" */
+.premium-subscribe-card {
+  background: #fff8e1;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
+  padding: 20px;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.premium-subscribe-card .data-item {
+  gap: 8px;
+}
+
+.premium-subscribe-card .data-icon {
+  width: 20px;
+  height: 20px;
+}
+
 /* Пользователь не найден (user not found) */
 .not-found-container {
   display: flex;
