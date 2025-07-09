@@ -322,8 +322,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  window.currentProfileUser = user;
-
   // Обработка ввода в textarea биографии
   bioInput.addEventListener('input', () => {
     const len = bioInput.value.length;
