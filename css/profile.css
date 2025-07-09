@@ -337,11 +337,11 @@
 
 /* "Блок статуса премиум подписки" */
 .premium-subscribe-card {
-  background: #fff8e1;
+  width: 520px;
+  background: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
-  padding: 20px;
-  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  padding: 18px;
   box-sizing: border-box;
 }
 
