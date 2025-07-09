@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     });
 
-
     // Кнопка входа
     const signInBtn = document.querySelector('.signin-btn');
     if (signInBtn) {

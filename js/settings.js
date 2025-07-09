@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeFullname = document.querySelector('.settings-card-welcome .user-fullname');
     const welcomeUserId = document.querySelector('.settings-card-welcome .user-id');
     const welcomeAvatar = document.querySelector('.settings-card-welcome .profile-avatar-img');
-    
+
     // Изначально скрываем settingsCard
     settingsCard.style.display = "none";
     secureCard.style.display = "none";
@@ -68,6 +68,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Заполнить селекты дней (1-31), месяцев, годов (например, 1900-2025)
     function fillBirthSelectors() {
+        // Добавляем placeholder в селект дней
+        const dayPlaceholder = document.createElement('option');
+        dayPlaceholder.value = '';
+        dayPlaceholder.textContent = 'Day';
+        dayPlaceholder.selected = true;
+        dayPlaceholder.disabled = true;
+        birthDay.appendChild(dayPlaceholder);
+
         for (let d = 1; d <= 31; d++) {
             const option = document.createElement('option');
             option.value = d;
@@ -75,12 +83,28 @@ document.addEventListener('DOMContentLoaded', () => {
             birthDay.appendChild(option);
         }
 
+        // Добавляем placeholder в селект месяцев
+        const monthPlaceholder = document.createElement('option');
+        monthPlaceholder.value = '';
+        monthPlaceholder.textContent = 'Month';
+        monthPlaceholder.selected = true;
+        monthPlaceholder.disabled = true;
+        birthMonth.appendChild(monthPlaceholder);
+
         months.forEach(m => {
             const option = document.createElement('option');
             option.value = m;
             option.textContent = m;
             birthMonth.appendChild(option);
         });
+
+        // Добавляем placeholder в селект годов
+        const yearPlaceholder = document.createElement('option');
+        yearPlaceholder.value = '';
+        yearPlaceholder.textContent = 'Year';
+        yearPlaceholder.selected = true;
+        yearPlaceholder.disabled = true;
+        birthYear.appendChild(yearPlaceholder);
 
         const currentYear = new Date().getFullYear();
         for (let y = currentYear; y >= 1900; y--) {
@@ -108,33 +132,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Статус верификации
     function getStatusData(status, username) {
-    const statusData = {
-        1: {
-        icon: '/assets/icons/status/verified.gif',
-        title: 'Верифицированная страница',
-        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации</a>.`
-        },
-        2: {
-        icon: '/assets/icons/status/sponsor.png',
-        title: 'Страница спонсора',
-        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">спонсорстве</a>.`
-        },
-        3: {
-        icon: '/assets/icons/status/partner.png',
-        title: 'Страница партнёра',
-        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">партнёрке</a>.`
-        },
-        4: {
-        icon: '/assets/icons/status/moderator.png',
-        title: 'Модератор подтверждён',
-        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">модераторстве</a>.`
-        },
-        5: {
-        icon: '/assets/icons/status/admin.png',
-        title: 'Администратор верифицирован',
-        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации администраторов</a>.`
-        }
-    };
+        const statusData = {
+            1: {
+                icon: '/assets/icons/status/verified.gif',
+                title: 'Верифицированная страница',
+                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации</a>.`
+            },
+            2: {
+                icon: '/assets/icons/status/sponsor.png',
+                title: 'Страница спонсора',
+                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">спонсорстве</a>.`
+            },
+            3: {
+                icon: '/assets/icons/status/partner.png',
+                title: 'Страница партнёра',
+                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">партнёрке</a>.`
+            },
+            4: {
+                icon: '/assets/icons/status/moderator.png',
+                title: 'Модератор подтверждён',
+                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">модераторстве</a>.`
+            },
+            5: {
+                icon: '/assets/icons/status/admin.png',
+                title: 'Администратор верифицирован',
+                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации администраторов</a>.`
+            }
+        };
         return statusData[status] || null;
     }
 
@@ -150,9 +174,9 @@ document.addEventListener('DOMContentLoaded', () => {
             lastNameInput.value = currentUser.lastName || '';
             genderSelect.value = currentUser.gender || '';
             if (currentUser.birth) {
-                birthDay.value = currentUser.birth.day || 'Day';
-                birthMonth.value = currentUser.birth.month || 'Month';
-                birthYear.value = currentUser.birth.year || 'Year';
+                birthDay.value = currentUser.birth.day || '';
+                birthMonth.value = currentUser.birth.month || '';
+                birthYear.value = currentUser.birth.year || '';
             }
             countrySelect.value = currentUser.country || '';
 
@@ -171,12 +195,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const statusData = getStatusData(currentUser.status, currentUser.username);
 
                 if (statusData && userStatusWrapper && userStatusIcon && tooltipStatusTitle && tooltipStatusText) {
-                userStatusIcon.src = statusData.icon;
-                tooltipStatusTitle.textContent = statusData.title;
-                tooltipStatusText.innerHTML = statusData.text;
-                userStatusWrapper.style.display = 'inline-block';
+                    userStatusIcon.src = statusData.icon;
+                    tooltipStatusTitle.textContent = statusData.title;
+                    tooltipStatusText.innerHTML = statusData.text;
+                    userStatusWrapper.style.display = 'inline-block';
                 } else if (userStatusWrapper) {
-                userStatusWrapper.style.display = 'none';
+                    userStatusWrapper.style.display = 'none';
                 }
             }
         } catch (err) {
