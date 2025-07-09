@@ -95,10 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const translationsCountries = window.translations?.countries || {};
 
-        countries.forEach(countryKey => {
+        countries.forEach(c => {
             const option = document.createElement('option');
-            option.value = countryKey;
-            option.textContent = translationsCountries[countryKey] || countryKey;
+            option.value = c;
+            option.textContent = translationsCountries[c] || c; // используем перевод
             countrySelect.appendChild(option);
         });
     }

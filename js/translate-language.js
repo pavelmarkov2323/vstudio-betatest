@@ -97,6 +97,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.translations["promo-modal"] = data["promo-modal"];
                 window.translations["banner"] = data["banner"];
                 window.translations.countries = data.countries || {};
+
+                // Обновляем страны в select после загрузки переводов
+                if (typeof fillCountries === 'function') {
+                    fillCountries();
+                }
                 
                 // Обновляем тексты на странице
                 const elementsMap = {
