@@ -48,6 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Глобальная утилита для перевода стран
+    function translateCountry(countryName) {
+        const translation = window.translations?.countries?.[countryName];
+        return translation || countryName;
+    }
+
     // Массив месяцев
     const months = [
         '1', '2', '3', '4', '5', '6',
@@ -84,12 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
             option.textContent = y;
             birthYear.appendChild(option);
         }
-    }
-
-    // Глобальная утилита для перевода стран
-    function translateCountry(countryName) {
-        const translation = window.translations?.countries?.[countryName];
-        return translation || countryName;
     }
 
     // Заполнить страны
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     loadUserData();
-    
+
     saveButton.addEventListener('click', async () => {
         // Проверим, что выбраны все поля
         if (!firstNameInput.value.trim() || !lastNameInput.value.trim()) {
