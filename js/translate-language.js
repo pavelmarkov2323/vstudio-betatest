@@ -84,15 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Загружаем локализацию из:", `/assets/locales/${language}.json`);
     }
 
-    // --- Обновление перевода страны в профиле пользователя ---
-    function updateUserCountryDisplay(user) {
-        const countryElem = document.querySelector('.user-country');
-        if (countryElem) {
-            const country = user.country || 'Не указано';
-            countryElem.textContent = translateCountry(country);
-        }
-    }
-
     // --- Загрузка и обновление локализации ---
     function fetchLocalization(language) {
         fetch(`/assets/locales/${language}.json`)
@@ -107,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.translations["banner"] = data["banner"];
 
                 window.translations.countries = data.countries || {};
-                updateUserCountryDisplay(currentUser);
                 // Обновляем страны в select после загрузки переводов
                 if (typeof fillCountries === 'function') {
                     fillCountries();
