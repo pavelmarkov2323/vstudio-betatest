@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const signInBtn = document.querySelector('.signin-btn');
     if (signInBtn) {
         signInBtn.addEventListener('click', () => {
-            window.location.href = 'auth.html';
+            window.location.href = '/auth.html';
         });
     }
 
