@@ -161,7 +161,7 @@
         "welcomeUser": "Добро пожаловать, {username}",
         "usernameLabel": "Имя пользователя:",
         "countryLabel": "Страна:",
-        "birthdayLabel": "День рождения:",
+        "birthdayLabel": "Рождение:",
         "not-found-title": "Пользователь не найден",
         "home-button": "Вернуться обратно"
     },
