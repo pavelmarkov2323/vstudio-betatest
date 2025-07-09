@@ -203,9 +203,11 @@
         "settings-card-datebirth": "Дата рождения",
         "settings-card-country": "Страна",
         "save-button": "Сохранить",
-        "gender-select-placeholder": "Выберите пол",
-        "gender-male": "Мужской",
-        "gender-female": "Женский"
+        "gender": {
+            "gender-select-placeholder": "Выберите пол",
+            "gender-male": "Мужской",
+            "gender-female": "Женский"
+        }
     },
     "countries": {
         "United States": "США",
