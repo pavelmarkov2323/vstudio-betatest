@@ -99,6 +99,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 window.translations.countries = data.countries || {};
 
+                window.localization = data; // Глобально, если нужно другим скриптам
+                // Обновить список стран, если он есть
+                if (typeof fillCountries === 'function') {
+                    fillCountries(data);
+                }
+
                 // Обновляем тексты на странице
                 const elementsMap = {
                     '.main-title': data.mainTitle,
@@ -219,14 +225,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.push-btn-donation': data["push-donation-button"]
                 };
 
-                // Обновляем текст опций genderSelect
-                const genderSelect = document.getElementById('genderSelect');
-                if (genderSelect && data.settings && data.settings.gender) {
-                    genderSelect.options[0].textContent = data.settings.gender["gender-select-placeholder"] || "Select gender";
-                    genderSelect.options[1].textContent = data.settings.gender["gender-male"] || "Male";
-                    genderSelect.options[2].textContent = data.settings.gender["gender-female"] || "Female";
-                }
-
                 // после загрузки локализации
                 if (window.initPromoModal) {
                     window.initPromoModal();
@@ -311,6 +309,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     updateLegalContent(data["legal-content"]);
                 }
 
+                // Обновляем текст опций genderSelect
+                const genderSelect = document.getElementById('genderSelect');
+                if (genderSelect && data.settings && data.settings.gender) {
+                    genderSelect.options[0].textContent = data.settings.gender["gender-select-placeholder"] || "Select gender";
+                    genderSelect.options[1].textContent = data.settings.gender["gender-male"] || "Male";
+                    genderSelect.options[2].textContent = data.settings.gender["gender-female"] || "Female";
+                }
+
                 // Перевод Day / Month / Year в select
                 const birthDaySelect = document.getElementById('birthDay');
                 const birthMonthSelect = document.getElementById('birthMonth');
@@ -327,7 +333,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         birthYearSelect.options[0].textContent = data.settings.date.year || "Year";
                     }
                 }
-
             })
             .catch(error => {
                 console.error('Ошибка загрузки локализации:', error);

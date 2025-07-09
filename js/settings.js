@@ -87,13 +87,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Заполнить страны
-    function fillCountries() {
-        countries.forEach(c => {
+    function fillCountries(localizedCountries) {
+        // Очищаем старые опции
+        countrySelect.innerHTML = '';
+
+        // Добавляем плейсхолдер
+        const placeholder = document.createElement('option');
+        placeholder.disabled = true;
+        placeholder.selected = true;
+        placeholder.textContent = localizedCountries['Select country'] || 'Select country';
+        countrySelect.appendChild(placeholder);
+
+        countries.forEach(engName => {
             const option = document.createElement('option');
-            option.value = c;
-            option.textContent = c;
+            option.value = engName; // В value — английское имя
+            option.textContent = localizedCountries.countries?.[engName] || engName; // На языке интерфейса
             countrySelect.appendChild(option);
         });
+
+        // Если у пользователя уже выбрана страна — установить
+        if (currentUser && currentUser.country) {
+            countrySelect.value = currentUser.country;
+        }
     }
 
     fillBirthSelectors();
