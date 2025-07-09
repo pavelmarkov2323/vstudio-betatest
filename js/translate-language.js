@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const languageItems = document.querySelectorAll('.language-switch .dropdown-item');
     const arrow = document.querySelector('.arrow');
 
-    let translations = {}; // глобальная или доступная переменная
-
     // --- Установка языка из localStorage или браузера ---
     let savedLanguage = localStorage.getItem('language');
     if (!savedLanguage) {
@@ -98,12 +96,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!window.translations) window.translations = {};
                 window.translations["promo-modal"] = data["promo-modal"];
                 window.translations["banner"] = data["banner"];
+                window.translations = data;
                 window.translations.countries = data.countries || {};
-
-                translations = data;  // сохраняем локализацию
-
-                // Теперь обновляем UI, в том числе страны
-                updateUIWithTranslations();
 
                 // Обновляем тексты на странице
                 const elementsMap = {
