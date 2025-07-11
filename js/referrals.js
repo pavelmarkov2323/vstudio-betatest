@@ -3,12 +3,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyBtn = document.querySelector('.referals-copy-btn');
   const activateBtn = document.querySelector('.referals-activate-btn');
   const activateInput = document.querySelector('.referals-activate-code-input');
-    const infos = {
+  const infos = {
     totalEarned: document.getElementById('total-earned'),
     ratePerUser: document.getElementById('rate-per-user'),
     invitedUsers: document.getElementById('invited-users'),
-    };
+  };
   const activateCard = document.querySelector('.referals-card-activate');
+
+  function formatNumber(value) {
+    return Number(value || 0).toLocaleString();
+  }
+
+  function updateReferralInfo(data) {
+    infos.totalEarned.textContent = formatNumber(data.totalEarned);
+    infos.ratePerUser.textContent = formatNumber(data.ratePerUser || 1);
+    infos.invitedUsers.textContent = formatNumber(data.invitedUsers);
+  }
 
   // Получить данные пользователя (в том числе реферальный код)
   fetch('/api/current-user')
@@ -20,9 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fetch('/api/referral/info')
         .then(res => res.json())
         .then(data => {
-          infos.totalEarned.textContent = data.totalEarned || 0;
-          infos.ratePerUser.textContent = data.ratePerUser || 1;
-          infos.invitedUsers.textContent = data.invitedUsers || 0;
+          updateReferralInfo(data);
 
           // Если уже активировал чей-то код, скрыть форму активации
           if (data.activatedReferralCode && data.activatedReferralCode !== '') {
@@ -59,11 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
           activateCard.style.display = 'none';
           fetch('/api/referral/info')
             .then(res => res.json())
-            .then(data => {
-              infos.totalEarned.textContent = data.totalEarned || 0;
-              infos.ratePerUser.textContent = data.ratePerUser || 1;
-              infos.invitedUsers.textContent = data.invitedUsers || 0;
-            });
+            .then(data => updateReferralInfo(data));
         }
       })
       .catch(() => alert('Ошибка сервера'));
