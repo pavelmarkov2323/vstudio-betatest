@@ -33,10 +33,6 @@ const userSchema = new mongoose.Schema({
       expiresAt: { type: Date, required: true }
     }
   ],
-  referral_code: { type: String, unique: true, default: function() {
-    // Генерируем уникальный 6-символьный код (буквы и цифры)
-    return crypto.randomBytes(3).toString('hex');
-  }},
   referral_code: { type: String, unique: true },
   activated_referral_code: { type: String, default: '' },
   referrals: { type: Number, default: 0 },
@@ -51,25 +47,6 @@ const userSchema = new mongoose.Schema({
   country: { type: String, default: '' },
   ip: { type: String, default: '' },
   createdAt: { type: Date, default: Date.now }
-});
-
-// Middleware: генерация userId из счётчика
-userSchema.pre('save', async function (next) {
-  if (this.isNew) {
-    try {
-      const counter = await Counter.findByIdAndUpdate(
-        { _id: 'userId' },
-        { $inc: { seq: 1 } },
-        { new: true, upsert: true }
-      );
-      this.userId = counter.seq;
-      next();
-    } catch (err) {
-      next(err);
-    }
-  } else {
-    next();
-  }
 });
 
 // Middleware генерации userId + уникального referral_code
