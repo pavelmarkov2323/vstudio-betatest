@@ -21,6 +21,21 @@ async function loadReferralData() {
   }
 }
 
+document.querySelector('.referals-copy-btn').addEventListener('click', () => {
+  const input = document.querySelector('#ref-code');
+  input.select();
+  input.setSelectionRange(0, 99999); // для мобильных устройств
+
+  try {
+    document.execCommand('copy');
+    alert('Реферальный код скопирован!');
+  } catch (err) {
+    console.error('Ошибка копирования:', err);
+    alert('Не удалось скопировать');
+  }
+});
+
+
 // Обработка активации
 document.querySelector('.referals-activate-btn').addEventListener('click', async () => {
   const code = document.querySelector('.referals-activate-code-input').value.trim();
