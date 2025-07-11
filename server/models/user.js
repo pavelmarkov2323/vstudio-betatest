@@ -37,10 +37,11 @@ const userSchema = new mongoose.Schema({
     // Генерируем уникальный 6-символьный код (буквы и цифры)
     return crypto.randomBytes(3).toString('hex');
   }},
+  referral_code: { type: String, unique: true },
   activated_referral_code: { type: String, default: '' },
   referrals: { type: Number, default: 0 },
   referral_earnings: { type: Number, default: 0 },
-  referral_activated_users: { type: [Number], default: [] }, // userId активировавших
+  referral_activated_users: { type: [Number], default: [] },
   gender: { type: String, enum: ['Male', 'Female', ''], default: '' },
   birth: {
     day: Number,
@@ -71,6 +72,37 @@ userSchema.pre('save', async function (next) {
   }
 });
 
-const User = mongoose.model('User', userSchema);
+// Middleware генерации userId + уникального referral_code
+userSchema.pre('save', async function (next) {
+  if (this.isNew) {
+    try {
+      // 1. userId
+      const counter = await Counter.findByIdAndUpdate(
+        { _id: 'userId' },
+        { $inc: { seq: 1 } },
+        { new: true, upsert: true }
+      );
+      this.userId = counter.seq;
 
+      // 2. Генерация уникального referral_code
+      let unique = false;
+      while (!unique) {
+        const code = crypto.randomBytes(3).toString('hex'); // 6 символов
+        const exists = await mongoose.models.User.findOne({ referral_code: code });
+        if (!exists) {
+          this.referral_code = code;
+          unique = true;
+        }
+      }
+
+      next();
+    } catch (err) {
+      next(err);
+    }
+  } else {
+    next();
+  }
+});
+
+const User = mongoose.model('User', userSchema);
 module.exports = { User, Counter };
