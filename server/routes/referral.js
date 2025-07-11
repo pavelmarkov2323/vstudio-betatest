@@ -2,26 +2,23 @@ const express = require('express');
 const router = express.Router();
 const { User } = require('../models/user');
 
-// Получить данные по реферальной системе для текущего пользователя
-router.get('/referral-info', async (req, res) => {
+// Получить данные рефералов текущего пользователя
+router.get('/info', async (req, res) => {
   if (!req.session.userId) return res.status(401).json({ message: 'Не авторизован' });
 
   try {
-    const user = await User.findOne({ userId: req.session.userId }).select('referral_code activated_referral_code referrals referral_earnings isPremium balance');
+    const user = await User.findOne({ userId: req.session.userId });
     if (!user) return res.status(404).json({ message: 'Пользователь не найден' });
 
-    const rate = user.isPremium ? 3 : 1;
+    const ratePerUser = user.isPremium ? 3 : 1;
 
     res.json({
-      referral_code: user.referral_code,
-      activated_referral_code: user.activated_referral_code,
-      referrals: user.referrals,
-      referral_earnings: user.referral_earnings,
-      rate_per_user: rate,
-      balance: user.balance
+      totalEarned: user.referral_earnings,
+      ratePerUser,
+      invitedUsers: user.referrals,
+      activatedReferralCode: user.activated_referral_code
     });
   } catch (err) {
-    console.error(err);
     res.status(500).json({ message: 'Ошибка сервера' });
   }
 });
@@ -32,41 +29,54 @@ router.post('/activate', async (req, res) => {
 
   const { code } = req.body;
   if (!code || typeof code !== 'string') {
-    return res.status(400).json({ message: 'Неверный код' });
+    return res.status(400).json({ message: 'Введите корректный код' });
   }
 
   try {
-    const user = await User.findOne({ userId: req.session.userId });
-    if (!user) return res.status(404).json({ message: 'Пользователь не найден' });
+    const currentUser = await User.findOne({ userId: req.session.userId });
+    if (!currentUser) return res.status(404).json({ message: 'Пользователь не найден' });
 
-    if (user.activated_referral_code) {
-      return res.status(400).json({ message: 'Реферальный код уже активирован' });
+    // Нельзя активировать код самому себе
+    if (currentUser.referral_code === code) {
+      return res.status(400).json({ message: 'Нельзя активировать свой код' });
     }
 
-    if (code === user.referral_code) {
-      return res.status(400).json({ message: 'Нельзя активировать собственный код' });
+    // Проверяем, активирован ли уже код
+    if (currentUser.activated_referral_code) {
+      return res.status(400).json({ message: 'Код уже активирован' });
     }
 
-    const inviter = await User.findOne({ referral_code: code });
-    if (!inviter) return res.status(404).json({ message: 'Реферальный код не найден' });
+    // Ищем пользователя, чей код активируем
+    const refUser = await User.findOne({ referral_code: code });
+    if (!refUser) {
+      return res.status(404).json({ message: 'Код не найден' });
+    }
 
-    // Начисления
-    const inviteeBonus = 3; // на баланс пригласившего
-    const inviterBonus = inviter.isPremium ? 3 : 1;
+    // Проверяем, не активировал ли уже текущий пользователь чей-то код (защита)
+    if (currentUser.activated_referral_code) {
+      return res.status(400).json({ message: 'Код уже активирован ранее' });
+    }
 
-    // Обновляем пригласившего
-    inviter.referrals += 1;
-    inviter.referral_earnings += inviterBonus;
-    inviter.balance += inviterBonus;
-    await inviter.save();
+    // Обновляем реферала (тот, кто пригласил)
+    const refUserRate = refUser.isPremium ? 3 : 1;
+    const refUserEarningsIncrement = refUserRate;
 
-    // Обновляем приглашаемого
-    user.activated_referral_code = code;
-    user.balance += inviteeBonus;
-    await user.save();
+    // Обновляем данные реферала:
+    await User.updateOne(
+      { userId: refUser.userId },
+      {
+        $inc: { referrals: 1, referral_earnings: refUserEarningsIncrement, balance: refUserEarningsIncrement },
+      }
+    );
 
-    res.json({ message: `Реферальный код активирован, на баланс зачислено ${inviteeBonus}` });
+    // Обновляем текущего пользователя:
+    currentUser.activated_referral_code = code;
+    currentUser.referral_earnings += 3; // начисляем 3 за активацию (как в условии)
+    currentUser.balance += 3;
 
+    await currentUser.save();
+
+    res.json({ message: 'Код успешно активирован', newBalance: currentUser.balance });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Ошибка сервера' });
