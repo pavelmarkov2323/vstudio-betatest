@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyBtn = document.querySelector('.referals-copy-btn');
   const activateBtn = document.querySelector('.referals-activate-btn');
   const activateInput = document.querySelector('.referals-activate-code-input');
-  const infos = {
-    totalEarned: document.querySelector('.referals-card-infos .referals-info-value:nth-child(1)'),
-    ratePerUser: document.querySelector('.referals-card-infos .referals-info-value:nth-child(2)'),
-    invitedUsers: document.querySelector('.referals-card-infos .referals-info-value:nth-child(3)'),
-  };
+    const infos = {
+    totalEarned: document.getElementById('total-earned'),
+    ratePerUser: document.getElementById('rate-per-user'),
+    invitedUsers: document.getElementById('invited-users'),
+    };
   const activateCard = document.querySelector('.referals-card-activate');
 
   // Получить данные пользователя (в том числе реферальный код)
