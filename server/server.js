@@ -46,7 +46,7 @@ app.use('/api/promo', promoRoutes);
 const subscriptionsRouter = require('./routes/subscriptions');
 app.use('/api/subscriptions', subscriptionsRouter);
 
-const referralRouter = require('./routes/referal');
+const referralRouter = require('./routes/referral');
 app.use('/api/referral', referralRouter);
 
 
