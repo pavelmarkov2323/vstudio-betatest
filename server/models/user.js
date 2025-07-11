@@ -25,13 +25,17 @@ const userSchema = new mongoose.Schema({
   balance: { type: Number, default: 0 },
   subscriptions: [
     {
-      program: { type: String, required: true }, // например, "pixelfps"
-      plan: { type: String, required: true },    // например, "3m"
+      program: { type: String, required: true },
+      plan: { type: String, required: true },
       price: { type: Number, required: true },
       purchasedAt: { type: Date, default: Date.now },
       expiresAt: { type: Date, required: true }
     }
   ],
+  referral_code: { type: String, unique: true },
+  activated_referral_code: { type: String, default: '' },
+  referrals: { type: Number, default: 0 },
+  referral_earnings: { type: Number, default: 0 },
   gender: { type: String, enum: ['Male', 'Female', ''], default: '' },
   birth: {
     day: Number,
@@ -43,6 +47,15 @@ const userSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
+const generateReferralCode = () => {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let code = '';
+  for (let i = 0; i < 8; i++) {
+    code += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return code;
+};
+
 // Middleware: генерация userId из счётчика
 userSchema.pre('save', async function (next) {
   if (this.isNew) {
@@ -53,6 +66,17 @@ userSchema.pre('save', async function (next) {
         { new: true, upsert: true }
       );
       this.userId = counter.seq;
+      
+      // Генерация уникального referral_code
+      let code;
+      let exists = true;
+      while (exists) {
+        code = generateReferralCode();
+        const userWithCode = await User.findOne({ referral_code: code });
+        if (!userWithCode) exists = false;
+      }
+      this.referral_code = code;
+
       next();
     } catch (err) {
       next(err);

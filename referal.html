@@ -332,17 +332,18 @@
     </div>
 
     <div class="referal-container">
-        <h1 class="referal-title theme-text" data-i18n="referral.title">Реферальная панель управления</h1>
+        <h1 class="referals-title theme-text" data-i18n="referral.title">Referral control panel</h1>
 
         <div class="referals-card theme-card">
-            <h2 class="referals-heading theme-text" data-i18n="referral.program_heading">Referal program</h2>
-            <p class="referals-description" data-i18n="referral.program_description">
+            <h2 class="referals-program-heading theme-text" data-i18n="referral.program_heading">Referal program</h2>
+            <p class="referals-program-description" data-i18n="referral.program_description">
                 You will receive 1 per invited user. The rate increases for premium users.
                 double to 3.0 per invited user. Funds are credited to the balance immediately.
             </p>
 
             <div class="referals-code-block">
-                <label for="ref-code" class="referals-label theme-text" data-i18n="referral.your_code_label">Your
+                <label for="ref-code" class="referals-label referals-your-code-label theme-text"
+                    data-i18n="referral.your_code_label">Your
                     referal code</label>
                 <div class="referals-code-wrapper">
                     <input type="text" id="ref-code" class="referals-code-input theme-input" value="ABC123XYZ"
@@ -350,7 +351,7 @@
                     <button class="referals-copy-btn">
                         <img src="/assets/icons/copy.svg" alt="Copy it" class="copy-icon theme-icon"
                             data-i18n="referral.copy_button">
-                        Сopy
+                        <span class="referals-copy-text" data-i18n="referral.copy_button">Copy</span>
                     </button>
                 </div>
             </div>
@@ -371,7 +372,7 @@
                     data-i18n-placeholder="referral.enter_invite_code_placeholder" />
                 <button class="referals-activate-btn">
                     <img src="/assets/icons/key.svg" alt="Activation" class="activate-icon theme-icon">
-                    <span data-i18n="referral.activate_button">Activate</span>
+                    <span class="referals-activate-text" data-i18n="referral.activate_button">Activate</span>
                 </button>
             </div>
         </div>
@@ -380,15 +381,18 @@
     <div class="referals-card-infos">
         <div class="referals-card-info theme-card">
             <div class="referals-info-value theme-text">0</div>
-            <div class="referals-info-label">Всего заработано</div>
+            <div class="referals-info-label referals-total-earned-label" data-i18n="referral.total_earned">Total earned
+            </div>
         </div>
         <div class="referals-card-info theme-card">
             <div class="referals-info-value theme-text">1</div>
-            <div class="referals-info-label">Ваша ставка за пользователя</div>
+            <div class="referals-info-label referals-rate-per-user-label" data-i18n="referral.your_rate_per_user">Your
+                bid per user</div>
         </div>
         <div class="referals-card-info theme-card">
             <div class="referals-info-value theme-text">0</div>
-            <div class="referals-info-label">Приглашенных пользователей</div>
+            <div class="referals-info-label referals-invited-users-label" data-i18n="referral.invited_users">Invited
+                users</div>
         </div>
     </div>
 

@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.translations["promo-modal"] = data["promo-modal"];
                 window.translations["banner"] = data["banner"];
                 window.translations = data;
-                
+                    
                 document.dispatchEvent(new Event("languageReady"));
                 window.translations.countries = data.countries || {};
                 // Обновляем тексты на странице
@@ -220,8 +220,25 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.push-btn-suggestions': data["push-suggestions-button"],
                     '.push-title-donation': data["push-donation-title"],
                     '.push-text-donation': data["push-donation-text"],
-                    '.push-btn-donation': data["push-donation-button"]
+                    '.push-btn-donation': data["push-donation-button"],
+                    '.referals-title': data.referals['referral.title'],
+                    '.referals-program-heading': data.referals['program_heading'],
+                    '.referals-program-description': data.referals['program_description'],
+                    '.referals-your-code-label': data.referals['your_code_label'],
+                    '.referals-copy-text': data.referals['copy_button'],
+                    '.referals-activate-heading': data.referals['activate_heading'],
+                    '.referals-activate-description': data.referals['activate_description'],
+                    '.referals-invite-code-input': data.referals['enter_invite_code_placeholder'], // для placeholder
+                    '.referals-activate-text': data.referals['activate_button'],
+                    '.referals-total-earned-label': data.referals['total_earned'],
+                    '.referals-rate-per-user-label': data.referals['your_rate_per_user'],
+                    '.referals-invited-users-label': data.referals['invited_users']
                 };
+
+                const inputEl = document.querySelector('.referals-activate-code-input');
+                if(inputEl && data.referals && data.referals['enter_invite_code_placeholder']) {
+                    inputEl.placeholder = data.referals['enter_invite_code_placeholder'];
+                }
 
                 // после загрузки локализации
                 if (window.initPromoModal) {

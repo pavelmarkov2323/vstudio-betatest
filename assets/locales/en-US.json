@@ -182,7 +182,7 @@
         "tariffPlan": "Tariff plan:"
     },
     "referals": {
-        "referral.title": "Referal panel",
+        "referral.title": "Referral control panel",
         "program_heading": "Referal program",
         "program_description": "You will receive 1.5 per invited user. The rate increases for premium users. double to 3.0 per invited user. Funds are credited to the balance immediately.",
         "your_code_label": "Your referal code",
@@ -190,7 +190,10 @@
         "activate_heading": "Activation referal code",
         "activate_description": "Activate the referral code of the user who invited you and get 3 to the balance. The user who invited you will receive 1 without a premium subscription and 3 with a premium subscription.",
         "enter_invite_code_placeholder": "Enter the invitation code",
-        "activate_button": "Activate"
+        "activate_button": "Activate",
+        "total_earned": "Total earned",
+        "your_rate_per_user": "Your bid per user",
+        "invited_users": "Invited users"
     },
     "modal-deposit": {
         "switch_title_deposit": "Deposit",
