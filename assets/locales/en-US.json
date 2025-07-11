@@ -22,7 +22,8 @@
     "mobile-nav": {
         "mobile-nav-home": "Home",
         "mobile-nav-our-products": "Our Products",
-        "mobile-nav-about-us": "About us"
+        "mobile-nav-about-us": "About us",
+        "referals": "Referal program"
     },
     "footer": {
         "copyright": "© 2025 Project of the ValeyevStudio company.",

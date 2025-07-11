@@ -153,6 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.forgot-link a': data.auth?.forgotPassword,
                     '.nav-user-agreement': data.footer['user-agreement'],
                     '.nav-partners': data.footer['partners'],
+                    '.nav-referals': data.footer['referals'],
                     '.social-platforms': data['footer-social']['social-platforms'],
                     '.captcha-title': data["captcha-content"]["captcha-title"],
                     '.captcha-text-container': data["captcha-content"]["captcha-text-container"],
