@@ -46,8 +46,9 @@ app.use('/api/promo', promoRoutes);
 const subscriptionsRouter = require('./routes/subscriptions');
 app.use('/api/subscriptions', subscriptionsRouter);
 
-const referralRoutes = require('./routes/referal');
-app.use('/api/referral', referralRoutes);
+const referralRouter = require('./routes/referal');
+app.use('/api/referral', referralRouter);
+
 
 // Раздача статических файлов (html, css, js) из корня проекта
 app.use(express.static(path.join(__dirname, '..')));
