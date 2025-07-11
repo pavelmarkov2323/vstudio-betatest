@@ -20,6 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
     infos.invitedUsers.textContent = formatNumber(data.invitedUsers);
   }
 
+  function toggleActivateCard(data) {
+    if (data.activatedReferralCode && data.activatedReferralCode !== '') {
+      activateCard.style.display = 'none';
+    } else {
+      activateCard.style.display = '';
+    }
+  }
+
   // Получить данные пользователя (в том числе реферальный код)
   fetch('/api/current-user')
     .then(res => res.json())
@@ -31,11 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => res.json())
         .then(data => {
           updateReferralInfo(data);
-
-          // Если уже активировал чей-то код, скрыть форму активации
-          if (data.activatedReferralCode && data.activatedReferralCode !== '') {
-            activateCard.style.display = 'none';
-          }
+          toggleActivateCard(data);
         });
     });
 
@@ -62,12 +66,14 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(res => res.json())
       .then(data => {
         if (data.message) alert(data.message);
-        if (!data.message.includes('ошибка')) {
-          // Обновить данные рефералов и скрыть форму
-          activateCard.style.display = 'none';
+        if (!data.message.toLowerCase().includes('ошибка')) {
+          // После успешной активации получить обновленные данные и обновить UI
           fetch('/api/referral/info')
             .then(res => res.json())
-            .then(data => updateReferralInfo(data));
+            .then(data => {
+              updateReferralInfo(data);
+              toggleActivateCard(data);
+            });
         }
       })
       .catch(() => alert('Ошибка сервера'));
