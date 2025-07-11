@@ -4,21 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ValeyevStudio - Products</title>
+    <title>ValeyevStudio - Referal</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/themes.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/menu_dropdown.css">
-    <link rel="stylesheet" href="css/themes.css">
-    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/referal.css">
     <!-- Подключение кастомных стилей -->
     <link rel="stylesheet" href="css/captcha.css">
     <link rel="stylesheet" href="css/interactivehelp.css">
     <link rel="stylesheet" href="css/pushnotify.css">
-    <link rel="stylesheet" href="/css/modal_message.css">
+    <link rel="stylesheet" href="css/modal_message.css">
     <link rel="stylesheet" href="css/banner_promo.css">
     <link rel="stylesheet" href="css/modal_promo.css">
-    <link rel="stylesheet" href="/css/deposit.css">
+    <link rel="stylesheet" href="css/deposit.css">
     <link rel="stylesheet" href="css/modal_premium.css">
 </head>
 
@@ -34,8 +35,8 @@
         <nav class="nav">
             <ul>
                 <li><a href="home.html" class="nav-home">Home</a></li>
-                <li><a href="products.html" class="nav-our-products active">Our Products</a></li>
-                <li><a href="about.html" class="nav-about-us">About us</a></li>
+                <li><a href="products.html" class="nav-our-products">Our Products</a></li>
+                <li><a href="about.html" class="nav-about-us active">About us</a></li>
             </ul>
         </nav>
         <div class="actions">
@@ -108,7 +109,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Тоггл переключатель темы -->
             <div class="has-tooltip">
                 <label class="theme-toggle">
@@ -117,19 +117,21 @@
                 </label>
                 <span class="tooltip theme-text" data-tooltip="switch-themes">Switch themes</span>
             </div>
+
             <!-- Кнопка входа (Sign In) -->
             <div class="has-tooltip">
-                <button class="signin-btn" style="display: none;">
+                <button class="signin-btn">
                     <img class="signin-icon" src="assets/icons/user.svg" alt="User Icon">
                     <span class="signin-text">Sign In</span>
                 </button>
                 <span class="tooltip theme-text" data-tooltip="sign-in">Sign in to your account</span>
             </div>
+
             <!-- Аватар с выпадающим меню -->
-            <div class="user-menu">
+            <div class="user-menu" style="display: none;">
                 <div class="user-avatar" id="avatarToggle">
-                    <img src="assets/icons/user.png" alt="User Avatar" class="avatar-img theme-icon">
-                    <img src="assets/icons/angle-small-down.svg" alt="Dropdown Icon" class="dropdown-icon theme-icon">
+                    <img src="/assets/icons/user.png" alt="User Avatar" class="avatar-img theme-icon">
+                    <img src="/assets/icons/angle-small-down.svg" alt="Dropdown Icon" class="dropdown-icon theme-icon">
                 </div>
 
                 <div class="dropdown-panel" id="userDropdown">
@@ -145,19 +147,19 @@
                         <div class="balance-divider"></div>
                     </div>
                     <div class="dropdown-item" id="menuProfile">
-                        <img src="assets/icons/user.svg" class="item-icon theme-icon" alt="">
+                        <img src="/assets/icons/user.svg" class="item-icon theme-icon" alt="">
                         <span class="menu-profile-text theme-text">My profile</span>
                     </div>
                     <div class="dropdown-item" id="menuSettings">
-                        <img src="assets/icons/settings.svg" class="item-icon theme-icon" alt="">
+                        <img src="/assets/icons/settings.svg" class="item-icon theme-icon" alt="">
                         <span class="menu-settings-text theme-text">Settings</span>
                     </div>
                     <div class="dropdown-item" id="menuSupport">
-                        <img src="assets/icons/help.svg" class="item-icon theme-icon" alt="">
+                        <img src="/assets/icons/help.svg" class="item-icon theme-icon" alt="">
                         <span class="menu-support-text theme-text">Support</span>
                     </div>
                     <div class="dropdown-item" id="menuLogout">
-                        <img src="assets/icons/user-logout.svg" class="item-icon theme-icon" alt="">
+                        <img src="/assets/icons/user-logout.svg" class="item-icon theme-icon" alt="">
                         <span class="menu-logout-text theme-text">Logout</span>
                     </div>
                 </div>
@@ -169,12 +171,12 @@
     <div class="overlay"></div>
     <div class="dropdown-menu-item" id="productsMenu">
         <div class="product-item">
-            <img src="assets/images/PixelFPS.png" alt="Product 1">
+            <img src="/assets/images/PixelFPS.png" alt="Product 1">
             <p class="theme-text">PixelFPS</p>
             <div class="has-tooltip">
                 <button id="downloadBtn" class="download-btn">
                     <span class="button-text">Download</span> <!-- Текст кнопки -->
-                    <img class="download-icon theme-icon" src="assets/icons/download.svg" alt="Download Icon" />
+                    <img class="download-icon theme-icon" src="/assets/icons/download.svg" alt="Download Icon" />
                     <!-- Иконка -->
                 </button>
                 <span class="tooltip theme-text" data-tooltip="download-description">Download the latest version</span>
@@ -203,8 +205,8 @@
             <div class="mobile-nav-wrapper">
                 <nav class="mobile-nav">
                     <a href="/home.html" class="mobile-nav-home">Home</a>
-                    <a href="/products.html" class="mobile-nav-our-products active">Our Products</a>
-                    <a href="/about.html" class="mobile-nav-about-us">About Us</a>
+                    <a href="/products.html" class="mobile-nav-our-products">Our Products</a>
+                    <a href="/about.html" class="mobile-nav-about-us active">About Us</a>
                 </nav>
             </div>
 
@@ -292,7 +294,7 @@
     <div id="captchaModal" class="captcha-modal" style="display: none;">
         <div class="captcha-content">
             <!-- Иконка в центре -->
-            <img src="assets/icons/robot.png" alt="Icon" class="captcha-icon">
+            <img src="/assets/icons/robot.png" alt="Icon" class="captcha-icon">
             <!-- Заголовок -->
             <p class="captcha-title theme-text">Confirm that you are not a robot</p>
             <!-- Чекбокс с текстом -->
@@ -329,6 +331,67 @@
         </div>
     </div>
 
+    <div class="referal-container">
+        <h1 class="referal-title theme-text" data-i18n="referral.title">Реферальная панель управления</h1>
+
+        <div class="referals-card theme-card">
+            <h2 class="referals-heading theme-text" data-i18n="referral.program_heading">Referal program</h2>
+            <p class="referals-description" data-i18n="referral.program_description">
+                You will receive 1 per invited user. The rate increases for premium users.
+                double to 3.0 per invited user. Funds are credited to the balance immediately.
+            </p>
+
+            <div class="referals-code-block">
+                <label for="ref-code" class="referals-label theme-text" data-i18n="referral.your_code_label">Your
+                    referal code</label>
+                <div class="referals-code-wrapper">
+                    <input type="text" id="ref-code" class="referals-code-input theme-input" value="ABC123XYZ"
+                        readonly />
+                    <button class="referals-copy-btn">
+                        <img src="/assets/icons/copy.svg" alt="Copy it" class="copy-icon theme-icon"
+                            data-i18n="referral.copy_button">
+                        Сopy
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="referals-card-activate theme-card">
+            <h2 class="referals-activate-heading theme-text" data-i18n="referral.activate_heading">Activation
+                referral code</h2>
+            <p class="referals-activate-description" data-i18n="referral.activate_description">
+                Activate the referral code of the user who invited you and get 3 to the balance.
+                The user who invited you will receive 1 without a premium subscription and 3 with a premium
+                subscription.
+            </p>
+
+            <div class="referals-code-wrapper">
+                <input type="text" class="referals-activate-code-input theme-input"
+                    placeholder="Enter the invitation code"
+                    data-i18n-placeholder="referral.enter_invite_code_placeholder" />
+                <button class="referals-activate-btn">
+                    <img src="/assets/icons/key.svg" alt="Activation" class="activate-icon theme-icon">
+                    <span data-i18n="referral.activate_button">Activate</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="referals-card-infos">
+        <div class="referals-card-info theme-card">
+            <div class="referals-info-value theme-text">0</div>
+            <div class="referals-info-label">Всего заработано</div>
+        </div>
+        <div class="referals-card-info theme-card">
+            <div class="referals-info-value theme-text">1</div>
+            <div class="referals-info-label">Ваша ставка за пользователя</div>
+        </div>
+        <div class="referals-card-info theme-card">
+            <div class="referals-info-value theme-text">0</div>
+            <div class="referals-info-label">Приглашенных пользователей</div>
+        </div>
+    </div>
+
     <footer class="footer theme-line">
         <div class="footer-content">
             <span class="footer-copyright">© 2025 Project of the ValeyevStudio company.</span>
@@ -353,12 +416,13 @@
     </footer>
 
     <!-- Подключаем JS скрипты -->
-    <script src="js/menu.js"></script>
     <script src="js/themeswitch.js"></script>
     <script src="js/translate-language.js"></script>
-    <script src="js/captcha.js"></script>
+    <script src="js/referal.js"></script>
+    <script src="js/menu.js"></script>
     <script src="js/menu_dropdown.js"></script>
     <script src="js/download.js"></script>
+    <script src="js/captcha.js"></script>
     <script src="js/pushnotify.js"></script>
     <script src="js/banner_promo.js"></script>
     <script src="js/modal_promo.js"></script>

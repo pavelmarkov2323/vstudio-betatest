@@ -35,13 +35,18 @@ body.dark-theme .theme-button {
     background-color: #171717;
 }
 
-/* Button Switcher */
 body.dark-theme .theme-button-switcher {
     background: #171717;
 }
 
 body.dark-theme .theme-button:hover {
   background-color: #252525;
+}
+
+/* Card panel background */
+body.dark-theme .theme-card {
+  background-color: #171717;
+  border: 1px solid #333333;
 }
 
 /* Input field, input background */
@@ -63,7 +68,7 @@ body.dark-theme .theme-banner {
 }
 
 /* Others Style */
-body.dark-theme .line {
+body.dark-theme .theme-line {
     border-top: 1px solid #333333 !important; /* Темно-серая граница, линия (Line) */
 }
 
