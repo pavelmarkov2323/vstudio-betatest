@@ -66,6 +66,7 @@ router.post('/activate', async (req, res) => {
       { userId: refUser.userId },
       {
         $inc: { referrals: 1, referral_earnings: refUserEarningsIncrement, balance: refUserEarningsIncrement },
+        $push: { referral_activated_users: currentUser.userId }
       }
     );
 
