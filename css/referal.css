@@ -310,18 +310,21 @@
     }
 
     .referals-card-infos {
-        flex-direction: column;
-        align-items: center;
+        display: flex;
+        flex-wrap: wrap; /* позволяет переносить карточки, если места не хватает */
+        justify-content: center; /* центрируем карточки */
         gap: 15px;
         margin-top: -15px;
-        margin-bottom: 50px; 
-
+        margin-bottom: 50px;
+        padding: 0 16px; /* отступы по бокам, чтобы не липли к краям */
+        box-sizing: border-box; /* важно для паддингов */
     }
 
     .referals-card-info {
-        width: 100%;
-        max-width: 400px;
+        flex: 1 1 300px; /* можно адаптивно сжимать, но не меньше 300px */
+        max-width: 500px;
         padding: 18px 20px;
+        box-sizing: border-box;
     }
 
     .referals-info-value {
