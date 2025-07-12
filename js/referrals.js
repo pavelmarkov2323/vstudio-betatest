@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
   const referalsCard = document.querySelector('.referals-card');
   const cardActivate = document.querySelector('.referals-card-activate');
   const infosCard = document.querySelector('.referals-card-infos');
