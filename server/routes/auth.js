@@ -109,7 +109,7 @@ router.post('/request-reset', async (req, res) => {
     const token = crypto.randomBytes(32).toString('hex');
     resetTokens[token] = { userId: user.userId, expires: Date.now() + 1000 * 60 * 30 }; // 30 мин
 
-    const resetLink = `https://vstudio-betatest-production.up.railway.app/reset-password.html?token=${token}`;
+    const resetLink = `https://vstudio-betatest.onrender.com/reset-password.html?token=${token}`;
 
     // Настройка отправки письма с уникальный токеном для восстановления пароля
     const transporter = nodemailer.createTransport({
