@@ -46,7 +46,12 @@ body.dark-theme .theme-button:hover {
 /* Card panel background */
 body.dark-theme .theme-card {
   background-color: #171717;
-border: 1px solid #333333;
+    border: 1px solid #333333;
+}
+
+body.dark-theme .top-card {
+  background-color: #202020;
+  border: 1px solid #333333;
 }
 
 /* Input field, input background */

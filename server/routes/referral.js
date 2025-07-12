@@ -12,11 +12,21 @@ router.get('/info', async (req, res) => {
 
     const ratePerUser = user.isPremium ? 3 : 1;
 
+    const invitedUsersDetailed = await User.find(
+      { userId: { $in: user.referral_activated_users } },
+      { userId: 1, username: 1, avatar: 1, _id: 0 } // выбираем только нужные поля
+    );
+
+    const orderedUsers = user.referral_activated_users.map(id =>
+      invitedUsersDetailed.find(u => u.userId === id)
+    ).filter(Boolean); // чтобы сохранить порядок
+
     res.json({
       totalEarned: user.referral_earnings,
       ratePerUser,
       invitedUsers: user.referrals,
-      activatedReferralCode: user.activated_referral_code
+      activatedReferralCode: user.activated_referral_code,
+      invitedUsersList: orderedUsers
     });
   } catch (err) {
     res.status(500).json({ message: 'Ошибка сервера' });

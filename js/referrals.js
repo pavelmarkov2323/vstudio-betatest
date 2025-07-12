@@ -20,6 +20,29 @@ document.addEventListener('DOMContentLoaded', () => {
     infos.invitedUsers.textContent = formatNumber(data.invitedUsers);
   }
 
+  function renderInvitedUsers(users) {
+    const container = document.querySelector('.referals-card-inviteusers');
+    container.innerHTML = ''; // очистить перед добавлением новых
+
+    users.forEach((user, index) => {
+      const div = document.createElement('div');
+      div.className = 'invite-user top-card';
+      div.innerHTML = `
+      <span class="invite-index theme-text">#${index + 1}</span>
+      <img class="invite-avatar" src="${user.avatar}" alt="Avatar">
+      <div class="invite-info">
+          <span class="invite-id">ID: ${user.userId}</span>
+          <span class="invite-username theme-text">@${user.username}</span>
+      </div>
+    `;
+      container.appendChild(div);
+    });
+
+    // Показывать контейнер только если есть пользователи
+    document.querySelector('.referals-card-inviteusers-container').style.display =
+      users.length ? 'block' : 'none';
+  }
+
   function toggleActivateCard(data) {
     if (data.activatedReferralCode && data.activatedReferralCode !== '') {
       activateCard.style.display = 'none';
@@ -40,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
           updateReferralInfo(data);
           toggleActivateCard(data);
+          if (data.invitedUsersList) renderInvitedUsers(data.invitedUsersList);
         });
     });
 
