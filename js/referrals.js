@@ -1,37 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const observerTarget = document.querySelector('.referals-card-infos');
-  const cards = document.querySelectorAll('.referals-card-info');
+  const referalsCard = document.querySelector('.referals-card');
+  const cardActivate = document.querySelector('.referals-card-activate');
+  const infosCard = document.querySelector('.referals-card-infos');
   const inviteUsersBlock = document.querySelector('.referals-card-inviteusers');
 
-  const observer = new IntersectionObserver((entries, observer) => {
+  const animationSequence = [
+    document.querySelector('.referals-total-earned-label'),
+    document.getElementById('total-earned'),
+    document.querySelector('.referals-rate-per-user-label'),
+    document.getElementById('rate-per-user'),
+    document.querySelector('.referals-invited-users-label'),
+    document.getElementById('invited-users'),
+  ];
+
+  // 1. Observer для главного блока
+  const observerReferalsCard = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
+        referalsCard.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
 
-        cards.forEach((card, index) => {
-          card.style.animationDelay = `${index * 0.3}s`;
+  // 2. Observer для блока активации
+  const observerCardActivate = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        cardActivate.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  // 3. Observer для блока с карточками
+  const observerInfosCard = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        infosCard.classList.add('animate');
+
+        animationSequence.forEach((el, index) => {
+          if (el) {
+            el.style.opacity = 0;
+            el.style.animation = `fadeUp 0.6s ease forwards`;
+            el.style.animationDelay = `${index * 0.3}s`;
+          }
         });
 
-        // Время анимации всех карточек
-        const totalCardsDuration = cards.length * 0.3 + 0.6; // количество * задержка + длительность анимации одного
-
-        // Показываем блок inviteusers с задержкой после анимации карточек
+        const totalDuration = animationSequence.length * 0.3 + 0.6;
         if (inviteUsersBlock) {
           setTimeout(() => {
             inviteUsersBlock.classList.add('visible');
-          }, totalCardsDuration * 1000);
+          }, totalDuration * 1000);
         }
 
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.4
-  });
+  }, { threshold: 0.4 });
 
-  if (observerTarget) {
-    observer.observe(observerTarget);
-  }
+  // Наблюдение
+  if (referalsCard) observerReferalsCard.observe(referalsCard);
+  if (cardActivate) observerCardActivate.observe(cardActivate);
+  if (infosCard) observerInfosCard.observe(infosCard);
 
   const refCodeInput = document.getElementById('ref-code');
   const copyBtn = document.querySelector('.referals-copy-btn');
