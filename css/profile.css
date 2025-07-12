@@ -494,7 +494,7 @@
   /* "Блок статуса премиум подписки" */
   .premium-subscribe-card {
     padding-bottom: 32px;
-    margin-bottom: 12px; /* Добавляет отступ снизу */
+    margin-bottom: 25px;
   }
 
   .premium-subscribe-card .data-item {

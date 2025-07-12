@@ -41,32 +41,26 @@
             overflow: hidden;
             border-right: 2px solid #444;
             width: 0;
-            animation:
-                typing 3s steps(40, end) forwards,
-                blinkCursor 0.75s step-end infinite;
+            animation: typing 4s steps(70, end) forwards, blinkCursor 0.75s step-end infinite;
+            display: inline-block;
+            max-width: 100%;
         }
 
-        /* Эффект набора */
         @keyframes typing {
             from {
-                width: 0
+                width: 0;
             }
-
             to {
-                width: 100%
+                width: 85ch; /* заменили 100% на ch, под длину текста */
             }
         }
 
-        /* Мигающий курсор */
         @keyframes blinkCursor {
-
-            0%,
-            100% {
-                border-color: #444
+            0%, 100% {
+                border-color: #444;
             }
-
             50% {
-                border-color: transparent
+                border-color: transparent;
             }
         }
 
@@ -101,15 +95,6 @@
             height: 300px;
             box-sizing: border-box;
             text-align: left;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        /* Активное состояние при входе в зону видимости */
-        .brand-logoinfo-card.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .brand-logoinfo-title {
@@ -144,15 +129,6 @@
             height: 300px;
             box-sizing: border-box;
             text-align: left;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        /* Активное состояние при входе в зону видимости */
-        .brand-productinfo-card.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .brand-productinfo-title {
@@ -189,15 +165,6 @@
             max-width: 920px;
             margin-top: 32px;
             margin: 32px auto;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        /* Активное состояние при входе в зону видимости */
-        .brand-card-color.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .brand-color-header {
@@ -260,15 +227,6 @@
             max-width: 980px;
             box-sizing: border-box;
             margin: 32px auto;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        /* Активное состояние при входе в зону видимости */
-        .brand-partnerinfo-card.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .partner-column {
@@ -314,15 +272,6 @@
             text-align: left;
             display: flex;
             align-items: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        /* Активное состояние при входе в зону видимости */
-        .brand-info-card.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .brand-info-icon {
@@ -337,6 +286,19 @@
             line-height: 1.6;
         }
 
+        /* Анимации */
+        .animated {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
         /* Мобильные устройства — экраны до 480px */
         @media (max-width: 480px) {
             .brand-title {
@@ -345,10 +307,10 @@
 
             .brand-description {
                 font-size: 12px;
-                white-space: normal;
-                width: auto;
+                white-space: normal; /* включаем перенос */
+                width: auto;          /* отменяем ограничение ширины */
                 overflow: visible;
-                animation: none;
+                animation: none;      /* отключаем анимацию */
                 border-right: none;
             }
 
