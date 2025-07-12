@@ -37,22 +37,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const observerInfosCard = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        infosCard.classList.add('animate');
+        const cards = infosCard.querySelectorAll('.referals-card-info');
 
+        // Появление каждой карточки по одной через класс .visible
+        cards.forEach((card, index) => {
+          setTimeout(() => {
+            card.classList.add('visible');
+          }, index * 400); // 0.4s между карточками
+        });
+
+        // Появление лейблов и значений (value + label)
         animationSequence.forEach((el, index) => {
           if (el) {
             el.style.opacity = 0;
             el.style.animation = `fadeUp 0.6s ease forwards`;
-            el.style.animationDelay = `${index * 0.3}s`;
+            el.style.animationDelay = `${(cards.length * 0.4 + index * 0.3)}s`;
           }
         });
 
-        const totalDuration = animationSequence.length * 0.3 + 0.6;
-        if (inviteUsersBlock) {
-          setTimeout(() => {
+        // Появление inviteUsersBlock — в конце
+        const totalDelay = cards.length * 0.4 + animationSequence.length * 0.3 + 0.6;
+        setTimeout(() => {
+          if (inviteUsersBlock) {
             inviteUsersBlock.classList.add('visible');
-          }, totalDuration * 1000);
-        }
+          }
+        }, totalDelay * 1000);
 
         observer.unobserve(entry.target);
       }

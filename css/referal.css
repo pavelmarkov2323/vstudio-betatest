@@ -178,9 +178,6 @@
     text-align: center;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     width: 200px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease forwards;
 }
 
 .referals-info-value {
@@ -222,19 +219,13 @@
   transform: translateY(0);
 }
 
-
 .referals-card-info {
   opacity: 0;
   transform: translateY(15px);
-  animation-fill-mode: forwards;
-  animation-name: fadeUpBlock;
-  animation-duration: 0.6s;
-  animation-timing-function: ease;
-  animation-delay: 0s;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-/* Класс, который добавляет анимацию */
-.referals-card-infos.animate .referals-card-info {
+.referals-card-info.visible {
   opacity: 1;
   transform: translateY(0);
 }
