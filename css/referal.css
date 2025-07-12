@@ -224,12 +224,69 @@
     animation-delay: 0.3s;
 }
 
+/* Анимации*/
+.referals-card-info {
+  opacity: 0;
+  transform: translateY(15px);
+  animation-fill-mode: forwards;
+  animation-name: fadeUpBlock;
+  animation-duration: 0.6s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+}
+
+/* Класс, который добавляет анимацию */
+.referals-card-infos.animate .referals-card-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Чтобы элементы внутри появлялись с задержкой */
+.referals-card-infos.animate .referals-info-label,
+.referals-card-infos.animate .referals-info-value {
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.referals-total-earned-label {
+  animation-delay: 0.3s;
+}
+#total-earned {
+  animation-delay: 0.6s;
+}
+
+.referals-rate-per-user-label {
+  animation-delay: 0.9s;
+}
+#rate-per-user {
+  animation-delay: 1.2s;
+}
+
+.referals-invited-users-label {
+  animation-delay: 1.5s;
+}
+#invited-users {
+  animation-delay: 1.8s;
+}
+
 @keyframes fadeInUp {
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /* Список приглашенных пользователей*/
 .referals-card-inviteusers-container {
@@ -248,6 +305,15 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Класс для появления */
+.referals-card-inviteusers.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .invite-user {

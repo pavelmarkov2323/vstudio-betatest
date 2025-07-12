@@ -1,4 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const observerTarget = document.querySelector('.referals-card-infos');
+  const cards = document.querySelectorAll('.referals-card-info');
+  const inviteUsersBlock = document.querySelector('.referals-card-inviteusers');
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+
+        cards.forEach((card, index) => {
+          card.style.animationDelay = `${index * 0.3}s`;
+        });
+
+        // Время анимации всех карточек
+        const totalCardsDuration = cards.length * 0.3 + 0.6; // количество * задержка + длительность анимации одного
+
+        // Показываем блок inviteusers с задержкой после анимации карточек
+        if (inviteUsersBlock) {
+          setTimeout(() => {
+            inviteUsersBlock.classList.add('visible');
+          }, totalCardsDuration * 1000);
+        }
+
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.4
+  });
+
+  if (observerTarget) {
+    observer.observe(observerTarget);
+  }
+
   const refCodeInput = document.getElementById('ref-code');
   const copyBtn = document.querySelector('.referals-copy-btn');
   const activateBtn = document.querySelector('.referals-activate-btn');
