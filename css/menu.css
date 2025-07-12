@@ -15,14 +15,12 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 16px;
     transition: transform 0.3s ease-in-out;
-    /* Плавное скрытие/появление */
     z-index: 10;
 }
 
 /* Скрытие меню при прокрутке */
 .header.hidden {
     transform: translateY(-200%);
-    /* Скрытие меню вверх на 100% высоты */
 }
 
 /* По умолчанию скрываем бургер (для мобильного меню) */
@@ -34,7 +32,6 @@
     height: 31px;
     width: 31px;
     margin-right: -7px;
-    /* Смещаем текстовый логотип влево (отрицательное значение для сдвига) */
 }
 
 .logo {
@@ -66,14 +63,12 @@
 .nav a {
     text-decoration: none;
     color: gray;
-    /* По умолчанию серый */
     font-weight: medium;
     transition: color 0.3s ease-in-out;
 }
 
 .nav a.active {
     color: black;
-    /* Черный цвет для активной страницы */
     font-weight: medium;
 }
 
@@ -82,7 +77,6 @@
     align-items: center;
     gap: 15px;
     position: relative;
-    /* Чтобы элементы не перекрывались */
 }
 
 /* Выпадающий список выбора языка */
@@ -97,7 +91,6 @@
     transition: all 0.3s ease;
     justify-content: space-between;
     width: 75px;
-    /* Уменьшаем ширину, если необходимо */
 }
 
 /* Стиль для флага и кода */
@@ -105,14 +98,11 @@
     width: 20px;
     height: 20px;
     margin-right: 10px;
-    /* Фиксированное расстояние между флагом и кодом языка */
 }
 
 .language-switch .language-code {
     margin-right: 30px;
-    /* Фиксированное расстояние между кодом языка и стрелкой */
     font-weight: 500;
-    /* Чуть четче (Regular) */
     color: black;
 }
 
@@ -125,7 +115,6 @@
     transform: translateY(-50%);
     transition: transform 0.3s ease;
     right: 10px;
-    /* Отступ для стрелки */
 }
 
 /* Выпадающий список */
@@ -188,11 +177,8 @@
 .language-switch.open .dropdown-menu {
     opacity: 1;
     visibility: visible;
-    /* Становится видимым */
     transform: translateY(0);
-    /* Возвращается в нормальное положение */
     transition: opacity 0.3s ease, transform 0.3s ease;
-    /* Плавное появление */
 }
 
 /* Когда меню открыто — поворачиваем стрелку */
@@ -422,6 +408,20 @@
 .deposit_wallet img {
     width: 18px;
     height: 18px;
+    transition: transform 0.6s ease;
+}
+
+.deposit_wallet:hover img {
+    animation: rotate-and-scale 0.6s ease forwards;
+}
+
+@keyframes rotate-and-scale {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+    to {
+        transform: rotate(360deg) scale(1.1);
+    }
 }
 
 .balance-divider {
