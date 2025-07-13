@@ -22,13 +22,13 @@
     "mobile-nav": {
         "mobile-nav-home": "Home",
         "mobile-nav-our-products": "Our Products",
-        "mobile-nav-about-us": "About us",
-        "referals": "Referal program"
+        "mobile-nav-about-us": "About us"
     },
     "footer": {
         "copyright": "© 2025 Project of the ValeyevStudio company.",
         "user-agreement": "User Agreement",
-        "partners": "Partners"
+        "partners": "Partners",
+        "referals": "Referal program"
     },
     "footer-social": {
         "social-platforms": "Social:"
