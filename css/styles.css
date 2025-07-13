@@ -4,7 +4,7 @@ body {
     background-color: #EDEEF0;
     font-family: 'MiSans', sans-serif;
     padding-top: 80px; /* Отступ сверху для меню */
-    padding-bottom: 50px; /* Добавляем отступ снизу, чтобы был зазор до футера */
+    padding-bottom: 60px; /* Добавляем отступ снизу, чтобы был зазор до футера */
 }
 
 html {
@@ -65,8 +65,7 @@ html {
 /* Мобильные устройства — экраны до 480px */
 @media (max-width: 480px) {
     body {
-        padding-bottom: 110px;
-        /* Увеличенный отступ под футер */
+        padding-bottom: 150px;  /* Увеличенный отступ футера от верхних элементов */
     }
 
     .footer {
