@@ -7,7 +7,7 @@
     "aboutcompany-heading": "About ValeyevStudio",
     "aboutcompany-text": "ValeyevStudio is more than just a software development company — it's a vision of a smarter, more efficient digital future. <br><br> We specialize in creating high-performance, user-friendly applications under the <strong>ValeyevPrograms</strong> brand. Every product we release is focused on simplicity, speed, and innovation — putting user experience above all else. <br><br> Our team is driven by curiosity, creativity, and a constant desire to improve. We don’t just build software — we shape the future of digital tools.",
     "license-heading": "User Agreement and Privacy Policy",
-    "legal-subheading": "            This agreement regulates the use of the software developed by ValeyevStudio (hereinafter referred to as Nikita Valeyev). By installing and using PixelFPS, PixelKey, and other ValeyevStudio products, you agree to the terms of this agreement.        ",
+    "legal-subheading": "This agreement regulates the use of the software developed by ValeyevStudio (hereinafter referred to as Nikita Valeyev). By installing and using PixelFPS, PixelKey, and other ValeyevStudio products, you agree to the terms of this agreement.        ",
     "push-suggestions-title": "Have improvement suggestions?",
     "push-suggestions-text": "Write to us, we will definitely consider your feedback and suggestions to improve or add new features.",
     "push-suggestions-button": "Suggest",
@@ -39,21 +39,31 @@
         "captcha-footer": "New verification technology 2.0"
     },
     "faq": {
-        "faq-title": "FAQ",
-        "questions": {
-            "q1": {
-                "question": "Why choose us?",
-                "answer": "We are a team of developers dedicated to providing our product to as many people as possible worldwide so that everyone can try it. And it's absolutely free!"
-            },
-            "q2": {
-                "question": "How to start using the software?",
-                "answer": "To download our official software, go to the appropriate section of the website and click the Download button.<br><br>Remember, by downloading our software, you agree to the user agreement and the policy of our company, Valeyev Studio."
-            },
-            "q3": {
-                "question": "What is the cost of a paid subscription?",
-                "answer": "The price of a paid subscription is $0.99. Once activated, the subscription is valid for 1 calendar month from the moment of activation.<br><br>The subscription allows you to remove intrusive banners through the settings and access other features."
-            }
-        }
+        "faq-title": "Frequently Asked Questions",
+        "faq-subtitle": "All the answers to your questions",
+        "faq-button-main": "General",
+        "faq-button-subscribe": "Subscription",
+        "faq-button-account": "Account",
+        "faq-button-security": "Security",
+        "faq-button-other": "Other",
+        "faq-main-question-1": "Why choose us?",
+        "faq-main-answer-1": "We are a team of developers committed to making our product available to as many people around the world as possible. Everyone should be able to try it — completely free of charge!",
+        "faq-main-question-2": "How do I start using the program?",
+        "faq-main-answer-2": "To download our official software, go to the relevant section of the website and click the Download button.\n\nPlease note that by downloading our software, you agree to the user agreement and our company policy — ValeyevStudio.",
+        "faq-main-question-3": "What is the cost of the paid subscription?",
+        "faq-main-answer-3": "The paid subscription costs 1 US dollar. Once activated, the subscription is valid for 1 calendar month.\n\nThe subscription allows you to remove intrusive banners in the settings and access experimental features.",
+        "faq-sub-question-1": "What subscription plans are available?",
+        "faq-sub-answer-1": "Currently, there is only one subscription plan available at a cost of 1 dollar per month.",
+        "faq-account-question-1": "How can I update my account information?",
+        "faq-account-answer-1": "You can update your information in the \"Account Settings\" section of your personal dashboard.",
+        "faq-security-question-1": "Is my data safe?",
+        "faq-security-answer-1": "Your data is absolutely secure.\n\nWe take user protection seriously:\n- Passwords are encrypted using the **bcrypt** algorithm.\n- All data is transmitted via **secure HTTPS connection**.\n- We use only trusted security tools and methods.\n- Our **multi-layered security architecture** protects against all threats.\n\nYour data is safe — we’ve done everything to let you focus on what matters.",
+        "faq-security-question-2": "How secure is password changing?",
+        "faq-security-answer-2": "Password changes are processed via a **unique encrypted token** that is valid for a **strictly limited time** and automatically expires after the operation.\n\nThis ensures only authorized users can change the password and prevents interception or reuse. We use **modern cryptographic methods** to guarantee security.",
+        "faq-security-question-3": "How can I enable extra account protection?",
+        "faq-security-answer-3": "In the user menu, go to **Settings**, then navigate to the **Security** section, where you can enable **Two-Factor Authentication (2FA)** using **Google Authenticator**.\n\nEven if someone gets your password, without the 2FA code from the app, they won’t be able to access your account.\n\n**2FA is one of the most effective ways to protect your data from breaches.**",
+        "faq-other-question-1": "Where is your company located?",
+        "faq-other-answer-1": "We are a distributed team working from all over the world. We don’t have a single physical office."
     },
     "tooltip": {
         "music-volume": "Music volume",
@@ -205,7 +215,7 @@
         "in-progress": "The section is under development."
     },
     "roadmap": {
-        "roadmap-heading": "Roadmap 2025–2026",
+        "roadmap-heading": "Roadmap 2026–2027",
         "roadmap-title": "Our Plans",
         "stage-1": "Optimization of Website and Software",
         "stage-discription1": "We will continue to improve the stability, loading speed, and user experience of both the website and the main software.",

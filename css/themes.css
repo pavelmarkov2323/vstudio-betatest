@@ -14,20 +14,20 @@ body.dark-theme .footer {
 
 /* Text Style */
 body.dark-theme .theme-text {
-    color: #ffffff !important; /* Белый текст */
+    color: #ffffff !important;
 }
 
 body.dark-theme .gray-text {
-    color: #aaa; /* Светло-серый текст */
+    color: #aaa;
 }
 
 body.dark-theme .red-text {
-    color: #c71f1f; /* Красный текст */
+    color: #c71f1f;
 }
 
 /* SVG Icons Style */
 body.dark-theme .theme-icon {
-    filter: brightness(0) invert(1) !important; /* Делаем белыми */
+    filter: brightness(0) invert(1) !important;
 }
 
 /* Button Style */
@@ -40,31 +40,41 @@ body.dark-theme .theme-button-switcher {
 }
 
 body.dark-theme .theme-button:hover {
-  background-color: #252525;
+    background-color: #252525;
+}
+
+body.dark-theme .theme-tab-button {
+    background-color: #171717;
+    color: #28A7E8;
+}
+
+body.dark-theme .theme-tab-button.active {
+    background-color: #252525;
+    color: #ffffff;
 }
 
 /* Card panel background */
 body.dark-theme .theme-card {
-  background-color: #171717;
+    background-color: #171717;
     border: 1px solid #333333;
 }
 
 body.dark-theme .top-card {
-  background-color: #202020;
-  border: 1px solid #333333;
+    background-color: #202020;
+    border: 1px solid #333333;
 }
 
 /* Input field, input background */
 body.dark-theme .theme-input {
-  background-color: #202020;
-  color: #eee;
-  border-radius: 12px;
-  border: none;
+    background-color: #202020;
+    color: #eee;
+    border-radius: 12px;
+    border: none;
 }
 
 /* Modal Window Style */
 body.dark-theme .theme-modal {
-  background: #252525;
+    background: #252525;
 }
 
 /* Banner background Style */
@@ -72,29 +82,34 @@ body.dark-theme .theme-banner {
     background: #1F1F1F;
 }
 
+body.dark-theme .accordion-item {
+    background: #1f1f1f;
+}
+
 /* Others Style */
 body.dark-theme .theme-line {
-    border-top: 1px solid #333333 !important; /* Темно-серая граница, линия (Line) */
+    border-top: 1px solid #333333 !important;
+    /* Темно-серая граница, линия (Line) */
 }
 
 /* Burger menu settings (Боковое меню, интерактивное) */
-body.dark-theme .settings-sidebar{
+body.dark-theme .settings-sidebar {
     background-color: #202020;
 }
 
 body.dark-theme .sidebar-item:hover,
 body.dark-theme .sidebar-item.active {
-  background-color: #252525;
+    background-color: #252525;
 }
 
 /* Settings-card (Welcome) */
 body.dark-theme .settings-card-welcome {
-  background-color: #171717;
+    background-color: #171717;
 }
 
 /* Secure-card (Welcome) */
 body.dark-theme .secure-card {
-  background-color: #171717;
+    background-color: #171717;
 }
 
 /* Header (Menu) */
@@ -106,11 +121,13 @@ body.dark-theme .header {
 
 /* Текстовые кнопки в главном меню */
 body.dark-theme .nav a {
-    color: #ddd; /* Все ссылки серые */
+    color: #ddd;
+    /* Все ссылки серые */
 }
 
 body.dark-theme .nav a.active {
-    color: white; /* Белый для активной ссылки */ 
+    color: white;
+    /* Белый для активной ссылки */
 }
 
 /* Плавный переход для переключателя темы */
@@ -122,67 +139,81 @@ body .theme-toggle input {
 
 /* Темная тема активна для выпадающего списка Language (Языка) Localization */
 body.dark-theme .language-switch {
-    border: 2px solid #333333 !important; /* Меняем границу на #333333 */
+    border: 2px solid #333333 !important;
+    /* Меняем границу на #333333 */
 }
 
 body.dark-theme .language-switch .dropdown-item:hover {
-    background-color: #292929 !important; /* Темно-серый цвет */
+    background-color: #292929 !important;
+    /* Темно-серый цвет */
 }
 
 /* Когда темная тема активна для выпадающего списка */
 body.dark-theme .language-switch .dropdown-menu {
-    border: 2px solid #333333 !important; /* Меняем границу на #333333 */
-    background-color: #171717 !important; /* Цвет фона выпадающего списка */
+    border: 2px solid #333333 !important;
+    /* Меняем границу на #333333 */
+    background-color: #171717 !important;
+    /* Цвет фона выпадающего списка */
 }
 
 /* Когда темная тема активна для текста кода страны */
 body.dark-theme .language-switch .language-code {
-    color: white !important; /* Белый текст для кода страны (например, EN) */
+    color: white !important;
+    /* Белый текст для кода страны (например, EN) */
 }
 
 /* Цвет текста в выпадающем списке в темной теме */
 body.dark-theme .language-switch .dropdown-item span {
-    color: white !important; /* Белый текст в выпадающем списке */
+    color: white !important;
+    /* Белый текст в выпадающем списке */
 }
 
 /* Стилизация скроллбара в темной теме */
 body.dark-theme .dropdown-menu {
-    scrollbar-width: thin; /* Для Firefox */
-    scrollbar-color: #333333 #171717; /* Цвет скролла и фона */
+    scrollbar-width: thin;
+    /* Для Firefox */
+    scrollbar-color: #333333 #171717;
+    /* Цвет скролла и фона */
 }
 
 /* Для Chrome, Edge и Safari */
 body.dark-theme .dropdown-menu::-webkit-scrollbar {
-    width: 8px; /* Ширина скроллбара */
+    width: 8px;
+    /* Ширина скроллбара */
 }
 
 body.dark-theme .dropdown-menu::-webkit-scrollbar-thumb {
-    background-color: #333333; /* Цвет ползунка */
-    border-radius: 4px; /* Закругление */
+    background-color: #333333;
+    /* Цвет ползунка */
+    border-radius: 4px;
+    /* Закругление */
 }
 
 body.dark-theme .dropdown-menu::-webkit-scrollbar-track {
-    background: #171717; /* Цвет фона */
+    background: #171717;
+    /* Цвет фона */
 }
-/* Для выпадающего меню профиля (Profile) */
 
+/* Для выпадающего меню профиля (Profile) */
 body.dark-theme .dropdown-panel {
-    background: #171717; /* Цвет фона */
+    background: #171717;
+    /* Цвет фона */
     border: 1px solid #333333;
 }
 
 body.dark-theme .dropdown-item:hover {
-    background: #333333; /* Цвет наведения */
+    background: #333333;
+    /* Цвет наведения */
 }
 
 /* Контент внутри модального окна для темной темы */
 body.dark-theme .captcha-content {
-    background-color: #171717; /* Темный фон для модального окна */
+    background-color: #171717;
     border-radius: 20px;
     width: 320px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Более выраженная тень для темной темы */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 /* Модальное окно Message Push */
@@ -191,44 +222,23 @@ body.dark-theme .modal-message-window {
 }
 
 body.dark-theme .modal-message-close:hover {
-  color: rgb(224, 224, 224);
+    color: rgb(224, 224, 224);
 }
 
 /* RoadMap - Дорожная карта */
 body.dark-theme .roadmap-section {
-  background: #141414;
+    background: #141414;
 }
 
 body.dark-theme .roadmap-container {
-  background: #1a1a1a;
+    background: #1a1a1a;
 }
 
 body.dark-theme .roadmap-item {
-  background: #1f1f1f;
+    background: #1f1f1f;
 }
 
-/* FAQ - Вопросы / Ответы */
-
-/* Фон панели вопросов FAQ*/
-body.dark-theme .faq-question {
-    background: #171717;
-}
-
-/* Фон открытой панели ответа FAQ*/
-body.dark-theme .faq-answer {
-    background: #171717;
-}
-
-/* Для раскрытого вопроса FAQ */
-body.dark-theme .faq-item.active .faq-question {
-    background: #292929;
-}
-
-/* Для наведения FAQ */
-body.dark-theme .faq-question:hover {
-    background: #272727;
-}
-
+/* Для Toolip подсказок */
 body.dark-theme .tooltip {
     background: #272727;
 }
@@ -238,12 +248,12 @@ body.dark-theme .tooltip::after {
 }
 
 /* Для наведения status icon tooltip status*/
-body.dark-theme .tooltip-status{
+body.dark-theme .tooltip-status {
     background: #303030;
 }
 
-body.dark-theme .tooltip-status-arrow{
-    border-top: #303030; 
+body.dark-theme .tooltip-status-arrow {
+    border-top: #303030;
 }
 
 /* Для наведения dropdown меню Мои продукты*/
@@ -262,11 +272,11 @@ body.dark-theme .aboutcompany-block {
 }
 
 /* Для дизайна About page Моя команда */
-body.dark-theme .about-block{
+body.dark-theme .about-block {
     background: #171717;
 }
 
-body.dark-theme .about-block img{
+body.dark-theme .about-block img {
     border: 4px solid #4d4d4d;
 }
 
@@ -292,9 +302,11 @@ body.dark-theme .push-notify {
 body.dark-theme .avatar-card {
     background: #171717;
 }
+
 body.dark-theme .bio-card {
     background: #171717;
 }
+
 body.dark-theme .data-card {
     background: #171717;
 }
@@ -310,6 +322,7 @@ body.dark-theme .bio-input {
 body.dark-theme .bio-hint {
     background: #202020;
 }
+
 /* Для дизайна Auth page */
 body.dark-theme .login-container {
     background: #202020;
@@ -331,6 +344,7 @@ body.dark-theme .registration-form input {
     background: #303030;
     border: solid 1px #4d4d4d;
 }
+
 body.dark-theme .login-form input {
     background: #303030;
     border: solid 1px #4d4d4d;
@@ -350,6 +364,7 @@ body.dark-theme .input-email-reset {
 body.dark-theme .reset-container {
     background: #202020;
 }
+
 body.dark-theme .password-toggle-wrapper {
     background: #303030;
     border: solid 1px #4d4d4d;
@@ -365,28 +380,28 @@ body.dark-theme .password-reset-hint {
 }
 
 /* Для дизайна general settings */
-body.dark-theme .settings-card { 
+body.dark-theme .settings-card {
     background: #171717;
 }
 
 /* Для дизайна brand page */
 
-body.dark-theme .brand-logoinfo-card { 
+body.dark-theme .brand-logoinfo-card {
     background: #171717;
 }
 
-body.dark-theme .brand-productinfo-card { 
+body.dark-theme .brand-productinfo-card {
     background: #171717;
 }
 
-body.dark-theme .brand-card-color { 
+body.dark-theme .brand-card-color {
     background: #171717;
 }
 
-body.dark-theme .brand-partnerinfo-card { 
+body.dark-theme .brand-partnerinfo-card {
     background: #171717;
 }
 
-body.dark-theme .brand-info-card { 
+body.dark-theme .brand-info-card {
     background: #171717;
 }

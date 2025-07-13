@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.translations["promo-modal"] = data["promo-modal"];
                 window.translations["banner"] = data["banner"];
                 window.translations = data;
-                    
+
                 document.dispatchEvent(new Event("languageReady"));
                 window.translations.countries = data.countries || {};
                 // Обновляем тексты на странице
@@ -158,7 +158,39 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.captcha-title': data["captcha-content"]["captcha-title"],
                     '.captcha-text-container': data["captcha-content"]["captcha-text-container"],
                     '.captcha-footer': data["captcha-content"]["captcha-footer"],
+                    // FAQ
                     '.faq-title': data["faq"]["faq-title"],
+                    '.faq-subtitle': data["faq"]["faq-subtitle"],
+                    // FAQ Buttons
+                    '.faq-button-main': data["faq"]["faq-button-main"],
+                    '.faq-button-subscribe': data["faq"]["faq-button-subscribe"],
+                    '.faq-button-account': data["faq"]["faq-button-account"],
+                    '.faq-button-security': data["faq"]["faq-button-security"],
+                    '.faq-button-other': data["faq"]["faq-button-other"],
+                    // FAQ Main Questions and Answers
+                    '.faq-main-question-1': data["faq"]["faq-main-question-1"],
+                    '.faq-main-answer-1': data["faq"]["faq-main-answer-1"],
+                    '.faq-main-question-2': data["faq"]["faq-main-question-2"],
+                    '.faq-main-answer-2': data["faq"]["faq-main-answer-2"],
+                    '.faq-main-question-3': data["faq"]["faq-main-question-3"],
+                    '.faq-main-answer-3': data["faq"]["faq-main-answer-3"],
+                    // FAQ Subscription
+                    '.faq-sub-question-1': data["faq"]["faq-sub-question-1"],
+                    '.faq-sub-answer-1': data["faq"]["faq-sub-answer-1"],
+                    // FAQ Account
+                    '.faq-account-question-1': data["faq"]["faq-account-question-1"],
+                    '.faq-account-answer-1': data["faq"]["faq-account-answer-1"],
+                    // FAQ Security
+                    '.faq-security-question-1': data["faq"]["faq-security-question-1"],
+                    '.faq-security-answer-1': data["faq"]["faq-security-answer-1"],
+                    '.faq-security-question-2': data["faq"]["faq-security-question-2"],
+                    '.faq-security-answer-2': data["faq"]["faq-security-answer-2"],
+                    '.faq-security-question-3': data["faq"]["faq-security-question-3"],
+                    '.faq-security-answer-3': data["faq"]["faq-security-answer-3"],
+                    // FAQ Other
+                    '.faq-other-question-1': data["faq"]["faq-other-question-1"],
+                    '.faq-other-answer-1': data["faq"]["faq-other-answer-1"],
+                    // Profile
                     '.bio-title': data.bio?.title,
                     '.bio-hint': data.bio?.hint,
                     '.data-title': data.bio?.["data-title"],
@@ -237,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 };
 
                 const inputEl = document.querySelector('.referals-activate-code-input');
-                if(inputEl && data.referals && data.referals['enter_invite_code_placeholder']) {
+                if (inputEl && data.referals && data.referals['enter_invite_code_placeholder']) {
                     inputEl.placeholder = data.referals['enter_invite_code_placeholder'];
                 }
 
@@ -258,13 +290,22 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.brand-description',
                     '.description-promocode',
                     '.modal-premium-subscribe-price',
+                    '.faq-main-answer-2',
+                    '.faq-main-answer-3',
+                    '.faq-security-answer-1',
+                    '.faq-security-answer-2',
+                    '.faq-security-answer-3',
                 ];
 
                 Object.entries(elementsMap).forEach(([selector, value]) => {
                     const el = document.querySelector(selector);
                     if (el && value !== undefined) {
                         if (htmlAllowedSelectors.includes(selector)) {
-                            el.innerHTML = value;
+                            // Преобразуем текст с Markdown-подобной разметкой
+                            const parsedHtml = value
+                                .replace(/\n/g, '<br>')
+                                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                            el.innerHTML = parsedHtml;
                         } else {
                             el.textContent = value;
                         }
@@ -316,8 +357,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
                 }
 
-                // Обновляем FAQ и подсказки
-                updateFAQ(data.faq.questions);
+                // Подсказки
                 updateTooltips(data.tooltip);
 
                 // Обновляем юридический контент
@@ -362,21 +402,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => {
                 console.error('Ошибка загрузки локализации:', error);
             });
-    }
-
-    // --- Обновление FAQ ---
-    function updateFAQ(faqData) {
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            const questionId = item.getAttribute('data-question');
-            const question = item.querySelector('.faq-question');
-            const answer = item.querySelector('.faq-answer');
-
-            if (faqData[questionId]) {
-                question.childNodes[0].textContent = faqData[questionId].question;
-                answer.innerHTML = faqData[questionId].answer;
-            }
-        });
     }
 
     // --- Обновление подсказок ---

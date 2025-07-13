@@ -297,137 +297,126 @@ body.dark-theme {
 }
 
 /* FAQ - Вопросы / Ответы */
-.faq-container {
-  width: 25%;
-  margin: 20px auto;
-  opacity: 0;
-  transform: translateY(60px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.faq-container.animate-in {
-  opacity: 1;
-  transform: translateY(0);
+.faq-header {
+  text-align: center;
+  margin-top: 50px;
+  /* отступ сверху */
+  margin-bottom: 25px;
+  /* отступ снизу */
 }
 
 .faq-title {
+  font-size: 32px;
   font-weight: 700;
-  /* Жирный (Medium) */
-  font-size: 30px;
+  margin: 0;
 }
 
-.faq-item {
-  margin-bottom: 15px;
-  padding-bottom: 5px;
-  position: relative;
+.faq-subtitle {
+  font-size: 16px;
+  color: #777;
+  margin-top: 8px;
 }
 
-.faq-question {
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab-button {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  /* Добавляем, чтобы стрелка ушла вправо */
+  gap: 8px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.05);
+  color: #333;
   cursor: pointer;
-  font-weight: 700;
-  /* Жирный (Medium) */
-  font-size: 16px;
-  padding: 10px;
-  background: #ffffff;
-  border-radius: 10px;
-  position: relative;
-  padding-left: 14px;
-  /* Оставляем уменьшенный левый отступ */
-  padding-right: 14px;
-  /* Добавляем отступ справа, чтобы стрелка не прилипала */
-  width: 100%;
-  /* Чтобы flex работал корректно */
+  transition: background 0.3s ease;
 }
 
-.faq-arrow {
-  width: 20px;
-  height: 20px;
-  transition: transform 0.3s ease;
-  margin-left: auto;
-  /* Отправляем стрелку в крайний правый угол */
+.tab-button.active {
+  background: rgba(0, 123, 255, 0.2);
+  color: #0056b3;
+  font-weight: 600;
 }
 
-.faq-dot {
-  width: 10px;
-  height: 10px;
-  background-color: red;
-  border-radius: 50%;
-  position: absolute;
-  left: -15px;
-  /* Сдвигаем точку левее за пределы блока */
-  top: 20px;
-  transform: translateY(-50%);
-  animation: pulse 1.5s infinite;
+.tab-icon {
+  width: 18px;
+  height: 18px;
 }
 
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  padding: 12px 20px;
-  /* Отступы со всех сторон */
-  font-weight: 400;
-  /* Обычный (Normal) */
-  font-size: 16px;
-  background: linear-gradient(135deg, #ffffff, #ececec);
-  border-radius: 10px;
-  margin-top: 8px;
-  opacity: 0;
-  transform: scale(0.95);
-  transition: max-height 0.3s ease-out, opacity 0.3s ease-out, transform 0.2s ease-out, box-shadow 0.3s ease-out;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  /* Теперь блок ответа равен вопросу */
-  box-sizing: border-box;
-  /* Учитывает padding в общей ширине */
-}
-
-/* Когда ответ раскрыт */
-.faq-item.active .faq-answer {
-  opacity: 1;
-  transform: scale(1);
-  max-height: 1000px;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Для раскрытого вопроса */
-.faq-item.active .faq-question {
-  background: #e0e0e0;
-}
-
-.faq-question:hover {
-  background: #e1e1e1;
-}
-
-/* Анимация стрелки при открытии */
-.faq-item.active .faq-arrow {
-  transform: rotate(180deg);
-}
-
-/* Прячем точку, если вопрос раскрыт */
-.faq-item.active .faq-dot {
+/* Tab content */
+.tab-content.hidden {
   display: none;
 }
 
-/* Анимация пульсации точки */
-@keyframes pulse {
-  0% {
-    transform: translateY(-50%) scale(0.8);
-    opacity: 1;
-  }
+/* Accordion */
+.accordion-item {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+  /* отступ снизу */
+}
 
-  50% {
-    transform: translateY(-50%) scale(1.2);
-    opacity: 0.7;
-  }
+.accordion-header {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+}
 
-  100% {
-    transform: translateY(-50%) scale(0.8);
-    opacity: 1;
-  }
+.accordion-arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.accordion-item.open .accordion-arrow {
+  transform: rotate(180deg);
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  font-size: 15px;
+  color: #555;
+}
+
+.accordion-item.open .accordion-body {
+  max-height: 500px;
+  padding: 10px 20px 20px;
+}
+
+/* Анимации */
+/* Общие стили для анимации появления */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Мобильные устройства — экраны до 480px */
@@ -459,7 +448,6 @@ body.dark-theme {
 
   .roadmap-title {
     font-size: 1.3rem;
-    /* было 2rem */
     margin-bottom: 1.5rem;
   }
 
@@ -471,24 +459,19 @@ body.dark-theme {
 
   .roadmap-toggle {
     font-size: 1rem;
-    /* было 1.1rem */
     padding: 0.4rem 0;
   }
 
   .roadmap-timeline {
     padding-left: 28px;
-    /* немного больше для баланса */
     border-left: 2px solid #ccc;
   }
 
   .roadmap-item.completed .roadmap-dot-line::before {
     width: 14px;
-    /* чуть больше, чтобы не терялась */
     height: 14px;
     left: -36px;
-    /* подвинем ближе, но оставим пространство */
     top: 9px;
-    /* центрируем по высоте */
   }
 
   .roadmap-item.active .roadmap-dot-line::before {
@@ -527,7 +510,6 @@ body.dark-theme {
 
   .roadmap-divider {
     width: 60px;
-    /* меньше линия */
     margin-bottom: 1.5rem;
   }
 
@@ -535,42 +517,54 @@ body.dark-theme {
     padding: 1.5rem;
   }
 
-  /* Faq (Вопрос-ответ)*/
-  .faq-container {
-    width: 80%;
-    padding: 0 8px;
-    margin: 30px auto;
-  }
-
+  /* FAQ - Вопрос | Ответ */
   .faq-title {
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 20px;
+    font-size: 26px;
   }
 
-  .faq-question {
+  .faq-subtitle {
     font-size: 14px;
-    padding: 12px;
-    border-radius: 8px;
   }
 
-  .faq-arrow {
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tab-icon {
     width: 16px;
     height: 16px;
   }
 
-  .faq-dot {
-    width: 8px;
-    height: 8px;
-    left: -12px;
-    top: 22px;
+  /* Tab content */
+  .tab-content.hidden {
+    display: none;
   }
 
-  .faq-answer {
-    font-size: 14px;
-    padding: 10px 14px;
-    border-radius: 8px;
+  .accordion-item {
+    margin-left: 12px;
+    margin-right: 12px;
   }
+
+  .accordion-body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .accordion-header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
 }
 
 /* Планшеты — экраны от 481px до 800px */

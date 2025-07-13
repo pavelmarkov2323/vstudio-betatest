@@ -355,7 +355,7 @@
 
     <!-- Roadmap -->
     <section class="roadmap-section">
-        <h3 class="roadmap-heading theme-text">Roadmap 2025–2026</h3>
+        <h3 class="roadmap-heading theme-text">Roadmap 2026–2027</h3>
         <div class="roadmap-container">
             <h2 class="roadmap-title theme-text">Our Plans</h2>
             <div class="roadmap-divider"></div>
@@ -443,48 +443,207 @@
     </section>
 
     <!-- FAQ - Вопрос = Ответ. -->
-    <div class="faq-container theme-text">
-        <p class="faq-title theme-text">FAQ</p>
-        <div class="faq-item" data-question="q1">
-            <span class="faq-dot"></span>
-            <div class="faq-question">
-                Why choose us?
-                <img class="faq-arrow theme-icon" src="assets/icons/angle-small-down.svg" alt="arrow">
-            </div>
-            <div class="faq-answer">
-                We are a team of developers dedicated to providing our product to as many people as possible
-                worldwide
-                so that everyone can try it. And it's absolutely free!
+    <div class="faq-header">
+        <h2 class="faq-title theme-text">FAQ</h2>
+        <p class="faq-subtitle">All the answers to your questions</p>
+    </div>
+
+    <div class="container">
+        <!-- Tab buttons -->
+        <div class="tabs">
+            <button class="tab-button theme-tab-button active" data-tab="main">
+                <img src="assets/icons/people-roof.svg" class="tab-icon theme-icon" />
+                <span class="faq-button-main" data-i18n="faq-button-main">General</span>
+            </button>
+            <button class="tab-button theme-tab-button" data-tab="subscription">
+                <img src="assets/icons/wallet.svg" class="tab-icon theme-icon" />
+                <span class="faq-button-subscribe" data-i18n="faq-button-subscribe">Subscription</span>
+            </button>
+            <button class="tab-button theme-tab-button" data-tab="account">
+                <img src="assets/icons/user.svg" class="tab-icon theme-icon" />
+                <span class="faq-button-account" data-i18n="faq-button-account">Account</span>
+            </button>
+            <button class="tab-button theme-tab-button" data-tab="security">
+                <img src="assets/icons/security.svg" class="tab-icon theme-icon" />
+                <span class="faq-button-security" data-i18n="faq-button-security">Security</span>
+            </button>
+            <button class="tab-button theme-tab-button" data-tab="other">
+                <img src="assets/icons/more.svg" class="tab-icon theme-icon" />
+                <span class="faq-button-other" data-i18n="faq-button-other">Other</span>
+            </button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="tab-content" id="main">
+            <div class="accordion">
+
+                <div class="accordion-item" id="main-item-one">
+                    <div class="accordion-header">
+                        <span class="faq-main-question-1 theme-text" data-i18n="faq-main-question-1">Why choose us?</span>
+                        <img src="assets/icons/angle-small-down.svg" class="accordion-arrow theme-icon" />
+                    </div>
+                    <div class="accordion-body faq-main-answer-1 gray-text" data-i18n="faq-main-answer-1">
+                        Мы — команда разработчиков, которые заинтересованы в том, чтобы предоставить продукт максимально
+                        большому
+                        количеству людей на планете, чтобы каждый мог попробовать наш продукт. Это всё абсолютно
+                        бесплатно!
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="main-item-two">
+                    <div class="accordion-header">
+                        <span class="faq-main-question-2 theme-text" data-i18n="faq-main-question-2">How do I start using the program?</span>
+                        <img src="assets/icons/angle-small-down.svg" class="accordion-arrow theme-icon" />
+                    </div>
+                    <div class="accordion-body faq-main-answer-2 gray-text" data-i18n="faq-main-answer-2">
+                        Чтобы скачать наше фирменное ПО, перейдите в соответствующий раздел сайта и нажмите кнопку
+                        Download.
+                        <br><br>
+                        Помните, что скачивая наше ПО, вы соглашаетесь с пользовательским соглашением и политикой нашей
+                        компании —
+                        ValeyevStudio.
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="main-item-three">
+                    <div class="accordion-header">
+                        <span class="faq-main-question-3 theme-text" data-i18n="faq-main-question-3">What is the cost of the paid subscription?</span>
+                        <img src="assets/icons/angle-small-down.svg" class="accordion-arrow theme-icon" />
+                    </div>
+                    <div class="accordion-body faq-main-answer-3 gray-text" data-i18n="faq-main-answer-3">
+                        Ценовая стоимость платной подписки составляет 1 доллар США. Подписка, после активации, даётся на
+                        1
+                        календарный месяц с момента активации.
+                        <br><br>
+                        Подписка даёт возможность через настройки убрать навязчивый баннер и получить доступ к
+                        экспериментальным
+                        функциям.
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="faq-item" data-question="q2">
-            <span class="faq-dot"></span>
-            <div class="faq-question">
-                How to start using the software?
-                <img class="faq-arrow theme-icon" src="assets/icons/angle-small-down.svg" alt="arrow">
-            </div>
-            <div class="faq-answer">
-                To download our official software, go to the appropriate section of the website and click the
-                Download
-                button.<br>
-                <br>
-                Remember, by downloading our software, you agree to the user agreement and the policy of our
-                company,
-                Valeyev Studio.
+
+        <!-- Subscription Content -->
+        <div class="tab-content hidden" id="subscription">
+            <div class="accordion">
+
+                <div class="accordion-item" id="sub-item-one">
+                    <div class="accordion-header">
+                        <span class="faq-sub-question-1 theme-text" data-i18n="faq-sub-question-1">What subscription plans are available?</span>
+                        <img src="assets/icons/angle-small-down.svg" class="accordion-arrow theme-icon" />
+                    </div>
+                    <div class="accordion-body faq-sub-answer-1 gray-text" data-i18n="faq-sub-answer-1">
+                        Пока доступен только один план подписки стоимостью 1 доллар в месяц.
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="faq-item" data-question="q3">
-            <span class="faq-dot"></span>
-            <div class="faq-question">
-                What is the cost of a paid subscription?
-                <img class="faq-arrow theme-icon" src="assets/icons/angle-small-down.svg" alt="arrow">
+
+        <!-- Account Content -->
+        <div class="tab-content hidden" id="account">
+            <div class="accordion">
+
+                <div class="accordion-item" id="account-item-one">
+                    <div class="accordion-header">
+                        <span class="faq-account-question-1 theme-text" data-i18n="faq-account-question-1">How can I update my account information?</span>
+                        <img src="assets/icons/angle-small-down.svg" class="accordion-arrow theme-icon" />
+                    </div>
+                    <div class="accordion-body faq-account-answer-1 gray-text" data-i18n="faq-account-answer-1">
+                        Изменить данные можно через раздел "Настройки аккаунта" в личном кабинете.
+                    </div>
+                </div>
+
             </div>
-            <div class="faq-answer">
-                The price of a paid subscription is $0.99. Once activated, the subscription is valid for 1 calendar
-                month from the moment of activation.<br>
-                <br>
-                The subscription allows you to remove intrusive banners through the settings and access other
-                features.
+        </div>
+
+        <!-- Security Content -->
+        <div class="tab-content hidden" id="security">
+            <div class="accordion">
+
+                <div class="accordion-item" id="security-item-one">
+                    <div class="accordion-header">
+                        <span class="faq-security-question-1 theme-text" data-i18n="faq-security-question-1">Is my data safe?</span>
+                        <img src="assets/icons/angle-small-down.svg" class="accordion-arrow theme-icon" />
+                    </div>
+                    <div class="accordion-body faq-security-answer-1 gray-text" data-i18n="faq-security-answer-1">
+                        <strong>Абсолютная безопасность ваших данных</strong><br><br>
+                        Мы заботимся о защите каждого пользователя:
+                        <ul>
+                            <li>Пароли шифруются с использованием алгоритма <strong>bcrypt</strong>, который надёжно
+                                защищает от атак
+                                перебором.</li>
+                            <li>Все данные передаются по <strong>зашифрованному соединению (HTTPS)</strong> — никакой
+                                возможности для
+                                перехвата.</li>
+                            <li>Наши серверы и системы настроены так, чтобы исключить любые уязвимости: мы применяем
+                                только
+                                <strong>проверенные методы и инструменты безопасности</strong>.
+                            </li>
+                            <li>Даже в случае попытки взлома, получить доступ к вашим данным невозможно — благодаря
+                                <strong>многоуровневой архитектуре безопасности</strong>.
+                            </li>
+                        </ul>
+                        Ваши данные — под надёжной защитой. Мы сделали всё, чтобы вы могли сосредоточиться на главном.
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="security-item-two">
+                    <div class="accordion-header">
+                        <span class="faq-security-question-2 theme-text" data-i18n="faq-security-question-2">How secure is password changing?</span>
+                        <img src="assets/icons/angle-small-down.svg" class="accordion-arrow theme-icon" />
+                    </div>
+                    <div class="accordion-body faq-security-answer-2 gray-text" data-i18n="faq-security-answer-2">
+                        Смена пароля осуществляется через <strong>уникальный шифрованный токен</strong>, который
+                        действует
+                        <strong>строго ограниченное время</strong> — он автоматически истекает сразу после выполнения
+                        операции.
+                        <br><br>
+                        Это гарантирует, что доступ к смене пароля получают только авторизованные пользователи, и
+                        исключает
+                        возможность перехвата или повторного использования. Мы применяем <strong>современные
+                            криптографические
+                            методы</strong>, чтобы обеспечить максимальную безопасность этой процедуры.
+                    </div>
+                </div>
+
+
+                <div class="accordion-item" id="security-item-three">
+                    <div class="accordion-header">
+                        <span class="faq-security-question-3 theme-text" data-i18n="faq-security-question-3">How can I enable extra account protection?</span>
+                        <img src="assets/icons/angle-small-down.svg" class="accordion-arrow theme-icon" />
+                    </div>
+                    <div class="accordion-body faq-security-answer-3 gray-text" data-i18n="faq-security-answer-3">
+                        В пользовательском меню вы можете открыть раздел <strong>«Настройки»</strong>. На странице
+                        настроек доступен
+                        подраздел <strong>«Безопасность»</strong>, где вы можете включить <strong>двухфакторную
+                            аутентификацию
+                            (2FA)</strong> через <strong>Google Authenticator</strong>.<br><br>
+                        Это добавит дополнительный уровень защиты: даже если кто-то узнает ваш пароль, без кода из
+                        приложения он не
+                        сможет получить доступ к вашему аккаунту. <br><br>
+                        <strong>2FA — один из самых эффективных способов защитить ваши данные от взлома.</strong>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Other Content -->
+        <div class="tab-content hidden" id="other">
+            <div class="accordion">
+
+                <div class="accordion-item" id="other-item-one">
+                    <div class="accordion-header">
+                        <span class="faq-other-question-1 theme-text" data-i18n="faq-other-question-1">Where is your company located?</span>
+                        <img src="assets/icons/angle-small-down.svg" class="accordion-arrow theme-icon" />
+                    </div>
+                    <div class="accordion-body faq-other-answer-1 gray-text" data-i18n="faq-other-answer-1">
+                        Мы — распределённая команда, работающая по всему миру. У нас нет единого физического офиса.
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -521,6 +680,7 @@
     <script src="js/menu.js"></script>
     <script src="js/menu_dropdown.js"></script>
     <script src="js/download.js"></script>
+    <script src="js/faq.js"></script>
     <script src="js/captcha.js"></script>
     <script src="js/pushnotify.js"></script>
     <script src="js/banner_promo.js"></script>
