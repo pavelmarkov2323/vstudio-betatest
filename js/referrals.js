@@ -1,65 +1,124 @@
-window.addEventListener('load', () => {
-  const referalsCard = document.querySelector('.referals-card');
-  const infosCard = document.querySelector('.referals-card-infos');
-  const inviteUsersBlock = document.querySelector('.referals-card-inviteusers');
+let observer; // глобально
 
-  const animationSequence = [
-    document.querySelector('.referals-total-earned-label'),
-    document.getElementById('total-earned'),
-    document.querySelector('.referals-rate-per-user-label'),
-    document.getElementById('rate-per-user'),
-    document.querySelector('.referals-invited-users-label'),
-    document.getElementById('invited-users'),
+window.addEventListener('load', () => {
+  const sequence = [
+    {
+      parent: '.referals-card',
+      children: [
+        '.referals-program-heading',
+        '.referals-program-description',
+        '.referals-label',
+        '.referals-code-input',
+        '.referals-copy-btn'
+      ]
+    },
+    {
+      parent: '.referals-card-activate',
+      children: [
+        '.referals-activate-heading',
+        '.referals-activate-description',
+        '.referals-activate-code-input',
+        '.referals-activate-btn'
+      ]
+    },
+    {
+      parent: '.referals-card-infos',
+      children: [
+        '.card-info-total-earned',
+        '.referals-total-earned-label',
+        '#total-earned',
+        '.card-info-rate-per-user',
+        '.referals-rate-per-user-label',
+        '#rate-per-user',
+        '.card-info-invited-users',
+        '.referals-invited-users-label',
+        '#invited-users'
+      ]
+    },
+    {
+      parent: '.referals-card-inviteusers',
+      children: [
+        '.inviteusers-title',
+        '.inviteusers-divider'
+      ]
+    }
   ];
 
-  // 1. Observer для главного блока
-  const observerReferalsCard = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        referalsCard.classList.add('visible');
-        observer.unobserve(entry.target);
+  // Присваиваем начальные стили (opacity: 0 и translateY)
+  sequence.forEach(item => {
+    const parentEl = document.querySelector(item.parent);
+    if (parentEl) {
+      parentEl.style.opacity = '0';
+      parentEl.style.transform = 'translateY(20px)';
+    } 
+
+    item.children.forEach(selector => {
+      const el = document.querySelector(selector);
+      if (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
       }
     });
-  }, { threshold: 0.4 });
+  });
 
-  // 2. Observer для блока с карточками
-  const observerInfosCard = new IntersectionObserver((entries, observer) => {
+  let currentStep = 0;
+
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const cards = infosCard.querySelectorAll('.referals-card-info');
+        const step = sequence[currentStep];
+        const parentEl = document.querySelector(step.parent);
 
-        // Появление каждой карточки по одной через класс .visible
-        cards.forEach((card, index) => {
-          setTimeout(() => {
-            card.classList.add('visible');
-          }, index * 400); // 0.4s между карточками
-        });
+        if (entry.target === parentEl) {
+          observer.unobserve(entry.target);
+          animateStep(step, () => {
+            currentStep++;
+            const next = sequence[currentStep];
+            if (next) {
+              const nextParent = document.querySelector(next.parent);
+              if (nextParent) observer.observe(nextParent);
+            }
+          });
+        }
+      }
+    });
+  }, { threshold: 0.3 });
 
-        // Появление лейблов и значений (value + label)
-        animationSequence.forEach((el, index) => {
-          if (el) {
-            el.style.opacity = 0;
-            el.style.animation = `fadeUp 0.6s ease forwards`;
-            el.style.animationDelay = `${(cards.length * 0.4 + index * 0.3)}s`;
-          }
-        });
+  // Начинаем с первого реально отображаемого блока
+  for (const step of sequence) {
+    const parent = document.querySelector(step.parent);
+    if (parent && getComputedStyle(parent).display !== 'none') {
+      observer.observe(parent);
+      break;
+    }
+  }
 
-        // Появление inviteUsersBlock — в конце
-        const totalDelay = cards.length * 0.4 + animationSequence.length * 0.3 + 0.6;
+  function animateStep(step, callback) {
+    const parentEl = document.querySelector(step.parent);
+    if (parentEl) {
+      parentEl.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      parentEl.style.opacity = '1';
+      parentEl.style.transform = 'translateY(0)';
+    }
+
+    const delay = 300;
+    step.children.forEach((selector, index) => {
+      const el = document.querySelector(selector);
+      if (el) {
         setTimeout(() => {
-          if (inviteUsersBlock) {
-            inviteUsersBlock.classList.add('visible');
-          }
-        }, totalDelay * 1000);
-
-        observer.unobserve(entry.target);
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, delay * (index + 1));
       }
     });
-  }, { threshold: 0.4 });
 
-  // Наблюдение
-  if (referalsCard) observerReferalsCard.observe(referalsCard);
-  if (infosCard) observerInfosCard.observe(infosCard);
+    const totalDelay = delay * (step.children.length + 1);
+    setTimeout(() => {
+      if (callback) callback();
+    }, totalDelay);
+  }
+
 
   const refCodeInput = document.getElementById('ref-code');
   const copyBtn = document.querySelector('.referals-copy-btn');
@@ -106,19 +165,29 @@ window.addEventListener('load', () => {
   }
 
   function toggleActivateCard(data) {
+    const step = sequence.find(s => s.parent === '.referals-card-activate');
+
     if (data.activatedReferralCode && data.activatedReferralCode !== '') {
-      // Код активирован — блок остаётся скрытым
       activateCard.style.display = 'none';
-      activateCard.classList.remove('visible'); // сброс, если повторно показывать потом
+      activateCard.classList.remove('visible');
     } else {
-      // Код не активирован — показываем блок с анимацией
       activateCard.style.display = 'block';
-      activateCard.classList.remove('visible'); // сброс если уже был
 
-      // Вынудить перерисовку, чтобы transition сработал
-      void activateCard.offsetHeight;
+      // Назначаем начальные стили, как у других шагов
+      activateCard.style.opacity = '0';
+      activateCard.style.transform = 'translateY(20px)';
+      step.children.forEach(selector => {
+        const el = document.querySelector(selector);
+        if (el) {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(20px)';
+        }
+      });
 
-      activateCard.classList.add('visible');
+      // Ждём один тик, чтобы браузер успел применить стили, и подключаем к наблюдателю
+      requestAnimationFrame(() => {
+        observer.observe(activateCard);
+      });
     }
   }
 

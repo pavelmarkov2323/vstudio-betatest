@@ -266,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     '.referals-total-earned-label': data.referals['total_earned'],
                     '.referals-rate-per-user-label': data.referals['your_rate_per_user'],
                     '.referals-invited-users-label': data.referals['invited_users'],
-                    '.referral.invited_users_heading': data.referals['referral.invited_users_heading']
+                    '.inviteusers-title': data.referals['referral.invited_users_heading']
                 };
 
                 const inputEl = document.querySelector('.referals-activate-code-input');

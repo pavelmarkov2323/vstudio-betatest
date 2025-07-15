@@ -223,9 +223,6 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .inviteusers-title {
@@ -238,16 +235,11 @@
 
 .inviteusers-divider {
   width: 110px;
-  height: 3px;
+  height: 2px;
   background-color: #ddd;
   border-radius: 4px;
   margin: 0 auto 20px;
-}
-
-/* Класс для появления */
-.referals-card-inviteusers.visible {
-  opacity: 1;
-  transform: translateY(0);
+  margin-top: -5px;
 }
 
 .invite-user {
@@ -266,7 +258,6 @@
   transform: scale(1.03);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
-
 
 .invite-index {
   font-weight: bold;
@@ -298,79 +289,11 @@
   color: #333;
 }
 
-/* Анимации*/
-.referals-card,
-.referals-card-activate {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
 
-.referals-card.visible,
-.referals-card-activate.visible {
+/* Анимации */
+.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-.referals-card-info {
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.referals-card-info.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Чтобы элементы внутри появлялись с задержкой */
-.referals-card-infos.animate .referals-info-label,
-.referals-card-infos.animate .referals-info-value {
-  opacity: 0;
-  animation: fadeUp 0.6s ease forwards;
-}
-
-.referals-total-earned-label {
-  animation-delay: 0.3s;
-}
-
-#total-earned {
-  animation-delay: 0.6s;
-}
-
-.referals-rate-per-user-label {
-  animation-delay: 0.9s;
-}
-
-#rate-per-user {
-  animation-delay: 1.2s;
-}
-
-.referals-invited-users-label {
-  animation-delay: 1.5s;
-}
-
-#invited-users {
-  animation-delay: 1.8s;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Мобильная адаптация до 480px */
@@ -480,5 +403,15 @@
 
   .referals-info-label {
     font-size: 13px;
+  }
+
+  .inviteusers-title {
+    font-size: 14px;
+  }
+
+  .inviteusers-divider {
+    width: 60px;
+    height: 2px;
+    margin-top: -10px;
   }
 }
