@@ -13,6 +13,7 @@
 
 /* Главный блок реферальной системы */
 .referals-card {
+  display: none;
   background-color: #ffffff;
   border-radius: 15px;
   padding: 25px 30px;
