@@ -66,37 +66,31 @@ window.addEventListener('load', () => {
     });
   });
 
-  let currentStep = 0;
+    const revealedSteps = new Set();
 
-  observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const step = sequence[currentStep];
-        const parentEl = document.querySelector(step.parent);
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
 
-        if (entry.target === parentEl) {
-          observer.unobserve(parentEl);
-          animateStep(step, () => {
-            currentStep++;
-            const nextStep = sequence[currentStep];
-            if (nextStep) {
-              const nextParent = document.querySelector(nextStep.parent);
-              if (nextParent) observer.observe(nextParent);
-            }
-          });
-        }
-      }
-    });
-  }, { threshold: 0.3 });
+        const step = sequence.find(s => document.querySelector(s.parent) === entry.target);
+        if (!step || revealedSteps.has(step.parent)) return;
 
-  // Стартуем с первого видимого блока
-  for (const step of sequence) {
-    const parent = document.querySelector(step.parent);
-    if (parent && getComputedStyle(parent).display !== 'none') {
-      observer.observe(parent);
-      break;
+        revealedSteps.add(step.parent);
+        observer.unobserve(entry.target);
+        animateStep(step);
+      });
+    }, { threshold: 0.3 });
+
+
+
+  // Подключаем все видимые блоки к observer
+  sequence.forEach(({ parent }) => {
+    const el = document.querySelector(parent);
+    if (el && getComputedStyle(el).display !== 'none') {
+      observer.observe(el);
     }
-  }
+  });
+
 
   function animateStep(step, callback) {
     const parentEl = document.querySelector(step.parent);
