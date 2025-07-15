@@ -10,7 +10,7 @@ window.addEventListener('load', () => {
   };
   const activateCard = document.querySelector('.referals-card-activate');
   const referalsInfos = document.querySelector('.referals-card-infos');
-  const referalsCard = document.querySelector('.referals-card'); // главный блок
+  const referalsCard = document.querySelector('.referals-card');
 
   function formatNumber(value) {
     return Number(value || 0).toLocaleString();
@@ -55,11 +55,14 @@ window.addEventListener('load', () => {
   // Скрыть блоки для неавторизованных
   function hideReferralSection() {
     if (referalsCard) referalsCard.style.display = 'none';
+    if (activateCard) activateCard.style.display = 'none';
+    if (referalsInfos) referalsInfos.style.display = 'none';
   }
 
   // Показать блоки для авторизованных
   function showReferralSection() {
-    if (referalsCard) referalsCard.style.display = 'block'; // показываем главный блок
+    if (referalsCard) referalsCard.style.display = 'block'; // или 'flex' если надо
+    if (referalsInfos) referalsInfos.style.display = 'flex'; 
   }
 
   // Получить данные пользователя (в том числе реферальный код)
@@ -88,7 +91,6 @@ window.addEventListener('load', () => {
     })
     .catch(err => {
       console.warn(err.message);
-      hideReferralSection();
     });
 
   copyBtn.addEventListener('click', () => {
