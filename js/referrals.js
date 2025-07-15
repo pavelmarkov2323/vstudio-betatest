@@ -1,4 +1,5 @@
 window.addEventListener('load', () => {
+  
   const refCodeInput = document.getElementById('ref-code');
   const copyBtn = document.querySelector('.referals-copy-btn');
   const activateBtn = document.querySelector('.referals-activate-btn');
@@ -9,9 +10,6 @@ window.addEventListener('load', () => {
     invitedUsers: document.getElementById('invited-users'),
   };
   const activateCard = document.querySelector('.referals-card-activate');
-  const referralContainer = document.querySelector('.referral-container');
-  const referalsCardInfos = document.querySelector('.referals-card-infos');
-  const inviteUsersContainer = document.querySelector('.referals-card-inviteusers-container');
 
   function formatNumber(value) {
     return Number(value || 0).toLocaleString();
@@ -25,7 +23,7 @@ window.addEventListener('load', () => {
 
   function renderInvitedUsers(users) {
     const container = document.querySelector('.referals-card-inviteusers');
-    container.innerHTML = '';
+    container.innerHTML = ''; // очистить перед добавлением новых
 
     users.forEach((user, index) => {
       const div = document.createElement('div');
@@ -41,7 +39,9 @@ window.addEventListener('load', () => {
       container.appendChild(div);
     });
 
-    inviteUsersContainer.style.display = users.length ? 'block' : 'none';
+    // Показывать контейнер только если есть пользователи
+    document.querySelector('.referals-card-inviteusers-container').style.display =
+      users.length ? 'block' : 'none';
   }
 
   function toggleActivateCard(data) {
@@ -52,50 +52,13 @@ window.addEventListener('load', () => {
     }
   }
 
-  function showUnauthorizedMessage() {
-    // Скрываем основные блоки
-    referralContainer.style.display = 'none';
-    referalsCardInfos.style.display = 'none';
-    inviteUsersContainer.style.display = 'none';
-    activateCard.style.display = 'none';
-
-    // Создаем контейнер для ошибки
-    const errorContainer = document.createElement('div');
-    errorContainer.className = 'unauthorized-container';
-
-    // SVG иконка (пример простой иконки "замка")
-    const svgIcon = `
-      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#FF4D4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="unauthorized-icon">
-        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-      </svg>`;
-
-    errorContainer.innerHTML = `
-      ${svgIcon}
-      <p class="unauthorized-message">Вы должны быть авторизованы, чтобы видеть эту страницу.</p>
-      <button class="unauthorized-btn">Войти / Зарегистрироваться</button>
-    `;
-
-    // Вставляем в body или другой контейнер на странице
-    document.body.appendChild(errorContainer);
-
-    // Обработчик кнопки перехода
-    errorContainer.querySelector('.unauthorized-btn').addEventListener('click', () => {
-      window.location.href = '/auth.html';
-    });
-  }
-
   // Получить данные пользователя (в том числе реферальный код)
   fetch('/api/current-user')
     .then(res => res.json())
     .then(user => {
-      if (!user || !user.referral_code) {
-        showUnauthorizedMessage();
-        return;
-      }
-
       refCodeInput.value = user.referral_code || '';
 
+      // Получить данные рефералов
       fetch('/api/referral/info')
         .then(res => res.json())
         .then(data => {
@@ -103,10 +66,6 @@ window.addEventListener('load', () => {
           toggleActivateCard(data);
           if (data.invitedUsersList) renderInvitedUsers(data.invitedUsersList);
         });
-    })
-    .catch(() => {
-      // Если ошибка с сервером, тоже показываем сообщение
-      showUnauthorizedMessage();
     });
 
   // Копировать реферальный код
@@ -133,6 +92,7 @@ window.addEventListener('load', () => {
       .then(data => {
         if (data.message) alert(data.message);
         if (!data.message.toLowerCase().includes('ошибка')) {
+          // После успешной активации получить обновленные данные и обновить UI
           fetch('/api/referral/info')
             .then(res => res.json())
             .then(data => {
