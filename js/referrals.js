@@ -1,5 +1,4 @@
 window.addEventListener('load', () => {
-  
   const refCodeInput = document.getElementById('ref-code');
   const copyBtn = document.querySelector('.referals-copy-btn');
   const activateBtn = document.querySelector('.referals-activate-btn');
@@ -23,7 +22,7 @@ window.addEventListener('load', () => {
 
   function renderInvitedUsers(users) {
     const container = document.querySelector('.referals-card-inviteusers');
-    container.innerHTML = ''; // очистить перед добавлением новых
+    container.innerHTML = '';
 
     users.forEach((user, index) => {
       const div = document.createElement('div');
@@ -35,11 +34,10 @@ window.addEventListener('load', () => {
           <span class="invite-id">ID: ${user.userId}</span>
           <span class="invite-username theme-text">@${user.username}</span>
       </div>
-    `;
+      `;
       container.appendChild(div);
     });
 
-    // Показывать контейнер только если есть пользователи
     document.querySelector('.referals-card-inviteusers-container').style.display =
       users.length ? 'block' : 'none';
   }
@@ -49,17 +47,31 @@ window.addEventListener('load', () => {
       activateCard.style.display = 'none';
     } else {
       activateCard.style.display = 'block';
-
     }
+  }
+
+  // Скрыть блок активации и прочие данные для неавторизованных
+  function hideReferralSection() {
+    activateCard.style.display = 'none';
+    // Можно также скрыть другие элементы, если нужно
   }
 
   // Получить данные пользователя (в том числе реферальный код)
   fetch('/api/current-user')
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) {
+        if (res.status === 401) {
+          // Не авторизован — скрываем блок активации
+          hideReferralSection();
+          throw new Error('Не авторизован');
+        }
+        throw new Error('Ошибка сети');
+      }
+      return res.json();
+    })
     .then(user => {
       refCodeInput.value = user.referral_code || '';
 
-      // Получить данные рефералов
       fetch('/api/referral/info')
         .then(res => res.json())
         .then(data => {
@@ -67,16 +79,18 @@ window.addEventListener('load', () => {
           toggleActivateCard(data);
           if (data.invitedUsersList) renderInvitedUsers(data.invitedUsersList);
         });
+    })
+    .catch(err => {
+      console.warn(err.message);
+      // Если нужно, можно показать сообщение об ошибке или редирект
     });
 
-  // Копировать реферальный код
   copyBtn.addEventListener('click', () => {
     refCodeInput.select();
     document.execCommand('copy');
     alert('Referral code copied!');
   });
 
-  // Активация кода
   activateBtn.addEventListener('click', () => {
     const code = activateInput.value.trim();
     if (!code) {
@@ -93,7 +107,6 @@ window.addEventListener('load', () => {
       .then(data => {
         if (data.message) alert(data.message);
         if (!data.message.toLowerCase().includes('ошибка')) {
-          // После успешной активации получить обновленные данные и обновить UI
           fetch('/api/referral/info')
             .then(res => res.json())
             .then(data => {
