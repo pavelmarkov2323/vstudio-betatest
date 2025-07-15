@@ -49,7 +49,6 @@ window.addEventListener('load', () => {
       activateCard.style.display = 'none';
     } else {
       activateCard.style.display = 'block';
-
     }
   }
 
