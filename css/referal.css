@@ -281,51 +281,6 @@
   color: #333;
 }
 
-.unauthorized-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 60px auto;
-  padding: 30px 20px;
-  max-width: 400px;
-  background-color: #fff5f5;
-  border: 1px solid #ff4d4f;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(255, 77, 79, 0.15);
-  text-align: center;
-  color: #ff4d4f;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.unauthorized-icon {
-  margin-bottom: 20px;
-  stroke: #ff4d4f;
-}
-
-.unauthorized-message {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 25px;
-}
-
-.unauthorized-btn {
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 600;
-  color: white;
-  background-color: #ff4d4f;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255, 77, 79, 0.4);
-}
-
-.unauthorized-btn:hover {
-  background-color: #d9363e;
-}
-
 /* Мобильная адаптация до 480px */
 @media (max-width: 480px) {
   .referal-container {
