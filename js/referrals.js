@@ -1,6 +1,5 @@
 window.addEventListener('load', () => {
   const referalsCard = document.querySelector('.referals-card');
-  const cardActivate = document.querySelector('.referals-card-activate');
   const infosCard = document.querySelector('.referals-card-infos');
   const inviteUsersBlock = document.querySelector('.referals-card-inviteusers');
 
@@ -23,17 +22,7 @@ window.addEventListener('load', () => {
     });
   }, { threshold: 0.4 });
 
-  // 2. Observer для блока активации
-  const observerCardActivate = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        cardActivate.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.4 });
-
-  // 3. Observer для блока с карточками
+  // 2. Observer для блока с карточками
   const observerInfosCard = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -70,7 +59,6 @@ window.addEventListener('load', () => {
 
   // Наблюдение
   if (referalsCard) observerReferalsCard.observe(referalsCard);
-  if (cardActivate) observerCardActivate.observe(cardActivate);
   if (infosCard) observerInfosCard.observe(infosCard);
 
   const refCodeInput = document.getElementById('ref-code');
@@ -119,9 +107,18 @@ window.addEventListener('load', () => {
 
   function toggleActivateCard(data) {
     if (data.activatedReferralCode && data.activatedReferralCode !== '') {
+      // Код активирован — блок остаётся скрытым
       activateCard.style.display = 'none';
+      activateCard.classList.remove('visible'); // сброс, если повторно показывать потом
     } else {
-      activateCard.style.display = '';
+      // Код не активирован — показываем блок с анимацией
+      activateCard.style.display = 'block';
+      activateCard.classList.remove('visible'); // сброс если уже был
+
+      // Вынудить перерисовку, чтобы transition сработал
+      void activateCard.offsetHeight;
+
+      activateCard.classList.add('visible');
     }
   }
 
