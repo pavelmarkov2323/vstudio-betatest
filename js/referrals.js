@@ -1,4 +1,4 @@
-let observer; // глобально
+let observer;
 
 window.addEventListener('load', () => {
   const sequence = [
@@ -44,38 +44,43 @@ window.addEventListener('load', () => {
     }
   ];
 
-  // Присваиваем начальные стили (opacity: 0 и translateY)
-  sequence.forEach(item => {
-    const parentEl = document.querySelector(item.parent);
+  // Установим начальные стили всем элементам
+  sequence.forEach(({ parent, children }) => {
+    const parentEl = document.querySelector(parent);
     if (parentEl) {
-      parentEl.style.opacity = '0';
-      parentEl.style.transform = 'translateY(20px)';
-    } 
-
-    item.children.forEach(selector => {
-      const el = document.querySelector(selector);
+      Object.assign(parentEl.style, {
+        opacity: '0',
+        transform: 'translateY(20px)',
+        transition: 'opacity 0.6s ease, transform 0.6s ease'
+      });
+    }
+    children.forEach(sel => {
+      const el = document.querySelector(sel);
       if (el) {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
+        Object.assign(el.style, {
+          opacity: '0',
+          transform: 'translateY(20px)',
+          transition: 'opacity 0.6s ease, transform 0.6s ease'
+        });
       }
     });
   });
 
   let currentStep = 0;
 
-  const observer = new IntersectionObserver((entries) => {
+  observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const step = sequence[currentStep];
         const parentEl = document.querySelector(step.parent);
 
         if (entry.target === parentEl) {
-          observer.unobserve(entry.target);
+          observer.unobserve(parentEl);
           animateStep(step, () => {
             currentStep++;
-            const next = sequence[currentStep];
-            if (next) {
-              const nextParent = document.querySelector(next.parent);
+            const nextStep = sequence[currentStep];
+            if (nextStep) {
+              const nextParent = document.querySelector(nextStep.parent);
               if (nextParent) observer.observe(nextParent);
             }
           });
@@ -84,7 +89,7 @@ window.addEventListener('load', () => {
     });
   }, { threshold: 0.3 });
 
-  // Начинаем с первого реально отображаемого блока
+  // Стартуем с первого видимого блока
   for (const step of sequence) {
     const parent = document.querySelector(step.parent);
     if (parent && getComputedStyle(parent).display !== 'none') {
@@ -96,7 +101,6 @@ window.addEventListener('load', () => {
   function animateStep(step, callback) {
     const parentEl = document.querySelector(step.parent);
     if (parentEl) {
-      parentEl.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       parentEl.style.opacity = '1';
       parentEl.style.transform = 'translateY(0)';
     }
@@ -106,34 +110,28 @@ window.addEventListener('load', () => {
       const el = document.querySelector(selector);
       if (el) {
         setTimeout(() => {
-          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
           el.style.opacity = '1';
           el.style.transform = 'translateY(0)';
         }, delay * (index + 1));
       }
     });
 
-    const totalDelay = delay * (step.children.length + 1);
-    setTimeout(() => {
-      if (callback) callback();
-    }, totalDelay);
+    setTimeout(callback, delay * (step.children.length + 1));
   }
-
 
   const refCodeInput = document.getElementById('ref-code');
   const copyBtn = document.querySelector('.referals-copy-btn');
   const activateBtn = document.querySelector('.referals-activate-btn');
   const activateInput = document.querySelector('.referals-activate-code-input');
+  const activateCard = document.querySelector('.referals-card-activate');
+
   const infos = {
     totalEarned: document.getElementById('total-earned'),
     ratePerUser: document.getElementById('rate-per-user'),
     invitedUsers: document.getElementById('invited-users'),
   };
-  const activateCard = document.querySelector('.referals-card-activate');
 
-  function formatNumber(value) {
-    return Number(value || 0).toLocaleString();
-  }
+  const formatNumber = val => Number(val || 0).toLocaleString();
 
   function updateReferralInfo(data) {
     infos.totalEarned.textContent = formatNumber(data.totalEarned);
@@ -141,80 +139,74 @@ window.addEventListener('load', () => {
     infos.invitedUsers.textContent = formatNumber(data.invitedUsers);
   }
 
-  function renderInvitedUsers(users) {
+  function renderInvitedUsers(users = []) {
     const container = document.querySelector('.referals-card-inviteusers');
-    container.innerHTML = ''; // очистить перед добавлением новых
+    container.innerHTML = '';
 
     users.forEach((user, index) => {
       const div = document.createElement('div');
       div.className = 'invite-user top-card';
       div.innerHTML = `
-      <span class="invite-index theme-text">#${index + 1}</span>
-      <img class="invite-avatar" src="${user.avatar}" alt="Avatar">
-      <div class="invite-info">
+        <span class="invite-index theme-text">#${index + 1}</span>
+        <img class="invite-avatar" src="${user.avatar}" alt="Avatar">
+        <div class="invite-info">
           <span class="invite-id">ID: ${user.userId}</span>
           <span class="invite-username theme-text">@${user.username}</span>
-      </div>
-    `;
+        </div>
+      `;
       container.appendChild(div);
     });
 
-    // Показывать контейнер только если есть пользователи
     document.querySelector('.referals-card-inviteusers-container').style.display =
       users.length ? 'block' : 'none';
   }
 
   function toggleActivateCard(data) {
     const step = sequence.find(s => s.parent === '.referals-card-activate');
+    const isActivated = !!data.activatedReferralCode;
 
-    if (data.activatedReferralCode && data.activatedReferralCode !== '') {
-      activateCard.style.display = 'none';
-      activateCard.classList.remove('visible');
-    } else {
-      activateCard.style.display = 'block';
+    activateCard.style.display = isActivated ? 'none' : 'block';
 
-      // Назначаем начальные стили, как у других шагов
+    if (!isActivated) {
+      // Сброс стилей
       activateCard.style.opacity = '0';
       activateCard.style.transform = 'translateY(20px)';
-      step.children.forEach(selector => {
-        const el = document.querySelector(selector);
+      step.children.forEach(sel => {
+        const el = document.querySelector(sel);
         if (el) {
           el.style.opacity = '0';
           el.style.transform = 'translateY(20px)';
         }
       });
 
-      // Ждём один тик, чтобы браузер успел применить стили, и подключаем к наблюдателю
       requestAnimationFrame(() => {
         observer.observe(activateCard);
       });
     }
   }
 
-  // Получить данные пользователя (в том числе реферальный код)
+  // Загрузка данных
   fetch('/api/current-user')
     .then(res => res.json())
     .then(user => {
       refCodeInput.value = user.referral_code || '';
-
-      // Получить данные рефералов
-      fetch('/api/referral/info')
-        .then(res => res.json())
-        .then(data => {
-          updateReferralInfo(data);
-          toggleActivateCard(data);
-          if (data.invitedUsersList) renderInvitedUsers(data.invitedUsersList);
-        });
+      return fetch('/api/referral/info');
+    })
+    .then(res => res.json())
+    .then(data => {
+      updateReferralInfo(data);
+      toggleActivateCard(data);
+      renderInvitedUsers(data.invitedUsersList);
     });
 
-  // Копировать реферальный код
+  // Копирование кода
   copyBtn.addEventListener('click', () => {
     refCodeInput.select();
     document.execCommand('copy');
     alert('Referral code copied!');
   });
 
-  // Активация кода
+  // Активация
   activateBtn.addEventListener('click', () => {
     const code = activateInput.value.trim();
     if (!code) {
@@ -229,10 +221,9 @@ window.addEventListener('load', () => {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.message) alert(data.message);
+        alert(data.message || 'Готово!');
         if (!data.message.toLowerCase().includes('ошибка')) {
-          // После успешной активации получить обновленные данные и обновить UI
-          fetch('/api/referral/info')
+          return fetch('/api/referral/info')
             .then(res => res.json())
             .then(data => {
               updateReferralInfo(data);

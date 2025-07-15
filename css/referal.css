@@ -289,6 +289,13 @@
   color: #333;
 }
 
+.referals-card,
+.referals-card-activate,
+.referals-card-infos,
+.referals-card-inviteusers {
+  opacity: 0;
+  transform: translateY(20px);
+}
 
 /* Анимации */
 .visible {
