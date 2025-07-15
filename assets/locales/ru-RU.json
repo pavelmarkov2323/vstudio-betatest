@@ -204,7 +204,8 @@
         "activate_button": "Активировать",
         "total_earned": "Всего заработано",
         "your_rate_per_user": "Ваша ставка за пользователя",
-        "invited_users": "Приглашенных пользователей"
+        "invited_users": "Приглашенных пользователей",
+        "referral.invited_users_heading": "Приглашённые вами пользователи"
     },
     "modal-deposit": {
         "switch_title_deposit": "Пополнить",

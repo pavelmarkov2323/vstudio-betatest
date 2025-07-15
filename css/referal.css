@@ -1,282 +1,210 @@
 .referal-container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
 }
 
 .referals-title {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 /* Главный блок реферальной системы */
 .referals-card {
-    background-color: #ffffff;
-    border-radius: 15px;
-    padding: 25px 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .referals-program-heading {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    margin-top: 1px;
-    text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 1px;
+  text-align: left;
 }
 
 .referals-program-description {
-    font-size: 13px;
-    color: #777;
-    margin-bottom: 25px;
-    text-align: center;
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 25px;
+  text-align: center;
 }
 
 .referals-code-block {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .referals-label {
-    font-weight: 500;
-    margin-bottom: 5px;
-    color: #333;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #333;
 }
 
 .referals-code-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .referals-code-input {
-    background-color: #f5f5f5;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 15px;
-    font-size: 14px;
-    width: 100%;
-    max-width: 300px;
-    color: #333;
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 14px;
+  width: 100%;
+  max-width: 300px;
+  color: #333;
 }
 
 .referals-code-input:focus {
-    outline: none;
+  outline: none;
 }
 
 .referals-copy-btn {
-    background: linear-gradient(135deg, #6a5acd, #4f46e5);
-    border: none;
-    color: #fff;
-    padding: 10px 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+  background: linear-gradient(135deg, #6a5acd, #4f46e5);
+  border: none;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
 }
 
 .referals-copy-btn:hover {
-    background: linear-gradient(135deg, #7b6eea, #5b52e0);
-    transform: translateY(-1px);
+  background: linear-gradient(135deg, #7b6eea, #5b52e0);
+  transform: translateY(-1px);
 }
 
 .copy-icon {
-    width: 16px;
-    height: 16px;
-    margin-right: 0;
-    vertical-align: middle;
-    fill: white;
+  width: 16px;
+  height: 16px;
+  margin-right: 0;
+  vertical-align: middle;
+  fill: white;
 }
 
 /* Блок с активацией кода */
 .referals-card-activate {
-    display: none;  
-    background-color: #ffffff;
-    border-radius: 15px;
-    padding: 25px 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    margin-top: 30px;
+  display: none;
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-top: 30px;
 }
 
 .referals-activate-heading {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    margin-top: 1px;
-    text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 1px;
+  text-align: left;
 }
 
 .referals-activate-description {
-    font-size: 13px;
-    color: #777;
-    margin-bottom: 20px;
-    text-align: center;
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .referals-activate-code-input {
-    background-color: #f5f5f5;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 15px;
-    font-size: 14px;
-    width: 100%;
-    max-width: 300px;
-    color: #333;
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 14px;
+  width: 100%;
+  max-width: 300px;
+  color: #333;
 }
 
 .referals-activate-code-input:focus {
-    outline: none;
+  outline: none;
 }
 
 .referals-activate-btn {
-    background: linear-gradient(135deg, #6a8eff, #4c60d4);
-    border: none;
-    color: #fff;
-    padding: 10px 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 12px rgba(76, 96, 212, 0.35);
+  background: linear-gradient(135deg, #6a8eff, #4c60d4);
+  border: none;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(76, 96, 212, 0.35);
 }
 
 .referals-activate-btn:hover {
-    background: linear-gradient(135deg, #7c9dff, #5b6ee0);
-    transform: translateY(-1px);
+  background: linear-gradient(135deg, #7c9dff, #5b6ee0);
+  transform: translateY(-1px);
 }
 
 .activate-icon {
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-    fill: white;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  fill: white;
 }
 
 /* Информационные блоки реферальной системы */
 .referals-card-infos {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: -40px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: -40px;
+  flex-wrap: wrap;
 }
 
 .referals-card-info {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 20px 25px;
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-    width: 200px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px 25px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  width: 200px;
 }
 
 .referals-info-value {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
 }
 
 .referals-info-label {
-    font-size: 14px;
-    color: #777;
+  font-size: 14px;
+  color: #777;
 }
 
 
 .referals-card-info:nth-child(1) {
-    animation-delay: 0.1s;
+  animation-delay: 0.1s;
 }
 
 .referals-card-info:nth-child(2) {
-    animation-delay: 0.2s;
+  animation-delay: 0.2s;
 }
 
 .referals-card-info:nth-child(3) {
-    animation-delay: 0.3s;
-}
-
-/* Анимации*/
-.referals-card,
-.referals-card-activate {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.referals-card.visible,
-.referals-card-activate.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.referals-card-info {
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.referals-card-info.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Чтобы элементы внутри появлялись с задержкой */
-.referals-card-infos.animate .referals-info-label,
-.referals-card-infos.animate .referals-info-value {
-  opacity: 0;
-  animation: fadeUp 0.6s ease forwards;
-}
-
-.referals-total-earned-label {
   animation-delay: 0.3s;
 }
-#total-earned {
-  animation-delay: 0.6s;
-}
-
-.referals-rate-per-user-label {
-  animation-delay: 0.9s;
-}
-#rate-per-user {
-  animation-delay: 1.2s;
-}
-
-.referals-invited-users-label {
-  animation-delay: 1.5s;
-}
-#invited-users {
-  animation-delay: 1.8s;
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 
 /* Список приглашенных пользователей*/
 .referals-card-inviteusers-container {
@@ -298,6 +226,22 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.inviteusers-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #333;
+}
+
+.inviteusers-divider {
+  width: 110px;
+  height: 3px;
+  background-color: #ddd;
+  border-radius: 4px;
+  margin: 0 auto 20px;
 }
 
 /* Класс для появления */
@@ -354,107 +298,187 @@
   color: #333;
 }
 
+/* Анимации*/
+.referals-card,
+.referals-card-activate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.referals-card.visible,
+.referals-card-activate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.referals-card-info {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.referals-card-info.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Чтобы элементы внутри появлялись с задержкой */
+.referals-card-infos.animate .referals-info-label,
+.referals-card-infos.animate .referals-info-value {
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.referals-total-earned-label {
+  animation-delay: 0.3s;
+}
+
+#total-earned {
+  animation-delay: 0.6s;
+}
+
+.referals-rate-per-user-label {
+  animation-delay: 0.9s;
+}
+
+#rate-per-user {
+  animation-delay: 1.2s;
+}
+
+.referals-invited-users-label {
+  animation-delay: 1.5s;
+}
+
+#invited-users {
+  animation-delay: 1.8s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Мобильная адаптация до 480px */
 @media (max-width: 480px) {
-    .referal-container {
-        padding: 15px;
-        margin: 30px auto;
-    }
+  .referal-container {
+    padding: 15px;
+    margin: 30px auto;
+  }
 
-    .referals-title {
-        font-size: 22px;
-        margin-bottom: 25px;
-    }
+  .referals-title {
+    font-size: 22px;
+    margin-bottom: 25px;
+  }
 
-    .referals-code-block {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
+  .referals-code-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 
-    .referals-label {
-        font-weight: 500;
-        margin-bottom: 5px;
-        color: #333;
-        text-align: center;
-    }
+  .referals-label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #333;
+    text-align: center;
+  }
 
-    .referals-code-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
+  .referals-code-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
 
-    .referals-code-input {
-        background-color: #f5f5f5;
-        border: none;
-        border-radius: 10px;
-        padding: 10px 15px;
-        font-size: 14px;
-        width: 200px;
-        color: #333;
-        text-align: center;
-    }
+  .referals-code-input {
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 14px;
+    width: 200px;
+    color: #333;
+    text-align: center;
+  }
 
-    .referals-copy-btn {
-        padding: 10px 20px;
-        cursor: pointer;
-        transition: background 0.3s ease, transform 0.2s ease;
-        font-size: 13px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        min-width: auto;
-    }
+  .referals-copy-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: auto;
+  }
 
-    .referals-activate-code-input {
-        background-color: #f5f5f5;
-        border: none;
-        border-radius: 10px;
-        padding: 10px 15px;
-        font-size: 14px;
-        width: 200px;
-        color: #333;
-        text-align: center;
-    }
+  .referals-activate-code-input {
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 14px;
+    width: 200px;
+    color: #333;
+    text-align: center;
+  }
 
-    .referals-activate-btn {
-        padding: 10px 20px;
-        cursor: pointer;
-        transition: background 0.3s ease, transform 0.2s ease;
-        font-size: 13px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        min-width: auto;
-    }
+  .referals-activate-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: auto;
+  }
 
-    .referals-card-infos {
-        display: flex;
-        flex-wrap: wrap; /* позволяет переносить карточки, если места не хватает */
-        justify-content: center; /* центрируем карточки */
-        gap: 15px;
-        margin-top: -15px;
-        margin-bottom: -20px;
-        padding: 0 16px; /* отступы по бокам, чтобы не липли к краям */
-        box-sizing: border-box; /* важно для паддингов */
-    }
+  .referals-card-infos {
+    display: flex;
+    flex-wrap: wrap;
+    /* позволяет переносить карточки, если места не хватает */
+    justify-content: center;
+    /* центрируем карточки */
+    gap: 15px;
+    margin-top: -15px;
+    margin-bottom: -20px;
+    padding: 0 16px;
+    /* отступы по бокам, чтобы не липли к краям */
+    box-sizing: border-box;
+    /* важно для паддингов */
+  }
 
-    .referals-card-info {
-        flex: 1 1 300px; /* можно адаптивно сжимать, но не меньше 300px */
-        max-width: 500px;
-        padding: 18px 20px;
-        box-sizing: border-box;
-    }
+  .referals-card-info {
+    flex: 1 1 300px;
+    /* можно адаптивно сжимать, но не меньше 300px */
+    max-width: 500px;
+    padding: 18px 20px;
+    box-sizing: border-box;
+  }
 
-    .referals-info-value {
-        font-size: 22px;
-    }
+  .referals-info-value {
+    font-size: 22px;
+  }
 
-    .referals-info-label {
-        font-size: 13px;
-    }
+  .referals-info-label {
+    font-size: 13px;
+  }
 }

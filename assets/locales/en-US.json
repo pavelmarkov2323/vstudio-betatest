@@ -204,7 +204,8 @@
         "activate_button": "Activate",
         "total_earned": "Total earned",
         "your_rate_per_user": "Your bid per user",
-        "invited_users": "Invited users"
+        "invited_users": "Invited users",
+        "referral.invited_users_heading": "The users you invited"
     },
     "modal-deposit": {
         "switch_title_deposit": "Deposit",
