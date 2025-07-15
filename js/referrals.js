@@ -22,6 +22,10 @@ window.addEventListener('load', () => {
     invitedUsers: document.getElementById('invited-users'),
   };
   const activateCard = document.querySelector('.referals-card-activate');   
+  const referalContainer = document.getElementById('referal-container');
+  const infosContainer = document.querySelector('.referals-card-infos');
+  const inviteUsersContainer = document.querySelector('.referals-card-inviteusers-container');
+
 
   function formatNumber(value) {
     return Number(value || 0).toLocaleString();
