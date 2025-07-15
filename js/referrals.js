@@ -1,5 +1,5 @@
 window.addEventListener('load', () => {
-  
+
   const refCodeInput = document.getElementById('ref-code');
   const copyBtn = document.querySelector('.referals-copy-btn');
   const activateBtn = document.querySelector('.referals-activate-btn');
@@ -22,8 +22,8 @@ window.addEventListener('load', () => {
   }
 
   function renderInvitedUsers(users) {
-    const container = document.querySelector('.referals-card-inviteusers');
-    container.innerHTML = ''; // очистить перед добавлением новых
+    const listContainer = document.querySelector('.inviteusers-list');
+    listContainer.innerHTML = ''; // очистить только список пользователей
 
     users.forEach((user, index) => {
       const div = document.createElement('div');
@@ -32,11 +32,11 @@ window.addEventListener('load', () => {
       <span class="invite-index theme-text">#${index + 1}</span>
       <img class="invite-avatar" src="${user.avatar}" alt="Avatar">
       <div class="invite-info">
-          <span class="invite-id">ID: ${user.userId}</span>
-          <span class="invite-username theme-text">@${user.username}</span>
+        <span class="invite-id">ID: ${user.userId}</span>
+        <span class="invite-username theme-text">@${user.username}</span>
       </div>
     `;
-      container.appendChild(div);
+      listContainer.appendChild(div);
     });
 
     // Показывать контейнер только если есть пользователи
