@@ -9,6 +9,7 @@ window.addEventListener('load', () => {
     invitedUsers: document.getElementById('invited-users'),
   };
   const activateCard = document.querySelector('.referals-card-activate');
+  const referalsInfos = document.querySelector('.referals-card-infos'); // добавляем
 
   function formatNumber(value) {
     return Number(value || 0).toLocaleString();
@@ -50,10 +51,19 @@ window.addEventListener('load', () => {
     }
   }
 
-  // Скрыть блок активации и прочие данные для неавторизованных
+  // Скрыть блоки для неавторизованных
   function hideReferralSection() {
     activateCard.style.display = 'none';
-    // Можно также скрыть другие элементы, если нужно
+    if (referalsInfos) {
+      referalsInfos.style.display = 'none';
+    }
+  }
+
+  // Показать блоки для авторизованных
+  function showReferralSection() {
+    if (referalsInfos) {
+      referalsInfos.style.display = 'flex';  // или 'block' в зависимости от верстки
+    }
   }
 
   // Получить данные пользователя (в том числе реферальный код)
@@ -61,7 +71,6 @@ window.addEventListener('load', () => {
     .then(res => {
       if (!res.ok) {
         if (res.status === 401) {
-          // Не авторизован — скрываем блок активации
           hideReferralSection();
           throw new Error('Не авторизован');
         }
@@ -71,6 +80,7 @@ window.addEventListener('load', () => {
     })
     .then(user => {
       refCodeInput.value = user.referral_code || '';
+      showReferralSection();
 
       fetch('/api/referral/info')
         .then(res => res.json())
@@ -82,7 +92,6 @@ window.addEventListener('load', () => {
     })
     .catch(err => {
       console.warn(err.message);
-      // Если нужно, можно показать сообщение об ошибке или редирект
     });
 
   copyBtn.addEventListener('click', () => {
