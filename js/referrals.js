@@ -22,8 +22,16 @@ window.addEventListener('load', () => {
   }
 
   function renderInvitedUsers(users) {
-    const listContainer = document.querySelector('.inviteusers-list');
-    listContainer.innerHTML = ''; // очистить только список пользователей
+    const container = document.querySelector('.referals-card-inviteusers');
+
+    const headerHTML = `
+    <h3 class="inviteusers-title theme-text" data-i18n="referral.invited_users_heading">
+      The users you invited
+    </h3>
+    <div class="inviteusers-divider theme-line"></div>
+  `;
+
+    container.innerHTML = headerHTML; // восстановить заголовок и девайдер
 
     users.forEach((user, index) => {
       const div = document.createElement('div');
@@ -36,10 +44,9 @@ window.addEventListener('load', () => {
         <span class="invite-username theme-text">@${user.username}</span>
       </div>
     `;
-      listContainer.appendChild(div);
+      container.appendChild(div);
     });
 
-    // Показывать контейнер только если есть пользователи
     document.querySelector('.referals-card-inviteusers-container').style.display =
       users.length ? 'block' : 'none';
   }
