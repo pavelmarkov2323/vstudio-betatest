@@ -289,20 +289,6 @@
   color: #333;
 }
 
-.referals-card,
-.referals-card-activate,
-.referals-card-infos,
-.referals-card-inviteusers {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-/* Анимации */
-.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* Мобильная адаптация до 480px */
 @media (max-width: 480px) {
   .referal-container {
