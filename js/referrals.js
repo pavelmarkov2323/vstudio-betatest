@@ -1,5 +1,5 @@
 window.addEventListener('load', () => {
-
+  
   const refCodeInput = document.getElementById('ref-code');
   const copyBtn = document.querySelector('.referals-copy-btn');
   const activateBtn = document.querySelector('.referals-activate-btn');
@@ -48,7 +48,7 @@ window.addEventListener('load', () => {
     if (data.activatedReferralCode && data.activatedReferralCode !== '') {
       activateCard.style.display = 'none';
     } else {
-      activateCard.style.display = '';
+      activateCard.style.display = 'block';
     }
   }
 
