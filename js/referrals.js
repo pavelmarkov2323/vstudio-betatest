@@ -1,5 +1,4 @@
 window.addEventListener('load', () => {
-  
   const refCodeInput = document.getElementById('ref-code');
   const copyBtn = document.querySelector('.referals-copy-btn');
   const activateBtn = document.querySelector('.referals-activate-btn');
@@ -10,6 +9,9 @@ window.addEventListener('load', () => {
     invitedUsers: document.getElementById('invited-users'),
   };
   const activateCard = document.querySelector('.referals-card-activate');
+  const referralContainer = document.querySelector('.referral-container'); // основной контейнер
+  const referalsCardInfos = document.querySelector('.referals-card-infos');
+  const inviteUsersContainer = document.querySelector('.referals-card-inviteusers-container');
 
   function formatNumber(value) {
     return Number(value || 0).toLocaleString();
@@ -23,7 +25,7 @@ window.addEventListener('load', () => {
 
   function renderInvitedUsers(users) {
     const container = document.querySelector('.referals-card-inviteusers');
-    container.innerHTML = ''; // очистить перед добавлением новых
+    container.innerHTML = '';
 
     users.forEach((user, index) => {
       const div = document.createElement('div');
@@ -35,13 +37,11 @@ window.addEventListener('load', () => {
           <span class="invite-id">ID: ${user.userId}</span>
           <span class="invite-username theme-text">@${user.username}</span>
       </div>
-    `;
+      `;
       container.appendChild(div);
     });
 
-    // Показывать контейнер только если есть пользователи
-    document.querySelector('.referals-card-inviteusers-container').style.display =
-      users.length ? 'block' : 'none';
+    inviteUsersContainer.style.display = users.length ? 'block' : 'none';
   }
 
   function toggleActivateCard(data) {
@@ -52,13 +52,56 @@ window.addEventListener('load', () => {
     }
   }
 
-  // Получить данные пользователя (в том числе реферальный код)
-  fetch('/api/current-user')
-    .then(res => res.json())
-    .then(user => {
-      refCodeInput.value = user.referral_code || '';
+  function showUnauthorizedMessage() {
+    // Скрываем реферальные блоки
+    if (referralContainer) referralContainer.style.display = 'none';
+    if (referalsCardInfos) referalsCardInfos.style.display = 'none';
+    if (inviteUsersContainer) inviteUsersContainer.style.display = 'none';
+    if (activateCard) activateCard.style.display = 'none';
 
-      // Получить данные рефералов
+    // Создаем блок с ошибкой
+    const errorContainer = document.createElement('div');
+    errorContainer.className = 'unauthorized-container';
+
+    errorContainer.innerHTML = `
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#FF4D4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="unauthorized-icon">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+      </svg>
+      <p class="unauthorized-message">Вы должны быть авторизованы, чтобы видеть эту страницу.</p>
+      <button class="unauthorized-btn">Войти / Зарегистрироваться</button>
+    `;
+
+    document.body.appendChild(errorContainer);
+
+    errorContainer.querySelector('.unauthorized-btn').addEventListener('click', () => {
+      window.location.href = '/auth.html';
+    });
+  }
+
+  // Получаем данные текущего пользователя с проверкой авторизации
+  fetch('/api/current-user')
+    .then(res => {
+      if (!res.ok) {
+        if (res.status === 401) {
+          // Не авторизован
+          showUnauthorizedMessage();
+          throw new Error('Не авторизован');
+        } else {
+          throw new Error('Ошибка сети');
+        }
+      }
+      return res.json();
+    })
+    .then(user => {
+      if (!user.referral_code) {
+        // Если нет реферального кода, тоже считаем неавторизованным или пустым
+        showUnauthorizedMessage();
+        return;
+      }
+
+      refCodeInput.value = user.referral_code;
+
       fetch('/api/referral/info')
         .then(res => res.json())
         .then(data => {
@@ -66,6 +109,10 @@ window.addEventListener('load', () => {
           toggleActivateCard(data);
           if (data.invitedUsersList) renderInvitedUsers(data.invitedUsersList);
         });
+    })
+    .catch(err => {
+      console.log('Ошибка загрузки данных:', err.message);
+      // Можно дополнительно показывать сообщение
     });
 
   // Копировать реферальный код
@@ -92,7 +139,6 @@ window.addEventListener('load', () => {
       .then(data => {
         if (data.message) alert(data.message);
         if (!data.message.toLowerCase().includes('ошибка')) {
-          // После успешной активации получить обновленные данные и обновить UI
           fetch('/api/referral/info')
             .then(res => res.json())
             .then(data => {
