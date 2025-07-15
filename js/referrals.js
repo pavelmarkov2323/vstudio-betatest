@@ -1,5 +1,17 @@
 window.addEventListener('load', () => {
+  // Вставим HTML блока с ошибкой в конец body или в нужное место
+  const errorHTML = `
+    <div class="referals-error-card" style="display:none;">
+      <div class="referals-error-icon">🔒</div>
+      <div class="referals-error-content">
+        <h2 class="referals-error-title">Для доступа необходимо авторизоваться</h2>
+        <button class="referals-error-button" id="referalsLoginBtn">Войти</button>
+      </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML('beforeend', errorHTML); 
 
+  const errorCard = document.querySelector('.referals-error-card');
   const refCodeInput = document.getElementById('ref-code');
   const copyBtn = document.querySelector('.referals-copy-btn');
   const activateBtn = document.querySelector('.referals-activate-btn');
@@ -9,7 +21,7 @@ window.addEventListener('load', () => {
     ratePerUser: document.getElementById('rate-per-user'),
     invitedUsers: document.getElementById('invited-users'),
   };
-  const activateCard = document.querySelector('.referals-card-activate');
+  const activateCard = document.querySelector('.referals-card-activate');   
 
   function formatNumber(value) {
     return Number(value || 0).toLocaleString();
@@ -23,15 +35,7 @@ window.addEventListener('load', () => {
 
   function renderInvitedUsers(users) {
     const container = document.querySelector('.referals-card-inviteusers');
-
-    const headerHTML = `
-    <h3 class="inviteusers-title theme-text" data-i18n="referral.invited_users_heading">
-      The users you invited
-    </h3>
-    <div class="inviteusers-divider theme-line"></div>
-  `;
-
-    container.innerHTML = headerHTML; // восстановить заголовок и девайдер
+    container.innerHTML = ''; // очистить перед добавлением новых
 
     users.forEach((user, index) => {
       const div = document.createElement('div');
@@ -40,13 +44,14 @@ window.addEventListener('load', () => {
       <span class="invite-index theme-text">#${index + 1}</span>
       <img class="invite-avatar" src="${user.avatar}" alt="Avatar">
       <div class="invite-info">
-        <span class="invite-id">ID: ${user.userId}</span>
-        <span class="invite-username theme-text">@${user.username}</span>
+          <span class="invite-id">ID: ${user.userId}</span>
+          <span class="invite-username theme-text">@${user.username}</span>
       </div>
     `;
       container.appendChild(div);
     });
 
+    // Показывать контейнер только если есть пользователи
     document.querySelector('.referals-card-inviteusers-container').style.display =
       users.length ? 'block' : 'none';
   }
@@ -59,13 +64,36 @@ window.addEventListener('load', () => {
     }
   }
 
-  // Получить данные пользователя (в том числе реферальный код)
+  // Проверяем авторизацию и показываем интерфейс или ошибку
   fetch('/api/current-user')
     .then(res => res.json())
     .then(user => {
+      if (!user || !user.id) {
+        // Неавторизован — скрываем реферальные блоки
+        if (referalContainer) referalContainer.style.display = 'none';
+        if (infosContainer) infosContainer.style.display = 'none';
+        if (inviteUsersContainer) inviteUsersContainer.style.display = 'none';
+        if (activateCard) activateCard.style.display = 'none';
+
+        // Показываем ошибку
+        errorCard.style.display = 'flex';
+
+        // Кнопка ведёт на страницу авторизации
+        document.getElementById('referalsLoginBtn').addEventListener('click', () => {
+          window.location.href = '/auth.html'; // или твой url для входа
+        });
+
+        return;
+      }
+
+      // Авторизован — показываем интерфейс
+      errorCard.style.display = 'none';
+      if (referalContainer) referalContainer.style.display = 'block';
+      if (infosContainer) infosContainer.style.display = 'block';
+
       refCodeInput.value = user.referral_code || '';
 
-      // Получить данные рефералов
+      // Получить данные рефералов  
       fetch('/api/referral/info')
         .then(res => res.json())
         .then(data => {
