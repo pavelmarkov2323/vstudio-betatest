@@ -13,6 +13,25 @@ window.addEventListener('load', () => {
   const referalsCardInfos = document.querySelector('.referals-card-infos');
   const inviteUsersContainer = document.querySelector('.referals-card-inviteusers-container');
 
+  // Элементы, которые надо скрывать при неавторизации
+  const toHideSelectors = [
+    'header',
+    '.overlay',
+    '.mobile-menu',
+    'footer.theme-line',
+    '.referral-container',
+    '.referals-card-infos',
+    '.referals-card-inviteusers-container',
+  ];
+
+  function hideElements() {
+    toHideSelectors.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        el.style.display = 'none';
+      });
+    });
+  }
+
   function formatNumber(value) {
     return Number(value || 0).toLocaleString();
   }
@@ -31,12 +50,12 @@ window.addEventListener('load', () => {
       const div = document.createElement('div');
       div.className = 'invite-user top-card';
       div.innerHTML = `
-      <span class="invite-index theme-text">#${index + 1}</span>
-      <img class="invite-avatar" src="${user.avatar}" alt="Avatar">
-      <div class="invite-info">
+        <span class="invite-index theme-text">#${index + 1}</span>
+        <img class="invite-avatar" src="${user.avatar}" alt="Avatar">
+        <div class="invite-info">
           <span class="invite-id">ID: ${user.userId}</span>
           <span class="invite-username theme-text">@${user.username}</span>
-      </div>
+        </div>
       `;
       container.appendChild(div);
     });
@@ -53,21 +72,15 @@ window.addEventListener('load', () => {
   }
 
   function showUnauthorizedMessage() {
-    // Скрываем реферальные блоки
-    if (referralContainer) referralContainer.style.display = 'none';
-    if (referalsCardInfos) referalsCardInfos.style.display = 'none';
-    if (inviteUsersContainer) inviteUsersContainer.style.display = 'none';
-    if (activateCard) activateCard.style.display = 'none';
+    // Скрываем все нужные элементы
+    hideElements();
 
     // Создаем блок с ошибкой
     const errorContainer = document.createElement('div');
     errorContainer.className = 'unauthorized-container';
 
     errorContainer.innerHTML = `
-      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#FF4D4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="unauthorized-icon">
-        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-      </svg>
+      <img src="assets/icons/exclamation.svg" alt="Unauthorized" class="unauthorized-icon" width="64" height="64" />
       <p class="unauthorized-message">Вы должны быть авторизованы, чтобы видеть эту страницу.</p>
       <button class="unauthorized-btn">Войти / Зарегистрироваться</button>
     `;
@@ -84,7 +97,6 @@ window.addEventListener('load', () => {
     .then(res => {
       if (!res.ok) {
         if (res.status === 401) {
-          // Не авторизован
           showUnauthorizedMessage();
           throw new Error('Не авторизован');
         } else {
@@ -95,7 +107,6 @@ window.addEventListener('load', () => {
     })
     .then(user => {
       if (!user.referral_code) {
-        // Если нет реферального кода, тоже считаем неавторизованным или пустым
         showUnauthorizedMessage();
         return;
       }
@@ -112,7 +123,6 @@ window.addEventListener('load', () => {
     })
     .catch(err => {
       console.log('Ошибка загрузки данных:', err.message);
-      // Можно дополнительно показывать сообщение
     });
 
   // Копировать реферальный код
