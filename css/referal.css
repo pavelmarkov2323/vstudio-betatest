@@ -282,6 +282,18 @@
   color: #333;
 }
 
+/* Анимации */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px); /* чуть больше для плавности */
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Мобильная адаптация до 480px */
 @media (max-width: 480px) {
   .referal-container {

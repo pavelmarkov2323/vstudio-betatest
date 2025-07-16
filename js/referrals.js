@@ -127,3 +127,51 @@ window.addEventListener('load', () => {
       .catch(() => alert('Ошибка сервера'));
   });
 });
+
+// === Intersection Observer анимация ===
+
+const fadeElements = [
+  '.referals-card',
+  '.referals-program-heading',
+  '.referals-program-description',
+  '.referals-your-code-label',
+  '.referals-code-input',
+  '.referals-copy-btn',
+  '.card-info-total-earned',
+  '.referals-total-earned-label',
+  '#total-earned',
+  '.card-info-rate-per-user',
+  '.referals-rate-per-user-label',
+  '#rate-per-user',
+  '.card-info-invited-users',
+  '.referals-invited-users-label',
+  '#invited-users'
+];
+
+// Добавим fade-up ко всем целевым элементам
+fadeElements.forEach((selector) => {
+  const el = document.querySelector(selector);
+  if (el) el.classList.add('fade-up');
+});
+
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+
+      // Плавная задержка для поочерёдного появления
+      setTimeout(() => {
+        el.classList.add('show');
+      }, i * 250); // теперь задержка между появлениями дольше
+      obs.unobserve(el); // чтобы не повторялась
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+// Наблюдаем за каждым элементом
+fadeElements.forEach((selector) => {
+  const el = document.querySelector(selector);
+  if (el) observer.observe(el);
+});
