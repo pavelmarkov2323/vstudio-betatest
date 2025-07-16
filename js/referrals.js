@@ -27,7 +27,8 @@ window.addEventListener('load', () => {
 
     users.forEach((user, index) => {
       const div = document.createElement('div');
-      div.className = 'invite-user top-card';
+      div.className = 'invite-user top-card fade-up'; // <--- добавляем fade-up
+
       div.innerHTML = `
       <span class="invite-index theme-text">#${index + 1}</span>
       <img class="invite-avatar" src="${user.avatar}" alt="Avatar">
@@ -36,13 +37,18 @@ window.addEventListener('load', () => {
           <span class="invite-username theme-text">@${user.username}</span>
       </div>
     `;
+
       container.appendChild(div);
+
+      // Подключаем анимацию через observer
+      observer.observe(div); // <--- наблюдаем за каждым новым элементом
     });
 
     // Показывать контейнер только если есть пользователи
     document.querySelector('.referals-card-inviteusers-container').style.display =
       users.length ? 'block' : 'none';
   }
+
 
   function toggleActivateCard(data) {
     if (data.activatedReferralCode && data.activatedReferralCode !== '') {
@@ -145,7 +151,9 @@ const fadeElements = [
   '#rate-per-user',
   '.card-info-invited-users',
   '.referals-invited-users-label',
-  '#invited-users'
+  '#invited-users',
+  '.inviteusers-title',
+  '.referals-card-inviteusers'
 ];
 
 // Добавим fade-up ко всем целевым элементам
