@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const addCard = document.getElementById("add-blog");
 
     try {
-        const res = await fetch("/api/user/session");
+        const res = await fetch("/api/current-user");
         const data = await res.json();
 
         if (data.status === 5) {
