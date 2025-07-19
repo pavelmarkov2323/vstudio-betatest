@@ -3,14 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const modal = document.getElementById("modal-blog-edit");
     const closeBtn = document.getElementById("close-modal");
     const publishBtn = document.querySelector('.publish-btn');
-    const fileInput = document.getElementById('preview-file');
-    const uploadBtn = document.getElementById('upload-btn');
-    const imageUrlInput = document.querySelector('input[placeholder="URL или файл изображения"]');
 
-    // Скрываем текстовое поле с URL, чтобы пользователь не вставлял ссылку (если хочешь запретить вообще)
-    if (imageUrlInput) {
-        imageUrlInput.style.display = 'none';
-    }
 
     try {
         const res = await fetch("/api/current-user");
@@ -51,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const posts = await res.json();
 
             posts.forEach(post => {
-                const postHTML = `
+                const postHTML =
                     <div class="post-card theme-blog-cards">
                         <img src="${post.imageUrl}" alt="Post Image" class="post-image" />
                         <div class="post-info theme-blog-cards">
@@ -63,7 +56,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             </div>
                         </div>
                     </div>
-                `;
+                    ;
                 container.insertAdjacentHTML('beforeend', postHTML);
             });
         } catch (err) {
@@ -88,48 +81,37 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    if (uploadBtn && fileInput) {
-        uploadBtn.addEventListener('click', async () => {
-            const file = fileInput.files[0];
-            if (!file) {
-                alert('Пожалуйста, выберите файл изображения.');
-                return;
+    document.getElementById('upload-preview-btn').addEventListener('click', async () => {
+        const fileInput = document.getElementById('preview-file-input');
+        const file = fileInput.files[0];
+        if (!file) {
+            alert('Пожалуйста, выберите файл для загрузки.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('preview', file);
+
+        try {
+            const res = await fetch('/api/posts/upload-preview', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                document.getElementById('preview-image-url').value = data.imageUrl;
+                alert('Изображение успешно загружено!');
+            } else {
+                alert(data.message || 'Ошибка загрузки изображения');
             }
+        } catch (e) {
+            console.error('Ошибка загрузки:', e);
+            alert('Ошибка при загрузке изображения');
+        }
+    });
 
-            const formData = new FormData();
-            formData.append('preview', file);
-
-            try {
-                const res = await fetch('/api/posts/upload-preview', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const data = await res.json();
-
-                if (res.ok) {
-                    // Сохраняем url картинки в скрытое поле (или где у тебя в форме хранится imageUrl)
-                    imageUrlInput.value = data.imageUrl;
-                    alert('Изображение успешно загружено!');
-                    // Добавим миниатюру
-                    let previewImg = document.querySelector('.upload-section img.preview-thumb');
-                    if (!previewImg) {
-                        previewImg = document.createElement('img');
-                        previewImg.classList.add('preview-thumb');
-                        previewImg.style.maxWidth = '150px';
-                        previewImg.style.marginTop = '10px';
-                        uploadBtn.parentNode.appendChild(previewImg);
-                    }
-                    previewImg.src = data.imageUrl;
-                } else {
-                    alert(data.message || 'Ошибка при загрузке изображения.');
-                }
-            } catch (err) {
-                console.error('Ошибка загрузки изображения:', err);
-                alert('Ошибка загрузки изображения.');
-            }
-        });
-    }
 
     if (publishBtn) {
         publishBtn.addEventListener('click', async () => {
@@ -141,7 +123,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const title = titleInput?.value?.trim();
             const previewDescription = previewInput?.value?.trim();
-            const imageUrl = imageInput?.value?.trim();
+            const imageUrl = document.getElementById('preview-image-url').value.trim();
             const content = quill.root.innerHTML;
             const date = dateInput?.value;
             const time = timeInput?.value;
