@@ -2,132 +2,80 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const { cloudinary } = require('../cloudinary');
+const { User } = require('../models/user');
+const Post = require('../models/post');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
-const { Post } = require('../models/post');
-const { User } = require('../models/user'); // Подключаем модель
 
-// Настройка storage для обложек постов (папка 'post')
-const postStorage = new CloudinaryStorage({
+const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: 'post',
-    allowed_formats: ['jpg', 'jpeg', 'png', 'gif'],
-    public_id: (req, file) => {
-      if (!req.session || !req.session.userId) {
-        return `post_unknown_${Date.now()}`;
-      }
-      return `post_${req.session.userId}_${Date.now()}`;
-    }
-  }
-});
-const upload = multer({ storage: postStorage });
-
-// Получение всех постов (максимум 20)
-router.get('/', async (req, res) => {
-  try {
-    const posts = await Post.find().sort({ createdAt: -1 }).limit(20);
-    // Для каждого поста добавим автора по userId (чтобы отдать имя и можно сделать canEdit)
-    const authorIds = posts.map(p => p.authorId);
-    const users = await User.find({ userId: { $in: authorIds } }).select('userId firstName lastName username');
-    const usersMap = new Map(users.map(u => [u.userId, u]));
-
-    const result = posts.map(post => {
-      const author = usersMap.get(post.authorId);
-      return {
-        id: post.postId,
-        title: post.title,
-        theme: post.theme,
-        cover: post.cover,
-        date: post.date,
-        time: post.time,
-        author: author ? (author.firstName + ' ' + author.lastName) : 'Неизвестный',
-        canEdit: req.session.userId === post.authorId
-      };
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Ошибка сервера' });
+    folder: 'blog',
+    allowed_formats: ['jpg', 'jpeg', 'png'],
+    public_id: (req, file) => `preview_${Date.now()}`
   }
 });
 
-// Получение одного поста по id
-router.get('/:id', async (req, res) => {
-  try {
-    const post = await Post.findOne({ postId: req.params.id });
-    if (!post) return res.status(404).json({ message: 'Пост не найден' });
+const upload = multer({ storage });
 
-    const author = await User.findOne({ userId: post.authorId }).select('firstName lastName username');
-    res.json({
-      id: post.postId,
-      title: post.title,
-      theme: post.theme,
-      cover: post.cover,
-      date: post.date,
-      time: post.time,
-      author: author ? (author.firstName + ' ' + author.lastName) : 'Неизвестный',
-      authorId: post.authorId,
-      content: post.content,
-      canEdit: req.session.userId === post.authorId
-    });
-  } catch (err) {
-    res.status(500).json({ message: 'Ошибка сервера' });
-  }
-});
-
-// Создание нового поста (требует авторизации)
-router.post('/', async (req, res) => {
+// Загрузка превью изображения
+router.post('/upload-preview', upload.single('preview'), async (req, res) => {
   if (!req.session.userId) return res.status(401).json({ message: 'Не авторизован' });
+  if (!req.file || !req.file.path) return res.status(400).json({ message: 'Файл не загружен' });
 
-  const { title, theme, cover, content } = req.body;
-  if (!title || !content) return res.status(400).json({ message: 'Не хватает данных' });
+  res.json({ imageUrl: req.file.path });
+});
+
+// Создание поста
+router.post('/create', async (req, res) => {
+  const { title, previewDescription, imageUrl, content, publishedAt, isDraft } = req.body;
+  const userId = req.session.userId;
+
+  if (!userId) return res.status(401).json({ message: 'Не авторизован' });
+
+  if (!title || !previewDescription || !imageUrl || !content) {
+    return res.status(400).json({ message: 'Заполните все поля' });
+  }
 
   try {
     const post = new Post({
-      authorId: req.session.userId,
       title,
-      theme,
-      cover,
+      previewDescription,
+      imageUrl,
       content,
-      date: new Date().toLocaleDateString('ru-RU'),
-      time: new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })
+      authorId: userId,
+      publishedAt: isDraft ? null : publishedAt,
+      isDraft
     });
+
     await post.save();
-    res.status(201).json({ message: 'Пост создан', postId: post.postId });
+    res.json({ message: 'Пост создан', post });
   } catch (err) {
-    console.error(err);
+    console.error('Ошибка создания поста:', err);
     res.status(500).json({ message: 'Ошибка сервера' });
   }
 });
 
-// Обновление поста (требует авторизации и владения постом)
-router.put('/:id', async (req, res) => {
-  if (!req.session.userId) return res.status(401).json({ message: 'Не авторизован' });
-
+// Получение всех постов
+router.get('/', async (req, res) => {
   try {
-    const post = await Post.findOne({ postId: req.params.id });
-    if (!post) return res.status(404).json({ message: 'Пост не найден' });
-    if (post.authorId !== req.session.userId) return res.status(403).json({ message: 'Нет доступа' });
+    const posts = await Post.find().sort({ createdAt: -1 });
 
-    const { title, theme, cover, content } = req.body;
-    post.title = title || post.title;
-    post.theme = theme || post.theme;
-    post.cover = cover || post.cover;
-    post.content = content || post.content;
+    // Получение авторов
+    const users = await User.find({ userId: { $in: posts.map(p => p.authorId) } });
 
-    await post.save();
-    res.json({ message: 'Пост обновлен' });
+    const enriched = posts.map(post => {
+      const author = users.find(u => u.userId === post.authorId);
+      return {
+        ...post._doc,
+        username: author?.username || 'unknown'
+      };
+    });
+
+    res.json(enriched);
   } catch (err) {
-    console.error(err);
+    console.error('Ошибка получения постов:', err);
     res.status(500).json({ message: 'Ошибка сервера' });
   }
-});
-
-// Загрузка обложки поста (отдельный роут для multer + cloudinary)
-router.post('/upload-cover', upload.single('cover'), (req, res) => {
-  if (!req.session.userId) return res.status(401).json({ message: 'Не авторизован' });
-  if (!req.file) return res.status(400).json({ message: 'Файл не загружен' });
-  res.json({ url: req.file.path });
 });
 
 module.exports = router;

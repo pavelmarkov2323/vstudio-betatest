@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/modal_promo.css">
     <link rel="stylesheet" href="css/deposit.css">
     <link rel="stylesheet" href="css/modal_premium.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 
 <body>
@@ -309,14 +310,55 @@
     </div>
 
     <header class="blog-header">
-        <h1 class="blog-heading-title">Блог</h1>
-        <p class="blog-heading-description">
+        <h1 class="blog-heading-title theme-text">Блог</h1>
+        <p class="blog-heading-description gray">
             Посты в нашем блоге содержат актуальную и проверенную информацию от администрации сайта.
         </p>
     </header>
 
+    <div class="posts-container">
+        <!-- логика из js -->
+    </div>
 
-    <main id="app"></main>
+    <div class="modal-blog-edit" id="modal-blog-edit">
+        <div class="modal-content theme-modal">
+            <span class="close-modal" id="close-modal">&times;</span>
+
+            <h2 class="theme-text">Создание публикации</h2>
+
+            <label class="theme-text">Заголовок</label>
+            <input type="text" class="input-field theme-input" placeholder="Введите заголовок">
+
+            <label class="theme-text">Превью описание</label>
+            <textarea class="input-field theme-input" placeholder="Краткое описание"></textarea>
+
+            <label class="theme-text">Загрузить превью изображение</label>
+            <div class="upload-section">
+                <input type="text" class="input-field theme-input" placeholder="URL или файл изображения">
+                <button class="upload-btn">Загрузить</button>
+            </div>
+
+            <label class="theme-text">Основной контент</label>
+            <div id="editor" class="editor-container"></div>
+
+            <div class="datetime-fields">
+                <div>
+                    <label class="theme-text">Дата публикации</label>
+                    <input type="date" class="input-field theme-input">
+                </div>
+                <div>
+                    <label class="theme-text">Время публикации</label>
+                    <input type="time" class="input-field theme-input">
+                </div>
+            </div>
+
+            <div class="editor-buttons">
+                <button class="draft-btn">Сохранить в черновик</button>
+                <button class="publish-btn">Опубликовать</button>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Corpyright, footer -->
     <footer class="footer theme-line">
@@ -346,6 +388,7 @@
     <!-- Подключенные скрипты -->
     <script src="js/translate-language.js"></script>
     <script src="js/themeswitch.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
     <script src="/js/blog.js"></script>
     <script src="js/menu.js"></script>
     <script src="js/menu_dropdown.js"></script>
