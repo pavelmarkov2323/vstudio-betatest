@@ -4,11 +4,13 @@ const counterSchema = new mongoose.Schema({
   _id: String,
   seq: { type: Number, default: 0 }
 });
-const Counter = mongoose.model('Counter', counterSchema);
+
+// Используем уже созданную модель, если есть, иначе создаём новую
+const Counter = mongoose.models.Counter || mongoose.model('Counter', counterSchema);
 
 const postSchema = new mongoose.Schema({
   postId: { type: Number, unique: true },
-  authorId: { type: Number, required: true }, // связываем с User.userId
+  authorId: { type: Number, required: true },
   title: { type: String, required: true },
   theme: { type: String, default: '' },
   cover: { type: String, default: '' },
@@ -18,7 +20,6 @@ const postSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-// Middleware генерации postId
 postSchema.pre('save', async function(next) {
   if (this.isNew) {
     try {
@@ -37,5 +38,6 @@ postSchema.pre('save', async function(next) {
   }
 });
 
-const Post = mongoose.model('Post', postSchema);
+const Post = mongoose.models.Post || mongoose.model('Post', postSchema);
+
 module.exports = { Post, Counter };
