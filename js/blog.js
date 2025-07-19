@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const addCard = document.getElementById("add-blog");
     const modal = document.getElementById("modal-blog-edit");
     const closeBtn = document.getElementById("close-modal");
+    const publishBtn = document.querySelector('.publish-btn');
+
 
     try {
         const res = await fetch("/api/current-user");
@@ -78,4 +80,59 @@ document.addEventListener("DOMContentLoaded", async () => {
             ]
         }
     });
+
+
+    if (publishBtn) {
+        publishBtn.addEventListener('click', async () => {
+            const titleInput = document.querySelector('input[placeholder="Введите заголовок"]');
+            const previewInput = document.querySelector('textarea[placeholder="Краткое описание"]');
+            const imageInput = document.querySelector('input[placeholder="URL или файл изображения"]');
+            const dateInput = document.querySelector('input[type="date"]');
+            const timeInput = document.querySelector('input[type="time"]');
+
+            const title = titleInput?.value?.trim();
+            const previewDescription = previewInput?.value?.trim();
+            const imageUrl = imageInput?.value?.trim();
+            const content = quill.root.innerHTML;
+            const date = dateInput?.value;
+            const time = timeInput?.value;
+
+            if (!title || !previewDescription || !imageUrl || !content) {
+                alert("Пожалуйста, заполните все поля.");
+                return;
+            }
+
+            const publishedAt = date && time ? new Date(`${date}T${time}`) : new Date();
+
+            try {
+                const res = await fetch('/api/posts/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        title,
+                        previewDescription,
+                        imageUrl,
+                        content,
+                        publishedAt,
+                        isDraft: false
+                    })
+                });
+
+                const result = await res.json();
+
+                if (res.ok) {
+                    alert("Пост успешно создан!");
+                    modal.style.display = "none";
+                    window.location.reload(); // Перезагрузи посты
+                } else {
+                    alert(result.message || "Ошибка при создании поста.");
+                }
+            } catch (err) {
+                console.error("Ошибка при отправке поста:", err);
+                alert("Серверная ошибка.");
+            }
+        });
+    }
 });
