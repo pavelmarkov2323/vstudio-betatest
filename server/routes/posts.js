@@ -4,7 +4,7 @@ const multer = require('multer');
 const { cloudinary } = require('../cloudinary');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const { Post } = require('../models/post');
-const { User } = require('../models/user');
+const { User } = require('../models/user'); // Подключаем модель
 
 // Настройка storage для обложек постов (папка 'post')
 const postStorage = new CloudinaryStorage({
