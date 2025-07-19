@@ -341,9 +341,10 @@
 
             <label class="theme-text">Загрузить превью изображение</label>
             <div class="upload-section">
-                <input type="text" class="input-field theme-input" placeholder="URL или файл изображения">
-                <button class="upload-btn">Загрузить</button>
+                <input type="file" id="preview-file" accept="image/jpeg,image/png" />
+                <button class="upload-btn" id="upload-btn">Загрузить</button>
             </div>
+
 
             <label class="theme-text">Основной контент</label>
             <div id="editor" class="editor-container"></div>
