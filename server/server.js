@@ -49,6 +49,9 @@ app.use('/api/subscriptions', subscriptionsRouter);
 const referralRouter = require('./routes/referral');
 app.use('/api/referral', referralRouter);
 
+const postsRouter = require('./routes/posts');
+app.use('/api/posts', postsRouter);
+
 
 // Раздача статических файлов (html, css, js) из корня проекта
 app.use(express.static(path.join(__dirname, '..')));

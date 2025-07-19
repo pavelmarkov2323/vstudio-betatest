@@ -158,7 +158,7 @@ const fadeElements = [
   '.referals-invited-users-label',
   '#invited-users',
   '.inviteusers-title',
-  '.referals-card-inviteusers'
+  '.referals-card-inviteusers'  
 ];
 
 // Добавим fade-up ко всем целевым элементам
@@ -170,8 +170,8 @@ fadeElements.forEach((selector) => {
 const observer = new IntersectionObserver((entries, obs) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
-      const el = entry.target;
-
+      const el = entry.target;    
+      
       // Плавная задержка для поочерёдного появления
       setTimeout(() => {
         el.classList.add('show');

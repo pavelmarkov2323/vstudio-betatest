@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValeyevStudio - Blog</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <!-- Подключение кастомных стилей -->
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/menu_dropdown.css">
+    <link rel="stylesheet" href="css/captcha.css">
+    <link rel="stylesheet" href="css/interactivehelp.css">
+    <link rel="stylesheet" href="css/pushnotify.css">
+    <link rel="stylesheet" href="css/modal_message.css">
+    <link rel="stylesheet" href="css/banner_promo.css">
+    <link rel="stylesheet" href="css/modal_promo.css">
+    <link rel="stylesheet" href="css/deposit.css">
+    <link rel="stylesheet" href="css/modal_premium.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="burger theme-icon" id="burger-btn">
+            <img src="assets/icons/menu-burger.svg" alt="Menu" />
+        </div>
+        <div class="logo theme-text">
+            <img src="assets/icons/logo.svg" alt="Logo" class="logo-img theme-icon">
+            ValeyevStudio
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="home.html" class="nav-home">Home</a></li>
+                <li><a href="products.html" class="nav-our-products">Our Products</a></li>
+                <li><a href="about.html" class="nav-about-us">About us</a></li>
+            </ul>
+        </nav>
+        <div class="actions">
+
+            <!-- Выпадающий список для выбора языка -->
+            <div class="language-switch has-tooltip">
+                <span class="tooltip theme-text" data-tooltip="select-language">Select language</span>
+                <!-- Флаг страны и код -->
+                <img src="assets/icons/flag/usa.png" alt="Flag" class="selected-flag">
+                <!-- Отображаем флаг по умолчанию -->
+                <span class="language-code">EN</span>
+                <img src="assets/icons/angle-small-down.svg" alt="Arrow" class="arrow theme-icon">
+                <!-- Выпадающий список -->
+                <div class="dropdown-menu">
+                    <div class="dropdown-item" data-lang="en-US">
+                        <img src="assets/icons/flag/usa.png" alt="USA Flag" class="flag">
+                        <span>EN</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="ru-RU">
+                        <img src="assets/icons/flag/russia.png" alt="Russia Flag" class="flag">
+                        <span>RU</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="uk-UA">
+                        <img src="assets/icons/flag/ukraine.png" alt="Ukraine Flag" class="flag">
+                        <span>UA</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="be-BY">
+                        <img src="assets/icons/flag/belarus.png" alt="Belarus Flag" class="flag">
+                        <span>BY</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="kk-KZ">
+                        <img src="assets/icons/flag/kazakhstan.png" alt="Kazakhstan Flag" class="flag">
+                        <span>KZ</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="kr-TR">
+                        <img src="assets/icons/flag/crimea_tatar.png" alt="Crimean Tatar Flag" class="flag">
+                        <span>TR</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="ka-GE">
+                        <img src="assets/icons/flag/georgia.png" alt="Geogria Flag" class="flag">
+                        <span>GE</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="pl-PL">
+                        <img src="assets/icons/flag/poland.png" alt="Poland Flag" class="flag">
+                        <span>PL</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="de-DE">
+                        <img src="assets/icons/flag/germany.png" alt="Germany Flag" class="flag">
+                        <span>DE</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="es-ES">
+                        <img src="assets/icons/flag/spanish.png" alt="Spanish Flag" class="flag">
+                        <span>ES</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="fr-FR">
+                        <img src="assets/icons/flag/france.png" alt="France Flag" class="flag">
+                        <span>FR</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="fi-FI">
+                        <img src="assets/icons/flag/finland.png" alt="Finland Flag" class="flag">
+                        <span>FI</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="ko-KR">
+                        <img src="assets/icons/flag/south_korea.png" alt="South Korea Flag" class="flag">
+                        <span>KR</span>
+                    </div>
+                    <div class="dropdown-item" data-lang="zh-CN">
+                        <img src="assets/icons/flag/china.png" alt="China Flag" class="flag">
+                        <span>CN</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Тоггл переключатель темы -->
+            <div class="has-tooltip">
+                <label class="theme-toggle">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span class="tooltip theme-text" data-tooltip="switch-themes">Switch themes</span>
+            </div>
+
+            <!-- Кнопка входа (Sign In) -->
+            <div class="has-tooltip">
+                <button class="signin-btn">
+                    <img class="signin-icon" src="assets/icons/user.svg" alt="User Icon">
+                    <span class="signin-text">Sign In</span>
+                </button>
+                <span class="tooltip theme-text" data-tooltip="sign-in">Sign in to your account</span>
+            </div>
+
+            <!-- Аватар с выпадающим меню -->
+            <div class="user-menu" style="display: none;">
+                <div class="user-avatar" id="avatarToggle">
+                    <img src="/assets/icons/user.png" alt="User Avatar" class="avatar-img theme-icon">
+                    <img src="/assets/icons/angle-small-down.svg" alt="Dropdown Icon" class="dropdown-icon theme-icon">
+                </div>
+
+                <div class="dropdown-panel" id="userDropdown">
+                    <!-- Блок Баланса -->
+                    <div class="dropdown-balance">
+                        <div class="dropdown-item balance-item" id="userBalance">
+                            <img src="/assets/icons/wallet.svg" class="item-icon theme-icon" alt="">
+                            <span class="balance-amount theme-text" id="balanceAmount">0</span>
+                            <button class="deposit_wallet">
+                                <img src="/assets/icons/add.svg" alt="add" class="theme-icon" />
+                            </button>
+                        </div>
+                        <div class="balance-divider"></div>
+                    </div>
+                    <div class="dropdown-item" id="menuProfile">
+                        <img src="/assets/icons/user.svg" class="item-icon theme-icon" alt="">
+                        <span class="menu-profile-text theme-text">My profile</span>
+                    </div>
+                    <div class="dropdown-item" id="menuSettings">
+                        <img src="/assets/icons/settings.svg" class="item-icon theme-icon" alt="">
+                        <span class="menu-settings-text theme-text">Settings</span>
+                    </div>
+                    <div class="dropdown-item" id="menuSupport">
+                        <img src="/assets/icons/help.svg" class="item-icon theme-icon" alt="">
+                        <span class="menu-support-text theme-text">Support</span>
+                    </div>
+                    <div class="dropdown-item" id="menuLogout">
+                        <img src="/assets/icons/user-logout.svg" class="item-icon theme-icon" alt="">
+                        <span class="menu-logout-text theme-text">Logout</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Выпадающий список продуктов из наведении на кнопку Наши продукты -->
+    <div class="overlay"></div>
+    <div class="dropdown-menu-item" id="productsMenu">
+        <div class="product-item">
+            <img src="/assets/images/PixelFPS.png" alt="Product 1">
+            <p class="theme-text">PixelFPS</p>
+            <div class="has-tooltip">
+                <button id="downloadBtn" class="download-btn">
+                    <span class="button-text">Download</span> <!-- Текст кнопки -->
+                    <img class="download-icon theme-icon" src="/assets/icons/download.svg" alt="Download Icon" />
+                    <!-- Иконка -->
+                </button>
+                <span class="tooltip theme-text" data-tooltip="download-description">Download the latest version</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu_overlay"></div>
+
+        <!-- Сontent -->
+        <div class="mobile-menu_content">
+
+            <!-- Mobile button theme switch -->
+            <div class="mobile-theme-toggle">
+                <button id="mobileThemeBtn">
+                    <img id="mobileThemeIcon" src="/assets/icons/sun.png" alt="Theme Icon" />
+                </button>
+            </div>
+
+            <!-- Closed mobile menu -->
+            <button class="mobile-menu_close" id="closeMenu">✕</button>
+
+            <!-- Navigation -->
+            <div class="mobile-nav-wrapper">
+                <nav class="mobile-nav">
+                    <a href="/home.html" class="mobile-nav-home">Home</a>
+                    <a href="/products.html" class="mobile-nav-our-products">Our Products</a>
+                    <a href="/about.html" class="mobile-nav-about-us">About Us</a>
+                </nav>
+            </div>
+
+            <div class="mobile-logo">
+                <img src="/assets/icons/logo-chromo.png" alt="ValeyevStudio Logo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно: Deposit & Promo -->
+    <div class="modal-deposit" id="depositModal">
+        <div class="modal-content theme-modal">
+            <button class="close-btn">&times;</button>
+
+            <div class="switcher">
+                <div class="switch-wrapper theme-button-switcher">
+                    <div class="switch-indicator"></div>
+                    <button class="switch active switch_title_deposit theme-text" data-target="deposit">Deposit</button>
+                    <button class="switch switch_title_promo theme-text" data-target="promo">Promo</button>
+                </div>
+            </div>
+
+            <div class="modal-body" id="deposit">
+                <p class="in-progress theme-text">The section is under development.</p>
+            </div>
+
+            <div class="modal-body hidden" id="promo">
+                <div class="promo-content" id="promo-content">
+                    <h2 class="promocode-title theme-text">Promo code activation</h2>
+                    <p class="description-promocode theme-text">
+                        Enter a promo code and receive money that can be spent on buying a subscription, a code, and
+                        gifts for a friend. The promo code consists of 16 characters.
+                    </p>
+                    <input class="promocode-input theme-input" type="text" placeholder="XXXX-XXXX-XXXX-XXXX"
+                        id="promoInput" maxlength="19" />
+                    <button class="button-promocode-activate theme-text" id="activatePromo" disabled>Activate</button>
+                    <div id="promoMessageContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно: Premium subscirbe & price - buy -->
+    <div class="modal-premium-subscribe-backdrop">
+        <div class="modal-premium-subscribe-container theme-modal">
+            <h2 class="modal-premium-subscribe-title theme-text">Purchase of a premium subscription</h2>
+            <p class="modal-premium-subscribe-description theme-text">
+                By purchasing a premium subscription, you get access to experimental features and disable ads and
+                banners.
+            </p>
+
+            <div class="modal-premium-subscribe-field">
+                <label for="programSelect"
+                    class="modal-premium-subscribe-label premium-subs-label-typeprogram theme-text">Type of
+                    program</label>
+                <div class="modal-premium-subscribe-select-wrapper">
+                    <select id="programSelect" class="modal-premium-subscribe-select"></select>
+                    <img src="assets/icons/angle-small-down.svg" alt="Dropdown Icon"
+                        class="modal-premium-subscribe-icon theme-icon" />
+                </div>
+            </div>
+
+            <div class="modal-premium-subscribe-field">
+                <label for="planSelect"
+                    class="modal-premium-subscribe-label premium-subs-label-tariffplan theme-text">Tariff plan
+                    program</label>
+                <div class="modal-premium-subscribe-select-wrapper">
+                    <select id="planSelect" class="modal-premium-subscribe-select"></select>
+                    <img src="assets/icons/angle-small-down.svg" alt="Dropdown Icon"
+                        class="modal-premium-subscribe-icon theme-icon" />
+                </div>
+            </div>
+
+            <div class="modal-premium-subscribe-price-wrapper">
+                <p class="modal-premium-subscribe-price theme-text">Amount to be paid:</p>
+                <span id="priceValue" class="modal-premium-subscribe-price-value theme-text">0</span>
+            </div>
+
+            <button id="buyButton" class="modal-premium-subscribe-button" disabled>Purchase</button>
+            <button class="modal-premium-subscribe-close">&times;</button>
+        </div>
+    </div>
+
+    <!-- Push Уведомления -->
+    <div class="push-notify" id="pushNotify">
+        <div class="push-content" id="pushContent1">
+            <strong class="push-title-suggestions theme-text">Have improvement suggestions?</strong>
+            <p class="push-text-suggestions">Write to us, we will definitely consider your feedback and suggestions to
+                improve or add new features.</p>
+            <button id="emailButton" class="push-button push-btn-suggestions">Suggest</button>
+            <span class="push-close">&times;</span>
+        </div>
+        <div class="push-content2" id="pushContent2">
+            <strong class="push-title-donation theme-text">Charity Fund</strong>
+            <p class="push-text-donation">For those who want to support the author for the work done. The funds will go
+                to the development of the project ecosystem.</p>
+            <button id="donateButton" class="push-button push-btn-donation">Support</button>
+            <span class="push-close">&times;</span>
+        </div>
+    </div>
+
+    <header class="blog-header">
+        <h1 class="blog-heading-title">Блог</h1>
+        <p class="blog-heading-description">
+            Посты в нашем блоге содержат актуальную и проверенную информацию от администрации сайта.
+        </p>
+    </header>
+
+
+    <main id="app"></main>
+
+    <!-- Corpyright, footer -->
+    <footer class="footer theme-line">
+        <div class="footer-content">
+            <span class="footer-copyright">© 2025 Project of the ValeyevStudio company.</span>
+            <a href="about.html#user-agreement" class="footer-link nav-user-agreement">User Agreement</a>
+            <a href="brand.html" class="footer-link nav-partners">Partners</a>
+            <a href="referal.html" class="footer-link nav-referals">Referal program</a>
+        </div>
+        <div class="footer-social">
+            <span class="social-platforms">Social:</span>
+            <a href="https://vk.com/nikitavaleyev" target="_blank">
+                <img src="assets/icons/social/vk.svg" alt="VK" class="theme-icon">
+            </a>
+            <a href="https://www.youtube.com/channel/@NikitaValeyev" target="_blank">
+                <img src="assets/icons/social/youtube.svg" alt="YouTube" class="theme-icon">
+            </a>
+            <a href="https://t.me/nikitavaleyev_musician" target="_blank">
+                <img src="assets/icons/social/telegram.svg" alt="Telegram" class="theme-icon">
+            </a>
+            <a href="https://instagram.com/nikitavaleyev" target="_blank">
+                <img src="assets/icons/social/instagram.svg" alt="Instagram" class="theme-icon">
+            </a>
+        </div>
+    </footer>
+
+    <!-- Подключенные скрипты -->
+    <script src="js/translate-language.js"></script>
+    <script src="js/themeswitch.js"></script>
+    <script src="/js/blog.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/menu_dropdown.js"></script>
+    <script src="js/download.js"></script>
+    <script src="js/captcha.js"></script>
+    <script src="js/pushnotify.js"></script>
+    <script src="js/banner_promo.js"></script>
+    <script src="js/modal_promo.js"></script>
+    <script src="js/modal_deposit.js" defer></script>
+    <script src="js/modal_premium.js"></script>
+</body>
+
+</html>
