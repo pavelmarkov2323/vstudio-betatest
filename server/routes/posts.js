@@ -32,17 +32,6 @@ router.post('/upload-preview', upload.single('preview'), async (req, res) => {
   res.json({ imageUrl: req.file.path });
 });
 
-// Загрузка изображения из редактора
-router.post('/upload-image', upload.single('image'), async (req, res) => {
-  if (!req.session.userId) return res.status(401).json({ message: 'Не авторизован' });
-
-  if (!req.file || !req.file.path) {
-    return res.status(400).json({ message: 'Файл не загружен' });
-  }
-
-  res.json({ imageUrl: req.file.path });
-});
-
 // Создание поста
 router.post('/create', async (req, res) => {
   const { title, previewDescription, imageUrl, content, publishedAt, isDraft } = req.body;
