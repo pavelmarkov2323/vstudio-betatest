@@ -61,6 +61,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
 
+// Страница отображения поста по slug
+app.get('/blog/:slug', (req, res) => {
+  res.sendFile(path.join(__dirname, '../blog.html'));
+});
+
 // Обработка профиля по username — отдаёт профильный HTML файл
 app.get('/profile/:username', (req, res) => {
   res.sendFile(path.join(__dirname, '../profile.html'));

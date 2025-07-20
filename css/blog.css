@@ -86,7 +86,7 @@
   font-style: italic;
 }
 
-/* Карточка (как кнопка для добавления публикации в блог) */
+/* Карточка - кнопка (Для добавления публикации в блог) */
 .add-card {
   display: none;
   align-items: center;
@@ -289,7 +289,6 @@ textarea.input-field {
   transform: scale(1.05);
 }
 
-
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -299,4 +298,34 @@ textarea.input-field {
 @keyframes scaleUp {
   from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
+}
+
+/* Дизайн открытого поста */
+.post-full {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.post-full h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.post-full-meta {
+    font-size: 0.9rem;
+    color: gray;
+    margin-bottom: 1rem;
+}
+
+.post-full-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.post-full-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
 }

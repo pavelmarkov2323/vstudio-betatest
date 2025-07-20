@@ -7,11 +7,10 @@ const Post = require('../models/post');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
 // Cоздание slug ссылки поста
+const { slugify } = require('transliteration');
+
 const generateSlug = (title) => {
-  return title
-    .toLowerCase()
-    .replace(/[^a-zа-я0-9]+/gi, '-') // заменяем пробелы и символы на `-`
-    .replace(/^-+|-+$/g, '');        // удаляем крайние `-`
+  return slugify(title, { lowercase: true });
 };
 
 const storage = new CloudinaryStorage({
