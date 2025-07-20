@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const title = titleInput?.value?.trim();
             const previewDescription = previewInput?.value?.trim();
             const imageUrl = document.getElementById('preview-image-url').value.trim();
-            const content = quill.root.innerHTML;
+                const content = quill.root.innerHTML;
             const date = dateInput?.value;
             const time = timeInput?.value;
 
