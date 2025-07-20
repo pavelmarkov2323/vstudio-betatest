@@ -90,8 +90,12 @@ body.dark-theme .accordion-item {
 body.dark-theme .theme-line {
     border-top: 1px solid #333333 !important; /* Темно-серая граница, линия (Line) */
 }
-/* Modal Window Style */
+/* Theme blog card + post */
 body.dark-theme .theme-blog-cards {
+    background: #252525;
+}
+
+body.dark-theme .theme-blog-post {
     background: #252525;
 }
 

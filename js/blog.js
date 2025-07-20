@@ -84,14 +84,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (res.ok) {
                 const fullHTML = `
-                <div class="post-full">
+                <div class="post-full theme-blog-post">
                     <h1 class="theme-text">${post.title}</h1>
                     <div class="post-full-meta">
-                        <span class="post-author">${post.username}</span> |
-                        <span class="post-date">${new Date(post.createdAt).toLocaleDateString()}</span>
+                        <span class="post-author theme-text">${post.username}</span> |
+                        <span class="post-date theme-text">${new Date(post.createdAt).toLocaleDateString()}</span>
                     </div>
                     <img src="${post.imageUrl}" alt="Post Image" class="post-full-image" />
-                    <div class="post-full-content">${post.content}</div>
+                    <div class="post-full-content theme-text">${post.content}</div>
                 </div>
             `;
                 fullContainer.innerHTML = fullHTML;
