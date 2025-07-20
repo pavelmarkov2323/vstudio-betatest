@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const quill = new Quill('#editor', {
         theme: 'snow',
-        placeholder: 'Начните творить прямо сейчас, напишите крутую публикацию!',
+        placeholder: 'Напишите ваш текст...',
         modules: {
             toolbar: [
                 [{ header: [1, 2, false] }],
@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 ['link', 'image'],
                 ['clean']
             ],
-            imageUploader: {}
+            imageUploader: {} // подключили наш кастомный модуль
         }
     });
 
@@ -228,12 +228,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             const previewDescription = previewInput?.value?.trim();
             const imageUrl = document.getElementById('preview-image-url').value.trim();
             const content = quill.root.innerHTML.trim();
-            const plainText = quill.getText().trim();
+            const plainText = quill.getText().trim(); // Получаем текст без HTML-тегов
             const date = dateInput?.value;
             const time = timeInput?.value;
 
-            if (!title || !previewDescription || !imageUrl || content === '' || content === '<p><br></p>') {
-                console.log({ title, previewDescription, imageUrl, content, plainText });
+            if (!title || !previewDescription || !imageUrl || plainText === "") {
                 alert("Пожалуйста, заполните все поля, включая основной текст.");
                 return;
             }
@@ -282,7 +281,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    // Установка текущей даты и времени по умолчанию в редакторе создания поста
+    // Установка текущей даты и времени по умолчанию
     const dateInput = document.querySelector('input[type="date"]');
     const timeInput = document.querySelector('input[type="time"]');
 
