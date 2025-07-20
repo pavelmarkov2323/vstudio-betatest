@@ -16,7 +16,7 @@ const generateSlug = (title) => {
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: 'blog', 
+    folder: 'blog',
     allowed_formats: ['jpg', 'jpeg', 'png'],
     public_id: (req, file) => `preview_${Date.now()}`
   }
@@ -75,7 +75,12 @@ router.post('/create', async (req, res) => {
 // Получение всех постов
 router.get('/', async (req, res) => {
   try {
-    const posts = await Post.find().sort({ createdAt: -1 });
+    const now = new Date();
+    const posts = await Post.find({
+      publishedAt: { $lte: now },
+      isDraft: false
+    }).sort({ publishedAt: -1 });
+
 
     // Получение авторов
     const users = await User.find({ userId: { $in: posts.map(p => p.authorId) } });
