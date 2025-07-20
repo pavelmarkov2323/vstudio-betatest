@@ -70,6 +70,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (slugMatch) {
         const slug = slugMatch[1];
 
+        // Скрываем заголовок блога
+        const blogHeader = document.querySelector('.blog-header');
+        if (blogHeader) blogHeader.style.display = 'none';
+
         // Скрываем контейнер с превью
         const previewContainer = document.querySelector('.posts-container');
         previewContainer.style.display = 'none';
