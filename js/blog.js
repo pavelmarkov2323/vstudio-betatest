@@ -232,8 +232,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             const date = dateInput?.value;
             const time = timeInput?.value;
 
-            if (!title || !previewDescription || !imageUrl || plainText === "") {
-                alert("Пожалуйста, заполните все поля, включая основной текст.");
+            if (!title) {
+                alert("Пожалуйста, введите заголовок.");
                 return;
             }
 
@@ -242,8 +242,23 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return;
             }
 
+            if (!previewDescription) {
+                alert("Пожалуйста, введите превью описание.");
+                return;
+            }
+
             if (previewDescription.length > 300) {
                 alert("Превью описание не должно превышать 300 символов.");
+                return;
+            }
+
+            if (!imageUrl) {
+                alert("Пожалуйста, загрузите изображение превью.");
+                return;
+            }
+
+            if (plainText === "") {
+                alert("Основной контент не должен быть пустым.");
                 return;
             }
 
