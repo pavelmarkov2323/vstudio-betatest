@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const quill = new Quill('#editor', {
         theme: 'snow',
-        placeholder: 'Напишите ваш текст...',
+        placeholder: 'Начните творить основной контент поста в блоге',
         modules: {
             toolbar: [
                 [{ header: [1, 2, false] }],
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 ['link', 'image'],
                 ['clean']
             ],
-            imageUploader: {},  // твой модуль загрузки
+            imageUploader: {},
             imageResize: {
                 displayStyles: {
                     backgroundColor: 'black',
