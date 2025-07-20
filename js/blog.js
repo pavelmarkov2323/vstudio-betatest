@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const quill = new Quill('#editor', {
         theme: 'snow',
-        placeholder: 'Напишите ваш текст...',
+        placeholder: 'Начните творить прямо сейчас, напишите крутую публикацию!',
         modules: {
             toolbar: [
                 [{ header: [1, 2, false] }],
@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 ['link', 'image'],
                 ['clean']
             ],
-            imageUploader: {} // подключили наш кастомный модуль
+            imageUploader: {}
         }
     });
 
@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const previewDescription = previewInput?.value?.trim();
             const imageUrl = document.getElementById('preview-image-url').value.trim();
             const content = quill.root.innerHTML.trim();
-            const plainText = quill.getText().trim(); // Получаем текст без HTML-тегов
+            const plainText = quill.getText().trim();
             const date = dateInput?.value;
             const time = timeInput?.value;
 
