@@ -409,26 +409,24 @@ textarea.input-field {
   .posts-container {
     justify-content: center;
     gap: 12px;
-    padding: 10px;
+    padding: 5px;
   }
 
   .post-card {
     flex: 0 1 calc(50% - 10px);
-    /* две карточки в ряд с отступом */
     max-width: 100%;
   }
 
   .post-image {
-    height: 140px;
-    /* чуть меньше высота картинки на мобилке */
+    height: 120px;
   }
 
   .post-title {
-    font-size: 1em;
+    font-size: 0.9em;
   }
 
   .post-description {
-    font-size: 0.85em;
+    font-size: 0.75em;
   }
 
   .post-meta {
