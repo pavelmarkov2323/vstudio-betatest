@@ -3,8 +3,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const modal = document.getElementById("modal-blog-edit");
     const closeBtn = document.getElementById("close-modal");
     const publishBtn = document.querySelector('.publish-btn');
+    const container = document.querySelector('.posts-container');
 
-
+    // Проверка авторизации
     try {
         const res = await fetch("/api/current-user");
         const data = await res.json();
@@ -23,50 +24,85 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Ошибка проверки статуса:", err);
     }
 
-    // Закрытие по кнопке
     if (closeBtn) {
         closeBtn.addEventListener("click", () => {
             modal.style.display = "none";
         });
     }
 
-    // Закрытие по фону
     window.addEventListener("click", (e) => {
         if (e.target === modal) {
             modal.style.display = "none";
         }
     });
 
+    // ==== Новый код: определение текущей страницы ====
+    const pathParts = window.location.pathname.split('/');
+    const isPostPage = pathParts.length === 3 && pathParts[1] === 'blog';
+    const slug = pathParts[2];
+
+    if (isPostPage) {
+        loadSinglePost(slug);
+    } else {
+        loadPosts();
+    }
+
+    // ==== Загрузка всех постов ====
     async function loadPosts() {
-        const container = document.querySelector('.posts-container');
         try {
             const res = await fetch('/api/posts');
             const posts = await res.json();
 
+            container.innerHTML = ''; // Очищаем перед вставкой
+
             posts.forEach(post => {
                 const postHTML = `
-                <div class="post-card theme-blog-cards">
-                    <img src="${post.imageUrl}" alt="Post Image" class="post-image" />
-                    <div class="post-info theme-blog-cards">
-                        <h3 class="post-title theme-text">${post.title}</h3>
-                        <p class="post-description">${post.previewDescription}</p>
-                        <div class="post-meta">
-                            <span class="post-author">${post.username}</span>
-                            <span class="post-date">${new Date(post.createdAt).toLocaleDateString()}</span>
+                    <a href="/blog/${post.slug}" class="post-card-link">
+                        <div class="post-card theme-blog-cards">
+                            <img src="${post.imageUrl}" alt="Post Image" class="post-image" />
+                            <div class="post-info theme-blog-cards">
+                                <h3 class="post-title theme-text">${post.title}</h3>
+                                <p class="post-description">${post.previewDescription}</p>
+                                <div class="post-meta">
+                                    <span class="post-author">${post.username}</span>
+                                    <span class="post-date">${new Date(post.createdAt).toLocaleDateString()}</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            `;
+                    </a>
+                `;
                 container.insertAdjacentHTML('beforeend', postHTML);
             });
         } catch (err) {
             console.error("Ошибка загрузки постов:", err);
+            container.innerHTML = '<p>Ошибка загрузки постов</p>';
         }
     }
 
-    loadPosts();
+    // ==== Загрузка одного поста ====
+    async function loadSinglePost(slug) {
+        try {
+            const res = await fetch(`/api/posts/${slug}`);
+            if (!res.ok) throw new Error('Пост не найден');
 
-    // Инициализация Quill
+            const post = await res.json();
+
+            container.innerHTML = `
+                <div class="single-post">
+                    <h1 class="theme-text">${post.title}</h1>
+                    <p class="post-meta">${post.username}, ${new Date(post.createdAt).toLocaleDateString()}</p>
+                    <img src="${post.imageUrl}" alt="Post Image" class="post-image-large">
+                    <div class="post-content">${post.content}</div>
+                    <a href="/blog" class="back-to-blog theme-text">← Назад ко всем постам</a>
+                </div>
+            `;
+        } catch (err) {
+            console.error("Ошибка загрузки поста:", err);
+            container.innerHTML = '<p>Пост не найден</p>';
+        }
+    }
+
+    // ==== Инициализация редактора ====
     const quill = new Quill('#editor', {
         theme: 'snow',
         placeholder: 'Напишите ваш текст...',
@@ -81,6 +117,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
+    // ==== Загрузка превью изображения ====
     document.getElementById('upload-preview-btn').addEventListener('click', async () => {
         const fileInput = document.getElementById('preview-file-input');
         const file = fileInput.files[0];
@@ -112,7 +149,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-
+    // ==== Создание поста ====
     if (publishBtn) {
         publishBtn.addEventListener('click', async () => {
             const titleInput = document.querySelector('input[placeholder="Введите заголовок"]');
@@ -156,7 +193,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 if (res.ok) {
                     alert("Пост успешно создан!");
                     modal.style.display = "none";
-                    window.location.reload(); // Перезагрузи посты
+                    window.location.href = `/blog/${result.post.slug}`; // Перейти на созданный пост
                 } else {
                     alert(result.message || "Ошибка при создании поста.");
                 }

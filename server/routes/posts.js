@@ -6,6 +6,14 @@ const { User } = require('../models/user');
 const Post = require('../models/post');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
+// Cоздание slug ссылки поста
+const generateSlug = (title) => {
+  return title
+    .toLowerCase()
+    .replace(/[^a-zа-я0-9]+/gi, '-') // заменяем пробелы и символы на `-`
+    .replace(/^-+|-+$/g, '');        // удаляем крайние `-`
+};
+
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
@@ -37,8 +45,18 @@ router.post('/create', async (req, res) => {
   }
 
   try {
+
+    const slug = generateSlug(title);
+
+    // проверка на дубликат
+    const existing = await Post.findOne({ slug });
+    if (existing) {
+      return res.status(400).json({ message: 'Пост с таким заголовком уже существует' });
+    }
+
     const post = new Post({
       title,
+      slug,
       previewDescription,
       imageUrl,
       content,
@@ -74,6 +92,25 @@ router.get('/', async (req, res) => {
     res.json(enriched);
   } catch (err) {
     console.error('Ошибка получения постов:', err);
+    res.status(500).json({ message: 'Ошибка сервера' });
+  }
+});
+
+// Получение поста по slug
+router.get('/:slug', async (req, res) => {
+  try {
+    const post = await Post.findOne({ slug });
+
+    if (!post) return res.status(404).json({ message: 'Пост не найден' });
+
+    const user = await User.findOne({ userId: post.authorId });
+
+    res.json({
+      ...post._doc,
+      username: user?.username || 'unknown'
+    });
+  } catch (err) {
+    console.error('Ошибка получения поста по slug:', err);
     res.status(500).json({ message: 'Ошибка сервера' });
   }
 });
