@@ -375,6 +375,14 @@ textarea.input-field {
   border-radius: 12px;
 }
 
+.ql-editor img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 12px;
+}
+
 /* Эффект увеличения при наведении */
 .post-full-image:hover {
   transform: scale(1.04);

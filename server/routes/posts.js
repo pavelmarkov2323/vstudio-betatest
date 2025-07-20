@@ -32,6 +32,17 @@ router.post('/upload-preview', upload.single('preview'), async (req, res) => {
   res.json({ imageUrl: req.file.path });
 });
 
+// Загрузка изображения из редактора
+router.post('/upload-image', upload.single('image'), async (req, res) => {
+  if (!req.session.userId) return res.status(401).json({ message: 'Не авторизован' });
+
+  if (!req.file || !req.file.path) {
+    return res.status(400).json({ message: 'Файл не загружен' });
+  }
+
+  res.json({ imageUrl: req.file.path });
+});
+
 // Создание поста
 router.post('/create', async (req, res) => {
   const { title, previewDescription, imageUrl, content, publishedAt, isDraft } = req.body;
@@ -81,7 +92,6 @@ router.get('/', async (req, res) => {
       isDraft: false
     }).sort({ publishedAt: -1 });
 
-
     // Получение авторов
     const users = await User.find({ userId: { $in: posts.map(p => p.authorId) } });
 
@@ -119,5 +129,21 @@ router.get('/:slug', async (req, res) => {
     res.status(500).json({ message: 'Ошибка сервера' });
   }
 });
+
+// Установка текущей даты и времени по умолчанию
+const dateInput = document.querySelector('input[type="date"]');
+const timeInput = document.querySelector('input[type="time"]');
+
+if (dateInput && timeInput) {
+    const now = new Date();
+    
+    // Устанавливаем дату в формате YYYY-MM-DD
+    dateInput.value = now.toISOString().split('T')[0];
+
+    // Устанавливаем время в формате HH:MM
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    timeInput.value = `${hours}:${minutes}`;
+}
 
 module.exports = router;
