@@ -392,3 +392,37 @@ textarea.input-field {
   font-size: 1.1rem;
   line-height: 1.7;
 }
+
+/* Мобильные устройства до 480px */
+@media (max-width: 480px) {
+  /* Дизайн открытого поста */
+  .full-post-container,
+  .post-full {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .post-full h1 {
+    font-size: 20px;
+  }
+
+  .post-full-meta {
+    font-size: 0.8rem;
+  }
+
+  .post-full-image {
+    max-width: 100%;
+    margin: 1rem 0;
+  }
+
+  .ql-editor img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+  }
+
+  .post-full-content {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
