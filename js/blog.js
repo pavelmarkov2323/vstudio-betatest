@@ -166,12 +166,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             const title = titleInput?.value?.trim();
             const previewDescription = previewInput?.value?.trim();
             const imageUrl = document.getElementById('preview-image-url').value.trim();
-                const content = quill.root.innerHTML;
+            const content = quill.root.innerHTML.trim();
+            const plainText = quill.getText().trim(); // Получаем текст без HTML-тегов
             const date = dateInput?.value;
             const time = timeInput?.value;
 
-            if (!title || !previewDescription || !imageUrl || !content) {
-                alert("Пожалуйста, заполните все поля.");
+            if (!title || !previewDescription || !imageUrl || plainText === "") {
+                alert("Пожалуйста, заполните все поля, включая основной текст.");
                 return;
             }
 
