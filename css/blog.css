@@ -21,18 +21,23 @@
 /* Основной вид карточек на странице */
 .posts-container {
   display: flex;
-  flex-wrap: wrap;        /* чтобы карточки переносились */
-  justify-content: center; /* центрируем все карточки по горизонтали */
-  gap: 20px;              /* расстояние между карточками */
-  max-width: 1300px;      /* чтобы контейнер не растягивался слишком сильно */
-  margin: 0 auto;         /* центрируем контейнер по странице */
+  flex-wrap: wrap;
+  /* чтобы карточки переносились */
+  justify-content: center;
+  /* центрируем все карточки по горизонтали */
+  gap: 20px;
+  /* расстояние между карточками */
+  max-width: 1300px;
+  /* чтобы контейнер не растягивался слишком сильно */
+  margin: 0 auto;
+  /* центрируем контейнер по странице */
 }
 
 .post-card {
-  flex: 0 1 300px;    
+  flex: 0 1 300px;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background: white;
   font-family: Arial, sans-serif;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -42,7 +47,7 @@
 
 .post-card:hover {
   transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
 .post-image {
@@ -139,7 +144,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   display: none;
   justify-content: center;
   align-items: center;
@@ -150,9 +155,10 @@
 /* Крестик */
 .close-modal {
   position: absolute;
-    top: 5px;
-    right: 15px;
-  font-size: 28px; /* больше */
+  top: 5px;
+  right: 15px;
+  font-size: 28px;
+  /* больше */
   font-weight: bold;
   color: #888;
   cursor: pointer;
@@ -167,15 +173,19 @@
   background: white;
   border-radius: 20px;
   width: 90%;
-  max-width: 640px; /* стало меньше */
+  max-width: 640px;
+  /* стало меньше */
   padding: 25px 30px;
   position: relative;
   animation: scaleUp 0.3s ease forwards;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 
-  max-height: 90vh;            /* Ограничим по высоте */
-  overflow-y: auto;            /* Разрешим вертикальную прокрутку */
-  padding-right: 16px;         /* Чтобы не перекрывался скролл */
+  max-height: 90vh;
+  /* Ограничим по высоте */
+  overflow-y: auto;
+  /* Разрешим вертикальную прокрутку */
+  padding-right: 16px;
+  /* Чтобы не перекрывался скролл */
 }
 
 /* Заголовок по центру */
@@ -197,7 +207,8 @@
 }
 
 textarea.input-field {
-  resize: none; /* запрещаем растягивание */
+  resize: none;
+  /* запрещаем растягивание */
 }
 
 .upload-section {
@@ -208,7 +219,8 @@ textarea.input-field {
 
 .upload-section .input-field {
   flex: 1;
-  margin-bottom: 0; /* убираем лишний отступ */
+  margin-bottom: 0;
+  /* убираем лишний отступ */
 }
 
 .upload-btn {
@@ -239,13 +251,14 @@ textarea.input-field {
   margin: 20px 0;
 }
 
-.datetime-fields > div {
+.datetime-fields>div {
   flex: 1;
 }
 
 /* Визуальный редактор — контент */
 .editor-container {
-  height: 280px; /* добавим снова высоту */
+  height: 280px;
+  /* добавим снова высоту */
   margin: 15px 0 25px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -259,7 +272,8 @@ textarea.input-field {
   margin-top: 20px;
 }
 
-.draft-btn, .publish-btn {
+.draft-btn,
+.publish-btn {
   padding: 12px 20px;
   border: none;
   border-radius: 10px;
@@ -274,7 +288,8 @@ textarea.input-field {
 }
 
 .draft-btn:hover {
-  background-color: #dcdcdc; /* чуть темнее */
+  background-color: #dcdcdc;
+  /* чуть темнее */
   transform: scale(1.05);
 }
 
@@ -285,19 +300,32 @@ textarea.input-field {
 }
 
 .publish-btn:hover {
-  background-color: #1c6fe8; /* чуть темнее */
+  background-color: #1c6fe8;
+  /* чуть темнее */
   transform: scale(1.05);
 }
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes scaleUp {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Дизайн открытого поста */
@@ -308,33 +336,40 @@ textarea.input-field {
 }
 
 .post-full {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: #FFFFFF;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .post-full h1 {
-    font-size: 28px;
-    margin-bottom: 0.5rem;
+  font-size: 28px;
+  margin-bottom: 0.5rem;
 }
 
 .post-full-meta {
-    font-size: 0.9rem;
-    color: gray;
-    margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: gray;
+  margin-bottom: 1rem;
 }
 
 .post-full-image {
-    display: block;               /* позволяет margin: auto работать */
-    max-width: 70%;              /* немного меньше ширины контейнера */
-    height: auto;
-    margin: 1.2rem auto;           /* центр + вертикальные отступы */
+  display: block;
+  max-width: 70%;
+  height: auto;
+  margin: 1.2rem auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
 }
 
-.post-full-content {  
-    font-size: 1.1rem;
-    line-height: 1.7;
+/* Эффект увеличения при наведении */
+.post-full-image:hover {
+  transform: scale(1.04);
+}
+
+.post-full-content {
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
