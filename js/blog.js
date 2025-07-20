@@ -232,7 +232,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             const date = dateInput?.value;
             const time = timeInput?.value;
 
-            if (!title || !previewDescription || !imageUrl || plainText === "") {
+            if (!title || !previewDescription || !imageUrl || content === '' || content === '<p><br></p>') {
+                console.log({ title, previewDescription, imageUrl, content, plainText });
                 alert("Пожалуйста, заполните все поля, включая основной текст.");
                 return;
             }
