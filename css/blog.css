@@ -301,11 +301,23 @@ textarea.input-field {
 }
 
 /* Дизайн открытого поста */
+.full-post-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .post-full {
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
+    background-color: #FFFFFF;         /* Белый фон */
+    border-radius: 16px;               /* Скругление */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Мягкая тень */
+    /* Или альтернатива: */
+    /* border: 1px solid #e0e0e0; */    /* Тонкая серая граница вместо тени */
 }
+
 
 .post-full h1 {
     font-size: 2rem;
@@ -325,7 +337,7 @@ textarea.input-field {
     margin-bottom: 2rem;
 }
 
-.post-full-content {
+.post-full-content {  
     font-size: 1.1rem;
     line-height: 1.6;
 }

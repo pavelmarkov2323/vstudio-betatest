@@ -69,8 +69,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     const slugMatch = window.location.pathname.match(/^\/blog\/(.+)/);
     if (slugMatch) {
         const slug = slugMatch[1];
-        const container = document.querySelector('.posts-container');
-        container.innerHTML = ''; // Очистить превью
+
+        // Скрываем контейнер с превью
+        const previewContainer = document.querySelector('.posts-container');
+        previewContainer.style.display = 'none';
+
+        // Показываем full-post-container
+        const fullContainer = document.querySelector('.full-post-container');
+        fullContainer.style.display = 'block';
 
         try {
             const res = await fetch(`/api/posts/${slug}`);
@@ -88,17 +94,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <div class="post-full-content">${post.content}</div>
                 </div>
             `;
-                container.insertAdjacentHTML('beforeend', fullHTML);
+                fullContainer.innerHTML = fullHTML;
             } else {
-                container.innerHTML = '<p class="theme-text">Пост не найден.</p>';
+                fullContainer.innerHTML = '<p class="theme-text">Пост не найден.</p>';
             }
         } catch (err) {
             console.error('Ошибка загрузки поста:', err);
-            container.innerHTML = '<p class="theme-text">Ошибка при загрузке поста.</p>';
+            fullContainer.innerHTML = '<p class="theme-text">Ошибка при загрузке поста.</p>';
         }
 
-        return; // Остановим дальнейшую загрузку превью, если открыт пост
+        return; // остановить выполнение дальше
     }
+
 
 
     // Инициализация Quill
