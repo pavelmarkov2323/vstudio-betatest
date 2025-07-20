@@ -160,33 +160,24 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-
     // Инициализация Quill
-    Quill.register('modules/imageResize', window.ImageResize);
     Quill.register('modules/imageUploader', ImageUploader);
 
     const quill = new Quill('#editor', {
-    theme: 'snow',
-    placeholder: 'Напишите ваш текст...',
-    modules: {
-        toolbar: [
-        [{ header: [1, 2, false] }],
-        ['bold', 'italic', 'underline', 'blockquote'],
-        [{ list: 'ordered' }, { list: 'bullet' }],
-        ['link', 'image'],
-        ['clean']
-        ],
-        imageUploader: {},  // твой модуль загрузки
-        imageResize: {
-        displayStyles: {
-            backgroundColor: 'black',
-            border: 'none',
-            color: 'white'
-        },
-        modules: [ 'Resize', 'DisplaySize' ]
+        theme: 'snow',
+        placeholder: 'Напишите ваш текст...',
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, false] }],
+                ['bold', 'italic', 'underline', 'blockquote'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                ['link', 'image'],
+                ['clean']
+            ],
+            imageUploader: {} // подключили наш кастомный модуль
         }
-    }
     });
+
 
     document.getElementById('upload-preview-btn').addEventListener('click', async () => {
         const fileInput = document.getElementById('preview-file-input');
