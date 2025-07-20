@@ -44,19 +44,19 @@ document.addEventListener("DOMContentLoaded", async () => {
             const posts = await res.json();
 
             posts.forEach(post => {
-                const postHTML =
-                    <div class="post-card theme-blog-cards">
-                        <img src="${post.imageUrl}" alt="Post Image" class="post-image" />
-                        <div class="post-info theme-blog-cards">
-                            <h3 class="post-title theme-text">${post.title}</h3>
-                            <p class="post-description">${post.previewDescription}</p>
-                            <div class="post-meta">
-                                <span class="post-author">${post.username}</span>
-                                <span class="post-date">${new Date(post.createdAt).toLocaleDateString()}</span>
-                            </div>
+                const postHTML = `
+                <div class="post-card theme-blog-cards">
+                    <img src="${post.imageUrl}" alt="Post Image" class="post-image" />
+                    <div class="post-info theme-blog-cards">
+                        <h3 class="post-title theme-text">${post.title}</h3>
+                        <p class="post-description">${post.previewDescription}</p>
+                        <div class="post-meta">
+                            <span class="post-author">${post.username}</span>
+                            <span class="post-date">${new Date(post.createdAt).toLocaleDateString()}</span>
                         </div>
                     </div>
-                    ;
+                </div>
+            `;
                 container.insertAdjacentHTML('beforeend', postHTML);
             });
         } catch (err) {
