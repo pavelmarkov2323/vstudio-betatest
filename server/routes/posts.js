@@ -24,6 +24,17 @@ const storage = new CloudinaryStorage({
 
 const upload = multer({ storage });
 
+// Загрузка изображения из редактора (не превью!)
+router.post('/upload-image', upload.single('image'), async (req, res) => {
+  if (!req.session.userId) return res.status(401).json({ message: 'Не авторизован' });
+
+  if (!req.file || !req.file.path) {
+    return res.status(400).json({ message: 'Файл не загружен' });
+  }
+
+  res.json({ imageUrl: req.file.path });
+});
+
 // Загрузка превью изображения
 router.post('/upload-preview', upload.single('preview'), async (req, res) => {
   if (!req.session.userId) return res.status(401).json({ message: 'Не авторизован' });

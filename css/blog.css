@@ -376,11 +376,11 @@ textarea.input-field {
 }
 
 .ql-editor img {
+  max-width: 100%;
+  height: auto;
   display: block;
   margin: 1rem auto;
   border-radius: 12px;
-  max-width: 100%;
-  height: auto;
 }
 
 /* Эффект увеличения при наведении */

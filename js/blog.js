@@ -110,6 +110,59 @@ document.addEventListener("DOMContentLoaded", async () => {
         return; // остановить выполнение дальше
     }
 
+    class ImageUploader {
+        constructor(quill, options) {
+            this.quill = quill;
+            this.options = options;
+
+            const toolbar = quill.getModule('toolbar');
+            toolbar.addHandler('image', this.selectLocalImage.bind(this));
+        }
+
+        selectLocalImage() {
+            const input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+            input.click();
+
+            input.onchange = async () => {
+                const file = input.files[0];
+                if (!file) return;
+
+                // Ограничение на 2MB
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('Размер изображения не должен превышать 2MB.');
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('image', file);
+
+                try {
+                    const res = await fetch('/api/posts/upload-image', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const data = await res.json();
+
+                    if (res.ok) {
+                        const range = this.quill.getSelection();
+                        this.quill.insertEmbed(range.index, 'image', data.imageUrl);
+                    } else {
+                        alert(data.message || 'Ошибка загрузки изображения');
+                    }
+                } catch (err) {
+                    console.error('Ошибка загрузки изображения:', err);
+                    alert('Ошибка загрузки');
+                }
+            };
+        }
+    }
+
+
+    Quill.register('modules/imageUploader', ImageUploader);
+
     // Инициализация Quill
     const quill = new Quill('#editor', {
         theme: 'snow',
@@ -121,7 +174,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 [{ 'list': 'ordered' }, { 'list': 'bullet' }],
                 ['link', 'image'],
                 ['clean']
-            ]
+            ],
+            imageUploader: {} // подключили наш кастомный модуль
+
         }
     });
 
