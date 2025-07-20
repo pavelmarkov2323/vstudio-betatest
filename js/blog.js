@@ -160,7 +160,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-
     Quill.register('modules/imageUploader', ImageUploader);
 
     // Инициализация Quill
@@ -220,7 +219,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (publishBtn) {
         publishBtn.addEventListener('click', async () => {
             const titleInput = document.querySelector('input[placeholder="Введите заголовок"]');
-            const previewInput = document.querySelector('textarea[placeholder="Краткое описание"]');
+            const previewInput = document.getElementById('preview-description');
             const imageInput = document.querySelector('input[placeholder="URL или файл изображения"]');
             const dateInput = document.querySelector('input[type="date"]');
             const timeInput = document.querySelector('input[type="time"]');
