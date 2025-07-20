@@ -110,74 +110,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         return; // остановить выполнение дальше
     }
 
-    class ImageUploader {
-        constructor(quill, options) {
-            this.quill = quill;
-            this.options = options;
 
-            const toolbar = quill.getModule('toolbar');
-            toolbar.addHandler('image', this.selectLocalImage.bind(this));
-        }
-
-        selectLocalImage() {
-            const input = document.createElement('input');
-            input.setAttribute('type', 'file');
-            input.setAttribute('accept', 'image/*');
-            input.click();
-
-            input.onchange = async () => {
-                const file = input.files[0];
-                if (!file) return;
-
-                // Ограничение на 2MB
-                if (file.size > 2 * 1024 * 1024) {
-                    alert('Размер изображения не должен превышать 2MB.');
-                    return;
-                }
-
-                const formData = new FormData();
-                formData.append('image', file);
-
-                try {
-                    const res = await fetch('/api/posts/upload-image', {
-                        method: 'POST',
-                        body: formData
-                    });
-
-                    const data = await res.json();
-
-                    if (res.ok) {
-                        const range = this.quill.getSelection();
-                        this.quill.insertEmbed(range.index, 'image', data.imageUrl);
-                    } else {
-                        alert(data.message || 'Ошибка загрузки изображения');
-                    }
-                } catch (err) {
-                    console.error('Ошибка загрузки изображения:', err);
-                    alert('Ошибка загрузки');
-                }
-            };
-        }
-    }
 
     // Инициализация Quill
-    Quill.register('modules/imageUploader', ImageUploader);
-
     const quill = new Quill('#editor', {
         theme: 'snow',
-        placeholder: 'Напишите ваш текст...',
+        placeholder: 'Начните творить прямо сейчас, напишите крутую публикацию!',
         modules: {
             toolbar: [
                 [{ header: [1, 2, false] }],
                 ['bold', 'italic', 'underline', 'blockquote'],
-                [{ list: 'ordered' }, { list: 'bullet' }],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
                 ['link', 'image'],
                 ['clean']
-            ],
-            imageUploader: {} // подключили наш кастомный модуль
+            ]
         }
     });
-
 
     document.getElementById('upload-preview-btn').addEventListener('click', async () => {
         const fileInput = document.getElementById('preview-file-input');
@@ -279,21 +227,5 @@ document.addEventListener("DOMContentLoaded", async () => {
                 alert("Серверная ошибка.");
             }
         });
-    }
-
-    // Установка текущей даты и времени по умолчанию
-    const dateInput = document.querySelector('input[type="date"]');
-    const timeInput = document.querySelector('input[type="time"]');
-
-    if (dateInput && timeInput) {
-        const now = new Date();
-
-        // Устанавливаем дату в формате YYYY-MM-DD
-        dateInput.value = now.toISOString().split('T')[0];
-
-        // Устанавливаем время в формате HH:MM
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        timeInput.value = `${hours}:${minutes}`;
     }
 });
