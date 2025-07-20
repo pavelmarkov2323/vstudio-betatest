@@ -110,12 +110,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         return; // остановить выполнение дальше
     }
 
-
-
     // Инициализация Quill
     const quill = new Quill('#editor', {
         theme: 'snow',
-        placeholder: 'Начните творить прямо сейчас, напишите крутую публикацию!',
+        placeholder: 'Начните творить прямо сейчас, создайте крутую публикацию!',
         modules: {
             toolbar: [
                 [{ header: [1, 2, false] }],
@@ -227,21 +225,5 @@ document.addEventListener("DOMContentLoaded", async () => {
                 alert("Серверная ошибка.");
             }
         });
-    }
-
-    // Установка текущей даты и времени по умолчанию
-    const dateInput = document.querySelector('input[type="date"]');
-    const timeInput = document.querySelector('input[type="time"]');
-
-    if (dateInput && timeInput) {
-        const now = new Date();
-
-        // Устанавливаем дату в формате YYYY-MM-DD
-        dateInput.value = now.toISOString().split('T')[0];
-
-        // Устанавливаем время в формате HH:MM
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        timeInput.value = `${hours}:${minutes}`;
     }
 });
