@@ -12,7 +12,7 @@ function initCaptchaModal() {
     const modalHTML = `
     <div id="captchaModal" class="captcha-modal" style="display: none;">
         <div class="captcha-content">
-            <img src="assets/icons/robot.png" alt="Icon" class="captcha-icon">
+            <img src="/assets/icons/robot.png" alt="Icon" class="captcha-icon">
             <p class="captcha-title theme-text">${window.translations["captcha-content"]["captcha-title"]}</p>
             <label for="robotCheck" class="captcha-label">
                 <div class="checkbox-container">
