@@ -317,8 +317,8 @@ textarea.input-field {
 }
 
 .post-full h1 {
-    font-size: 2rem;
-    margin-bottom: 0.2rem;
+    font-size: 28px;
+    margin-bottom: 0.5rem;
 }
 
 .post-full-meta {
@@ -331,10 +331,10 @@ textarea.input-field {
     display: block;               /* позволяет margin: auto работать */
     max-width: 70%;              /* немного меньше ширины контейнера */
     height: auto;
-    margin: -0.5rem auto;           /* центр + вертикальные отступы */
+    margin: 1.2rem auto;           /* центр + вертикальные отступы */
 }
 
 .post-full-content {  
     font-size: 1.1rem;
-    line-height: 1.6;
+    line-height: 1.7;
 }
