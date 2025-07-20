@@ -395,6 +395,46 @@ textarea.input-field {
 
 /* Мобильные устройства до 480px */
 @media (max-width: 480px) {
+
+  /* Заголовок и описание странице блога */
+  .blog-heading-title {
+    font-size: 24px;
+  }
+
+  .blog-heading-description {
+    font-size: 14px;
+  }
+
+  /* Дизайн превью карточек постов в блоге */
+  .posts-container {
+    justify-content: center;
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .post-card {
+    flex: 0 1 calc(50% - 10px);
+    /* две карточки в ряд с отступом */
+    max-width: 100%;
+  }
+
+  .post-image {
+    height: 140px;
+    /* чуть меньше высота картинки на мобилке */
+  }
+
+  .post-title {
+    font-size: 1em;
+  }
+
+  .post-description {
+    font-size: 0.85em;
+  }
+
+  .post-meta {
+    font-size: 0.75em;
+  }
+
   /* Дизайн открытого поста */
   .full-post-container,
   .post-full {
