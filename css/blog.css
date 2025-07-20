@@ -311,16 +311,14 @@ textarea.input-field {
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
-    background-color: #FFFFFF;         /* Белый фон */
-    border-radius: 16px;               /* Скругление */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Мягкая тень */
-    /* Или альтернатива: */
-    /* border: 1px solid #e0e0e0; */    /* Тонкая серая граница вместо тени */
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
 }
 
 .post-full h1 {
     font-size: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.2rem;
 }
 
 .post-full-meta {
@@ -330,10 +328,10 @@ textarea.input-field {
 }
 
 .post-full-image {
-    max-width: 100%;
+    display: block;               /* позволяет margin: auto работать */
+    max-width: 70%;              /* немного меньше ширины контейнера */
     height: auto;
-    border-radius: 12px;
-    margin-bottom: 2rem;
+    margin: -0.5rem auto;           /* центр + вертикальные отступы */
 }
 
 .post-full-content {  
