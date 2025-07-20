@@ -338,7 +338,7 @@ textarea.input-field {
 .post-full {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1.1rem 2rem 2rem 2rem;
   background-color: #FFFFFF;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
