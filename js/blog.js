@@ -135,6 +135,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             return;
         }
 
+        if (file.size > 4 * 1024 * 1024) {
+            alert('Размер изображения не должен превышать 4MB.');
+            return;
+        }
+
         const formData = new FormData();
         formData.append('preview', file);
 
@@ -177,6 +182,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (!title || !previewDescription || !imageUrl || plainText === "") {
                 alert("Пожалуйста, заполните все поля, включая основной текст.");
+                return;
+            }
+
+            if (title.length > 100) {
+                alert("Заголовок не должен превышать 100 символов.");
+                return;
+            }
+
+            if (previewDescription.length > 300) {
+                alert("Превью описание не должно превышать 300 символов.");
                 return;
             }
 
