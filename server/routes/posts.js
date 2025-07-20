@@ -16,7 +16,7 @@ const generateSlug = (title) => {
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: 'blog',
+    folder: 'blog', 
     allowed_formats: ['jpg', 'jpeg', 'png'],
     public_id: (req, file) => `preview_${Date.now()}`
   }
@@ -98,6 +98,7 @@ router.get('/', async (req, res) => {
 // Получение поста по slug
 router.get('/:slug', async (req, res) => {
   try {
+    const { slug } = req.params;
     const post = await Post.findOne({ slug });
 
     if (!post) return res.status(404).json({ message: 'Пост не найден' });
