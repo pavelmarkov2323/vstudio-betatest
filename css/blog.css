@@ -93,7 +93,6 @@
 }
 
 /* Выпадающее меню карточки поста */
-/* Контейнер меню */
 .post-dropdown-container {
     position: absolute;
     top: 10px;
@@ -111,10 +110,10 @@
 }
 
 .post-menu-icon:hover {
-    background-color: #ffffffbd;
+    background-color: #f5f6f7e3;
 }
 
-/* Само выпадающее меню */
+/* Выпадающее меню — по умолчанию скрыто */
 .postdropdown-menu {
     background-color: white;
     border-radius: 8px;
@@ -123,16 +122,22 @@
     position: absolute;
     top: 30px;
     right: 0;
-    display: none;
     z-index: 9;
     opacity: 0;
+    pointer-events: none;
     transition: opacity 0.2s ease;
 }
 
-/* Отображение меню */
-.postdropdown-menu.active {
-    display: block;
+/* Hover на десктопе */
+.post-dropdown-container:hover .postdropdown-menu {
     opacity: 1;
+    pointer-events: auto;
+}
+
+/* Активное состояние при клике (мобилки) */
+.postdropdown-menu.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* Пункты меню */

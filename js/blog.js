@@ -82,28 +82,30 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
 
             if (isAdmin) {
-                // Навесим обработчики для меню
-                container.querySelectorAll('.post-menu-icon').forEach(icon => {
-                    icon.addEventListener('click', e => {
-                        e.stopPropagation();
-                        e.preventDefault(); // чтобы не срабатывало открытие поста
+                const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
+                if (isTouch) {
+                    container.querySelectorAll('.post-menu-icon').forEach(icon => {
+                        icon.addEventListener('click', e => {
+                            e.stopPropagation();
+                            e.preventDefault();
+
+                            closeAllDropdowns();
+
+                            const menu = icon.nextElementSibling;
+                            menu.classList.toggle('active');
+                        });
+                    });
+
+                    document.addEventListener('click', () => {
                         closeAllDropdowns();
-
-                        const menu = icon.nextElementSibling;
-                        menu.classList.toggle('active');
                     });
-                });
 
-                // Закрытие всех меню при клике вне
-                document.addEventListener('click', () => {
-                    closeAllDropdowns();
-                });
-
-                function closeAllDropdowns() {
-                    container.querySelectorAll('.postdropdown-menu').forEach(menu => {
-                        menu.classList.remove('active');
-                    });
+                    function closeAllDropdowns() {
+                        container.querySelectorAll('.postdropdown-menu').forEach(menu => {
+                            menu.classList.remove('active');
+                        });
+                    }
                 }
 
                 // Наведение для затемнения элементов
