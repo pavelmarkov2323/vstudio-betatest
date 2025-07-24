@@ -19,22 +19,20 @@
 }
 
 /* Основной вид карточек на странице */
+/* Основной вид карточек на странице */
 .posts-container {
   display: flex;
   flex-wrap: wrap;
-  /* чтобы карточки переносились */
   justify-content: center;
-  /* центрируем все карточки по горизонтали */
   gap: 20px;
-  /* расстояние между карточками */
   max-width: 1300px;
-  /* чтобы контейнер не растягивался слишком сильно */
   margin: 0 auto;
-  /* центрируем контейнер по странице */
 }
 
 .post-card {
   flex: 0 1 300px;
+  display: flex;
+  flex-direction: column;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -43,7 +41,6 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
-
 
 .post-card:hover {
   transform: translateY(-8px) scale(1.03);
@@ -60,8 +57,12 @@
 }
 
 .post-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   padding: 15px 20px;
   background: white;
+  min-height: 200px; /* Настраивай под длину карточек */
 }
 
 .post-title {
@@ -81,6 +82,7 @@
   justify-content: space-between;
   font-size: 0.8em;
   color: #888;
+  margin-top: auto; /* Прижимает к низу .post-info */
 }
 
 .post-author {
@@ -406,31 +408,31 @@ textarea.input-field {
   }
 
   /* Дизайн превью карточек постов в блоге */
-  .posts-container {
-    justify-content: center;
-    gap: 12px;
-    padding: 5px;
+.posts-container {
+    padding: 0 16px; /* Больше отступ от краёв экрана */
+    gap: 16px;
   }
 
   .post-card {
-    flex: 0 1 calc(50% - 10px);
-    max-width: 100%;
+    flex: 0 1 100%;
+    max-width: 92%;     /* 🔹 Ограничиваем ширину, чтобы не растягивалась слишком */
+    margin: 0 auto;     /* 🔹 Центрируем карточку */
   }
 
   .post-image {
-    height: 120px;
+    height: 160px;
   }
 
   .post-title {
-    font-size: 0.9em;
+    font-size: 1.1em;
   }
 
   .post-description {
-    font-size: 0.75em;
+    font-size: 0.88em;
   }
 
   .post-meta {
-    font-size: 0.75em;
+    font-size: 0.80em;
   }
 
   /* Дизайн открытого поста */
