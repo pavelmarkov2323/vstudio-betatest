@@ -147,7 +147,26 @@
     padding: 8px 12px;
     cursor: pointer;
     user-select: none;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, opacity 0.3s ease, transform 0.3s ease;
+    
+    /* Анимация появления */
+    opacity: 0;
+    transform: translateY(-5px);
+}
+
+/* Появление пунктов меню при hover на контейнер или при активном меню */
+.postdropdown-menu.active .post-dropdown-item,
+.post-dropdown-container:hover .post-dropdown-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Задержка появления для отдельных пунктов меню */
+#copyLink {
+    transition-delay: 0.05s;
+}
+#deletePost {
+    transition-delay: 0.1s;
 }
 
 .post-dropdown-item:hover {
