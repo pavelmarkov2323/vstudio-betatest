@@ -338,6 +338,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             formData.append('preview', file);
 
             let imageUrl = "";
+            let imagePublicId = "";
 
             try {
                 const uploadRes = await fetch('/api/posts/upload-preview', {
@@ -350,6 +351,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 if (!uploadRes.ok) throw new Error(uploadData.message || 'Ошибка загрузки');
 
                 imageUrl = uploadData.imageUrl;
+                imagePublicId = uploadData.publicId;
             } catch (err) {
                 console.error("Ошибка при загрузке превью:", err);
                 alert("Ошибка при загрузке превью");
@@ -367,6 +369,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         title,
                         previewDescription,
                         imageUrl,
+                        imagePublicId,
                         content,
                         publishedAt,
                         isDraft: false
