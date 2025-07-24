@@ -49,33 +49,35 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             posts.forEach(post => {
                 const postHTML = `
-                <a href="/blog/${post.slug}" class="post-card theme-blog-cards" style="text-decoration: none; color: inherit;">
-                    <img src="${post.imageUrl}" alt="Post Image" class="post-image" />
+                <div class="post-card theme-blog-cards" style="position: relative;">
                     ${isAdmin ? `
                     <div class="post-dropdown-container" style="position: absolute; top: 10px; right: 10px;">
                         <img src="/assets/icons/menu-dots.svg" alt="Меню" class="post-menu-icon" style="width: 24px; height: 24px; cursor: pointer;" />
-                        <div class="postdropdown-menu" id="postDropdownMenu" style="display: none; position: absolute; top: 30px; right: 0; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); width: 160px; z-index: 100;">
-                            <div class="post-dropdown-item" id="copyLink" style="display: flex; align-items: center; padding: 8px 12px; cursor: pointer;">
-                                <img src="/assets/icons/copy.svg" alt="Копировать" style="width: 18px; height: 18px; margin-right: 10px;" />
+                        <div class="postdropdown-menu" style="display: none;">
+                            <div class="post-dropdown-item" id="copyLink">
+                                <img src="/assets/icons/copy.svg" style="width: 18px; height: 18px; margin-right: 10px;" />
                                 <span>Копировать ссылку</span>
                             </div>
-                            <div class="post-dropdown-item" id="deletePost" style="display: flex; align-items: center; padding: 8px 12px; cursor: pointer;">
-                                <img src="/assets/icons/trash.svg" alt="Удалить" style="width: 18px; height: 18px; margin-right: 10px;" />
+                            <div class="post-dropdown-item" id="deletePost">
+                                <img src="/assets/icons/trash.svg" style="width: 18px; height: 18px; margin-right: 10px;" />
                                 <span>Удалить пост</span>
                             </div>
                         </div>
-                    </div>
-                    ` : ''}
-                    <div class="post-info theme-blog-cards">
-                        <h3 class="post-title theme-text">${post.title}</h3>
-                        <p class="post-description">${post.previewDescription}</p>
-                        <div class="post-meta">
-                            <span class="post-author">${post.username}</span>
-                            <span class="post-date">${new Date(post.createdAt).toLocaleDateString()}</span>
+                    </div>` : ''}
+
+                    <a href="/blog/${post.slug}" class="post-card-link" style="text-decoration: none; color: inherit;">
+                        <img src="${post.imageUrl}" alt="Post Image" class="post-image" />
+                        <div class="post-info theme-blog-cards">
+                            <h3 class="post-title theme-text">${post.title}</h3>
+                            <p class="post-description">${post.previewDescription}</p>
+                            <div class="post-meta">
+                                <span class="post-author">${post.username}</span>
+                                <span class="post-date">${new Date(post.createdAt).toLocaleDateString()}</span>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            `;
+                    </a>
+                </div>
+                `;
                 container.insertAdjacentHTML('beforeend', postHTML);
             });
 
@@ -84,8 +86,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 container.querySelectorAll('.post-menu-icon').forEach(icon => {
                     icon.addEventListener('click', e => {
                         e.stopPropagation();
+                        e.preventDefault(); // чтобы не срабатывало открытие поста
                         closeAllDropdowns();
-                        const menu = icon.nextElementSibling; // наш .postdropdown-menu
+                        const menu = icon.nextElementSibling;
                         menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
                     });
                 });

@@ -124,6 +124,10 @@
     cursor: pointer;
 }
 
+.post-menu-icon:hover {
+    background-color: #ffffffbd;
+    border-radius: 360px;
+}
 
 /* Карточка - кнопка (Для добавления публикации в блог) */
 .post-add-card {
