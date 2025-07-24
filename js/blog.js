@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     ${isAdmin ? `
                     <div class="post-dropdown-container">
                         <img src="/assets/icons/menu-dots.svg" alt="Меню" class="post-menu-icon"/>
-                        <div class="postdropdown-menu">
+                        <div class="postdropdown-menu" style="display: none;">
                             <div class="post-dropdown-item" id="copyLink">
                                 <img src="/assets/icons/copy.svg"/>
                                 <span>Копировать ссылку</span>
