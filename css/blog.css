@@ -93,6 +93,28 @@
 }
 
 /* Выпадающее меню карточки поста */
+/* Контейнер меню */
+.post-dropdown-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Иконка меню (три точки) */
+.post-menu-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 50%;
+    filter: brightness(0) invert(1) !important;
+}
+
+.post-menu-icon:hover {
+    background-color: #ffffffbd;
+}
+
+/* Само выпадающее меню */
 .postdropdown-menu {
     background-color: white;
     border-radius: 8px;
@@ -103,14 +125,24 @@
     right: 0;
     display: none;
     z-index: 9;
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
+/* Отображение меню */
+.postdropdown-menu.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Пункты меню */
 .post-dropdown-item {
     display: flex;
     align-items: center;
     padding: 8px 12px;
     cursor: pointer;
     user-select: none;
+    transition: background-color 0.2s ease;
 }
 
 .post-dropdown-item:hover {
@@ -118,16 +150,13 @@
     border-radius: 6px;
 }
 
-.post-menu-icon {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
+/* Иконки в пунктах меню */
+.post-dropdown-item img {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
 }
 
-.post-menu-icon:hover {
-    background-color: #ffffffbd;
-    border-radius: 360px;
-}
 
 /* Карточка - кнопка (Для добавления публикации в блог) */
 .post-add-card {

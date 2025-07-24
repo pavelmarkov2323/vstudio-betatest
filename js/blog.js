@@ -51,15 +51,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const postHTML = `
                 <div class="post-card theme-blog-cards" style="position: relative;">
                     ${isAdmin ? `
-                    <div class="post-dropdown-container" style="position: absolute; top: 10px; right: 10px;">
-                        <img src="/assets/icons/menu-dots.svg" alt="Меню" class="post-menu-icon" style="width: 24px; height: 24px; cursor: pointer;" />
-                        <div class="postdropdown-menu" style="display: none;">
+                    <div class="post-dropdown-container">
+                        <img src="/assets/icons/menu-dots.svg" alt="Меню" class="post-menu-icon"/>
+                        <div class="postdropdown-menu">
                             <div class="post-dropdown-item" id="copyLink">
-                                <img src="/assets/icons/copy.svg" style="width: 18px; height: 18px; margin-right: 10px;" />
+                                <img src="/assets/icons/copy.svg"/>
                                 <span>Копировать ссылку</span>
                             </div>
                             <div class="post-dropdown-item" id="deletePost">
-                                <img src="/assets/icons/trash.svg" style="width: 18px; height: 18px; margin-right: 10px;" />
+                                <img src="/assets/icons/trash.svg"/>
                                 <span>Удалить пост</span>
                             </div>
                         </div>
