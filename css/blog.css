@@ -101,8 +101,18 @@
     position: absolute;
     top: 30px;
     right: 0;
-    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+    transform-origin: top right;
+    transition: opacity 0.25s ease, transform 0.25s ease;
     z-index: 100;
+}
+
+.postdropdown-menu.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
 }
 
 .post-dropdown-item {
