@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const closeBtn = document.getElementById("close-modal");
     const publishBtn = document.querySelector('.publish-btn');
 
-
     try {
         const res = await fetch("/api/current-user");
         const data = await res.json();
@@ -179,54 +178,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    document.getElementById('upload-preview-btn').addEventListener('click', async () => {
-        const fileInput = document.getElementById('preview-file-input');
-        const file = fileInput.files[0];
-        if (!file) {
-            alert('Пожалуйста, выберите файл для загрузки.');
-            return;
-        }
-
-        if (file.size > 4 * 1024 * 1024) { // 4MB
-            alert('Размер изображения не должен превышать 4MB.');
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append('preview', file);
-
-        try {
-            const res = await fetch('/api/posts/upload-preview', {
-                method: 'POST',
-                body: formData
-            });
-
-            const data = await res.json();
-
-            if (res.ok) {
-                document.getElementById('preview-image-url').value = data.imageUrl;
-                alert('Изображение успешно загружено!');
-            } else {
-                alert(data.message || 'Ошибка загрузки изображения');
-            }
-        } catch (e) {
-            console.error('Ошибка загрузки:', e);
-            alert('Ошибка при загрузке изображения');
-        }
-    });
-
-
     if (publishBtn) {
         publishBtn.addEventListener('click', async () => {
             const titleInput = document.querySelector('input[placeholder="Введите заголовок"]');
             const previewInput = document.getElementById('preview-description');
-            const imageInput = document.querySelector('input[placeholder="URL или файл изображения"]');
+            const fileInput = document.getElementById('preview-file-input');
             const dateInput = document.querySelector('input[type="date"]');
             const timeInput = document.querySelector('input[type="time"]');
 
             const title = titleInput?.value?.trim();
             const previewDescription = previewInput?.value?.trim();
-            const imageUrl = document.getElementById('preview-image-url').value.trim();
+            const file = fileInput.files[0];
             const content = quill.root.innerHTML.trim();
             const plainText = quill.getText().trim(); // Получаем текст без HTML-тегов
             const date = dateInput?.value;
@@ -252,8 +214,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return;
             }
 
-            if (!imageUrl) {
-                alert("Пожалуйста, загрузите изображение превью.");
+            if (!file) {
+                alert("Выберите изображение для превью.");
+                return;
+            }
+
+            if (file.size > 4 * 1024 * 1024) {
+                alert("Размер изображения не должен превышать 4MB.");
                 return;
             }
 
@@ -264,6 +231,30 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const publishedAt = date && time ? new Date(`${date}T${time}`) : new Date();
 
+            // Сначала загружаем изображение
+            const formData = new FormData();
+            formData.append('preview', file);
+
+            let imageUrl = "";
+
+            try {
+                const uploadRes = await fetch('/api/posts/upload-preview', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const uploadData = await uploadRes.json();
+
+                if (!uploadRes.ok) throw new Error(uploadData.message || 'Ошибка загрузки');
+
+                imageUrl = uploadData.imageUrl;
+            } catch (err) {
+                console.error("Ошибка при загрузке превью:", err);
+                alert("Ошибка при загрузке превью");
+                return;
+            }
+
+            // Теперь создаём пост
             try {
                 const res = await fetch('/api/posts/create', {
                     method: 'POST',

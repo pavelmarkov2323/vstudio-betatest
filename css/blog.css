@@ -236,28 +236,6 @@ textarea.input-field {
   /* убираем лишний отступ */
 }
 
-.upload-btn {
-  padding: 10px 16px;
-  font-size: 13px;
-  background: #444;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  height: auto;
-  display: flex;
-  align-items: center;
-  margin-top: 8px;
-
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.upload-btn:hover {
-  transform: scale(1.05);
-}
-
 .datetime-fields {
   display: flex;
   gap: 20px;
