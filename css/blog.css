@@ -93,6 +93,11 @@
 }
 
 /* Выпадающее меню карточки поста */
+.post-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
 .postdropdown-menu {
     background-color: white;
     border-radius: 8px;
@@ -102,17 +107,16 @@
     top: 30px;
     right: 0;
     opacity: 0;
-    pointer-events: none;
-    transform: scale(0.95);
-    transform-origin: top right;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    z-index: 100;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    z-index: 9;
 }
 
-.postdropdown-menu.show {
+.post-dropdown-container:hover .postdropdown-menu {
     opacity: 1;
-    pointer-events: auto;
-    transform: scale(1);
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .post-dropdown-item {
@@ -121,6 +125,7 @@
     padding: 8px 12px;
     cursor: pointer;
     user-select: none;
+    transition: background-color 0.2s;
 }
 
 .post-dropdown-item:hover {
@@ -138,6 +143,7 @@
     background-color: #ffffffbd;
     border-radius: 360px;
 }
+
 
 /* Карточка - кнопка (Для добавления публикации в блог) */
 .post-add-card {

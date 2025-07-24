@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         e.preventDefault(); // чтобы не срабатывало открытие поста
                         closeAllDropdowns();
                         const menu = icon.nextElementSibling;
-                        menu.classList.toggle('show');
+                        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
                     });
                 });
 
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 function closeAllDropdowns() {
                     container.querySelectorAll('.postdropdown-menu').forEach(menu => {
-                        menu.classList.remove('show');
+                        menu.style.display = 'none';
                     });
                 }
 
