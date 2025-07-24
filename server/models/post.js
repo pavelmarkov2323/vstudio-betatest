@@ -5,6 +5,7 @@
     slug: { type: String, required: true, unique: true },
     previewDescription: { type: String, required: true },
     imageUrl: { type: String, required: true }, // cloudinary
+    imagePublicId: { type: String },
     content: { type: String, required: true }, // HTML от Quill
     authorId: { type: Number, required: true },
     createdAt: { type: Date, default: Date.now },

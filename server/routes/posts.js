@@ -47,6 +47,7 @@ router.post('/upload-preview', upload.single('preview'), async (req, res) => {
 router.post('/create', async (req, res) => {
   const { title, previewDescription, imageUrl, content, publishedAt, isDraft } = req.body;
   const userId = req.session.userId;
+  const imagePublicId = req.file.filename; // это и есть public_id от Cloudinary
 
   if (!userId) return res.status(401).json({ message: 'Не авторизован' });
 
@@ -69,6 +70,7 @@ router.post('/create', async (req, res) => {
       slug,
       previewDescription,
       imageUrl,
+      imagePublicId,
       content,
       authorId: userId,
       publishedAt: isDraft ? null : publishedAt,
@@ -96,6 +98,11 @@ router.delete('/delete/:slug', async (req, res) => {
     const { slug } = req.params;
     const post = await Post.findOne({ slug });
     if (!post) return res.status(404).json({ message: 'Пост не найден' });
+
+    // Удаление изображения с Cloudinary
+    if (post.imagePublicId) {
+      await cloudinary.uploader.destroy(post.imagePublicId);
+    }
 
     await Post.deleteOne({ slug });
     res.json({ message: 'Пост удалён' });
