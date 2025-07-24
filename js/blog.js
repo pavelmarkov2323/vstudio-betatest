@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     ${isAdmin ? `
                     <div class="post-dropdown-container">
                         <img src="/assets/icons/menu-dots.svg" alt="Меню" class="post-menu-icon"/>
-                        <div class="postdropdown-menu" style="display: none;">
+                        <div class="postdropdown-menu">
                             <div class="post-dropdown-item" id="copyLink">
                                 <img src="/assets/icons/copy.svg"/>
                                 <span>Копировать ссылку</span>
@@ -87,9 +87,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                     icon.addEventListener('click', e => {
                         e.stopPropagation();
                         e.preventDefault(); // чтобы не срабатывало открытие поста
+
                         closeAllDropdowns();
+
                         const menu = icon.nextElementSibling;
-                        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+                        menu.classList.toggle('active');
                     });
                 });
 
@@ -100,7 +102,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 function closeAllDropdowns() {
                     container.querySelectorAll('.postdropdown-menu').forEach(menu => {
-                        menu.style.display = 'none';
+                        menu.classList.remove('active');
                     });
                 }
 
