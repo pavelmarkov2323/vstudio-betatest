@@ -19,7 +19,6 @@
 }
 
 /* Основной вид карточек на странице */
-/* Основной вид карточек на странице */
 .posts-container {
   display: flex;
   flex-wrap: wrap;
@@ -92,6 +91,39 @@
 .post-date {
   font-style: italic;
 }
+
+/* Выпадающее меню карточки поста */
+.postdropdown-menu {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    width: 160px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    display: none;
+    z-index: 100;
+}
+
+.post-dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.post-dropdown-item:hover {
+    background-color: #F5F6F7;
+    border-radius: 6px;
+}
+
+.post-menu-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
 
 /* Карточка - кнопка (Для добавления публикации в блог) */
 .post-add-card {
@@ -192,13 +224,9 @@
   position: relative;
   animation: scaleUp 0.3s ease forwards;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-
   max-height: 90vh;
-  /* Ограничим по высоте */
   overflow-y: auto;
-  /* Разрешим вертикальную прокрутку */
   padding-right: 16px;
-  /* Чтобы не перекрывался скролл */
 }
 
 /* Заголовок по центру */

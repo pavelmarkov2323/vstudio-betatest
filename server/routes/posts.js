@@ -83,6 +83,28 @@ router.post('/create', async (req, res) => {
   }
 });
 
+// Удаление поста по slug — только для админов (status=5)
+router.delete('/delete/:slug', async (req, res) => {
+  try {
+    const userId = req.session.userId;
+    if (!userId) return res.status(401).json({ message: 'Не авторизован' });
+
+    // Получаем статус пользователя (нужно загрузить User модель и проверить)
+    const user = await User.findOne({ userId });
+    if (!user || user.status !== 5) return res.status(403).json({ message: 'Нет прав' });
+
+    const { slug } = req.params;
+    const post = await Post.findOne({ slug });
+    if (!post) return res.status(404).json({ message: 'Пост не найден' });
+
+    await Post.deleteOne({ slug });
+    res.json({ message: 'Пост удалён' });
+  } catch (err) {
+    console.error('Ошибка удаления поста:', err);
+    res.status(500).json({ message: 'Ошибка сервера' });
+  }
+});
+
 // Получение всех постов
 router.get('/', async (req, res) => {
   try {

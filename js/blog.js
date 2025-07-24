@@ -39,6 +39,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     async function loadPosts() {
         const container = document.querySelector('.posts-container');
         try {
+
+            const resUser = await fetch("/api/current-user");
+            const dataUser = await resUser.json();
+            const isAdmin = dataUser.status === 5;
+
             const res = await fetch('/api/posts');
             const posts = await res.json();
 
@@ -46,6 +51,21 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const postHTML = `
                 <a href="/blog/${post.slug}" class="post-card theme-blog-cards" style="text-decoration: none; color: inherit;">
                     <img src="${post.imageUrl}" alt="Post Image" class="post-image" />
+                    ${isAdmin ? `
+                    <div class="post-dropdown-container" style="position: absolute; top: 10px; right: 10px;">
+                        <img src="/assets/icons/menu-dots.svg" alt="Меню" class="post-menu-icon" style="width: 24px; height: 24px; cursor: pointer;" />
+                        <div class="postdropdown-menu" id="postDropdownMenu" style="display: none; position: absolute; top: 30px; right: 0; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); width: 160px; z-index: 100;">
+                            <div class="post-dropdown-item" id="copyLink" style="display: flex; align-items: center; padding: 8px 12px; cursor: pointer;">
+                                <img src="/assets/icons/copy.svg" alt="Копировать" style="width: 18px; height: 18px; margin-right: 10px;" />
+                                <span>Копировать ссылку</span>
+                            </div>
+                            <div class="post-dropdown-item" id="deletePost" style="display: flex; align-items: center; padding: 8px 12px; cursor: pointer;">
+                                <img src="/assets/icons/trash.svg" alt="Удалить" style="width: 18px; height: 18px; margin-right: 10px;" />
+                                <span>Удалить пост</span>
+                            </div>
+                        </div>
+                    </div>
+                    ` : ''}
                     <div class="post-info theme-blog-cards">
                         <h3 class="post-title theme-text">${post.title}</h3>
                         <p class="post-description">${post.previewDescription}</p>
@@ -58,6 +78,85 @@ document.addEventListener("DOMContentLoaded", async () => {
             `;
                 container.insertAdjacentHTML('beforeend', postHTML);
             });
+
+            if (isAdmin) {
+                // Навесим обработчики для меню
+                container.querySelectorAll('.post-menu-icon').forEach(icon => {
+                    icon.addEventListener('click', e => {
+                        e.stopPropagation();
+                        closeAllDropdowns();
+                        const menu = icon.nextElementSibling; // наш .postdropdown-menu
+                        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+                    });
+                });
+
+                // Закрытие всех меню при клике вне
+                document.addEventListener('click', () => {
+                    closeAllDropdowns();
+                });
+
+                function closeAllDropdowns() {
+                    container.querySelectorAll('.postdropdown-menu').forEach(menu => {
+                        menu.style.display = 'none';
+                    });
+                }
+
+                // Наведение для затемнения элементов
+                container.querySelectorAll('.post-dropdown-item').forEach(item => {
+                    item.addEventListener('mouseenter', () => {
+                        item.style.backgroundColor = '#F5F6F7';
+                        item.style.borderRadius = '6px';
+                    });
+                    item.addEventListener('mouseleave', () => {
+                        item.style.backgroundColor = 'transparent';
+                    });
+                });
+
+                // Обработчики нажатия на пункты меню
+                container.querySelectorAll('.post-dropdown-item').forEach(item => {
+                    item.addEventListener('click', async (e) => {
+                        e.stopPropagation();
+                        const postCard = item.closest('.post-card');
+                        const postLink = postCard.querySelector('a')?.href || postCard.querySelector('a')?.getAttribute('href');
+                        const slug = postLink ? postLink.split('/blog/')[1] : null;
+
+                        if (!slug) return;
+
+                        if (item.id === 'copyLink') {
+                            const url = window.location.origin + '/blog/' + slug;
+                            try {
+                                await navigator.clipboard.writeText(url);
+                                alert('Ссылка скопирована!');
+                            } catch {
+                                alert('Не удалось скопировать ссылку');
+                            }
+                        }
+
+                        if (item.id === 'deletePost') {
+                            if (confirm('Удалить этот пост?')) {
+                                try {
+                                    const res = await fetch(`/api/posts/delete/${slug}`, {
+                                        method: 'DELETE'
+                                    });
+                                    const data = await res.json();
+                                    if (res.ok) {
+                                        alert('Пост удалён');
+                                        postCard.remove();
+                                    } else {
+                                        alert(data.message || 'Ошибка при удалении');
+                                    }
+                                } catch (err) {
+                                    alert('Ошибка сети');
+                                }
+                            }
+                        }
+
+                        // Скрываем меню после действия
+                        closeAllDropdowns();
+                    });
+                });
+            }
+
         } catch (err) {
             console.error("Ошибка загрузки постов:", err);
         }
