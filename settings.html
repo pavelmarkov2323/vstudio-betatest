@@ -128,30 +128,88 @@
     <div class="section-underline"></div>
   </div>
 
-      <!-- Corpyright, footer -->
-    <footer class="footer theme-line">
-        <div class="footer-content">
-            <span class="footer-copyright">© 2025 Project of the ValeyevStudio company.</span>
-            <a href="about.html#user-agreement" class="footer-link nav-user-agreement">User Agreement</a>
-            <a href="brand.html" class="footer-link nav-partners">Partners</a>
-            <a href="referal.html" class="footer-link nav-referals">Referal program</a>
+<div class="secure-device-activity-card">
+  <h3 class="secure-title">Устройства и активность</h3>
+
+  <!-- 🔵 Текущее устройство -->
+  <div class="current-device">
+    <div class="device-entry">
+      <div class="device-icon">
+        <div class="device-icon-bg">
+          <img src="/assets/icons/mobile.svg" alt="Mobile Icon" />
         </div>
-        <div class="footer-social">
-            <span class="social-platforms">Social:</span>
-            <a href="https://vk.com/nikitavaleyev" target="_blank">
-                <img src="assets/icons/social/vk.svg" alt="VK" class="theme-icon">
-            </a>
-            <a href="https://www.youtube.com/channel/@NikitaValeyev" target="_blank">
-                <img src="assets/icons/social/youtube.svg" alt="YouTube" class="theme-icon">
-            </a>
-            <a href="https://t.me/nikitavaleyev_musician" target="_blank">
-                <img src="assets/icons/social/telegram.svg" alt="Telegram" class="theme-icon">
-            </a>
-            <a href="https://instagram.com/nikitavaleyev" target="_blank">
-                <img src="assets/icons/social/instagram.svg" alt="Instagram" class="theme-icon">
-            </a>
+      </div>
+      <div class="device-texts">
+        <div class="device-title">Xiaomi Redmi Note 13 4G</div>
+        <div class="device-meta">Симферополь · Сегодня в 14:42</div>
+        <div class="device-current-label">Это устройство</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔴 Выйти из всех -->
+  <div class="logout-all" onclick="logoutAllDevices()">
+    Выйти из всех устройств
+  </div>
+
+  <!-- 🟡 Другие устройства -->
+  <div class="other-devices">
+    <h4 class="section-subtitle">Другие устройства</h4>
+
+    <!-- Пример одного устройства -->
+    <div class="device-entry" onclick="openDeviceModal()">
+      <div class="device-icon">
+        <div class="device-icon-bg">
+          <img src="/assets/icons/pc.svg" alt="PC Icon" />
         </div>
-    </footer>
+      </div>
+      <div class="device-texts">
+        <div class="device-title">Windows 10 · Chrome</div>
+        <div class="device-meta">Симферополь · Сегодня в 11:24</div>
+      </div>
+    </div>
+
+    <div class="device-entry" onclick="openDeviceModal()">
+      <div class="device-icon">
+        <div class="device-icon-bg">
+          <img src="/assets/icons/mobile.svg" alt="Mobile Icon" />
+        </div>
+      </div>
+      <div class="device-texts">
+        <div class="device-title">Samsung Galaxy A52</div>
+        <div class="device-meta">Москва · Вчера в 22:15</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+  <!-- Corpyright, footer -->
+  <footer class="footer theme-line">
+    <div class="footer-content">
+      <span class="footer-copyright">© 2025 Project of the ValeyevStudio company.</span>
+      <a href="about.html#user-agreement" class="footer-link nav-user-agreement">User Agreement</a>
+      <a href="brand.html" class="footer-link nav-partners">Partners</a>
+      <a href="referal.html" class="footer-link nav-referals">Referal program</a>
+    </div>
+    <div class="footer-social">
+      <span class="social-platforms">Social:</span>
+      <a href="https://vk.com/nikitavaleyev" target="_blank">
+        <img src="assets/icons/social/vk.svg" alt="VK" class="theme-icon">
+      </a>
+      <a href="https://www.youtube.com/channel/@NikitaValeyev" target="_blank">
+        <img src="assets/icons/social/youtube.svg" alt="YouTube" class="theme-icon">
+      </a>
+      <a href="https://t.me/nikitavaleyev_musician" target="_blank">
+        <img src="assets/icons/social/telegram.svg" alt="Telegram" class="theme-icon">
+      </a>
+      <a href="https://instagram.com/nikitavaleyev" target="_blank">
+        <img src="assets/icons/social/instagram.svg" alt="Instagram" class="theme-icon">
+      </a>
+    </div>
+  </footer>
 
   <!-- Подключенные скрипты -->
   <script src="js/translate-language.js"></script>

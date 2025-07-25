@@ -4,6 +4,46 @@ const multer = require('multer');
 const { storage } = require('../cloudinary'); // путь поправь если нужно
 const upload = multer({ storage });
 const { User } = require('../models/user');
+const User = require('../models/user');
+const jwt = require('jsonwebtoken');
+
+
+// middleware для получения userId из токена
+function auth(req, res, next) {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) return res.status(401).json({ message: 'Нет токена' });
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = decoded.id;
+    next();
+  } catch {
+    return res.status(401).json({ message: 'Неверный токен' });
+  }
+}
+
+// Получить список устройств
+router.get('/devices', auth, async (req, res) => {
+  const user = await User.findById(req.userId);
+  res.json(user.devices);
+});
+
+// Выйти из одного устройства
+router.post('/devices/logout', auth, async (req, res) => {
+  const { deviceId } = req.body;
+  await User.findByIdAndUpdate(req.userId, {
+    $pull: { devices: { deviceId } }
+  });
+  res.json({ success: true });
+});
+
+// Выйти из всех кроме текущего
+router.post('/devices/logout-all', auth, async (req, res) => {
+  const { currentDeviceId } = req.body;
+  const user = await User.findById(req.userId);
+  user.devices = user.devices.filter(d => d.deviceId === currentDeviceId);
+  await user.save();
+  res.json({ success: true });
+});
 
 // Получение данных пользователя по username (GET)
 router.get('/profile/:username', async (req, res) => {

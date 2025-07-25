@@ -14,14 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeCard = document.querySelector(".settings-card-welcome");
     const settingsCard = document.querySelector(".settings-card");
     const secureCard = document.querySelector(".secure-card");
+    const secureCardDevicyandActivity = document.querySelector(".secure-device-activity-card");
 
     const welcomeFullname = document.querySelector('.settings-card-welcome .user-fullname');
     const welcomeUserId = document.querySelector('.settings-card-welcome .user-id');
     const welcomeAvatar = document.querySelector('.settings-card-welcome .profile-avatar-img');
-    
+
     // Изначально скрываем settingsCard
     settingsCard.style.display = "none";
     secureCard.style.display = "none";
+    secureCardDevicyandActivity.style.display = "none";
 
     sidebarItems.forEach((item, index) => {
         item.addEventListener("click", () => {
@@ -35,15 +37,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 welcomeCard.style.display = "flex";
                 settingsCard.style.display = "none";
                 secureCard.style.display = "none";
+                secureCardDevicyandActivity.style.display = "none";
             } else if (index === 1) {
                 // Данные
                 welcomeCard.style.display = "none";
                 settingsCard.style.display = "block";
                 secureCard.style.display = "none";
+                secureCardDevicyandActivity.style.display = "none";
             } else if (index === 2) {
                 secureCard.style.display = "block";
+                secureCardDevicyandActivity.style.display = "block";
                 welcomeCard.style.display = "none";
                 settingsCard.style.display = "none";
+
+                // Загружаем устройства
+                fetchDevices();
             }
         });
     });
@@ -107,33 +115,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Статус верификации
     function getStatusData(status, username) {
-    const statusData = {
-        1: {
-        icon: '/assets/icons/status/verified.gif',
-        title: 'Верифицированная страница',
-        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации</a>.`
-        },
-        2: {
-        icon: '/assets/icons/status/sponsor.png',
-        title: 'Страница спонсора',
-        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">спонсорстве</a>.`
-        },
-        3: {
-        icon: '/assets/icons/status/partner.png',
-        title: 'Страница партнёра',
-        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">партнёрке</a>.`
-        },
-        4: {
-        icon: '/assets/icons/status/moderator.png',
-        title: 'Модератор подтверждён',
-        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">модераторстве</a>.`
-        },
-        5: {
-        icon: '/assets/icons/status/admin.png',
-        title: 'Администратор верифицирован',
-        text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации администраторов</a>.`
-        }
-    };
+        const statusData = {
+            1: {
+                icon: '/assets/icons/status/verified.gif',
+                title: 'Верифицированная страница',
+                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации</a>.`
+            },
+            2: {
+                icon: '/assets/icons/status/sponsor.png',
+                title: 'Страница спонсора',
+                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">спонсорстве</a>.`
+            },
+            3: {
+                icon: '/assets/icons/status/partner.png',
+                title: 'Страница партнёра',
+                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">партнёрке</a>.`
+            },
+            4: {
+                icon: '/assets/icons/status/moderator.png',
+                title: 'Модератор подтверждён',
+                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">модераторстве</a>.`
+            },
+            5: {
+                icon: '/assets/icons/status/admin.png',
+                title: 'Администратор верифицирован',
+                text: `Страница ${username} подтверждена. Узнайте больше о <a href="verification.html">верификации администраторов</a>.`
+            }
+        };
         return statusData[status] || null;
     }
 
@@ -170,12 +178,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const statusData = getStatusData(currentUser.status, currentUser.username);
 
                 if (statusData && userStatusWrapper && userStatusIcon && tooltipStatusTitle && tooltipStatusText) {
-                userStatusIcon.src = statusData.icon;
-                tooltipStatusTitle.textContent = statusData.title;
-                tooltipStatusText.innerHTML = statusData.text;
-                userStatusWrapper.style.display = 'inline-block';
+                    userStatusIcon.src = statusData.icon;
+                    tooltipStatusTitle.textContent = statusData.title;
+                    tooltipStatusText.innerHTML = statusData.text;
+                    userStatusWrapper.style.display = 'inline-block';
                 } else if (userStatusWrapper) {
-                userStatusWrapper.style.display = 'none';
+                    userStatusWrapper.style.display = 'none';
                 }
             }
         } catch (err) {
@@ -237,6 +245,70 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error(err);
         }
     });
+
+    async function fetchDevices() {
+        const res = await fetch('/api/user/devices', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        });
+        const devices = await res.json();
+        renderDevices(devices);
+    }
+
+    function renderDevices(devices) {
+        const container = document.querySelector('.other-devices');
+        if (!container) return;
+
+        container.innerHTML = '<h4 class="section-subtitle">Другие устройства</h4>';
+
+        const currentDeviceId = getCurrentDeviceId();
+
+        devices.forEach(device => {
+            const div = document.createElement('div');
+            div.className = 'device-entry';
+            div.onclick = () => openDeviceModal(device);
+            div.innerHTML = `
+      <div class="device-icon">
+        <div class="device-icon-bg">
+          <img src="/assets/icons/${device.isMobile ? 'mobile' : 'pc'}.svg">
+        </div>
+      </div>
+      <div class="device-texts">
+        <div class="device-title">${device.deviceName || `${device.os} · ${device.browser}`}</div>
+        <div class="device-meta">${device.location} · ${new Date(device.lastActive).toLocaleString()}</div>
+        ${device.deviceId === currentDeviceId ? '<div class="device-current-label">Это устройство</div>' : ''}
+      </div>
+    `;
+            container.appendChild(div);
+        });
+    }
+
+    function logoutAllDevices() {
+        fetch('/api/user/devices/logout-all', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            },
+            body: JSON.stringify({ currentDeviceId: getCurrentDeviceId() })
+        }).then(() => fetchDevices());
+    }
+
+    function getCurrentDeviceId() {
+        let id = localStorage.getItem('device_id');
+        if (!id) {
+            id = crypto.randomUUID();
+            localStorage.setItem('device_id', id);
+        }
+        return id;
+    }
+
+    function openDeviceModal(device) {
+        // Пока можно просто показать alert — потом сделаем полноценную модалку
+        alert(`Устройство: ${device.deviceName || device.browser}\nIP: ${device.ip}\nПоследняя активность: ${new Date(device.lastActive).toLocaleString()}`);
+    }
+
 
     // Модальное окно сообщений
     function showModalMessage(title, message) {
