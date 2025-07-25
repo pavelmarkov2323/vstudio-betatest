@@ -6,7 +6,6 @@ const nodemailer = require('nodemailer');
 const resetTokens = {}; // В реальном проекте храни в MongoDB с expiry
 const { User } = require('../models/user');
 
-
 // Регистрация нового пользователя
 router.post('/register', async (req, res) => {
     const { firstName, lastName, username, email, password } = req.body;
@@ -38,7 +37,7 @@ router.post('/register', async (req, res) => {
             username,
             email,
             password: hashedPassword,
-            ip
+            ip 
         });
 
         newUser.ip = ip;
@@ -76,34 +75,10 @@ router.post('/login', async (req, res) => {
         // Сохраняем данные пользователя в сессии
         req.session.userId = user.userId;
         req.session.username = user.username;
-
+        
         // Обновляем IP при входе
         const ip = req.headers['x-forwarded-for']?.split(',').shift() || req.socket.remoteAddress;
         await User.updateOne({ userId: user.userId }, { ip });
-
-        const currentDeviceId = req.headers['user-agent'] + req.ip; // можно заменить на fingerprint или hash
-
-        const deviceData = {
-            deviceId: currentDeviceId,
-            deviceName: 'Xiaomi Redmi Note 13', // или передавай с клиента
-            ip,
-            browser: 'Chrome', // можно определить с помощью user-agent-parser
-            os: 'Android',
-            isMobile: true,
-            lastActive: new Date(),
-            location: 'Симферополь', // если IP-геолокация будет
-            userAgent: req.headers['user-agent']
-        };
-
-        const existingDevice = user.devices.find(d => d.deviceId === currentDeviceId);
-
-        if (!existingDevice) {
-            user.devices.push(deviceData);
-        } else {
-            existingDevice.lastActive = new Date();
-        }
-
-        await user.save();
 
         res.json({ message: 'Успешный вход', userId: user.userId, username: user.username });
 

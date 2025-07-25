@@ -8,18 +8,6 @@ const counterSchema = new mongoose.Schema({
 });
 const Counter = mongoose.model('Counter', counterSchema);
 
-const deviceSchema = new mongoose.Schema({
-  deviceId: String, // Уникальный ID устройства
-  deviceName: String,
-  ip: String,
-  location: String,
-  browser: String,
-  os: String,
-  isMobile: Boolean,
-  lastActive: Date,
-  userAgent: String,
-});
-
 // Схема пользователя
 const userSchema = new mongoose.Schema({
   userId: { type: Number, unique: true },
@@ -58,8 +46,7 @@ const userSchema = new mongoose.Schema({
   },
   country: { type: String, default: '' },
   ip: { type: String, default: '' },
-  createdAt: { type: Date, default: Date.now },
-  devices: [deviceSchema]
+  createdAt: { type: Date, default: Date.now }
 });
 
 // Middleware генерации userId + уникального referral_code
